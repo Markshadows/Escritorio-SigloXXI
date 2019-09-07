@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SigloXXI
+namespace SigloXXI.Cliente
 {
     public partial class ClienteMesa : MetroFramework.Forms.MetroForm
     {

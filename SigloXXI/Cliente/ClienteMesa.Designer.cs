@@ -1,4 +1,4 @@
-﻿namespace SigloXXI
+﻿namespace SigloXXI.Cliente
 {
     partial class ClienteMesa
     {
