@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,16 @@ namespace Modelo
 {
     public class Contexto
     {
-        //private static Entities
+        private static Entidades conexion;
+
+        public Entidades Entidad
+        {
+            get
+            {
+                if (conexion == null)
+                    conexion = new Entidades();
+                return conexion;
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Modelo.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Modelo.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TIPO_USUARIO">
           <Key>
             <PropertyRef Name="ID_TIPO" />
@@ -25,9 +25,20 @@
           <Property Name="CONTRASENA" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="TELEFONO" Type="number" Precision="38" Scale="0" />
           <Property Name="TIPO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="60" Nullable="false" />
         </EntityType>
-        <Association Name="FK_USUARIO_TIPO">
-          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+        <EntityType Name="USUARIO_ESTADO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO" />
+          </Key>
+          <Property Name="ID_ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TIPO_USUARIO">
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_USUARIO">
@@ -35,6 +46,20 @@
             </Principal>
             <Dependent Role="USUARIO">
               <PropertyRef Name="TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ESTADO">
+          <End Role="USUARIO_ESTADO" Type="Self.USUARIO_ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_ESTADO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ESTADO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -51,13 +76,17 @@
         <EntityContainer Name="ModeloStoreContainer">
           <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" Schema="SIGLOXXI_MARCO" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="SIGLOXXI_MARCO" store:Type="Tables" />
-          <AssociationSet Name="FK_USUARIO_TIPO" Association="Self.FK_USUARIO_TIPO">
+          <EntitySet Name="USUARIO_ESTADO" EntityType="Self.USUARIO_ESTADO" Schema="SIGLOXXI_MARCO" store:Type="Tables" />
+          <AssociationSet Name="FK_TIPO_USUARIO" Association="Self.FK_TIPO_USUARIO">
             <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_ESTADO" Association="Self.FK_USUARIO_ESTADO">
+            <End Role="USUARIO_ESTADO" EntitySet="USUARIO_ESTADO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -83,6 +112,9 @@
           <Property Name="TELEFONO" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="TIPO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK_USUARIO_TIPO" FromRole="USUARIO" ToRole="TIPO_USUARIO" />
+          <Property Name="ESTADO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="USUARIO_ESTADO" Relationship="Modelo.FK_USUARIO_ESTADO" FromRole="USUARIO" ToRole="USUARIO_ESTADO" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_USUARIO_TIPO">
           <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
@@ -113,7 +145,34 @@
             <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
             <Parameter Name="P_TIPO" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <EntitySet Name="USUARIO_ESTADO" EntityType="Modelo.USUARIO_ESTADO" />
+          <AssociationSet Name="FK_USUARIO_ESTADO" Association="Modelo.FK_USUARIO_ESTADO">
+            <End Role="USUARIO_ESTADO" EntitySet="USUARIO_ESTADO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="USUARIO_ESTADO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO" />
+          </Key>
+          <Property Name="ID_ESTADO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Modelo.FK_USUARIO_ESTADO" FromRole="USUARIO_ESTADO" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_USUARIO_ESTADO">
+          <End Type="Modelo.USUARIO_ESTADO" Role="USUARIO_ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Modelo.USUARIO" Role="USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_ESTADO">
+              <PropertyRef Name="ID_ESTADO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -131,6 +190,8 @@
           <EntitySetMapping Name="USUARIO">
             <EntityTypeMapping TypeName="Modelo.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
                 <ScalarProperty Name="RUT" ColumnName="RUT" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
@@ -144,6 +205,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="PROC_I_USUARIO" FunctionName="Modelo.Store.PROC_I_USUARIO" />
+          <EntitySetMapping Name="USUARIO_ESTADO">
+            <EntityTypeMapping TypeName="Modelo.USUARIO_ESTADO">
+              <MappingFragment StoreEntitySet="USUARIO_ESTADO">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_ESTADO" ColumnName="ID_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

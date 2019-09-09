@@ -18,7 +18,7 @@ namespace SigloXXI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuAdministrador());
+            Application.Run(new IniciarSesion());
         }
     }
 }

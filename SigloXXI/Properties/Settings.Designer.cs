@@ -32,5 +32,15 @@ namespace Vista.Properties {
                 return ((string)(this["ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("DATA SOURCE=XE;PASSWORD=sigloxxi;USER ID=SIGLOXXI_MARCO")]
+        public string SigloXXIConnectionString {
+            get {
+                return ((string)(this["SigloXXIConnectionString"]));
+            }
+        }
     }
 }

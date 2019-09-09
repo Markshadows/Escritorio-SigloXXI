@@ -23,7 +23,10 @@ namespace DALC
         public string CONTRASENA { get; set; }
         public Nullable<decimal> TELEFONO { get; set; }
         public decimal TIPO { get; set; }
+        public decimal ESTADO { get; set; }
+        public string DIRECCION { get; set; }
     
         public virtual TIPO_USUARIO TIPO_USUARIO { get; set; }
+        public virtual USUARIO_ESTADO USUARIO_ESTADO { get; set; }
     }
 }

@@ -29,6 +29,7 @@ namespace DALC
     
         public virtual DbSet<TIPO_USUARIO> TIPO_USUARIO { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
+        public virtual DbSet<USUARIO_ESTADO> USUARIO_ESTADO { get; set; }
     
         public virtual int PROC_I_USUARIO(string p_RUT, string p_NOMBRE, string p_APPATERNO, string p_APMATERNO, string p_CORREO, string p_CONTRASENA, Nullable<decimal> p_TELEFONO, Nullable<decimal> p_TIPO)
         {
