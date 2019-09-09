@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SigloXXI;
+using Vista.Administrador;
 
 namespace Vista.Usuario
 {
@@ -25,6 +26,11 @@ namespace Vista.Usuario
             string tipoUsuario = txtUsuario.Text;
             switch (tipoUsuario)
             {
+                case "Administrador":
+                    MenuAdministrador menuAdministrador = new MenuAdministrador();
+                    menuAdministrador.Show();
+                    this.Hide();
+                    break;
                 case "Bodega":
                     Inventario inventario = new Inventario();
                     inventario.Show();

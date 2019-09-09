@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista.Usuario;
+using Vista.Administrador;
 
 namespace SigloXXI
 {
@@ -17,7 +18,7 @@ namespace SigloXXI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new IniciarSesion());
+            Application.Run(new MenuAdministrador());
         }
     }
 }
