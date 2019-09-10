@@ -78,8 +78,8 @@ namespace Vista.Administrador
                     txtApmaterno.Text = usuario.Apmaterno;
                     txtTelefono.Text = usuario.Telefono.ToString();
                     txtDireccion.Text = usuario.Direccion;
-                    cboTipo.SelectedItem = usuario.Tipo.ToString();
-                    cboEstado.SelectedItem = usuario.Estado.ToString();
+                    cboTipo.SelectedValue = usuario.Tipo;
+                    cboEstado.SelectedValue = usuario.Estado;
                     btnAgregar.Enabled = false;
 
                 }
@@ -131,6 +131,7 @@ namespace Vista.Administrador
                 if (usuario.Modificar())
                 {
                     btnAgregar.Enabled = false;
+                    MenuAdministrador_Load(sender, e);
                     MetroFramework.MetroMessageBox.Show(this, "Usuario Modificado", "Modificar Usuario");
 
                 }
