@@ -53,7 +53,7 @@ namespace Modelo
             try
             {
                 USUARIO usuario = new USUARIO();
-                usuario.ID_USUARIO = Id;
+                usuario.ID_USUARIO = conexion.Entidad.Database.SqlQuery<int>("SELECT SEQ_USUARIO.NEXTVAL FROM dual").First();
                 usuario.RUT = Rut;
                 usuario.NOMBRE = Nombre;
                 usuario.APPATERNO = Appaterno;

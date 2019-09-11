@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuCaja));
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnCerrarSesion = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // metroTile1
@@ -63,11 +65,25 @@
             this.metroButton1.Text = "Volver";
             this.metroButton1.UseSelectable = true;
             // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrarSesion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.BackgroundImage")));
+            this.btnCerrarSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCerrarSesion.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(226, 20);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(57, 46);
+            this.btnCerrarSesion.TabIndex = 4;
+            this.btnCerrarSesion.UseSelectable = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // MenuCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(306, 376);
+            this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
@@ -82,5 +98,6 @@
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton btnCerrarSesion;
     }
 }

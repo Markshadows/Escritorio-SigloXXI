@@ -657,6 +657,8 @@ namespace Vista {
             
             private global::System.Data.DataColumn columnESTADO;
             
+            private global::System.Data.DataColumn columnDIRECCION;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public USUARIODataTable() {
@@ -772,6 +774,14 @@ namespace Vista {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DIRECCIONColumn {
+                get {
+                    return this.columnDIRECCION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -807,7 +817,7 @@ namespace Vista {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public USUARIORow AddUSUARIORow(decimal ID_USUARIO, string RUT, string NOMBRE, string APPATERNO, string APMATERNO, string CORREO, string CONTRASENA, decimal TELEFONO, TIPO_USUARIORow parentTIPO_USUARIORowByFK_TIPO_USUARIO, USUARIO_ESTADORow parentUSUARIO_ESTADORowByFK_USUARIO_ESTADO) {
+            public USUARIORow AddUSUARIORow(decimal ID_USUARIO, string RUT, string NOMBRE, string APPATERNO, string APMATERNO, string CORREO, string CONTRASENA, decimal TELEFONO, TIPO_USUARIORow parentTIPO_USUARIORowByFK_TIPO_USUARIO, USUARIO_ESTADORow parentUSUARIO_ESTADORowByFK_USUARIO_ESTADO, string DIRECCION) {
                 USUARIORow rowUSUARIORow = ((USUARIORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_USUARIO,
@@ -819,7 +829,8 @@ namespace Vista {
                         CONTRASENA,
                         TELEFONO,
                         null,
-                        null};
+                        null,
+                        DIRECCION};
                 if ((parentTIPO_USUARIORowByFK_TIPO_USUARIO != null)) {
                     columnValuesArray[8] = parentTIPO_USUARIORowByFK_TIPO_USUARIO[0];
                 }
@@ -865,6 +876,7 @@ namespace Vista {
                 this.columnTELEFONO = base.Columns["TELEFONO"];
                 this.columnTIPO = base.Columns["TIPO"];
                 this.columnESTADO = base.Columns["ESTADO"];
+                this.columnDIRECCION = base.Columns["DIRECCION"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -890,24 +902,28 @@ namespace Vista {
                 base.Columns.Add(this.columnTIPO);
                 this.columnESTADO = new global::System.Data.DataColumn("ESTADO", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnESTADO);
+                this.columnDIRECCION = new global::System.Data.DataColumn("DIRECCION", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDIRECCION);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_USUARIO}, true));
                 this.columnID_USUARIO.AllowDBNull = false;
                 this.columnID_USUARIO.Unique = true;
                 this.columnRUT.AllowDBNull = false;
-                this.columnRUT.MaxLength = 20;
+                this.columnRUT.MaxLength = 12;
                 this.columnNOMBRE.AllowDBNull = false;
-                this.columnNOMBRE.MaxLength = 20;
+                this.columnNOMBRE.MaxLength = 30;
                 this.columnAPPATERNO.AllowDBNull = false;
-                this.columnAPPATERNO.MaxLength = 20;
+                this.columnAPPATERNO.MaxLength = 30;
                 this.columnAPMATERNO.AllowDBNull = false;
-                this.columnAPMATERNO.MaxLength = 20;
+                this.columnAPMATERNO.MaxLength = 30;
                 this.columnCORREO.AllowDBNull = false;
-                this.columnCORREO.MaxLength = 20;
+                this.columnCORREO.MaxLength = 70;
                 this.columnCONTRASENA.AllowDBNull = false;
-                this.columnCONTRASENA.MaxLength = 20;
+                this.columnCONTRASENA.MaxLength = 40;
                 this.columnTIPO.AllowDBNull = false;
                 this.columnESTADO.AllowDBNull = false;
+                this.columnDIRECCION.AllowDBNull = false;
+                this.columnDIRECCION.MaxLength = 60;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1482,6 +1498,17 @@ namespace Vista {
                 }
                 set {
                     this[this.tableUSUARIO.ESTADOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string DIRECCION {
+                get {
+                    return ((string)(this[this.tableUSUARIO.DIRECCIONColumn]));
+                }
+                set {
+                    this[this.tableUSUARIO.DIRECCIONColumn] = value;
                 }
             }
             
@@ -2181,10 +2208,11 @@ namespace Vista.DataSetSigloXXITableAdapters {
             tableMapping.ColumnMappings.Add("TELEFONO", "TELEFONO");
             tableMapping.ColumnMappings.Add("TIPO", "TIPO");
             tableMapping.ColumnMappings.Add("ESTADO", "ESTADO");
+            tableMapping.ColumnMappings.Add("DIRECCION", "DIRECCION");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLOXXI_MARCO"".""USUARIO"" WHERE ((""ID_USUARIO"" = :Original_ID_USUARIO) AND (""RUT"" = :Original_RUT) AND (""NOMBRE"" = :Original_NOMBRE) AND (""APPATERNO"" = :Original_APPATERNO) AND (""APMATERNO"" = :Original_APMATERNO) AND (""CORREO"" = :Original_CORREO) AND (""CONTRASENA"" = :Original_CONTRASENA) AND ((:IsNull_TELEFONO = 1 AND ""TELEFONO"" IS NULL) OR (""TELEFONO"" = :Original_TELEFONO)) AND (""TIPO"" = :Original_TIPO) AND (""ESTADO"" = :Original_ESTADO))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLOXXI_MARCO"".""USUARIO"" WHERE ((""ID_USUARIO"" = :Original_ID_USUARIO) AND (""RUT"" = :Original_RUT) AND (""NOMBRE"" = :Original_NOMBRE) AND (""APPATERNO"" = :Original_APPATERNO) AND (""APMATERNO"" = :Original_APMATERNO) AND (""CORREO"" = :Original_CORREO) AND (""CONTRASENA"" = :Original_CONTRASENA) AND ((:IsNull_TELEFONO = 1 AND ""TELEFONO"" IS NULL) OR (""TELEFONO"" = :Original_TELEFONO)) AND (""TIPO"" = :Original_TIPO) AND (""ESTADO"" = :Original_ESTADO) AND (""DIRECCION"" = :Original_DIRECCION))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID_USUARIO";
@@ -2198,7 +2226,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_RUT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 12;
             param.IsNullable = true;
             param.SourceColumn = "RUT";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2206,7 +2234,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_NOMBRE";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "NOMBRE";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2214,7 +2242,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_APPATERNO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "APPATERNO";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2222,7 +2250,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_APMATERNO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "APMATERNO";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2230,7 +2258,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_CORREO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 70;
             param.IsNullable = true;
             param.SourceColumn = "CORREO";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2238,7 +2266,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_CONTRASENA";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 40;
             param.IsNullable = true;
             param.SourceColumn = "CONTRASENA";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2280,9 +2308,17 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param.SourceColumn = "ESTADO";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_DIRECCION";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 60;
+            param.IsNullable = true;
+            param.SourceColumn = "DIRECCION";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""SIGLOXXI_MARCO"".""USUARIO"" (""ID_USUARIO"", ""RUT"", ""NOMBRE"", ""APPATERNO"", ""APMATERNO"", ""CORREO"", ""CONTRASENA"", ""TELEFONO"", ""TIPO"", ""ESTADO"") VALUES (:ID_USUARIO, :RUT, :NOMBRE, :APPATERNO, :APMATERNO, :CORREO, :CONTRASENA, :TELEFONO, :TIPO, :ESTADO)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""SIGLOXXI_MARCO"".""USUARIO"" (""ID_USUARIO"", ""RUT"", ""NOMBRE"", ""APPATERNO"", ""APMATERNO"", ""CORREO"", ""CONTRASENA"", ""TELEFONO"", ""TIPO"", ""ESTADO"", ""DIRECCION"") VALUES (:ID_USUARIO, :RUT, :NOMBRE, :APPATERNO, :APMATERNO, :CORREO, :CONTRASENA, :TELEFONO, :TIPO, :ESTADO, :DIRECCION)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_USUARIO";
@@ -2295,42 +2331,42 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "RUT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 12;
             param.IsNullable = true;
             param.SourceColumn = "RUT";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "NOMBRE";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "NOMBRE";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "APPATERNO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "APPATERNO";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "APMATERNO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "APMATERNO";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "CORREO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 70;
             param.IsNullable = true;
             param.SourceColumn = "CORREO";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "CONTRASENA";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 40;
             param.IsNullable = true;
             param.SourceColumn = "CONTRASENA";
             this._adapter.InsertCommand.Parameters.Add(param);
@@ -2358,9 +2394,16 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "ESTADO";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "DIRECCION";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 60;
+            param.IsNullable = true;
+            param.SourceColumn = "DIRECCION";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI_MARCO"".""USUARIO"" SET ""ID_USUARIO"" = :ID_USUARIO, ""RUT"" = :RUT, ""NOMBRE"" = :NOMBRE, ""APPATERNO"" = :APPATERNO, ""APMATERNO"" = :APMATERNO, ""CORREO"" = :CORREO, ""CONTRASENA"" = :CONTRASENA, ""TELEFONO"" = :TELEFONO, ""TIPO"" = :TIPO, ""ESTADO"" = :ESTADO WHERE ((""ID_USUARIO"" = :Original_ID_USUARIO) AND (""RUT"" = :Original_RUT) AND (""NOMBRE"" = :Original_NOMBRE) AND (""APPATERNO"" = :Original_APPATERNO) AND (""APMATERNO"" = :Original_APMATERNO) AND (""CORREO"" = :Original_CORREO) AND (""CONTRASENA"" = :Original_CONTRASENA) AND ((:IsNull_TELEFONO = 1 AND ""TELEFONO"" IS NULL) OR (""TELEFONO"" = :Original_TELEFONO)) AND (""TIPO"" = :Original_TIPO) AND (""ESTADO"" = :Original_ESTADO))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI_MARCO"".""USUARIO"" SET ""ID_USUARIO"" = :ID_USUARIO, ""RUT"" = :RUT, ""NOMBRE"" = :NOMBRE, ""APPATERNO"" = :APPATERNO, ""APMATERNO"" = :APMATERNO, ""CORREO"" = :CORREO, ""CONTRASENA"" = :CONTRASENA, ""TELEFONO"" = :TELEFONO, ""TIPO"" = :TIPO, ""ESTADO"" = :ESTADO, ""DIRECCION"" = :DIRECCION WHERE ((""ID_USUARIO"" = :Original_ID_USUARIO) AND (""RUT"" = :Original_RUT) AND (""NOMBRE"" = :Original_NOMBRE) AND (""APPATERNO"" = :Original_APPATERNO) AND (""APMATERNO"" = :Original_APMATERNO) AND (""CORREO"" = :Original_CORREO) AND (""CONTRASENA"" = :Original_CONTRASENA) AND ((:IsNull_TELEFONO = 1 AND ""TELEFONO"" IS NULL) OR (""TELEFONO"" = :Original_TELEFONO)) AND (""TIPO"" = :Original_TIPO) AND (""ESTADO"" = :Original_ESTADO) AND (""DIRECCION"" = :Original_DIRECCION))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_USUARIO";
@@ -2373,42 +2416,42 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "RUT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 12;
             param.IsNullable = true;
             param.SourceColumn = "RUT";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "NOMBRE";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "NOMBRE";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "APPATERNO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "APPATERNO";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "APMATERNO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "APMATERNO";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "CORREO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 70;
             param.IsNullable = true;
             param.SourceColumn = "CORREO";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "CONTRASENA";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 40;
             param.IsNullable = true;
             param.SourceColumn = "CONTRASENA";
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -2435,6 +2478,13 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "ESTADO";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "DIRECCION";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 60;
+            param.IsNullable = true;
+            param.SourceColumn = "DIRECCION";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID_USUARIO";
@@ -2448,7 +2498,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_RUT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 12;
             param.IsNullable = true;
             param.SourceColumn = "RUT";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2456,7 +2506,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_NOMBRE";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "NOMBRE";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2464,7 +2514,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_APPATERNO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "APPATERNO";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2472,7 +2522,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_APMATERNO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 30;
             param.IsNullable = true;
             param.SourceColumn = "APMATERNO";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2480,7 +2530,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_CORREO";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 70;
             param.IsNullable = true;
             param.SourceColumn = "CORREO";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2488,7 +2538,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_CONTRASENA";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 20;
+            param.Size = 40;
             param.IsNullable = true;
             param.SourceColumn = "CONTRASENA";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -2528,6 +2578,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "ESTADO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_DIRECCION";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 60;
+            param.IsNullable = true;
+            param.SourceColumn = "DIRECCION";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -2546,7 +2604,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_USUARIO, RUT, NOMBRE, APPATERNO, APMATERNO, CORREO, CONTRASENA, TELEFON" +
-                "O, TIPO, ESTADO FROM SIGLOXXI_MARCO.USUARIO";
+                "O, TIPO, ESTADO, DIRECCION FROM SIGLOXXI_MARCO.USUARIO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2607,7 +2665,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(decimal Original_ID_USUARIO, string Original_RUT, string Original_NOMBRE, string Original_APPATERNO, string Original_APMATERNO, string Original_CORREO, string Original_CONTRASENA, global::System.Nullable<decimal> Original_TELEFONO, decimal Original_TIPO, decimal Original_ESTADO) {
+        public virtual int Delete(decimal Original_ID_USUARIO, string Original_RUT, string Original_NOMBRE, string Original_APPATERNO, string Original_APMATERNO, string Original_CORREO, string Original_CONTRASENA, global::System.Nullable<decimal> Original_TELEFONO, decimal Original_TIPO, decimal Original_ESTADO, string Original_DIRECCION) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_ID_USUARIO));
             if ((Original_RUT == null)) {
                 throw new global::System.ArgumentNullException("Original_RUT");
@@ -2655,6 +2713,12 @@ namespace Vista.DataSetSigloXXITableAdapters {
             }
             this.Adapter.DeleteCommand.Parameters[9].Value = ((decimal)(Original_TIPO));
             this.Adapter.DeleteCommand.Parameters[10].Value = ((decimal)(Original_ESTADO));
+            if ((Original_DIRECCION == null)) {
+                throw new global::System.ArgumentNullException("Original_DIRECCION");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_DIRECCION));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2675,7 +2739,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(decimal ID_USUARIO, string RUT, string NOMBRE, string APPATERNO, string APMATERNO, string CORREO, string CONTRASENA, global::System.Nullable<decimal> TELEFONO, decimal TIPO, decimal ESTADO) {
+        public virtual int Insert(decimal ID_USUARIO, string RUT, string NOMBRE, string APPATERNO, string APMATERNO, string CORREO, string CONTRASENA, global::System.Nullable<decimal> TELEFONO, decimal TIPO, decimal ESTADO, string DIRECCION) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((decimal)(ID_USUARIO));
             if ((RUT == null)) {
                 throw new global::System.ArgumentNullException("RUT");
@@ -2721,6 +2785,12 @@ namespace Vista.DataSetSigloXXITableAdapters {
             }
             this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(TIPO));
             this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(ESTADO));
+            if ((DIRECCION == null)) {
+                throw new global::System.ArgumentNullException("DIRECCION");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(DIRECCION));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2752,6 +2822,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
                     global::System.Nullable<decimal> TELEFONO, 
                     decimal TIPO, 
                     decimal ESTADO, 
+                    string DIRECCION, 
                     decimal Original_ID_USUARIO, 
                     string Original_RUT, 
                     string Original_NOMBRE, 
@@ -2761,7 +2832,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
                     string Original_CONTRASENA, 
                     global::System.Nullable<decimal> Original_TELEFONO, 
                     decimal Original_TIPO, 
-                    decimal Original_ESTADO) {
+                    decimal Original_ESTADO, 
+                    string Original_DIRECCION) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((decimal)(ID_USUARIO));
             if ((RUT == null)) {
                 throw new global::System.ArgumentNullException("RUT");
@@ -2807,53 +2879,65 @@ namespace Vista.DataSetSigloXXITableAdapters {
             }
             this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(TIPO));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(ESTADO));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(Original_ID_USUARIO));
+            if ((DIRECCION == null)) {
+                throw new global::System.ArgumentNullException("DIRECCION");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(DIRECCION));
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_ID_USUARIO));
             if ((Original_RUT == null)) {
                 throw new global::System.ArgumentNullException("Original_RUT");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_RUT));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_RUT));
             }
             if ((Original_NOMBRE == null)) {
                 throw new global::System.ArgumentNullException("Original_NOMBRE");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_NOMBRE));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_NOMBRE));
             }
             if ((Original_APPATERNO == null)) {
                 throw new global::System.ArgumentNullException("Original_APPATERNO");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_APPATERNO));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_APPATERNO));
             }
             if ((Original_APMATERNO == null)) {
                 throw new global::System.ArgumentNullException("Original_APMATERNO");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_APMATERNO));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_APMATERNO));
             }
             if ((Original_CORREO == null)) {
                 throw new global::System.ArgumentNullException("Original_CORREO");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_CORREO));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_CORREO));
             }
             if ((Original_CONTRASENA == null)) {
                 throw new global::System.ArgumentNullException("Original_CONTRASENA");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_CONTRASENA));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_CONTRASENA));
             }
             if ((Original_TELEFONO.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(Original_TELEFONO.Value));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((decimal)(Original_TELEFONO.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((decimal)(Original_TIPO));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(Original_ESTADO));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(Original_TIPO));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((decimal)(Original_ESTADO));
+            if ((Original_DIRECCION == null)) {
+                throw new global::System.ArgumentNullException("Original_DIRECCION");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_DIRECCION));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2884,6 +2968,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
                     global::System.Nullable<decimal> TELEFONO, 
                     decimal TIPO, 
                     decimal ESTADO, 
+                    string DIRECCION, 
                     decimal Original_ID_USUARIO, 
                     string Original_RUT, 
                     string Original_NOMBRE, 
@@ -2893,8 +2978,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
                     string Original_CONTRASENA, 
                     global::System.Nullable<decimal> Original_TELEFONO, 
                     decimal Original_TIPO, 
-                    decimal Original_ESTADO) {
-            return this.Update(Original_ID_USUARIO, RUT, NOMBRE, APPATERNO, APMATERNO, CORREO, CONTRASENA, TELEFONO, TIPO, ESTADO, Original_ID_USUARIO, Original_RUT, Original_NOMBRE, Original_APPATERNO, Original_APMATERNO, Original_CORREO, Original_CONTRASENA, Original_TELEFONO, Original_TIPO, Original_ESTADO);
+                    decimal Original_ESTADO, 
+                    string Original_DIRECCION) {
+            return this.Update(Original_ID_USUARIO, RUT, NOMBRE, APPATERNO, APMATERNO, CORREO, CONTRASENA, TELEFONO, TIPO, ESTADO, DIRECCION, Original_ID_USUARIO, Original_RUT, Original_NOMBRE, Original_APPATERNO, Original_APMATERNO, Original_CORREO, Original_CONTRASENA, Original_TELEFONO, Original_TIPO, Original_ESTADO, Original_DIRECCION);
         }
     }
     

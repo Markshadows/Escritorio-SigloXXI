@@ -15,6 +15,12 @@ namespace Vista.Finanzas
         public FormularioFinanzas()
         {
             InitializeComponent();
+            btnCerrarSesion.FlatAppearance.BorderSize = 0;
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Utilidades.cerrarSesion(this);
         }
     }
 }

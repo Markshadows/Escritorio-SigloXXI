@@ -16,6 +16,7 @@ namespace Vista.Administrador
         public MenuAdministrador()
         {
             InitializeComponent();
+            btnCerrarSesion.FlatAppearance.BorderSize = 0;
         }
 
         private void MenuAdministrador_Load(object sender, EventArgs e)
@@ -33,9 +34,7 @@ namespace Vista.Administrador
         {
             try
             {
-                Random random = new Random();
                 Modelo.Usuario usuario = new Modelo.Usuario();
-                usuario.Id = random.Next(1, 100);
                 usuario.Nombre = txtNombre.Text;
                 usuario.Appaterno = txtAppaterno.Text;
                 usuario.Apmaterno = txtApmaterno.Text;
@@ -147,6 +146,11 @@ namespace Vista.Administrador
                 MetroFramework.MetroMessageBox.Show(this, "Error" + ex, "Modificar Usuario");
                 limpiarFormulario();
             }
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Utilidades.cerrarSesion(this);
         }
     }
 }
