@@ -38,7 +38,7 @@
             this.btnCerrarSesion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.BackgroundImage")));
             this.btnCerrarSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCerrarSesion.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(707, 26);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(664, 27);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(57, 46);
             this.btnCerrarSesion.TabIndex = 6;
