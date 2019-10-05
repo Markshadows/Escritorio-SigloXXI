@@ -28,8 +28,9 @@ namespace Vista.Usuario
             usuario.Correo = txtCorreo.Text;
             usuario.Contrasena = txtContrasena.Text;
 
-            if (usuario.IniciarSesion()) {
-                switch (usuario.Tipo)
+            if (usuario.IniciarSesion())
+            {
+                switch (usuario.Rol.Id)
                 {
                     case 1:
                         MenuAdministrador menuAdministrador = new MenuAdministrador();
@@ -62,7 +63,7 @@ namespace Vista.Usuario
             {
                 MetroFramework.MetroMessageBox.Show(this, "El usuario no existe", "Iniciar Sesión");
             }
-            
+
         }
     }
 }

@@ -12,18 +12,20 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class TIPO_USUARIO
+    public partial class BOLETA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TIPO_USUARIO()
+        public BOLETA()
         {
-            this.USUARIO = new HashSet<USUARIO>();
+            this.DETALLE_BOLETA = new HashSet<DETALLE_BOLETA>();
         }
     
-        public decimal ID_TIPO { get; set; }
-        public string DESCRIPCION { get; set; }
+        public decimal ID { get; set; }
+        public System.DateTime CREATED_AT { get; set; }
+        public decimal MODO_PAGO_ID { get; set; }
     
+        public virtual MODO_PAGO MODO_PAGO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        public virtual ICollection<DETALLE_BOLETA> DETALLE_BOLETA { get; set; }
     }
 }

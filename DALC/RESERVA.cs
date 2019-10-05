@@ -12,32 +12,29 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIO
+    public partial class RESERVA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USUARIO()
+        public RESERVA()
         {
-            this.INGRESO = new HashSet<INGRESO>();
-            this.RESERVA = new HashSet<RESERVA>();
+            this.DETALLE_BOLETA = new HashSet<DETALLE_BOLETA>();
+            this.PEDIDO = new HashSet<PEDIDO>();
         }
     
         public decimal ID { get; set; }
-        public string RUN { get; set; }
         public string NOMBRE { get; set; }
-        public string APELLIDOS { get; set; }
-        public string CORREO { get; set; }
-        public string PASSWORD { get; set; }
-        public decimal TELEFONO { get; set; }
-        public decimal ROL_ID { get; set; }
         public System.DateTime CREATED_AT { get; set; }
-        public System.DateTime UPDATE_AT { get; set; }
-        public decimal DIRECCION_ID { get; set; }
+        public decimal USUARIO_ID { get; set; }
+        public decimal MESA_ID { get; set; }
+        public decimal CLIENTE_ID { get; set; }
+        public decimal ESTADO_ID { get; set; }
     
-        public virtual DIRECCION DIRECCION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INGRESO> INGRESO { get; set; }
+        public virtual ICollection<DETALLE_BOLETA> DETALLE_BOLETA { get; set; }
+        public virtual ESTADO ESTADO { get; set; }
+        public virtual MESA MESA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVA> RESERVA { get; set; }
-        public virtual ROL ROL { get; set; }
+        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

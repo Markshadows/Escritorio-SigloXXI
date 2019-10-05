@@ -12,32 +12,22 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIO
+    public partial class MENU
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USUARIO()
+        public MENU()
         {
-            this.INGRESO = new HashSet<INGRESO>();
-            this.RESERVA = new HashSet<RESERVA>();
+            this.INGREDIENTE = new HashSet<INGREDIENTE>();
+            this.PEDIDO = new HashSet<PEDIDO>();
         }
     
         public decimal ID { get; set; }
-        public string RUN { get; set; }
         public string NOMBRE { get; set; }
-        public string APELLIDOS { get; set; }
-        public string CORREO { get; set; }
-        public string PASSWORD { get; set; }
-        public decimal TELEFONO { get; set; }
-        public decimal ROL_ID { get; set; }
-        public System.DateTime CREATED_AT { get; set; }
-        public System.DateTime UPDATE_AT { get; set; }
-        public decimal DIRECCION_ID { get; set; }
+        public decimal PRECIO { get; set; }
     
-        public virtual DIRECCION DIRECCION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INGRESO> INGRESO { get; set; }
+        public virtual ICollection<INGREDIENTE> INGREDIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVA> RESERVA { get; set; }
-        public virtual ROL ROL { get; set; }
+        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }
 }

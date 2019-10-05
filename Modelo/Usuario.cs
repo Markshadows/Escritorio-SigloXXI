@@ -12,14 +12,12 @@ namespace Modelo
         public int Id { get; set; }
         public string Rut { get; set; }
         public string Nombre { get; set; }
-        public string Appaterno { get; set; }
-        public string Apmaterno { get; set; }
+        public string Apellidos { get; set; }
         public string Correo { get; set; }
         public string Contrasena { get; set; }
         public int Telefono { get; set; }
-        public int Tipo { get; set; }
-        public int Estado { get; set; }
-        public string Direccion { get; set; }
+        public Rol Rol { get; set; }
+        public Direccion Direccion { get; set; }
 
         private Contexto conexion;
 
@@ -38,8 +36,15 @@ namespace Modelo
             {
                 USUARIO usuario = conexion.Entidad.USUARIO
                     .First(u => u.CORREO.Equals(Correo)
-                    && u.CONTRASENA.Equals(Contrasena));
-                this.Tipo = (int)usuario.TIPO;
+                    && u.PASSWORD.Equals(Contrasena));
+                this.Rut = usuario.RUN;
+                this.Nombre = usuario.NOMBRE;
+                this.Apellidos = usuario.APELLIDOS;
+                this.Correo = usuario.CORREO;
+                this.Contrasena = usuario.PASSWORD;
+                this.Telefono = (int)usuario.TELEFONO;
+                this.Direccion = new Direccion { Id = (int)usuario.DIRECCION_ID };
+                this.Rol = new Rol { Id = (int)usuario.ROL_ID };
                 return true;
             }
             catch (Exception)
@@ -53,19 +58,20 @@ namespace Modelo
             try
             {
                 USUARIO usuario = new USUARIO();
-                usuario.ID_USUARIO = conexion.Entidad.Database.SqlQuery<int>("SELECT SEQ_USUARIO.NEXTVAL FROM dual").First();
-                usuario.RUT = Rut;
+                usuario.ID = 0;
+                usuario.RUN = Rut;
                 usuario.NOMBRE = Nombre;
-                usuario.APPATERNO = Appaterno;
-                usuario.APMATERNO = Apmaterno;
+                usuario.APELLIDOS = Apellidos;
                 usuario.CORREO = Correo;
-                usuario.CONTRASENA = Contrasena;
+                usuario.PASSWORD = Contrasena;
                 usuario.TELEFONO = Telefono;
-                usuario.DIRECCION = Direccion;
-                usuario.TIPO = Tipo;
-                usuario.ESTADO = Estado;
+                usuario.DIRECCION_ID = Direccion.Id;
+                usuario.ROL_ID = Rol.Id;
+                usuario.CREATED_AT = DateTime.Now;
+                usuario.UPDATE_AT = DateTime.Now;
                 conexion.Entidad.USUARIO.Add(usuario);
                 conexion.Entidad.SaveChanges();
+
                 return true;
             }
             catch (Exception ex)
@@ -79,17 +85,15 @@ namespace Modelo
             try
             {
                 USUARIO usuario = conexion.Entidad.USUARIO
-                    .First(p => p.RUT == Rut);
-                this.Rut = usuario.RUT;
+                    .First(p => p.RUN == Rut);
+                this.Rut = usuario.RUN;
                 this.Nombre = usuario.NOMBRE;
-                this.Appaterno = usuario.APPATERNO;
-                this.Apmaterno = usuario.APMATERNO;
+                this.Apellidos = usuario.APELLIDOS;
                 this.Correo = usuario.CORREO;
-                this.Contrasena = usuario.CONTRASENA;
+                this.Contrasena = usuario.PASSWORD;
                 this.Telefono = (int)usuario.TELEFONO;
-                this.Direccion = usuario.DIRECCION;
-                this.Tipo = (int)usuario.TIPO;
-                this.Estado = (int)usuario.ESTADO;
+                this.Direccion = new Direccion { Id = (int)usuario.DIRECCION_ID };
+                this.Rol = new Rol { Id = (int)usuario.ROL_ID };
                 return true;
             }
             catch (Exception ex)
@@ -103,17 +107,18 @@ namespace Modelo
             try
             {
                 USUARIO usuario = conexion.Entidad.USUARIO
-                    .First(p => p.RUT == Rut);
-                usuario.RUT = Rut;
+                    .First(p => p.RUN == Rut);
+                usuario.RUN = Rut;
                 usuario.NOMBRE = Nombre;
-                usuario.APPATERNO = Appaterno;
-                usuario.APMATERNO = Apmaterno;
+                usuario.APELLIDOS = Apellidos;
                 usuario.CORREO = Correo;
-                usuario.CONTRASENA = Contrasena;
+                usuario.PASSWORD = Contrasena;
                 usuario.TELEFONO = Telefono;
-                usuario.DIRECCION = Direccion;
-                usuario.TIPO = Tipo;
-                usuario.ESTADO = Estado;
+                usuario.DIRECCION_ID = Direccion.Id;
+                usuario.ROL_ID = Rol.Id;
+                usuario.CREATED_AT = DateTime.Now;
+                usuario.UPDATE_AT = DateTime.Now;
+
                 conexion.Entidad.SaveChanges();
                 return true;
             }

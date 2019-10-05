@@ -12,32 +12,31 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIO
+    public partial class DIRECCION
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USUARIO()
+        public DIRECCION()
         {
-            this.INGRESO = new HashSet<INGRESO>();
-            this.RESERVA = new HashSet<RESERVA>();
+            this.PROVEEDOR = new HashSet<PROVEEDOR>();
+            this.USUARIO = new HashSet<USUARIO>();
         }
     
         public decimal ID { get; set; }
-        public string RUN { get; set; }
-        public string NOMBRE { get; set; }
-        public string APELLIDOS { get; set; }
-        public string CORREO { get; set; }
-        public string PASSWORD { get; set; }
-        public decimal TELEFONO { get; set; }
-        public decimal ROL_ID { get; set; }
-        public System.DateTime CREATED_AT { get; set; }
-        public System.DateTime UPDATE_AT { get; set; }
-        public decimal DIRECCION_ID { get; set; }
+        public string CALLE { get; set; }
+        public string NUMERO { get; set; }
+        public string PISO { get; set; }
+        public string DEPARTAMENTO { get; set; }
+        public string OTRO { get; set; }
+        public decimal PAIS_ID { get; set; }
+        public decimal COMUNA_ID { get; set; }
+        public decimal CIUDAD_ID { get; set; }
     
-        public virtual DIRECCION DIRECCION { get; set; }
+        public virtual CIUDAD CIUDAD { get; set; }
+        public virtual COMUNA COMUNA { get; set; }
+        public virtual PAIS PAIS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INGRESO> INGRESO { get; set; }
+        public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVA> RESERVA { get; set; }
-        public virtual ROL ROL { get; set; }
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

@@ -12,32 +12,26 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIO
+    public partial class PROVEEDOR
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USUARIO()
+        public PROVEEDOR()
         {
-            this.INGRESO = new HashSet<INGRESO>();
-            this.RESERVA = new HashSet<RESERVA>();
+            this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
         public decimal ID { get; set; }
-        public string RUN { get; set; }
         public string NOMBRE { get; set; }
-        public string APELLIDOS { get; set; }
+        public string RUN { get; set; }
+        public string TELEFONO { get; set; }
         public string CORREO { get; set; }
-        public string PASSWORD { get; set; }
-        public decimal TELEFONO { get; set; }
-        public decimal ROL_ID { get; set; }
-        public System.DateTime CREATED_AT { get; set; }
-        public System.DateTime UPDATE_AT { get; set; }
+        public string DESCRIPCION { get; set; }
         public decimal DIRECCION_ID { get; set; }
+        public decimal GIRO_ID { get; set; }
     
         public virtual DIRECCION DIRECCION { get; set; }
+        public virtual GIRO GIRO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INGRESO> INGRESO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVA> RESERVA { get; set; }
-        public virtual ROL ROL { get; set; }
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }
