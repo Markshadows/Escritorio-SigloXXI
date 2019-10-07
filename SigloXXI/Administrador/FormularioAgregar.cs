@@ -31,10 +31,9 @@ namespace Vista.Administrador
             InitializeComponent();
             menuAdm = menuAdministrador;
             usu = usuario;
-            cargarDatosUsuario();
         }
 
-        private void FormularioAgregar_Load(object sender, EventArgs e)
+        private void FormularioAgregar_Activated(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.ROL' Puede moverla o quitarla según sea necesario.
             this.rOLTableAdapter.Fill(this.dataSetSigloXXI.ROL);
@@ -44,6 +43,8 @@ namespace Vista.Administrador
             this.cIUDADTableAdapter.Fill(this.dataSetSigloXXI.CIUDAD);
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.PAIS' Puede moverla o quitarla según sea necesario.
             this.pAISTableAdapter.Fill(this.dataSetSigloXXI.PAIS);
+
+            cargarDatosUsuario();
 
         }
 
@@ -110,7 +111,7 @@ namespace Vista.Administrador
                     txtPiso.Text = direccion.Piso;
                     txtDpto.Text = direccion.Departamento;
                     txtOtro.Text = direccion.Otro;
-                    cboPais.SelectedValue = 5;
+                    cboPais.SelectedValue = 1;
                     cboCiudad.SelectedValue = 5;
                     cboComuna.SelectedValue = 5;
 
@@ -121,6 +122,52 @@ namespace Vista.Administrador
             {
 
                 throw;
+            }
+        }
+
+        private void btnModificarUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Direccion direccion = new Direccion();
+                direccion.Id = usu.Direccion.Id;
+                direccion.Calle = txtCalle.Text;
+                direccion.Numero = txtNro.Text;
+                direccion.Piso = txtPiso.Text;
+                direccion.Departamento = txtDpto.Text;
+                direccion.Otro = txtOtro.Text;
+                direccion.Pais = new Pais { Id = int.Parse(cboPais.SelectedValue.ToString()) };
+                direccion.Comuna = new Comuna { Id = int.Parse(cboComuna.SelectedValue.ToString()) };
+                direccion.Ciudad = new Ciudad { Id = int.Parse(cboCiudad.SelectedValue.ToString()) };
+                direccion.Modificar();
+
+                Modelo.Usuario usuario = new Modelo.Usuario();
+                usuario.Nombre = txtNombre.Text;
+                usuario.Apellidos = txtApellidos.Text;
+                usuario.Correo = txtCorreo.Text;
+                usuario.Contrasena = txtContrasena.Text;
+                usuario.Rut = txtRut.Text;
+                usuario.Telefono = int.Parse(txtTelefono.Text);
+                usuario.Rol = new Rol { Id = int.Parse(cboTipo.SelectedValue.ToString()) };
+                usuario.Direccion = new Direccion { Id = direccion.Id };
+                string msj = usuario.Modificar() ? "Modificó" : "No Modificó";
+                Console.WriteLine(usuario.Nombre);
+                
+                if (usuario.Modificar())
+                {
+                    menuAdm.MenuAdministrador_Load(sender, e);
+                    MetroFramework.MetroMessageBox.Show(this, "Usuario Modificado", "Modificar Usuario");
+
+                }
+                else
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "No se pudo modificar", "Modificar Usuario");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MetroFramework.MetroMessageBox.Show(this, "Error" + ex, "Modificar Usuario");
             }
         }
     }

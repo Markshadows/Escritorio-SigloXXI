@@ -76,7 +76,6 @@
             this.uSUARIOBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dTUsuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dTUsuariosTableAdapter = new Vista.DataSetSigloXXITableAdapters.DTUsuariosTableAdapter();
-            this.btnModificarUsuario = new MetroFramework.Controls.MetroButton();
             this.tabUsuario.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).BeginInit();
@@ -114,7 +113,6 @@
             // 
             // tabUsuarios
             // 
-            this.tabUsuarios.Controls.Add(this.btnModificarUsuario);
             this.tabUsuarios.Controls.Add(this.metroGrid3);
             this.tabUsuarios.Controls.Add(this.btnAgregarUsuario);
             this.tabUsuarios.Controls.Add(this.pictureBox1);
@@ -478,16 +476,6 @@
             // 
             this.dTUsuariosTableAdapter.ClearBeforeFill = true;
             // 
-            // btnModificarUsuario
-            // 
-            this.btnModificarUsuario.Location = new System.Drawing.Point(347, 50);
-            this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.Size = new System.Drawing.Size(75, 23);
-            this.btnModificarUsuario.TabIndex = 11;
-            this.btnModificarUsuario.Text = "Modificar";
-            this.btnModificarUsuario.UseSelectable = true;
-            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
-            // 
             // MenuAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,7 +496,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.tabFinanzas.ResumeLayout(false);
             this.tabFinanzas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetSigloXXIBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tIPOUSUARIOBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetTipoUsuarioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tIPOUSUARIOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetUsuarioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTUsuariosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -556,6 +552,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cOMUNADataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tIPODataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource dTUsuariosBindingSource1;
-        private MetroFramework.Controls.MetroButton btnModificarUsuario;
     }
 }
