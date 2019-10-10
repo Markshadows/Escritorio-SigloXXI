@@ -42,14 +42,8 @@
             this.tabUsuario = new MetroFramework.Controls.MetroTabControl();
             this.tabUsuarios = new MetroFramework.Controls.MetroTabPage();
             this.metroGrid3 = new MetroFramework.Controls.MetroGrid();
-            this.rUNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nOMBREDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aPELLIDOSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cORREODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tELEFONODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cOMUNADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tIPODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dTUsuariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dTUsuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetSigloXXIBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetSigloXXI = new Vista.DataSetSigloXXI();
             this.btnAgregarUsuario = new MetroFramework.Controls.MetroButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -60,44 +54,25 @@
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
             this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
-            this.uSUARIOBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetSigloXXIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uSUARIOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.uSUARIOESTADOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tIPOUSUARIOBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.uSUARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uSUARIOESTADOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tIPOUSUARIOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetTipoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tIPOUSUARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uSUARIOTableAdapter = new Vista.DataSetSigloXXITableAdapters.USUARIOTableAdapter();
             this.btnCerrarSesion = new MetroFramework.Controls.MetroButton();
-            this.uSUARIOBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.dTUsuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dTUsuariosTableAdapter = new Vista.DataSetSigloXXITableAdapters.DTUsuariosTableAdapter();
+            this.rUNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOMBREDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aPELLIDOSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cORREODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tELEFONODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tIPODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dIRECCIONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabUsuario.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTUsuariosBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTUsuariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetSigloXXIBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetSigloXXI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.tabFinanzas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetSigloXXIBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOESTADOBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tIPOUSUARIOBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOESTADOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tIPOUSUARIOBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetTipoUsuarioBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tIPOUSUARIOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetUsuarioBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTUsuariosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabUsuario
@@ -133,6 +108,8 @@
             // 
             // metroGrid3
             // 
+            this.metroGrid3.AllowUserToDeleteRows = false;
+            this.metroGrid3.AllowUserToOrderColumns = true;
             this.metroGrid3.AllowUserToResizeRows = false;
             this.metroGrid3.AutoGenerateColumns = false;
             this.metroGrid3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -154,9 +131,9 @@
             this.aPELLIDOSDataGridViewTextBoxColumn,
             this.cORREODataGridViewTextBoxColumn,
             this.tELEFONODataGridViewTextBoxColumn,
-            this.cOMUNADataGridViewTextBoxColumn,
-            this.tIPODataGridViewTextBoxColumn});
-            this.metroGrid3.DataSource = this.dTUsuariosBindingSource1;
+            this.tIPODataGridViewTextBoxColumn,
+            this.dIRECCIONDataGridViewTextBoxColumn});
+            this.metroGrid3.DataSource = this.dTUsuariosBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -181,55 +158,18 @@
             this.metroGrid3.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid3.Size = new System.Drawing.Size(1012, 282);
+            this.metroGrid3.Size = new System.Drawing.Size(743, 282);
             this.metroGrid3.TabIndex = 10;
             // 
-            // rUNDataGridViewTextBoxColumn
+            // dTUsuariosBindingSource
             // 
-            this.rUNDataGridViewTextBoxColumn.DataPropertyName = "RUN";
-            this.rUNDataGridViewTextBoxColumn.HeaderText = "RUN";
-            this.rUNDataGridViewTextBoxColumn.Name = "rUNDataGridViewTextBoxColumn";
+            this.dTUsuariosBindingSource.DataMember = "DTUsuarios";
+            this.dTUsuariosBindingSource.DataSource = this.dataSetSigloXXIBindingSource;
             // 
-            // nOMBREDataGridViewTextBoxColumn
+            // dataSetSigloXXIBindingSource
             // 
-            this.nOMBREDataGridViewTextBoxColumn.DataPropertyName = "NOMBRE";
-            this.nOMBREDataGridViewTextBoxColumn.HeaderText = "NOMBRE";
-            this.nOMBREDataGridViewTextBoxColumn.Name = "nOMBREDataGridViewTextBoxColumn";
-            // 
-            // aPELLIDOSDataGridViewTextBoxColumn
-            // 
-            this.aPELLIDOSDataGridViewTextBoxColumn.DataPropertyName = "APELLIDOS";
-            this.aPELLIDOSDataGridViewTextBoxColumn.HeaderText = "APELLIDOS";
-            this.aPELLIDOSDataGridViewTextBoxColumn.Name = "aPELLIDOSDataGridViewTextBoxColumn";
-            // 
-            // cORREODataGridViewTextBoxColumn
-            // 
-            this.cORREODataGridViewTextBoxColumn.DataPropertyName = "CORREO";
-            this.cORREODataGridViewTextBoxColumn.HeaderText = "CORREO";
-            this.cORREODataGridViewTextBoxColumn.Name = "cORREODataGridViewTextBoxColumn";
-            // 
-            // tELEFONODataGridViewTextBoxColumn
-            // 
-            this.tELEFONODataGridViewTextBoxColumn.DataPropertyName = "TELEFONO";
-            this.tELEFONODataGridViewTextBoxColumn.HeaderText = "TELEFONO";
-            this.tELEFONODataGridViewTextBoxColumn.Name = "tELEFONODataGridViewTextBoxColumn";
-            // 
-            // cOMUNADataGridViewTextBoxColumn
-            // 
-            this.cOMUNADataGridViewTextBoxColumn.DataPropertyName = "COMUNA";
-            this.cOMUNADataGridViewTextBoxColumn.HeaderText = "COMUNA";
-            this.cOMUNADataGridViewTextBoxColumn.Name = "cOMUNADataGridViewTextBoxColumn";
-            // 
-            // tIPODataGridViewTextBoxColumn
-            // 
-            this.tIPODataGridViewTextBoxColumn.DataPropertyName = "TIPO";
-            this.tIPODataGridViewTextBoxColumn.HeaderText = "TIPO";
-            this.tIPODataGridViewTextBoxColumn.Name = "tIPODataGridViewTextBoxColumn";
-            // 
-            // dTUsuariosBindingSource1
-            // 
-            this.dTUsuariosBindingSource1.DataMember = "DTUsuarios";
-            this.dTUsuariosBindingSource1.DataSource = this.dataSetSigloXXI;
+            this.dataSetSigloXXIBindingSource.DataSource = this.dataSetSigloXXI;
+            this.dataSetSigloXXIBindingSource.Position = 0;
             // 
             // dataSetSigloXXI
             // 
@@ -417,40 +357,6 @@
             this.metroProgressBar1.Size = new System.Drawing.Size(100, 23);
             this.metroProgressBar1.TabIndex = 2;
             // 
-            // uSUARIOBindingSource3
-            // 
-            this.uSUARIOBindingSource3.DataMember = "USUARIO";
-            this.uSUARIOBindingSource3.DataSource = this.dataSetSigloXXIBindingSource;
-            // 
-            // dataSetSigloXXIBindingSource
-            // 
-            this.dataSetSigloXXIBindingSource.DataSource = this.dataSetSigloXXI;
-            this.dataSetSigloXXIBindingSource.Position = 0;
-            // 
-            // uSUARIOBindingSource1
-            // 
-            this.uSUARIOBindingSource1.DataMember = "USUARIO";
-            this.uSUARIOBindingSource1.DataSource = this.dataSetSigloXXIBindingSource;
-            // 
-            // uSUARIOESTADOBindingSource1
-            // 
-            this.uSUARIOESTADOBindingSource1.DataMember = "USUARIO_ESTADO";
-            this.uSUARIOESTADOBindingSource1.DataSource = this.dataSetSigloXXIBindingSource;
-            // 
-            // tIPOUSUARIOBindingSource2
-            // 
-            this.tIPOUSUARIOBindingSource2.DataMember = "TIPO_USUARIO";
-            this.tIPOUSUARIOBindingSource2.DataSource = this.dataSetSigloXXIBindingSource;
-            // 
-            // uSUARIOESTADOBindingSource
-            // 
-            this.uSUARIOESTADOBindingSource.DataMember = "USUARIO_ESTADO";
-            this.uSUARIOESTADOBindingSource.DataSource = this.dataSetSigloXXI;
-            // 
-            // uSUARIOTableAdapter
-            // 
-            this.uSUARIOTableAdapter.ClearBeforeFill = true;
-            // 
             // btnCerrarSesion
             // 
             this.btnCerrarSesion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.BackgroundImage")));
@@ -462,19 +368,51 @@
             this.btnCerrarSesion.UseSelectable = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
-            // uSUARIOBindingSource2
-            // 
-            this.uSUARIOBindingSource2.DataMember = "USUARIO";
-            this.uSUARIOBindingSource2.DataSource = this.dataSetSigloXXI;
-            // 
-            // dTUsuariosBindingSource
-            // 
-            this.dTUsuariosBindingSource.DataMember = "DTUsuarios";
-            this.dTUsuariosBindingSource.DataSource = this.dataSetSigloXXI;
-            // 
             // dTUsuariosTableAdapter
             // 
             this.dTUsuariosTableAdapter.ClearBeforeFill = true;
+            // 
+            // rUNDataGridViewTextBoxColumn
+            // 
+            this.rUNDataGridViewTextBoxColumn.DataPropertyName = "RUN";
+            this.rUNDataGridViewTextBoxColumn.HeaderText = "RUN";
+            this.rUNDataGridViewTextBoxColumn.Name = "rUNDataGridViewTextBoxColumn";
+            // 
+            // nOMBREDataGridViewTextBoxColumn
+            // 
+            this.nOMBREDataGridViewTextBoxColumn.DataPropertyName = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn.HeaderText = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn.Name = "nOMBREDataGridViewTextBoxColumn";
+            // 
+            // aPELLIDOSDataGridViewTextBoxColumn
+            // 
+            this.aPELLIDOSDataGridViewTextBoxColumn.DataPropertyName = "APELLIDOS";
+            this.aPELLIDOSDataGridViewTextBoxColumn.HeaderText = "APELLIDOS";
+            this.aPELLIDOSDataGridViewTextBoxColumn.Name = "aPELLIDOSDataGridViewTextBoxColumn";
+            // 
+            // cORREODataGridViewTextBoxColumn
+            // 
+            this.cORREODataGridViewTextBoxColumn.DataPropertyName = "CORREO";
+            this.cORREODataGridViewTextBoxColumn.HeaderText = "CORREO";
+            this.cORREODataGridViewTextBoxColumn.Name = "cORREODataGridViewTextBoxColumn";
+            // 
+            // tELEFONODataGridViewTextBoxColumn
+            // 
+            this.tELEFONODataGridViewTextBoxColumn.DataPropertyName = "TELEFONO";
+            this.tELEFONODataGridViewTextBoxColumn.HeaderText = "TELEFONO";
+            this.tELEFONODataGridViewTextBoxColumn.Name = "tELEFONODataGridViewTextBoxColumn";
+            // 
+            // tIPODataGridViewTextBoxColumn
+            // 
+            this.tIPODataGridViewTextBoxColumn.DataPropertyName = "TIPO";
+            this.tIPODataGridViewTextBoxColumn.HeaderText = "TIPO";
+            this.tIPODataGridViewTextBoxColumn.Name = "tIPODataGridViewTextBoxColumn";
+            // 
+            // dIRECCIONDataGridViewTextBoxColumn
+            // 
+            this.dIRECCIONDataGridViewTextBoxColumn.DataPropertyName = "DIRECCION";
+            this.dIRECCIONDataGridViewTextBoxColumn.HeaderText = "DIRECCION";
+            this.dIRECCIONDataGridViewTextBoxColumn.Name = "dIRECCIONDataGridViewTextBoxColumn";
             // 
             // MenuAdministrador
             // 
@@ -489,23 +427,14 @@
             this.tabUsuario.ResumeLayout(false);
             this.tabUsuarios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTUsuariosBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTUsuariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetSigloXXIBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetSigloXXI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.tabFinanzas.ResumeLayout(false);
             this.tabFinanzas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetSigloXXIBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tIPOUSUARIOBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetTipoUsuarioBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tIPOUSUARIOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetUsuarioBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTUsuariosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -520,37 +449,21 @@
         private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
         private MetroFramework.Controls.MetroGrid metroGrid1;
         private MetroFramework.Controls.MetroGrid metroGrid2;
-        private System.Windows.Forms.BindingSource uSUARIOBindingSource;
-        private System.Windows.Forms.BindingSource dataSetUsuarioBindingSource;
-        private System.Windows.Forms.BindingSource tIPOUSUARIOBindingSource;
-        private System.Windows.Forms.BindingSource dataSetTipoUsuarioBindingSource;
-        private System.Windows.Forms.BindingSource tIPOUSUARIOBindingSource1;
         private DataSetSigloXXI dataSetSigloXXI;
-        private System.Windows.Forms.BindingSource uSUARIOESTADOBindingSource;
         private System.Windows.Forms.BindingSource dataSetSigloXXIBindingSource;
-        private System.Windows.Forms.BindingSource tIPOUSUARIOBindingSource2;
-        private System.Windows.Forms.BindingSource uSUARIOESTADOBindingSource1;
-        private System.Windows.Forms.BindingSource uSUARIOBindingSource1;
-        private DataSetSigloXXITableAdapters.USUARIOTableAdapter uSUARIOTableAdapter;
         private MetroFramework.Controls.MetroTextBox txtBuscarRut;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private MetroFramework.Controls.MetroButton btnCerrarSesion;
-        private System.Windows.Forms.BindingSource uSUARIOBindingSource3;
-        private System.Windows.Forms.BindingSource uSUARIOBindingSource2;
         private MetroFramework.Controls.MetroButton btnAgregarUsuario;
-        private System.Windows.Forms.BindingSource dTUsuariosBindingSource;
         private DataSetSigloXXITableAdapters.DTUsuariosTableAdapter dTUsuariosTableAdapter;
         private MetroFramework.Controls.MetroGrid metroGrid3;
+        private System.Windows.Forms.BindingSource dTUsuariosBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn rUNDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nOMBREDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aPELLIDOSDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cORREODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tELEFONODataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cOMUNADataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tIPODataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource dTUsuariosBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dIRECCIONDataGridViewTextBoxColumn;
     }
 }

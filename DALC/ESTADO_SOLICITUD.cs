@@ -12,18 +12,9 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class PEDIDO
+    public partial class ESTADO_SOLICITUD
     {
-        public decimal ID { get; set; }
-        public decimal RESERVA_ID { get; set; }
-        public decimal MENU_ID { get; set; }
-        public decimal ESTADO_ID { get; set; }
-        public System.DateTime CREATED_AT { get; set; }
-        public decimal BOLETA_ID { get; set; }
-    
-        public virtual BOLETA BOLETA { get; set; }
-        public virtual ESTADO ESTADO { get; set; }
-        public virtual MENU MENU { get; set; }
-        public virtual RESERVA RESERVA { get; set; }
+        public byte ID_ESTADO { get; set; }
+        public string DESCRIPCION { get; set; }
     }
 }

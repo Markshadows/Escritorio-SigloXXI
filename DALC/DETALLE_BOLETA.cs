@@ -14,19 +14,8 @@ namespace DALC
     
     public partial class DETALLE_BOLETA
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DETALLE_BOLETA()
-        {
-            this.PEDIDO = new HashSet<PEDIDO>();
-        }
-    
         public decimal ID { get; set; }
         public decimal RESERVA_ID { get; set; }
         public decimal BOLETA_ID { get; set; }
-    
-        public virtual BOLETA BOLETA { get; set; }
-        public virtual RESERVA RESERVA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }
 }

@@ -12,18 +12,19 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class COMUNA
+    public partial class CLIENTE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public COMUNA()
+        public CLIENTE()
         {
-            this.DIRECCION = new HashSet<DIRECCION>();
+            this.RESERVA = new HashSet<RESERVA>();
         }
     
         public decimal ID { get; set; }
+        public string RUT { get; set; }
         public string NOMBRE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DIRECCION> DIRECCION { get; set; }
+        public virtual ICollection<RESERVA> RESERVA { get; set; }
     }
 }

@@ -12,18 +12,11 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class CIUDAD
+    public partial class SOLICITUD
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CIUDAD()
-        {
-            this.DIRECCION = new HashSet<DIRECCION>();
-        }
-    
-        public decimal ID { get; set; }
-        public string NOMBRE { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DIRECCION> DIRECCION { get; set; }
+        public byte ID_SOLICITUD { get; set; }
+        public string ASUNTO { get; set; }
+        public string MENSAJE { get; set; }
+        public byte ESTADO_SOLICITUD { get; set; }
     }
 }

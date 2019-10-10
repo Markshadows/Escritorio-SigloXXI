@@ -20,9 +20,5 @@ namespace DALC
         public decimal MENU_ID { get; set; }
         public decimal PRODUCTO_ID { get; set; }
         public decimal METRICA_ID { get; set; }
-    
-        public virtual MENU MENU { get; set; }
-        public virtual METRICA METRICA { get; set; }
-        public virtual PRODUCTO PRODUCTO { get; set; }
     }
 }

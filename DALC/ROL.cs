@@ -14,17 +14,8 @@ namespace DALC
     
     public partial class ROL
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ROL()
-        {
-            this.USUARIO = new HashSet<USUARIO>();
-        }
-    
         public decimal ID { get; set; }
         public string TIPO { get; set; }
         public string DESCRIPCION { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

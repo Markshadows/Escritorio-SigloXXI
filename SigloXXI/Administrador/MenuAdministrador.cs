@@ -23,8 +23,6 @@ namespace Vista.Administrador
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuarios' Puede moverla o quitarla según sea necesario.
             this.dTUsuariosTableAdapter.Fill(this.dataSetSigloXXI.DTUsuarios);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.USUARIO' Puede moverla o quitarla según sea necesario.
-            this.uSUARIOTableAdapter.Fill(this.dataSetSigloXXI.USUARIO);
 
         }
 

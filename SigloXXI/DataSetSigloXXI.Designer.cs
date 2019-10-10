@@ -7437,9 +7437,9 @@ namespace Vista {
             
             private global::System.Data.DataColumn columnTELEFONO;
             
-            private global::System.Data.DataColumn columnCOMUNA;
-            
             private global::System.Data.DataColumn columnTIPO;
+            
+            private global::System.Data.DataColumn columnDIRECCION;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -7516,17 +7516,17 @@ namespace Vista {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn COMUNAColumn {
+            public global::System.Data.DataColumn TIPOColumn {
                 get {
-                    return this.columnCOMUNA;
+                    return this.columnTIPO;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TIPOColumn {
+            public global::System.Data.DataColumn DIRECCIONColumn {
                 get {
-                    return this.columnTIPO;
+                    return this.columnDIRECCION;
                 }
             }
             
@@ -7567,7 +7567,7 @@ namespace Vista {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTUsuariosRow AddDTUsuariosRow(string RUN, string NOMBRE, string APELLIDOS, string CORREO, decimal TELEFONO, string COMUNA, string TIPO) {
+            public DTUsuariosRow AddDTUsuariosRow(string RUN, string NOMBRE, string APELLIDOS, string CORREO, decimal TELEFONO, string TIPO, string DIRECCION) {
                 DTUsuariosRow rowDTUsuariosRow = ((DTUsuariosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RUN,
@@ -7575,8 +7575,8 @@ namespace Vista {
                         APELLIDOS,
                         CORREO,
                         TELEFONO,
-                        COMUNA,
-                        TIPO};
+                        TIPO,
+                        DIRECCION};
                 rowDTUsuariosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDTUsuariosRow);
                 return rowDTUsuariosRow;
@@ -7604,8 +7604,8 @@ namespace Vista {
                 this.columnAPELLIDOS = base.Columns["APELLIDOS"];
                 this.columnCORREO = base.Columns["CORREO"];
                 this.columnTELEFONO = base.Columns["TELEFONO"];
-                this.columnCOMUNA = base.Columns["COMUNA"];
                 this.columnTIPO = base.Columns["TIPO"];
+                this.columnDIRECCION = base.Columns["DIRECCION"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7621,10 +7621,10 @@ namespace Vista {
                 base.Columns.Add(this.columnCORREO);
                 this.columnTELEFONO = new global::System.Data.DataColumn("TELEFONO", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTELEFONO);
-                this.columnCOMUNA = new global::System.Data.DataColumn("COMUNA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCOMUNA);
                 this.columnTIPO = new global::System.Data.DataColumn("TIPO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTIPO);
+                this.columnDIRECCION = new global::System.Data.DataColumn("DIRECCION", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDIRECCION);
                 this.columnRUN.AllowDBNull = false;
                 this.columnRUN.MaxLength = 12;
                 this.columnNOMBRE.AllowDBNull = false;
@@ -7634,10 +7634,9 @@ namespace Vista {
                 this.columnCORREO.AllowDBNull = false;
                 this.columnCORREO.MaxLength = 255;
                 this.columnTELEFONO.AllowDBNull = false;
-                this.columnCOMUNA.AllowDBNull = false;
-                this.columnCOMUNA.MaxLength = 255;
                 this.columnTIPO.AllowDBNull = false;
                 this.columnTIPO.MaxLength = 255;
+                this.columnDIRECCION.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9682,17 +9681,6 @@ namespace Vista {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string COMUNA {
-                get {
-                    return ((string)(this[this.tableDTUsuarios.COMUNAColumn]));
-                }
-                set {
-                    this[this.tableDTUsuarios.COMUNAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string TIPO {
                 get {
                     return ((string)(this[this.tableDTUsuarios.TIPOColumn]));
@@ -9700,6 +9688,34 @@ namespace Vista {
                 set {
                     this[this.tableDTUsuarios.TIPOColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string DIRECCION {
+                get {
+                    try {
+                        return ((string)(this[this.tableDTUsuarios.DIRECCIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DIRECCION\' de la tabla \'DTUsuarios\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTUsuarios.DIRECCIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDIRECCIONNull() {
+                return this.IsNull(this.tableDTUsuarios.DIRECCIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDIRECCIONNull() {
+                this[this.tableDTUsuarios.DIRECCIONColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -20261,8 +20277,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             tableMapping.ColumnMappings.Add("APELLIDOS", "APELLIDOS");
             tableMapping.ColumnMappings.Add("CORREO", "CORREO");
             tableMapping.ColumnMappings.Add("TELEFONO", "TELEFONO");
-            tableMapping.ColumnMappings.Add("COMUNA", "COMUNA");
             tableMapping.ColumnMappings.Add("TIPO", "TIPO");
+            tableMapping.ColumnMappings.Add("DIRECCION", "DIRECCION");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -20276,14 +20292,19 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[2];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        SIGLOXXI.USUARIO.RUN, SIGLOXXI.USUARIO.NOMBRE, SIGLOXXI.USUARIO.APELLIDOS, SIGLOXXI.USUARIO.CORREO, SIGLOXXI.USUARIO.TELEFONO, SIGLOXXI.COMUNA.NOMBRE AS COMUNA, SIGLOXXI.ROL.TIPO
-FROM            SIGLOXXI.COMUNA INNER JOIN
-                         SIGLOXXI.ROL ON SIGLOXXI.COMUNA.ID = SIGLOXXI.ROL.ID INNER JOIN
+            this._commandCollection[0].CommandText = @"SELECT        SIGLOXXI.USUARIO.RUN, SIGLOXXI.USUARIO.NOMBRE, SIGLOXXI.USUARIO.APELLIDOS, SIGLOXXI.USUARIO.CORREO, SIGLOXXI.USUARIO.TELEFONO, SIGLOXXI.ROL.TIPO, SIGLOXXI.USUARIO.DIRECCION
+FROM            SIGLOXXI.ROL INNER JOIN
                          SIGLOXXI.USUARIO ON SIGLOXXI.ROL.ID = SIGLOXXI.USUARIO.ROL_ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "INSERT INTO SIGLOXXI.USUARIO\r\n                         (ID, RUN, NOMBRE, APELLIDO" +
+                "S, DIRECCION, UPDATE_AT, CREATED_AT, ROL_ID, TELEFONO, PASSWORD, CORREO)\r\nVALUES" +
+                "        (,,,,,,,,,,)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20308,6 +20329,29 @@ FROM            SIGLOXXI.COMUNA INNER JOIN
             DataSetSigloXXI.DTUsuariosDataTable dataTable = new DataSetSigloXXI.DTUsuariosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery() {
+            global::Oracle.ManagedDataAccess.Client.OracleCommand command = this.CommandCollection[1];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

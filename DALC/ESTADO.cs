@@ -17,16 +17,17 @@ namespace DALC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ESTADO()
         {
+            this.BOLETA = new HashSet<BOLETA>();
             this.PEDIDO = new HashSet<PEDIDO>();
-            this.RESERVA = new HashSet<RESERVA>();
         }
     
         public decimal ID { get; set; }
         public string NOMBRE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
+        public virtual ICollection<BOLETA> BOLETA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVA> RESERVA { get; set; }
+        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
+        public virtual RESERVA RESERVA { get; set; }
     }
 }

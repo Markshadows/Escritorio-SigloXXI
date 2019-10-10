@@ -12,18 +12,10 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class PAIS
+    public partial class PRODUCTO_SOLICITUD
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PAIS()
-        {
-            this.DIRECCION = new HashSet<DIRECCION>();
-        }
-    
-        public decimal ID { get; set; }
-        public string NOMBRE { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DIRECCION> DIRECCION { get; set; }
+        public byte PRODUCTO_SOLICITUD_ID { get; set; }
+        public byte PRODUCTO_ID { get; set; }
+        public byte SOLICITUD_ID_SOLICITUD { get; set; }
     }
 }

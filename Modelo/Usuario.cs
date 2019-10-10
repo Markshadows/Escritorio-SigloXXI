@@ -17,7 +17,7 @@ namespace Modelo
         public string Contrasena { get; set; }
         public int Telefono { get; set; }
         public Rol Rol { get; set; }
-        public Direccion Direccion { get; set; }
+        public string Direccion { get; set; }
 
         private Contexto conexion;
 
@@ -43,7 +43,7 @@ namespace Modelo
                 this.Correo = usuario.CORREO;
                 this.Contrasena = usuario.PASSWORD;
                 this.Telefono = (int)usuario.TELEFONO;
-                this.Direccion = new Direccion { Id = (int)usuario.DIRECCION_ID };
+                this.Direccion = usuario.DIRECCION;
                 this.Rol = new Rol { Id = (int)usuario.ROL_ID };
                 return true;
             }
@@ -65,7 +65,7 @@ namespace Modelo
                 usuario.CORREO = Correo;
                 usuario.PASSWORD = Contrasena;
                 usuario.TELEFONO = Telefono;
-                usuario.DIRECCION_ID = Direccion.Id;
+                usuario.DIRECCION = Direccion;
                 usuario.ROL_ID = Rol.Id;
                 usuario.CREATED_AT = DateTime.Now;
                 usuario.UPDATE_AT = DateTime.Now;
@@ -92,7 +92,7 @@ namespace Modelo
                 this.Correo = usuario.CORREO;
                 this.Contrasena = usuario.PASSWORD;
                 this.Telefono = (int)usuario.TELEFONO;
-                this.Direccion = new Direccion { Id = (int)usuario.DIRECCION_ID };
+                this.Direccion = usuario.DIRECCION;
                 this.Rol = new Rol { Id = (int)usuario.ROL_ID };
                 return true;
             }
@@ -114,7 +114,7 @@ namespace Modelo
                 usuario.CORREO = Correo;
                 usuario.PASSWORD = Contrasena;
                 usuario.TELEFONO = Telefono;
-                usuario.DIRECCION_ID = Direccion.Id;
+                usuario.DIRECCION = Direccion;
                 usuario.ROL_ID = Rol.Id;
                 usuario.CREATED_AT = DateTime.Now;
                 usuario.UPDATE_AT = DateTime.Now;

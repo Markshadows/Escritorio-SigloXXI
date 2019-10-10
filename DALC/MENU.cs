@@ -17,7 +17,6 @@ namespace DALC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MENU()
         {
-            this.INGREDIENTE = new HashSet<INGREDIENTE>();
             this.PEDIDO = new HashSet<PEDIDO>();
         }
     
@@ -25,8 +24,6 @@ namespace DALC
         public string NOMBRE { get; set; }
         public decimal PRECIO { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INGREDIENTE> INGREDIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }

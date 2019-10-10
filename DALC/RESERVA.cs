@@ -17,7 +17,6 @@ namespace DALC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RESERVA()
         {
-            this.DETALLE_BOLETA = new HashSet<DETALLE_BOLETA>();
             this.PEDIDO = new HashSet<PEDIDO>();
         }
     
@@ -29,8 +28,7 @@ namespace DALC
         public decimal CLIENTE_ID { get; set; }
         public decimal ESTADO_ID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETALLE_BOLETA> DETALLE_BOLETA { get; set; }
+        public virtual CLIENTE CLIENTE { get; set; }
         public virtual ESTADO ESTADO { get; set; }
         public virtual MESA MESA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

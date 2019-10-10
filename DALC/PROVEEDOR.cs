@@ -14,12 +14,6 @@ namespace DALC
     
     public partial class PROVEEDOR
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PROVEEDOR()
-        {
-            this.PRODUCTO = new HashSet<PRODUCTO>();
-        }
-    
         public decimal ID { get; set; }
         public string NOMBRE { get; set; }
         public string RUN { get; set; }
@@ -28,10 +22,5 @@ namespace DALC
         public string DESCRIPCION { get; set; }
         public decimal DIRECCION_ID { get; set; }
         public decimal GIRO_ID { get; set; }
-    
-        public virtual DIRECCION DIRECCION { get; set; }
-        public virtual GIRO GIRO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

@@ -37,12 +37,6 @@ namespace Vista.Administrador
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.ROL' Puede moverla o quitarla según sea necesario.
             this.rOLTableAdapter.Fill(this.dataSetSigloXXI.ROL);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.COMUNA' Puede moverla o quitarla según sea necesario.
-            this.cOMUNATableAdapter.Fill(this.dataSetSigloXXI.COMUNA);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.CIUDAD' Puede moverla o quitarla según sea necesario.
-            this.cIUDADTableAdapter.Fill(this.dataSetSigloXXI.CIUDAD);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.PAIS' Puede moverla o quitarla según sea necesario.
-            this.pAISTableAdapter.Fill(this.dataSetSigloXXI.PAIS);
 
             cargarDatosUsuario();
 
@@ -53,17 +47,6 @@ namespace Vista.Administrador
             try
             {
 
-                Direccion direccion = new Direccion();
-                direccion.Calle = txtCalle.Text;
-                direccion.Numero = txtNro.Text;
-                direccion.Piso = txtPiso.Text;
-                direccion.Departamento = txtDpto.Text;
-                direccion.Otro = txtOtro.Text;
-                direccion.Pais = new Pais { Id = int.Parse(cboPais.SelectedValue.ToString()) };
-                direccion.Comuna = new Comuna { Id = int.Parse(cboComuna.SelectedValue.ToString()) };
-                direccion.Ciudad = new Ciudad { Id = int.Parse(cboCiudad.SelectedValue.ToString()) };
-                int idDireccion = direccion.Agregar();
-
                 Modelo.Usuario usuario = new Modelo.Usuario();
                 usuario.Nombre = txtNombre.Text;
                 usuario.Apellidos = txtApellidos.Text;
@@ -72,7 +55,7 @@ namespace Vista.Administrador
                 usuario.Rut = txtRut.Text;
                 usuario.Telefono = int.Parse(txtTelefono.Text);
                 usuario.Rol = new Rol { Id = int.Parse(cboTipo.SelectedValue.ToString()) };
-                usuario.Direccion = new Direccion { Id = idDireccion };
+                usuario.Direccion = txtDireccion.Text;
                 if (usuario.Agregar())
                 {
                     menuAdm.MenuAdministrador_Load(sender, e);
@@ -101,19 +84,7 @@ namespace Vista.Administrador
                     txtApellidos.Text = usu.Apellidos;
                     txtTelefono.Text = usu.Telefono.ToString();
                     cboTipo.SelectedValue = usu.Rol.Id;
-
-                    Direccion direccion = new Direccion();
-                    direccion.Id = usu.Direccion.Id;
-                    direccion.Buscar();
-
-                    txtCalle.Text = direccion.Calle;
-                    txtNro.Text = direccion.Numero;
-                    txtPiso.Text = direccion.Piso;
-                    txtDpto.Text = direccion.Departamento;
-                    txtOtro.Text = direccion.Otro;
-                    cboPais.SelectedValue = 1;
-                    cboCiudad.SelectedValue = 5;
-                    cboComuna.SelectedValue = 5;
+                    txtDireccion.Text = usu.Direccion;
 
                     btnGuardarUsuario.Enabled = false;
                 }
@@ -129,17 +100,6 @@ namespace Vista.Administrador
         {
             try
             {
-                Direccion direccion = new Direccion();
-                direccion.Id = usu.Direccion.Id;
-                direccion.Calle = txtCalle.Text;
-                direccion.Numero = txtNro.Text;
-                direccion.Piso = txtPiso.Text;
-                direccion.Departamento = txtDpto.Text;
-                direccion.Otro = txtOtro.Text;
-                direccion.Pais = new Pais { Id = int.Parse(cboPais.SelectedValue.ToString()) };
-                direccion.Comuna = new Comuna { Id = int.Parse(cboComuna.SelectedValue.ToString()) };
-                direccion.Ciudad = new Ciudad { Id = int.Parse(cboCiudad.SelectedValue.ToString()) };
-                direccion.Modificar();
 
                 Modelo.Usuario usuario = new Modelo.Usuario();
                 usuario.Nombre = txtNombre.Text;
@@ -149,7 +109,7 @@ namespace Vista.Administrador
                 usuario.Rut = txtRut.Text;
                 usuario.Telefono = int.Parse(txtTelefono.Text);
                 usuario.Rol = new Rol { Id = int.Parse(cboTipo.SelectedValue.ToString()) };
-                usuario.Direccion = new Direccion { Id = direccion.Id };
+                usuario.Direccion = txtDireccion.Text;
                 string msj = usuario.Modificar() ? "Modificó" : "No Modificó";
                 Console.WriteLine(usuario.Nombre);
                 

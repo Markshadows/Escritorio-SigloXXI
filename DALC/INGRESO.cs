@@ -18,8 +18,5 @@ namespace DALC
         public decimal PRODUCTO_ID { get; set; }
         public decimal USUARIO_ID { get; set; }
         public System.DateTime INGRESO1 { get; set; }
-    
-        public virtual PRODUCTO PRODUCTO { get; set; }
-        public virtual USUARIO USUARIO { get; set; }
     }
 }
