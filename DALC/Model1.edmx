@@ -15,6 +15,18 @@
           <Property Name="TOTAL" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ESTADO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="BOLETA_WC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="NETO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="IVA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TOTAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
             <PropertyRef Name="ID" />
@@ -22,14 +34,7 @@
           <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="RUT" Type="varchar2" MaxLength="15" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DETALLE_BOLETA">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="RESERVA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="BOLETA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="ESTADO">
           <Key>
@@ -37,6 +42,13 @@
           </Key>
           <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_BOLETA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="20" />
         </EntityType>
         <EntityType Name="ESTADO_SOLICITUD">
           <Key>
@@ -60,7 +72,7 @@
           <Property Name="CANTIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="MENU_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCTO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
           <Property Name="METRICA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="INGRESO">
@@ -68,7 +80,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCTO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
           <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="INGRESO" Type="timestamp" Precision="6" Nullable="false" />
         </EntityType>
@@ -79,6 +91,8 @@
           <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="PRECIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="URL" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="MESA">
           <Key>
@@ -87,6 +101,7 @@
           <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NUMERO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="SILLAS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="METRICA">
           <Key>
@@ -102,7 +117,6 @@
           </Key>
           <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TIPO" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
@@ -119,10 +133,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="number" Precision="3" Scale="0" Nullable="false" />
           <Property Name="CODIGO" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="PROVEEDOR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="METRICA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
@@ -144,8 +157,9 @@
           <Property Name="TELEFONO" Type="varchar2" MaxLength="15" Nullable="false" />
           <Property Name="CORREO" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="DIRECCION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="GIRO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="RESERVA">
           <Key>
@@ -165,7 +179,6 @@
           </Key>
           <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TIPO" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="SOLICITUD">
           <Key>
@@ -191,6 +204,7 @@
           <Property Name="CREATED_AT" Type="timestamp" Precision="6" Nullable="false" />
           <Property Name="UPDATE_AT" Type="timestamp" Precision="6" Nullable="false" />
           <Property Name="DIRECCION" Type="varchar2" MaxLength="255" />
+          <Property Name="ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <Association Name="BOLETA_MODO_PAGO_FK">
           <End Role="MODO_PAGO" Type="Self.MODO_PAGO" Multiplicity="1" />
@@ -204,15 +218,115 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ESTADO_BOLETA">
-          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
-          <End Role="BOLETA" Type="Self.BOLETA" Multiplicity="*" />
+        <Association Name="CLIENTE_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ESTADO">
               <PropertyRef Name="ID" />
             </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ESTADO_ID_BOLETA_FK1">
+          <End Role="ESTADO_BOLETA" Type="Self.ESTADO_BOLETA" Multiplicity="1" />
+          <End Role="BOLETA" Type="Self.BOLETA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_BOLETA">
+              <PropertyRef Name="ID" />
+            </Principal>
             <Dependent Role="BOLETA">
               <PropertyRef Name="ESTADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGREDIENTE_MENU_FK">
+          <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
+          <End Role="INGREDIENTE" Type="Self.INGREDIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGREDIENTE">
+              <PropertyRef Name="MENU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGREDIENTE_METRICA_FK">
+          <End Role="METRICA" Type="Self.METRICA" Multiplicity="1" />
+          <End Role="INGREDIENTE" Type="Self.INGREDIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METRICA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGREDIENTE">
+              <PropertyRef Name="METRICA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGREDIENTE_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="INGREDIENTE" Type="Self.INGREDIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGREDIENTE">
+              <PropertyRef Name="PRODUCTO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGRESO_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="INGRESO" Type="Self.INGRESO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGRESO">
+              <PropertyRef Name="PRODUCTO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGRESO_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="INGRESO" Type="Self.INGRESO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGRESO">
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MENU_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENU">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MESA_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
+          <End Role="MESA" Type="Self.MESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESA">
+              <PropertyRef Name="ESTADO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -261,6 +375,80 @@
             </Principal>
             <Dependent Role="PEDIDO">
               <PropertyRef Name="RESERVA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_METRICA_FK">
+          <End Role="METRICA" Type="Self.METRICA" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METRICA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="METRICA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_PROVEEDOR_FK">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_SOLICITUD_P_ID_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="PRODUCTO_SOLICITUD" Type="Self.PRODUCTO_SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTO_SOLICITUD">
+              <PropertyRef Name="PRODUCTO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_SOLICITUD_S_ID_FK">
+          <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="1" />
+          <End Role="PRODUCTO_SOLICITUD" Type="Self.PRODUCTO_SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD">
+              <PropertyRef Name="ID_SOLICITUD" />
+            </Principal>
+            <Dependent Role="PRODUCTO_SOLICITUD">
+              <PropertyRef Name="SOLICITUD_ID_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROVEEDOR_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PROVEEDOR">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROVEEDOR_GIRO_FK">
+          <End Role="GIRO" Type="Self.GIRO" Multiplicity="1" />
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PROVEEDOR">
+              <PropertyRef Name="GIRO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -314,11 +502,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="SOLICITUD_ESTADO_ID_FK">
+          <End Role="ESTADO_SOLICITUD" Type="Self.ESTADO_SOLICITUD" Multiplicity="1" />
+          <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_SOLICITUD">
+              <PropertyRef Name="ID_ESTADO" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="ESTADO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIO_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIO_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ROL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="BOLETA" EntityType="Self.BOLETA" Schema="SIGLOXXI" store:Type="Tables" />
+          <EntitySet Name="BOLETA_WC" EntityType="Self.BOLETA_WC" Schema="SIGLOXXI" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="DETALLE_BOLETA" EntityType="Self.DETALLE_BOLETA" Schema="SIGLOXXI" store:Type="Tables" />
           <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="SIGLOXXI" store:Type="Tables" />
+          <EntitySet Name="ESTADO_BOLETA" EntityType="Self.ESTADO_BOLETA" Schema="SIGLOXXI" store:Type="Tables" />
           <EntitySet Name="ESTADO_SOLICITUD" EntityType="Self.ESTADO_SOLICITUD" Schema="SIGLOXXI" store:Type="Tables" />
           <EntitySet Name="GIRO" EntityType="Self.GIRO" Schema="SIGLOXXI" store:Type="Tables" />
           <EntitySet Name="INGREDIENTE" EntityType="Self.INGREDIENTE" Schema="SIGLOXXI" store:Type="Tables" />
@@ -339,9 +568,41 @@
             <End Role="MODO_PAGO" EntitySet="MODO_PAGO" />
             <End Role="BOLETA" EntitySet="BOLETA" />
           </AssociationSet>
-          <AssociationSet Name="ESTADO_BOLETA" Association="Self.ESTADO_BOLETA">
+          <AssociationSet Name="CLIENTE_ESTADO_FK" Association="Self.CLIENTE_ESTADO_FK">
             <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="ESTADO_ID_BOLETA_FK1" Association="Self.ESTADO_ID_BOLETA_FK1">
+            <End Role="ESTADO_BOLETA" EntitySet="ESTADO_BOLETA" />
             <End Role="BOLETA" EntitySet="BOLETA" />
+          </AssociationSet>
+          <AssociationSet Name="INGREDIENTE_MENU_FK" Association="Self.INGREDIENTE_MENU_FK">
+            <End Role="MENU" EntitySet="MENU" />
+            <End Role="INGREDIENTE" EntitySet="INGREDIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="INGREDIENTE_METRICA_FK" Association="Self.INGREDIENTE_METRICA_FK">
+            <End Role="METRICA" EntitySet="METRICA" />
+            <End Role="INGREDIENTE" EntitySet="INGREDIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="INGREDIENTE_PRODUCTO_FK" Association="Self.INGREDIENTE_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="INGREDIENTE" EntitySet="INGREDIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="INGRESO_PRODUCTO_FK" Association="Self.INGRESO_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="INGRESO" EntitySet="INGRESO" />
+          </AssociationSet>
+          <AssociationSet Name="INGRESO_USUARIO_FK" Association="Self.INGRESO_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="INGRESO" EntitySet="INGRESO" />
+          </AssociationSet>
+          <AssociationSet Name="MENU_ESTADO_FK" Association="Self.MENU_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="MENU" EntitySet="MENU" />
+          </AssociationSet>
+          <AssociationSet Name="MESA_ESTADO_FK" Association="Self.MESA_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="MESA" EntitySet="MESA" />
           </AssociationSet>
           <AssociationSet Name="PEDIDO_ESTADO_FK" Association="Self.PEDIDO_ESTADO_FK">
             <End Role="ESTADO" EntitySet="ESTADO" />
@@ -359,6 +620,30 @@
             <End Role="RESERVA" EntitySet="RESERVA" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
+          <AssociationSet Name="PRODUCTO_METRICA_FK" Association="Self.PRODUCTO_METRICA_FK">
+            <End Role="METRICA" EntitySet="METRICA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_PROVEEDOR_FK" Association="Self.PRODUCTO_PROVEEDOR_FK">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_SOLICITUD_P_ID_FK" Association="Self.PRODUCTO_SOLICITUD_P_ID_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="PRODUCTO_SOLICITUD" EntitySet="PRODUCTO_SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_SOLICITUD_S_ID_FK" Association="Self.PRODUCTO_SOLICITUD_S_ID_FK">
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+            <End Role="PRODUCTO_SOLICITUD" EntitySet="PRODUCTO_SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="PROVEEDOR_ESTADO_FK" Association="Self.PROVEEDOR_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+          </AssociationSet>
+          <AssociationSet Name="PROVEEDOR_GIRO_FK" Association="Self.PROVEEDOR_GIRO_FK">
+            <End Role="GIRO" EntitySet="GIRO" />
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+          </AssociationSet>
           <AssociationSet Name="RESERVA_CLIENTE_FK" Association="Self.RESERVA_CLIENTE_FK">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="RESERVA" EntitySet="RESERVA" />
@@ -374,6 +659,18 @@
           <AssociationSet Name="RESERVA_USUARIO_FK" Association="Self.RESERVA_USUARIO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="RESERVA" EntitySet="RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUD_ESTADO_ID_FK" Association="Self.SOLICITUD_ESTADO_ID_FK">
+            <End Role="ESTADO_SOLICITUD" EntitySet="ESTADO_SOLICITUD" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIO_ESTADO_FK" Association="Self.USUARIO_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIO_ROL_FK" Association="Self.USUARIO_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -391,8 +688,20 @@
           <Property Name="TOTAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ESTADO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="MODO_PAGO" Relationship="Self.BOLETA_MODO_PAGO_FK" FromRole="BOLETA" ToRole="MODO_PAGO" />
-          <NavigationProperty Name="ESTADO" Relationship="Self.ESTADO_BOLETA" FromRole="BOLETA" ToRole="ESTADO" />
+          <NavigationProperty Name="ESTADO_BOLETA" Relationship="Self.ESTADO_ID_BOLETA_FK1" FromRole="BOLETA" ToRole="ESTADO_BOLETA" />
           <NavigationProperty Name="PEDIDO" Relationship="Self.PEDIDO_FK1" FromRole="BOLETA" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="BOLETA_WC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="NETO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="IVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TOTAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
@@ -401,15 +710,9 @@
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="RUT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ESTADO1" Relationship="Self.CLIENTE_ESTADO_FK" FromRole="CLIENTE" ToRole="ESTADO" />
           <NavigationProperty Name="RESERVA" Relationship="Self.RESERVA_CLIENTE_FK" FromRole="CLIENTE" ToRole="RESERVA" />
-        </EntityType>
-        <EntityType Name="DETALLE_BOLETA">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="RESERVA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="BOLETA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="ESTADO">
           <Key>
@@ -417,9 +720,21 @@
           </Key>
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="BOLETA" Relationship="Self.ESTADO_BOLETA" FromRole="ESTADO" ToRole="BOLETA" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.CLIENTE_ESTADO_FK" FromRole="ESTADO" ToRole="CLIENTE" />
+          <NavigationProperty Name="MENU" Relationship="Self.MENU_ESTADO_FK" FromRole="ESTADO" ToRole="MENU" />
+          <NavigationProperty Name="MESA" Relationship="Self.MESA_ESTADO_FK" FromRole="ESTADO" ToRole="MESA" />
           <NavigationProperty Name="PEDIDO" Relationship="Self.PEDIDO_ESTADO_FK" FromRole="ESTADO" ToRole="PEDIDO" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.PROVEEDOR_ESTADO_FK" FromRole="ESTADO" ToRole="PROVEEDOR" />
           <NavigationProperty Name="RESERVA" Relationship="Self.RESERVA_ESTADO_FK" FromRole="ESTADO" ToRole="RESERVA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_ESTADO_FK" FromRole="ESTADO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="ESTADO_BOLETA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BOLETA" Relationship="Self.ESTADO_ID_BOLETA_FK1" FromRole="ESTADO_BOLETA" ToRole="BOLETA" />
         </EntityType>
         <EntityType Name="ESTADO_SOLICITUD">
           <Key>
@@ -427,6 +742,7 @@
           </Key>
           <Property Name="ID_ESTADO" Type="Byte" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SOLICITUD" Relationship="Self.SOLICITUD_ESTADO_ID_FK" FromRole="ESTADO_SOLICITUD" ToRole="SOLICITUD" />
         </EntityType>
         <EntityType Name="GIRO">
           <Key>
@@ -434,6 +750,7 @@
           </Key>
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.PROVEEDOR_GIRO_FK" FromRole="GIRO" ToRole="PROVEEDOR" />
         </EntityType>
         <EntityType Name="INGREDIENTE">
           <Key>
@@ -443,17 +760,22 @@
           <Property Name="CANTIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MENU_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCTO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO_ID" Type="Byte" Nullable="false" />
           <Property Name="METRICA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="MENU" Relationship="Self.INGREDIENTE_MENU_FK" FromRole="INGREDIENTE" ToRole="MENU" />
+          <NavigationProperty Name="METRICA" Relationship="Self.INGREDIENTE_METRICA_FK" FromRole="INGREDIENTE" ToRole="METRICA" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.INGREDIENTE_PRODUCTO_FK" FromRole="INGREDIENTE" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="INGRESO">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCTO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO_ID" Type="Byte" Nullable="false" />
           <Property Name="USUARIO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="INGRESO1" Type="DateTime" Precision="6" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.INGRESO_PRODUCTO_FK" FromRole="INGRESO" ToRole="PRODUCTO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.INGRESO_USUARIO_FK" FromRole="INGRESO" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="MENU">
           <Key>
@@ -462,6 +784,10 @@
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ESTADO1" Relationship="Self.MENU_ESTADO_FK" FromRole="MENU" ToRole="ESTADO" />
+          <NavigationProperty Name="INGREDIENTE" Relationship="Self.INGREDIENTE_MENU_FK" FromRole="MENU" ToRole="INGREDIENTE" />
           <NavigationProperty Name="PEDIDO" Relationship="Self.PEDIDO_MENU_FK" FromRole="MENU" ToRole="PEDIDO" />
         </EntityType>
         <EntityType Name="MESA">
@@ -471,6 +797,8 @@
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NUMERO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="SILLAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ESTADO1" Relationship="Self.MESA_ESTADO_FK" FromRole="MESA" ToRole="ESTADO" />
           <NavigationProperty Name="RESERVA" Relationship="Self.RESERVA_MESA_FK" FromRole="MESA" ToRole="RESERVA" />
         </EntityType>
         <EntityType Name="METRICA">
@@ -480,6 +808,8 @@
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PESO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="MEDIDA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="INGREDIENTE" Relationship="Self.INGREDIENTE_METRICA_FK" FromRole="METRICA" ToRole="INGREDIENTE" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_METRICA_FK" FromRole="METRICA" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="MODO_PAGO">
           <Key>
@@ -487,7 +817,6 @@
           </Key>
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TIPO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="BOLETA" Relationship="Self.BOLETA_MODO_PAGO_FK" FromRole="MODO_PAGO" ToRole="BOLETA" />
         </EntityType>
         <EntityType Name="PEDIDO">
@@ -509,12 +838,16 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="Byte" Nullable="false" />
           <Property Name="CODIGO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PROVEEDOR_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="METRICA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="INGREDIENTE" Relationship="Self.INGREDIENTE_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="INGREDIENTE" />
+          <NavigationProperty Name="INGRESO" Relationship="Self.INGRESO_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="INGRESO" />
+          <NavigationProperty Name="METRICA" Relationship="Self.PRODUCTO_METRICA_FK" FromRole="PRODUCTO" ToRole="METRICA" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.PRODUCTO_PROVEEDOR_FK" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
+          <NavigationProperty Name="PRODUCTO_SOLICITUD" Relationship="Self.PRODUCTO_SOLICITUD_P_ID_FK" FromRole="PRODUCTO" ToRole="PRODUCTO_SOLICITUD" />
         </EntityType>
         <EntityType Name="PRODUCTO_SOLICITUD">
           <Key>
@@ -523,6 +856,8 @@
           <Property Name="PRODUCTO_SOLICITUD_ID" Type="Byte" Nullable="false" />
           <Property Name="PRODUCTO_ID" Type="Byte" Nullable="false" />
           <Property Name="SOLICITUD_ID_SOLICITUD" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_SOLICITUD_P_ID_FK" FromRole="PRODUCTO_SOLICITUD" ToRole="PRODUCTO" />
+          <NavigationProperty Name="SOLICITUD" Relationship="Self.PRODUCTO_SOLICITUD_S_ID_FK" FromRole="PRODUCTO_SOLICITUD" ToRole="SOLICITUD" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
@@ -534,8 +869,12 @@
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CORREO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DIRECCION_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="GIRO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ESTADO1" Relationship="Self.PROVEEDOR_ESTADO_FK" FromRole="PROVEEDOR" ToRole="ESTADO" />
+          <NavigationProperty Name="GIRO" Relationship="Self.PROVEEDOR_GIRO_FK" FromRole="PROVEEDOR" ToRole="GIRO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_PROVEEDOR_FK" FromRole="PROVEEDOR" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="RESERVA">
           <Key>
@@ -560,7 +899,7 @@
           </Key>
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TIPO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_ROL_FK" FromRole="ROL" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="SOLICITUD">
           <Key>
@@ -570,6 +909,8 @@
           <Property Name="ASUNTO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MENSAJE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ESTADO_SOLICITUD" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="ESTADO_SOLICITUD1" Relationship="Self.SOLICITUD_ESTADO_ID_FK" FromRole="SOLICITUD" ToRole="ESTADO_SOLICITUD" />
+          <NavigationProperty Name="PRODUCTO_SOLICITUD" Relationship="Self.PRODUCTO_SOLICITUD_S_ID_FK" FromRole="SOLICITUD" ToRole="PRODUCTO_SOLICITUD" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -586,7 +927,11 @@
           <Property Name="CREATED_AT" Type="DateTime" Precision="6" Nullable="false" />
           <Property Name="UPDATE_AT" Type="DateTime" Precision="6" Nullable="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ESTADO1" Relationship="Self.USUARIO_ESTADO_FK" FromRole="USUARIO" ToRole="ESTADO" />
+          <NavigationProperty Name="INGRESO" Relationship="Self.INGRESO_USUARIO_FK" FromRole="USUARIO" ToRole="INGRESO" />
           <NavigationProperty Name="RESERVA" Relationship="Self.RESERVA_USUARIO_FK" FromRole="USUARIO" ToRole="RESERVA" />
+          <NavigationProperty Name="ROL" Relationship="Self.USUARIO_ROL_FK" FromRole="USUARIO" ToRole="ROL" />
         </EntityType>
         <Association Name="BOLETA_MODO_PAGO_FK">
           <End Role="MODO_PAGO" Type="Self.MODO_PAGO" Multiplicity="1" />
@@ -600,11 +945,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ESTADO_BOLETA">
-          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
+        <Association Name="ESTADO_ID_BOLETA_FK1">
+          <End Role="ESTADO_BOLETA" Type="Self.ESTADO_BOLETA" Multiplicity="1" />
           <End Role="BOLETA" Type="Self.BOLETA" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ESTADO">
+            <Principal Role="ESTADO_BOLETA">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BOLETA">
@@ -624,6 +969,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CLIENTE_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RESERVA_CLIENTE_FK">
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -635,6 +994,32 @@
             </Principal>
             <Dependent Role="RESERVA">
               <PropertyRef Name="CLIENTE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MENU_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENU">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MESA_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
+          <End Role="MESA" Type="Self.MESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESA">
+              <PropertyRef Name="ESTADO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -650,6 +1035,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PROVEEDOR_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PROVEEDOR">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RESERVA_ESTADO_FK">
           <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
           <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="0..1" />
@@ -659,6 +1058,104 @@
             </Principal>
             <Dependent Role="RESERVA">
               <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIO_ESTADO_FK">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUD_ESTADO_ID_FK">
+          <End Role="ESTADO_SOLICITUD" Type="Self.ESTADO_SOLICITUD" Multiplicity="1" />
+          <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_SOLICITUD">
+              <PropertyRef Name="ID_ESTADO" />
+            </Principal>
+            <Dependent Role="SOLICITUD">
+              <PropertyRef Name="ESTADO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PROVEEDOR_GIRO_FK">
+          <End Role="GIRO" Type="Self.GIRO" Multiplicity="1" />
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIRO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PROVEEDOR">
+              <PropertyRef Name="GIRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGREDIENTE_MENU_FK">
+          <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
+          <End Role="INGREDIENTE" Type="Self.INGREDIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGREDIENTE">
+              <PropertyRef Name="MENU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGREDIENTE_METRICA_FK">
+          <End Role="METRICA" Type="Self.METRICA" Multiplicity="1" />
+          <End Role="INGREDIENTE" Type="Self.INGREDIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METRICA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGREDIENTE">
+              <PropertyRef Name="METRICA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGREDIENTE_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="INGREDIENTE" Type="Self.INGREDIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGREDIENTE">
+              <PropertyRef Name="PRODUCTO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGRESO_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="INGRESO" Type="Self.INGRESO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGRESO">
+              <PropertyRef Name="PRODUCTO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INGRESO_USUARIO_FK">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="INGRESO" Type="Self.INGRESO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INGRESO">
+              <PropertyRef Name="USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -686,6 +1183,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PRODUCTO_METRICA_FK">
+          <End Role="METRICA" Type="Self.METRICA" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METRICA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="METRICA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PEDIDO_RESERVA_FK">
           <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
@@ -695,6 +1204,42 @@
             </Principal>
             <Dependent Role="PEDIDO">
               <PropertyRef Name="RESERVA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_PROVEEDOR_FK">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="PROVEEDOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_SOLICITUD_P_ID_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="PRODUCTO_SOLICITUD" Type="Self.PRODUCTO_SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PRODUCTO_SOLICITUD">
+              <PropertyRef Name="PRODUCTO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_SOLICITUD_S_ID_FK">
+          <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="1" />
+          <End Role="PRODUCTO_SOLICITUD" Type="Self.PRODUCTO_SOLICITUD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD">
+              <PropertyRef Name="ID_SOLICITUD" />
+            </Principal>
+            <Dependent Role="PRODUCTO_SOLICITUD">
+              <PropertyRef Name="SOLICITUD_ID_SOLICITUD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -710,11 +1255,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="USUARIO_ROL_FK">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ROL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BOLETA" EntityType="Self.BOLETA" />
+          <EntitySet Name="BOLETA_WC" EntityType="Self.BOLETA_WC" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
-          <EntitySet Name="DETALLE_BOLETA" EntityType="Self.DETALLE_BOLETA" />
           <EntitySet Name="ESTADO" EntityType="Self.ESTADO" />
+          <EntitySet Name="ESTADO_BOLETA" EntityType="Self.ESTADO_BOLETA" />
           <EntitySet Name="ESTADO_SOLICITUD" EntityType="Self.ESTADO_SOLICITUD" />
           <EntitySet Name="GIRO" EntityType="Self.GIRO" />
           <EntitySet Name="INGREDIENTE" EntityType="Self.INGREDIENTE" />
@@ -735,25 +1295,73 @@
             <End Role="MODO_PAGO" EntitySet="MODO_PAGO" />
             <End Role="BOLETA" EntitySet="BOLETA" />
           </AssociationSet>
-          <AssociationSet Name="ESTADO_BOLETA" Association="Self.ESTADO_BOLETA">
-            <End Role="ESTADO" EntitySet="ESTADO" />
+          <AssociationSet Name="ESTADO_ID_BOLETA_FK1" Association="Self.ESTADO_ID_BOLETA_FK1">
+            <End Role="ESTADO_BOLETA" EntitySet="ESTADO_BOLETA" />
             <End Role="BOLETA" EntitySet="BOLETA" />
           </AssociationSet>
           <AssociationSet Name="PEDIDO_FK1" Association="Self.PEDIDO_FK1">
             <End Role="BOLETA" EntitySet="BOLETA" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
+          <AssociationSet Name="CLIENTE_ESTADO_FK" Association="Self.CLIENTE_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
           <AssociationSet Name="RESERVA_CLIENTE_FK" Association="Self.RESERVA_CLIENTE_FK">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="RESERVA" EntitySet="RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="MENU_ESTADO_FK" Association="Self.MENU_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="MENU" EntitySet="MENU" />
+          </AssociationSet>
+          <AssociationSet Name="MESA_ESTADO_FK" Association="Self.MESA_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="MESA" EntitySet="MESA" />
           </AssociationSet>
           <AssociationSet Name="PEDIDO_ESTADO_FK" Association="Self.PEDIDO_ESTADO_FK">
             <End Role="ESTADO" EntitySet="ESTADO" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
+          <AssociationSet Name="PROVEEDOR_ESTADO_FK" Association="Self.PROVEEDOR_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+          </AssociationSet>
           <AssociationSet Name="RESERVA_ESTADO_FK" Association="Self.RESERVA_ESTADO_FK">
             <End Role="ESTADO" EntitySet="ESTADO" />
             <End Role="RESERVA" EntitySet="RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIO_ESTADO_FK" Association="Self.USUARIO_ESTADO_FK">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUD_ESTADO_ID_FK" Association="Self.SOLICITUD_ESTADO_ID_FK">
+            <End Role="ESTADO_SOLICITUD" EntitySet="ESTADO_SOLICITUD" />
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="PROVEEDOR_GIRO_FK" Association="Self.PROVEEDOR_GIRO_FK">
+            <End Role="GIRO" EntitySet="GIRO" />
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+          </AssociationSet>
+          <AssociationSet Name="INGREDIENTE_MENU_FK" Association="Self.INGREDIENTE_MENU_FK">
+            <End Role="MENU" EntitySet="MENU" />
+            <End Role="INGREDIENTE" EntitySet="INGREDIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="INGREDIENTE_METRICA_FK" Association="Self.INGREDIENTE_METRICA_FK">
+            <End Role="METRICA" EntitySet="METRICA" />
+            <End Role="INGREDIENTE" EntitySet="INGREDIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="INGREDIENTE_PRODUCTO_FK" Association="Self.INGREDIENTE_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="INGREDIENTE" EntitySet="INGREDIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="INGRESO_PRODUCTO_FK" Association="Self.INGRESO_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="INGRESO" EntitySet="INGRESO" />
+          </AssociationSet>
+          <AssociationSet Name="INGRESO_USUARIO_FK" Association="Self.INGRESO_USUARIO_FK">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="INGRESO" EntitySet="INGRESO" />
           </AssociationSet>
           <AssociationSet Name="PEDIDO_MENU_FK" Association="Self.PEDIDO_MENU_FK">
             <End Role="MENU" EntitySet="MENU" />
@@ -763,13 +1371,33 @@
             <End Role="MESA" EntitySet="MESA" />
             <End Role="RESERVA" EntitySet="RESERVA" />
           </AssociationSet>
+          <AssociationSet Name="PRODUCTO_METRICA_FK" Association="Self.PRODUCTO_METRICA_FK">
+            <End Role="METRICA" EntitySet="METRICA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
           <AssociationSet Name="PEDIDO_RESERVA_FK" Association="Self.PEDIDO_RESERVA_FK">
             <End Role="RESERVA" EntitySet="RESERVA" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
+          <AssociationSet Name="PRODUCTO_PROVEEDOR_FK" Association="Self.PRODUCTO_PROVEEDOR_FK">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_SOLICITUD_P_ID_FK" Association="Self.PRODUCTO_SOLICITUD_P_ID_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="PRODUCTO_SOLICITUD" EntitySet="PRODUCTO_SOLICITUD" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_SOLICITUD_S_ID_FK" Association="Self.PRODUCTO_SOLICITUD_S_ID_FK">
+            <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+            <End Role="PRODUCTO_SOLICITUD" EntitySet="PRODUCTO_SOLICITUD" />
+          </AssociationSet>
           <AssociationSet Name="RESERVA_USUARIO_FK" Association="Self.RESERVA_USUARIO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="RESERVA" EntitySet="RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIO_ROL_FK" Association="Self.USUARIO_ROL_FK">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -789,21 +1417,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BOLETA_WC">
+            <EntityTypeMapping TypeName="Model.BOLETA_WC">
+              <MappingFragment StoreEntitySet="BOLETA_WC">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="NETO" ColumnName="NETO" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CLIENTE">
             <EntityTypeMapping TypeName="Model.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="RUT" ColumnName="RUT" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DETALLE_BOLETA">
-            <EntityTypeMapping TypeName="Model.DETALLE_BOLETA">
-              <MappingFragment StoreEntitySet="DETALLE_BOLETA">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RESERVA_ID" ColumnName="RESERVA_ID" />
-                <ScalarProperty Name="BOLETA_ID" ColumnName="BOLETA_ID" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -812,6 +1445,14 @@
               <MappingFragment StoreEntitySet="ESTADO">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_BOLETA">
+            <EntityTypeMapping TypeName="Model.ESTADO_BOLETA">
+              <MappingFragment StoreEntitySet="ESTADO_BOLETA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -859,6 +1500,8 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -868,6 +1511,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
                 <ScalarProperty Name="SILLAS" ColumnName="SILLAS" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -885,7 +1529,6 @@
               <MappingFragment StoreEntitySet="MODO_PAGO">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -907,7 +1550,6 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="PROVEEDOR_ID" ColumnName="PROVEEDOR_ID" />
                 <ScalarProperty Name="METRICA_ID" ColumnName="METRICA_ID" />
               </MappingFragment>
@@ -931,8 +1573,9 @@
                 <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
                 <ScalarProperty Name="CORREO" ColumnName="CORREO" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="DIRECCION_ID" ColumnName="DIRECCION_ID" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
                 <ScalarProperty Name="GIRO_ID" ColumnName="GIRO_ID" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -954,7 +1597,6 @@
               <MappingFragment StoreEntitySet="ROL">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -982,6 +1624,7 @@
                 <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
                 <ScalarProperty Name="UPDATE_AT" ColumnName="UPDATE_AT" />
                 <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

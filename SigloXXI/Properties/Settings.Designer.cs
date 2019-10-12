@@ -52,5 +52,17 @@ namespace Vista.Properties {
                 return ((string)(this["ConnectionStringSigloXXI"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Activo {
+            get {
+                return ((bool)(this["Activo"]));
+            }
+            set {
+                this["Activo"] = value;
+            }
+        }
     }
 }

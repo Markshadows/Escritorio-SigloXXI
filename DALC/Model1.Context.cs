@@ -26,9 +26,10 @@ namespace DALC
         }
     
         public virtual DbSet<BOLETA> BOLETA { get; set; }
+        public virtual DbSet<BOLETA_WC> BOLETA_WC { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
-        public virtual DbSet<DETALLE_BOLETA> DETALLE_BOLETA { get; set; }
         public virtual DbSet<ESTADO> ESTADO { get; set; }
+        public virtual DbSet<ESTADO_BOLETA> ESTADO_BOLETA { get; set; }
         public virtual DbSet<ESTADO_SOLICITUD> ESTADO_SOLICITUD { get; set; }
         public virtual DbSet<GIRO> GIRO { get; set; }
         public virtual DbSet<INGREDIENTE> INGREDIENTE { get; set; }

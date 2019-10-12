@@ -14,9 +14,19 @@ namespace DALC
     
     public partial class SOLICITUD
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SOLICITUD()
+        {
+            this.PRODUCTO_SOLICITUD = new HashSet<PRODUCTO_SOLICITUD>();
+        }
+    
         public byte ID_SOLICITUD { get; set; }
         public string ASUNTO { get; set; }
         public string MENSAJE { get; set; }
         public byte ESTADO_SOLICITUD { get; set; }
+    
+        public virtual ESTADO_SOLICITUD ESTADO_SOLICITUD1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCTO_SOLICITUD> PRODUCTO_SOLICITUD { get; set; }
     }
 }

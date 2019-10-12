@@ -12,21 +12,14 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class CLIENTE
+    public partial class BOLETA_WC
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CLIENTE()
-        {
-            this.RESERVA = new HashSet<RESERVA>();
-        }
-    
         public decimal ID { get; set; }
         public string RUT { get; set; }
         public string NOMBRE { get; set; }
-        public decimal ESTADO { get; set; }
-    
-        public virtual ESTADO ESTADO1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVA> RESERVA { get; set; }
+        public System.DateTime FECHA { get; set; }
+        public decimal NETO { get; set; }
+        public decimal IVA { get; set; }
+        public decimal TOTAL { get; set; }
     }
 }

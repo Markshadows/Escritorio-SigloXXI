@@ -12,10 +12,18 @@ namespace DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class DETALLE_BOLETA
+    public partial class ESTADO_BOLETA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ESTADO_BOLETA()
+        {
+            this.BOLETA = new HashSet<BOLETA>();
+        }
+    
         public decimal ID { get; set; }
-        public decimal RESERVA_ID { get; set; }
-        public decimal BOLETA_ID { get; set; }
+        public string DESCRIPCION { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BOLETA> BOLETA { get; set; }
     }
 }

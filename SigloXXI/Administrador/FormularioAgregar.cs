@@ -35,6 +35,8 @@ namespace Vista.Administrador
 
         private void FormularioAgregar_Activated(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.ESTADO' Puede moverla o quitarla según sea necesario.
+            this.eSTADOTableAdapter.Fill(this.dataSetSigloXXI.ESTADO);
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.ROL' Puede moverla o quitarla según sea necesario.
             this.rOLTableAdapter.Fill(this.dataSetSigloXXI.ROL);
 
@@ -56,6 +58,7 @@ namespace Vista.Administrador
                 usuario.Telefono = int.Parse(txtTelefono.Text);
                 usuario.Rol = new Rol { Id = int.Parse(cboTipo.SelectedValue.ToString()) };
                 usuario.Direccion = txtDireccion.Text;
+                usuario.Estado = new Estado { Id = int.Parse(cboEstadoUsuario.SelectedValue.ToString()) };
                 if (usuario.Agregar())
                 {
                     menuAdm.MenuAdministrador_Load(sender, e);
@@ -85,6 +88,7 @@ namespace Vista.Administrador
                     txtTelefono.Text = usu.Telefono.ToString();
                     cboTipo.SelectedValue = usu.Rol.Id;
                     txtDireccion.Text = usu.Direccion;
+                    cboEstadoUsuario.SelectedValue = usu.Estado.Id;
 
                     btnGuardarUsuario.Enabled = false;
                 }
@@ -109,9 +113,9 @@ namespace Vista.Administrador
                 usuario.Rut = txtRut.Text;
                 usuario.Telefono = int.Parse(txtTelefono.Text);
                 usuario.Rol = new Rol { Id = int.Parse(cboTipo.SelectedValue.ToString()) };
+                usuario.Estado = new Estado { Id = int.Parse(cboEstadoUsuario.SelectedValue.ToString()) };
                 usuario.Direccion = txtDireccion.Text;
                 string msj = usuario.Modificar() ? "Modificó" : "No Modificó";
-                Console.WriteLine(usuario.Nombre);
                 
                 if (usuario.Modificar())
                 {
@@ -123,6 +127,7 @@ namespace Vista.Administrador
                 {
                     MetroFramework.MetroMessageBox.Show(this, "No se pudo modificar", "Modificar Usuario");
                 }
+                
             }
             catch (Exception ex)
             {

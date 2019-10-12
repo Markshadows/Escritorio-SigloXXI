@@ -23,7 +23,9 @@ namespace DALC
         public decimal ID { get; set; }
         public decimal NUMERO { get; set; }
         public decimal SILLAS { get; set; }
+        public decimal ESTADO { get; set; }
     
+        public virtual ESTADO ESTADO1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESERVA> RESERVA { get; set; }
     }

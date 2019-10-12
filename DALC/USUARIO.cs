@@ -14,6 +14,12 @@ namespace DALC
     
     public partial class USUARIO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public USUARIO()
+        {
+            this.INGRESO = new HashSet<INGRESO>();
+        }
+    
         public decimal ID { get; set; }
         public string RUN { get; set; }
         public string NOMBRE { get; set; }
@@ -25,7 +31,12 @@ namespace DALC
         public System.DateTime CREATED_AT { get; set; }
         public System.DateTime UPDATE_AT { get; set; }
         public string DIRECCION { get; set; }
+        public decimal ESTADO { get; set; }
     
+        public virtual ESTADO ESTADO1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INGRESO> INGRESO { get; set; }
         public virtual RESERVA RESERVA { get; set; }
+        public virtual ROL ROL { get; set; }
     }
 }

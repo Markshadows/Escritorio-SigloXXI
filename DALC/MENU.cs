@@ -17,13 +17,19 @@ namespace DALC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MENU()
         {
+            this.INGREDIENTE = new HashSet<INGREDIENTE>();
             this.PEDIDO = new HashSet<PEDIDO>();
         }
     
         public decimal ID { get; set; }
         public string NOMBRE { get; set; }
         public decimal PRECIO { get; set; }
+        public string URL { get; set; }
+        public decimal ESTADO { get; set; }
     
+        public virtual ESTADO ESTADO1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INGREDIENTE> INGREDIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }

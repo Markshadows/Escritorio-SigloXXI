@@ -17,6 +17,7 @@ namespace Modelo
         public string Contrasena { get; set; }
         public int Telefono { get; set; }
         public Rol Rol { get; set; }
+        public Estado Estado { get; set; }
         public string Direccion { get; set; }
 
         private Contexto conexion;
@@ -36,7 +37,7 @@ namespace Modelo
             {
                 USUARIO usuario = conexion.Entidad.USUARIO
                     .First(u => u.CORREO.Equals(Correo)
-                    && u.PASSWORD.Equals(Contrasena));
+                    && u.PASSWORD.Equals(Contrasena) && u.ESTADO == 1);
                 this.Rut = usuario.RUN;
                 this.Nombre = usuario.NOMBRE;
                 this.Apellidos = usuario.APELLIDOS;
@@ -45,6 +46,7 @@ namespace Modelo
                 this.Telefono = (int)usuario.TELEFONO;
                 this.Direccion = usuario.DIRECCION;
                 this.Rol = new Rol { Id = (int)usuario.ROL_ID };
+                this.Estado = new Estado { Id = (int)usuario.ESTADO };
                 return true;
             }
             catch (Exception)
@@ -69,6 +71,7 @@ namespace Modelo
                 usuario.ROL_ID = Rol.Id;
                 usuario.CREATED_AT = DateTime.Now;
                 usuario.UPDATE_AT = DateTime.Now;
+                usuario.ESTADO = Estado.Id;
                 conexion.Entidad.USUARIO.Add(usuario);
                 conexion.Entidad.SaveChanges();
 
@@ -94,6 +97,7 @@ namespace Modelo
                 this.Telefono = (int)usuario.TELEFONO;
                 this.Direccion = usuario.DIRECCION;
                 this.Rol = new Rol { Id = (int)usuario.ROL_ID };
+                this.Estado = new Estado { Id = (int)usuario.ESTADO };
                 return true;
             }
             catch (Exception ex)
@@ -118,7 +122,7 @@ namespace Modelo
                 usuario.ROL_ID = Rol.Id;
                 usuario.CREATED_AT = DateTime.Now;
                 usuario.UPDATE_AT = DateTime.Now;
-
+                usuario.ESTADO = Estado.Id;
                 conexion.Entidad.SaveChanges();
                 return true;
             }

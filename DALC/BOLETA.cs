@@ -27,7 +27,7 @@ namespace DALC
         public decimal ESTADO_ID { get; set; }
     
         public virtual MODO_PAGO MODO_PAGO { get; set; }
-        public virtual ESTADO ESTADO { get; set; }
+        public virtual ESTADO_BOLETA ESTADO_BOLETA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }

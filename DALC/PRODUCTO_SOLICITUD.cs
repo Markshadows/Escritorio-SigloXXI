@@ -17,5 +17,8 @@ namespace DALC
         public byte PRODUCTO_SOLICITUD_ID { get; set; }
         public byte PRODUCTO_ID { get; set; }
         public byte SOLICITUD_ID_SOLICITUD { get; set; }
+    
+        public virtual PRODUCTO PRODUCTO { get; set; }
+        public virtual SOLICITUD SOLICITUD { get; set; }
     }
 }

@@ -21,8 +21,10 @@ namespace Vista.Administrador
 
         public void MenuAdministrador_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuarios' Puede moverla o quitarla según sea necesario.
-            this.dTUsuariosTableAdapter.Fill(this.dataSetSigloXXI.DTUsuarios);
+            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuario' Puede moverla o quitarla según sea necesario.
+            this.dTUsuarioTableAdapter.Fill(this.dataSetSigloXXI.DTUsuario);
+            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuario' Puede moverla o quitarla según sea necesario.
+            this.dTUsuarioTableAdapter.Fill(this.dataSetSigloXXI.DTUsuario);
 
         }
 
@@ -160,6 +162,11 @@ namespace Vista.Administrador
         private void btnModificarUsuario_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAgregarMesa_Click(object sender, EventArgs e)
+        {
+            MetroFramework.MetroMessageBox.Show(this, tglEstadoMesa.Text, "Agregar Mesa");
         }
     }
 }

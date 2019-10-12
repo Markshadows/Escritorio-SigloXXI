@@ -59,13 +59,16 @@
     <Compile Include="BOLETA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BOLETA_WC.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="CLIENTE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DETALLE_BOLETA.cs">
+    <Compile Include="ESTADO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ESTADO.cs">
+    <Compile Include="ESTADO_BOLETA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ESTADO_SOLICITUD.cs">

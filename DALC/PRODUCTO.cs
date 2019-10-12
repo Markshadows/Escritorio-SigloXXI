@@ -14,11 +14,27 @@ namespace DALC
     
     public partial class PRODUCTO
     {
-        public decimal ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PRODUCTO()
+        {
+            this.INGREDIENTE = new HashSet<INGREDIENTE>();
+            this.INGRESO = new HashSet<INGRESO>();
+            this.PRODUCTO_SOLICITUD = new HashSet<PRODUCTO_SOLICITUD>();
+        }
+    
+        public byte ID { get; set; }
         public string CODIGO { get; set; }
         public string NOMBRE { get; set; }
-        public string DESCRIPCION { get; set; }
         public decimal PROVEEDOR_ID { get; set; }
         public decimal METRICA_ID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INGREDIENTE> INGREDIENTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INGRESO> INGRESO { get; set; }
+        public virtual METRICA METRICA { get; set; }
+        public virtual PROVEEDOR PROVEEDOR { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCTO_SOLICITUD> PRODUCTO_SOLICITUD { get; set; }
     }
 }

@@ -14,8 +14,20 @@ namespace DALC
     
     public partial class METRICA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public METRICA()
+        {
+            this.INGREDIENTE = new HashSet<INGREDIENTE>();
+            this.PRODUCTO = new HashSet<PRODUCTO>();
+        }
+    
         public decimal ID { get; set; }
         public decimal PESO { get; set; }
         public string MEDIDA { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INGREDIENTE> INGREDIENTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

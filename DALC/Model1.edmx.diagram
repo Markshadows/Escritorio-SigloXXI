@@ -4,37 +4,55 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="19eb529d7bee4bfdbafbfbd08b2b4344" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.BOLETA" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.CLIENTE" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DETALLE_BOLETA" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ESTADO" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ESTADO_SOLICITUD" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.GIRO" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.INGREDIENTE" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.INGRESO" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MENU" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MESA" Width="1.5" PointX="3.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.METRICA" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MODO_PAGO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PEDIDO" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PRODUCTO" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PRODUCTO_SOLICITUD" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.RESERVA" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ROL" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.SOLICITUD" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="3.75" PointY="12.25" IsExpanded="true" />
+      <Diagram DiagramId="c1a1e47345c54e67a3905ce7dec0195b" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.BOLETA" Width="1.5" PointX="8.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.BOLETA_WC" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CLIENTE" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ESTADO" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ESTADO_BOLETA" Width="1.5" PointX="6" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ESTADO_SOLICITUD" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GIRO" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.INGREDIENTE" Width="1.5" PointX="8.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.INGRESO" Width="1.5" PointX="10.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MENU" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MESA" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.METRICA" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MODO_PAGO" Width="1.5" PointX="6" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PEDIDO" Width="1.5" PointX="10.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRODUCTO" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRODUCTO_SOLICITUD" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RESERVA" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ROL" Width="1.5" PointX="3.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SOLICITUD" Width="1.5" PointX="8.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="6" PointY="14.875" IsExpanded="true" />
         <AssociationConnector Association="Model.BOLETA_MODO_PAGO_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.ESTADO_BOLETA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ESTADO_ID_BOLETA_FK1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.PEDIDO_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.CLIENTE_ESTADO_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.RESERVA_CLIENTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.MENU_ESTADO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.MESA_ESTADO_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.PEDIDO_ESTADO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PROVEEDOR_ESTADO_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.RESERVA_ESTADO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.USUARIO_ESTADO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SOLICITUD_ESTADO_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PROVEEDOR_GIRO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.INGREDIENTE_MENU_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.INGREDIENTE_METRICA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.INGREDIENTE_PRODUCTO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.INGRESO_PRODUCTO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.INGRESO_USUARIO_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.PEDIDO_MENU_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.RESERVA_MESA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PRODUCTO_METRICA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.PEDIDO_RESERVA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PRODUCTO_PROVEEDOR_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PRODUCTO_SOLICITUD_P_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PRODUCTO_SOLICITUD_S_ID_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.RESERVA_USUARIO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.USUARIO_ROL_FK" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
