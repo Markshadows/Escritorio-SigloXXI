@@ -138,6 +138,12 @@
     <Compile Include="Cocina\Comandas.Designer.cs">
       <DependentUpon>Comandas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cocina\FormularioIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cocina\FormularioIngrediente.Designer.cs">
+      <DependentUpon>FormularioIngrediente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cocina\FormularioMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cocina\Comandas.resx">
       <DependentUpon>Comandas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cocina\FormularioIngrediente.resx">
+      <DependentUpon>FormularioIngrediente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cocina\FormularioMenu.resx">
       <DependentUpon>FormularioMenu.cs</DependentUpon>

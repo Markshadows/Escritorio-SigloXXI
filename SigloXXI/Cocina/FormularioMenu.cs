@@ -38,24 +38,31 @@ namespace Vista.Cocina
                 Modelo.Menu menu = new Modelo.Menu();
                 menu.Nombre = txtNombreMenu.Text;
                 menu.Precio = int.Parse(txtPrecioMenu.Text);
-                menu.Url = "Imagen del javier";
+                menu.Url = "Imagen del javier";                
                 menu.Estado = new Estado { Id = int.Parse(cboEstadoMenu.SelectedValue.ToString()) };
 
-                if (menu.Agregar())                 
+                if (menu.Agregar())
                 {
                     txtNombreMenu.Clear();
                     txtPrecioMenu.Clear();
                     MetroFramework.MetroMessageBox.Show(this, "Se agrego el menu correctamente");
+                }
+                else {
+                    MetroFramework.MetroMessageBox.Show(this, "No se pudo agregar el menu correctamente");
                 }
 
             }
             catch (Exception)
             {
                 MetroFramework.MetroMessageBox.Show(this, "Error al agregar el menu");
-                throw;
+                
             }
         }
 
-       
+        private void btnLimpiarMenu_Click(object sender, EventArgs e)
+        {
+            txtNombreMenu.Clear();
+            txtPrecioMenu.Clear();
+        }
     }
 }

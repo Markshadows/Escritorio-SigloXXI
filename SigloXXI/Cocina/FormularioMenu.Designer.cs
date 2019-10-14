@@ -35,13 +35,13 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.txtNombreMenu = new MetroFramework.Controls.MetroTextBox();
             this.txtPrecioMenu = new MetroFramework.Controls.MetroTextBox();
-            this.cboEstadoMenu = new MetroFramework.Controls.MetroComboBox();
             this.eSTADOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetCocina = new Vista.DataSetCocina();
             this.btnGuardarMenu = new MetroFramework.Controls.MetroButton();
             this.btnLimpiarMenu = new MetroFramework.Controls.MetroButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.eSTADOTableAdapter = new Vista.DataSetCocinaTableAdapters.ESTADOTableAdapter();
+            this.cboEstadoMenu = new MetroFramework.Controls.MetroComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCocina)).BeginInit();
             this.SuspendLayout();
@@ -142,20 +142,6 @@
             this.txtPrecioMenu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPrecioMenu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // cboEstadoMenu
-            // 
-            this.cboEstadoMenu.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.eSTADOBindingSource, "ID", true));
-            this.cboEstadoMenu.DataSource = this.eSTADOBindingSource;
-            this.cboEstadoMenu.DisplayMember = "NOMBRE";
-            this.cboEstadoMenu.FormattingEnabled = true;
-            this.cboEstadoMenu.ItemHeight = 23;
-            this.cboEstadoMenu.Location = new System.Drawing.Point(218, 189);
-            this.cboEstadoMenu.Name = "cboEstadoMenu";
-            this.cboEstadoMenu.Size = new System.Drawing.Size(280, 29);
-            this.cboEstadoMenu.TabIndex = 6;
-            this.cboEstadoMenu.UseSelectable = true;
-            this.cboEstadoMenu.ValueMember = "ID";
-            // 
             // eSTADOBindingSource
             // 
             this.eSTADOBindingSource.DataMember = "ESTADO";
@@ -184,6 +170,7 @@
             this.btnLimpiarMenu.TabIndex = 8;
             this.btnLimpiarMenu.Text = "Limpiar";
             this.btnLimpiarMenu.UseSelectable = true;
+            this.btnLimpiarMenu.Click += new System.EventHandler(this.btnLimpiarMenu_Click);
             // 
             // groupBox1
             // 
@@ -197,6 +184,19 @@
             // eSTADOTableAdapter
             // 
             this.eSTADOTableAdapter.ClearBeforeFill = true;
+            // 
+            // cboEstadoMenu
+            // 
+            this.cboEstadoMenu.DataSource = this.eSTADOBindingSource;
+            this.cboEstadoMenu.DisplayMember = "NOMBRE";
+            this.cboEstadoMenu.FormattingEnabled = true;
+            this.cboEstadoMenu.ItemHeight = 23;
+            this.cboEstadoMenu.Location = new System.Drawing.Point(218, 189);
+            this.cboEstadoMenu.Name = "cboEstadoMenu";
+            this.cboEstadoMenu.Size = new System.Drawing.Size(280, 29);
+            this.cboEstadoMenu.TabIndex = 6;
+            this.cboEstadoMenu.UseSelectable = true;
+            this.cboEstadoMenu.ValueMember = "ID";
             // 
             // FormularioMenu
             // 
@@ -231,12 +231,12 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroTextBox txtNombreMenu;
         private MetroFramework.Controls.MetroTextBox txtPrecioMenu;
-        private MetroFramework.Controls.MetroComboBox cboEstadoMenu;
         private MetroFramework.Controls.MetroButton btnGuardarMenu;
         private MetroFramework.Controls.MetroButton btnLimpiarMenu;
         private System.Windows.Forms.GroupBox groupBox1;
         private DataSetCocina dataSetCocina;
         private System.Windows.Forms.BindingSource eSTADOBindingSource;
         private DataSetCocinaTableAdapters.ESTADOTableAdapter eSTADOTableAdapter;
+        private MetroFramework.Controls.MetroComboBox cboEstadoMenu;
     }
 }

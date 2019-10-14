@@ -31,6 +31,7 @@ namespace Modelo
                 menu.NOMBRE = Nombre;
                 menu.PRECIO = Precio;
                 menu.ESTADO = Estado.Id;
+                menu.URL = Url;
                 conexion.Entidad.MENU.Add(menu);
                 conexion.Entidad.SaveChanges();
                 return true;
