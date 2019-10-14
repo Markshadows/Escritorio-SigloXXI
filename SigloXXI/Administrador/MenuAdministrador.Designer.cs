@@ -269,9 +269,9 @@
             // 
             // 
             this.txtBuscarRut.CustomButton.Image = null;
-            this.txtBuscarRut.CustomButton.Location = new System.Drawing.Point(80, 1);
+            this.txtBuscarRut.CustomButton.Location = new System.Drawing.Point(106, 1);
             this.txtBuscarRut.CustomButton.Name = "";
-            this.txtBuscarRut.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.txtBuscarRut.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtBuscarRut.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtBuscarRut.CustomButton.TabIndex = 1;
             this.txtBuscarRut.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -456,9 +456,9 @@
             // 
             // 
             this.txtCantSillasMesa.CustomButton.Image = null;
-            this.txtCantSillasMesa.CustomButton.Location = new System.Drawing.Point(40, 1);
+            this.txtCantSillasMesa.CustomButton.Location = new System.Drawing.Point(53, 1);
             this.txtCantSillasMesa.CustomButton.Name = "";
-            this.txtCantSillasMesa.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.txtCantSillasMesa.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtCantSillasMesa.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtCantSillasMesa.CustomButton.TabIndex = 1;
             this.txtCantSillasMesa.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -496,9 +496,9 @@
             // 
             // 
             this.txtNroMesa.CustomButton.Image = null;
-            this.txtNroMesa.CustomButton.Location = new System.Drawing.Point(40, 1);
+            this.txtNroMesa.CustomButton.Location = new System.Drawing.Point(53, 1);
             this.txtNroMesa.CustomButton.Name = "";
-            this.txtNroMesa.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.txtNroMesa.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtNroMesa.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtNroMesa.CustomButton.TabIndex = 1;
             this.txtNroMesa.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -577,7 +577,7 @@
             this.metroGrid5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid5.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid5.Location = new System.Drawing.Point(2, 33);
-            this.metroGrid5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroGrid5.Margin = new System.Windows.Forms.Padding(2);
             this.metroGrid5.Name = "metroGrid5";
             this.metroGrid5.ReadOnly = true;
             this.metroGrid5.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -650,7 +650,7 @@
             this.metroGrid4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid4.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid4.Location = new System.Drawing.Point(74, 119);
-            this.metroGrid4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroGrid4.Margin = new System.Windows.Forms.Padding(2);
             this.metroGrid4.Name = "metroGrid4";
             this.metroGrid4.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

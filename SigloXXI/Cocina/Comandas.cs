@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vista;
+using Vista.Cocina;
 
 namespace SigloXXI.Cocina
 {
@@ -21,12 +22,22 @@ namespace SigloXXI.Cocina
 
         private void Comandas_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.MENU' Puede moverla o quitarla según sea necesario.
+            this.mENUTableAdapter.Fill(this.dataSetCocina.MENU);
+            // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.PRODUCTO' Puede moverla o quitarla según sea necesario.
+            this.pRODUCTOTableAdapter.Fill(this.dataSetCocina.PRODUCTO);
 
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Utilidades.cerrarSesion(this);
+        }
+
+        private void btnCrearMenu_Click(object sender, EventArgs e)
+        {
+            //Redireccionamos a la vista para crear el menu
+            new FormularioMenu(this) { }.Show();
         }
     }
 }

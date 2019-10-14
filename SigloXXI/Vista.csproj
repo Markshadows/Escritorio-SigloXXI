@@ -138,6 +138,17 @@
     <Compile Include="Cocina\Comandas.Designer.cs">
       <DependentUpon>Comandas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cocina\FormularioMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cocina\FormularioMenu.Designer.cs">
+      <DependentUpon>FormularioMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetCocina.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCocina.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSigloXXI.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -200,6 +211,9 @@
     <EmbeddedResource Include="Cocina\Comandas.resx">
       <DependentUpon>Comandas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cocina\FormularioMenu.resx">
+      <DependentUpon>FormularioMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Finanzas\FormularioFinanzas.resx">
       <DependentUpon>FormularioFinanzas.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +239,17 @@
     <EmbeddedResource Include="Usuario\IniciarSesion.resx">
       <DependentUpon>IniciarSesion.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSetCocina.xsc">
+      <DependentUpon>DataSetCocina.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetCocina.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCocina.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetCocina.xss">
+      <DependentUpon>DataSetCocina.xsd</DependentUpon>
+    </None>
     <None Include="DataSetSigloXXI.xsc">
       <DependentUpon>DataSetSigloXXI.xsd</DependentUpon>
     </None>
@@ -273,6 +298,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Microsoft\Win32\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
