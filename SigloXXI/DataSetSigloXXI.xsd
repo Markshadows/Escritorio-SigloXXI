@@ -1274,6 +1274,49 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DTMesaTableAdapter" GeneratorDataComponentClassName="DTMesaTableAdapter" Name="DTMesa" UserDataComponentName="DTMesaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionStringSigloXXI (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SIGLOXXI.MESA.NUMERO, SIGLOXXI.MESA.SILLAS, SIGLOXXI.ESTADO.NOMBRE AS ESTADO
+FROM     SIGLOXXI.MESA INNER JOIN
+                  SIGLOXXI.ESTADO ON SIGLOXXI.MESA.ESTADO = SIGLOXXI.ESTADO.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NUMERO" DataSetColumn="NUMERO" />
+              <Mapping SourceColumn="SILLAS" DataSetColumn="SILLAS" />
+              <Mapping SourceColumn="ESTADO" DataSetColumn="ESTADO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DTProductoTableAdapter" GeneratorDataComponentClassName="DTProductoTableAdapter" Name="DTProducto" UserDataComponentName="DTProductoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionStringSigloXXI (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SIGLOXXI.PRODUCTO.CODIGO, SIGLOXXI.PRODUCTO.NOMBRE, SIGLOXXI.PROVEEDOR.NOMBRE AS PROVEEDOR, SIGLOXXI.METRICA.PESO, SIGLOXXI.METRICA.MEDIDA
+FROM     SIGLOXXI.PRODUCTO INNER JOIN
+                  SIGLOXXI.PROVEEDOR ON SIGLOXXI.PRODUCTO.PROVEEDOR_ID = SIGLOXXI.PROVEEDOR.ID INNER JOIN
+                  SIGLOXXI.METRICA ON SIGLOXXI.PRODUCTO.METRICA_ID = SIGLOXXI.METRICA.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CODIGO" DataSetColumn="CODIGO" />
+              <Mapping SourceColumn="NOMBRE" DataSetColumn="NOMBRE" />
+              <Mapping SourceColumn="PROVEEDOR" DataSetColumn="PROVEEDOR" />
+              <Mapping SourceColumn="PESO" DataSetColumn="PESO" />
+              <Mapping SourceColumn="MEDIDA" DataSetColumn="MEDIDA" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1740,6 +1783,56 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DTMesa" msprop:Generator_TableClassName="DTMesaDataTable" msprop:Generator_TableVarName="tableDTMesa" msprop:Generator_RowChangedName="DTMesaRowChanged" msprop:Generator_TablePropName="DTMesa" msprop:Generator_RowDeletingName="DTMesaRowDeleting" msprop:Generator_RowChangingName="DTMesaRowChanging" msprop:Generator_RowEvHandlerName="DTMesaRowChangeEventHandler" msprop:Generator_RowDeletedName="DTMesaRowDeleted" msprop:Generator_RowClassName="DTMesaRow" msprop:Generator_UserTableName="DTMesa" msprop:Generator_RowEvArgName="DTMesaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NUMERO" msprop:Generator_ColumnVarNameInTable="columnNUMERO" msprop:Generator_ColumnPropNameInRow="NUMERO" msprop:Generator_ColumnPropNameInTable="NUMEROColumn" msprop:Generator_UserColumnName="NUMERO" type="xs:decimal" />
+              <xs:element name="SILLAS" msprop:Generator_ColumnVarNameInTable="columnSILLAS" msprop:Generator_ColumnPropNameInRow="SILLAS" msprop:Generator_ColumnPropNameInTable="SILLASColumn" msprop:Generator_UserColumnName="SILLAS" type="xs:decimal" />
+              <xs:element name="ESTADO" msprop:Generator_ColumnVarNameInTable="columnESTADO" msprop:Generator_ColumnPropNameInRow="ESTADO" msprop:Generator_ColumnPropNameInTable="ESTADOColumn" msprop:Generator_UserColumnName="ESTADO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DTProducto" msprop:Generator_TableClassName="DTProductoDataTable" msprop:Generator_TableVarName="tableDTProducto" msprop:Generator_TablePropName="DTProducto" msprop:Generator_RowDeletingName="DTProductoRowDeleting" msprop:Generator_RowChangingName="DTProductoRowChanging" msprop:Generator_RowEvHandlerName="DTProductoRowChangeEventHandler" msprop:Generator_RowDeletedName="DTProductoRowDeleted" msprop:Generator_UserTableName="DTProducto" msprop:Generator_RowChangedName="DTProductoRowChanged" msprop:Generator_RowEvArgName="DTProductoRowChangeEvent" msprop:Generator_RowClassName="DTProductoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO" msprop:Generator_ColumnVarNameInTable="columnCODIGO" msprop:Generator_ColumnPropNameInRow="CODIGO" msprop:Generator_ColumnPropNameInTable="CODIGOColumn" msprop:Generator_UserColumnName="CODIGO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NOMBRE" msprop:Generator_ColumnVarNameInTable="columnNOMBRE" msprop:Generator_ColumnPropNameInRow="NOMBRE" msprop:Generator_ColumnPropNameInTable="NOMBREColumn" msprop:Generator_UserColumnName="NOMBRE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PROVEEDOR" msprop:Generator_ColumnVarNameInTable="columnPROVEEDOR" msprop:Generator_ColumnPropNameInRow="PROVEEDOR" msprop:Generator_ColumnPropNameInTable="PROVEEDORColumn" msprop:Generator_UserColumnName="PROVEEDOR">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PESO" msprop:Generator_ColumnVarNameInTable="columnPESO" msprop:Generator_ColumnPropNameInRow="PESO" msprop:Generator_ColumnPropNameInTable="PESOColumn" msprop:Generator_UserColumnName="PESO" type="xs:decimal" />
+              <xs:element name="MEDIDA" msprop:Generator_ColumnVarNameInTable="columnMEDIDA" msprop:Generator_ColumnPropNameInRow="MEDIDA" msprop:Generator_ColumnPropNameInTable="MEDIDAColumn" msprop:Generator_UserColumnName="MEDIDA">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

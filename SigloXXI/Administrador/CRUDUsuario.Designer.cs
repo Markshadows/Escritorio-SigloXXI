@@ -1,6 +1,6 @@
 ﻿namespace Vista.Administrador
 {
-    partial class FormularioAgregar
+    partial class CRUDUsuario
     {
         /// <summary>
         /// Required designer variable.

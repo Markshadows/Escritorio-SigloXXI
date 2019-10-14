@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DALC;
+using Modelo;
 
 namespace Vista.Administrador
 {
@@ -21,6 +22,8 @@ namespace Vista.Administrador
 
         public void MenuAdministrador_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTMesa' Puede moverla o quitarla según sea necesario.
+            this.dTMesaTableAdapter.Fill(this.dataSetSigloXXI.DTMesa);
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuario' Puede moverla o quitarla según sea necesario.
             this.dTUsuarioTableAdapter.Fill(this.dataSetSigloXXI.DTUsuario);
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuario' Puede moverla o quitarla según sea necesario.
@@ -78,7 +81,7 @@ namespace Vista.Administrador
                     //cboTipo.SelectedValue = usuario.Tipo;
                     //cboEstado.SelectedValue = usuario.Estado;
                     //btnAgregar.Enabled = false;
-                    new FormularioAgregar(this, usuario) { }.Show();
+                    new CRUDUsuario(this, usuario) { }.Show();
 
 
                 }
@@ -155,7 +158,7 @@ namespace Vista.Administrador
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            new FormularioAgregar(this) { }.Show();
+            new CRUDUsuario(this) { }.Show();
             //this.Close();
         }
 
@@ -166,7 +169,60 @@ namespace Vista.Administrador
 
         private void btnAgregarMesa_Click(object sender, EventArgs e)
         {
-            MetroFramework.MetroMessageBox.Show(this, tglEstadoMesa.Text, "Agregar Mesa");
+            try
+            {
+                Mesa m = new Mesa();
+                m.Numero =  int.Parse(txtNroMesa.Text);
+                m.CantSillas = int.Parse(txtCantSillasMesa.Text);
+                m.Estado = new Estado { Id = int.Parse(tglEstadoMesa.Text.Equals("Off") ? "2" : "1") };
+                if (m.Agregar())
+                {
+                    MenuAdministrador_Load(sender, e);
+                    MetroFramework.MetroMessageBox.Show(this, "Mesa Agregada", "Agregar Mesa");
+                    return;
+                }
+                MetroFramework.MetroMessageBox.Show(this, "La mesa número "+txtNroMesa.Text+" ya existe", "Agregar Mesa");
+
+            }
+            catch (Exception ex)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Error" + ex.Message, "Agregar Mesa");
+            }
+        }
+
+        private void btnModificarMesa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Mesa m = new Mesa();
+                m.Numero = int.Parse(txtNroMesa.Text);
+                m.CantSillas = int.Parse(txtCantSillasMesa.Text);
+                m.Estado = new Estado { Id = int.Parse(tglEstadoMesa.Text.Equals("Off") ? "2" : "1") };
+                if (m.Modificar())
+                {
+                    MenuAdministrador_Load(sender, e);
+                    MetroFramework.MetroMessageBox.Show(this, "Mesa Modificada", "Modificar Mesa");
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Error" + ex.Message, "Modificar Mesa");
+            }
+        }
+
+        private void metroGrid5_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Mesa m = new Mesa();
+                m.Numero = int.Parse(metroGrid5.Rows[e.RowIndex].Cells[0].Value.ToString()); ;
+                m.Buscar();
+                txtNroMesa.Text = m.Numero.ToString();
+                txtCantSillasMesa.Text = m.CantSillas.ToString();
+                tglEstadoMesa.Text = m.Estado.Nombre;
+                return;
+            }
+            MetroFramework.MetroMessageBox.Show(this, "Seleccione una fila correcta", "Seleccionar Mesa");
         }
     }
 }

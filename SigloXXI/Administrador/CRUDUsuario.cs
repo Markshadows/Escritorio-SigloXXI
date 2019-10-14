@@ -11,22 +11,22 @@ using System.Windows.Forms;
 
 namespace Vista.Administrador
 {
-    public partial class FormularioAgregar : MetroFramework.Forms.MetroForm
+    public partial class CRUDUsuario : MetroFramework.Forms.MetroForm
     {
         MenuAdministrador menuAdm;
         Modelo.Usuario usu;
-        public FormularioAgregar()
+        public CRUDUsuario()
         {
             InitializeComponent();
         }
 
-        public FormularioAgregar(MenuAdministrador menuAdministrador)
+        public CRUDUsuario(MenuAdministrador menuAdministrador)
         {
             InitializeComponent();
             menuAdm = menuAdministrador;
         }
 
-        public FormularioAgregar(MenuAdministrador menuAdministrador, Modelo.Usuario usuario)
+        public CRUDUsuario(MenuAdministrador menuAdministrador, Modelo.Usuario usuario)
         {
             InitializeComponent();
             menuAdm = menuAdministrador;

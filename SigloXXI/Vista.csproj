@@ -78,6 +78,7 @@
     <Reference Include="System.DirectoryServices.Protocols" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,11 +90,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrador\FormularioAgregar.cs">
+    <Compile Include="Administrador\CRUDMesa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administrador\FormularioAgregar.Designer.cs">
-      <DependentUpon>FormularioAgregar.cs</DependentUpon>
+    <Compile Include="Administrador\CRUDMesa.Designer.cs">
+      <DependentUpon>CRUDMesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\CRUDUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\CRUDUsuario.Designer.cs">
+      <DependentUpon>CRUDUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrador\MenuAdministrador.cs">
       <SubType>Form</SubType>
@@ -169,8 +176,11 @@
       <DependentUpon>IniciarSesion.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilidades.cs" />
-    <EmbeddedResource Include="Administrador\FormularioAgregar.resx">
-      <DependentUpon>FormularioAgregar.cs</DependentUpon>
+    <EmbeddedResource Include="Administrador\CRUDMesa.resx">
+      <DependentUpon>CRUDMesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\CRUDUsuario.resx">
+      <DependentUpon>CRUDUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\MenuAdministrador.resx">
       <DependentUpon>MenuAdministrador.cs</DependentUpon>
