@@ -37,7 +37,7 @@ namespace Vista.Usuario
                         menuAdministrador.Show();
                         this.Hide();
                         break;
-                    case 2:
+                    case 4:
                         Inventario inventario = new Inventario();
                         inventario.Show();
                         this.Hide();
@@ -47,7 +47,7 @@ namespace Vista.Usuario
                         menuCaja.Show();
                         this.Hide();
                         break;
-                    case 4:
+                    case 2:
                         Comandas comandas = new Comandas();
                         comandas.Show();
                         this.Hide();
