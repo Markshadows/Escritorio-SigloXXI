@@ -15,9 +15,12 @@ namespace Vista.Cocina
 {
     public partial class FormularioIngrediente : MetroFramework.Forms.MetroForm
     {
+        Comandas ingredientito;
+
         public FormularioIngrediente(Comandas comanda)
         {
             InitializeComponent();
+            ingredientito = comanda;
         }
 
         public FormularioIngrediente()
@@ -27,50 +30,62 @@ namespace Vista.Cocina
 
         private void bntGuardarIngrediente_Click(object sender, EventArgs e)
         {
-            //Guardaremos primero una clase metrica para nuestra entidad ingrediente
-            Metrica metrica     = new Metrica();
-            metrica.Medida      = cboMedidaIngrediente.SelectedItem.ToString();
-            metrica.Peso        = int.Parse(txtPesoIngrediente.Text);
-            //Rescatamos el id de la metrica para guardarlo en la entidad ingrediente
-            int idMetrica       = metrica.Agregar();
-            if (idMetrica == 0)
+            try
             {
-                //Aca caera si no se puede agregar la metrica. Mandamos el mensaje
-                txtPesoIngrediente.Clear();
-                MetroFramework.MetroMessageBox.Show(this, "No se pudo agregar el ingrediente.");
+
+                //Guardaremos primero una clase metrica para nuestra entidad ingrediente
+                Metrica metrica          = new Metrica();
+                metrica.Medida           = cboMedidaIngrediente.SelectedItem.ToString();
+                metrica.Peso             = int.Parse(txtPesoIngrediente.Text);
+                //Rescatamos el id de la metrica para guardarlo en la entidad ingrediente
+                int idMetrica            = metrica.Agregar();
+                if (idMetrica == 0)
+                {
+                    //Aca caera si no se puede agregar la metrica. Mandamos el mensaje
+                    txtPesoIngrediente.Clear();
+                    MetroFramework.MetroMessageBox.Show(this, "No se pudo agregar el ingrediente.");
+                }
+                //Crearemos un ingrediente con la metrica correspondiente agregada
+                Ingrediente ing = new Ingrediente();
+                ing.Cantidad = int.Parse(txtCantidadIngrediente.Text);
+                ing.Nombre = txtNombreIngrediente.Text;
+                ing.Menu = new Modelo.Menu { Id = int.Parse(cboMenuIngrediente.SelectedValue.ToString()) };
+                ing.Producto = new Producto { Id = int.Parse(cboProductoIngrediente.SelectedValue.ToString()) };
+                ing.Metrica = new Metrica { Id = idMetrica };
+                //Preguntamos si el producto a sido agregado correctamente
+                if (ing.Agregar())
+                {
+                    txtCantidadIngrediente.Clear();
+                    txtNombreIngrediente.Clear();
+                    txtPesoIngrediente.Clear();
+                    //Cargamos el menu de ingrediente denuevo para ver el cambio que se agrego
+                    ingredientito.Comandas_Load(sender, e);
+                    //El ingrediente se guardo correctamente
+                    MetroFramework.MetroMessageBox.Show(this, "Se agrego el ingrediente correctamente");
+                }
+                else
+                {
+                    //El ingrediente no se guardo correctamente
+                    MetroFramework.MetroMessageBox.Show(this, "No se agrego el ingrediente correctamente");
+
+                }
             }
-            //Crearemos un ingrediente con la metrica correspondiente agregada
-            Ingrediente ing     = new Ingrediente();
-            ing.Cantidad        = int.Parse(txtCantidadIngrediente.Text);
-            ing.Nombre          = txtNombreIngrediente.Text;
-            ing.Menu            = new Menu {Id = int.Parse(cboMenuIngrediente.SelectedValue.ToString()) };
-           
-
-
-
-
-
-
-
-
-
-
-            Modelo.Menu menu = new Modelo.Menu();
-            menu.Nombre = txtNombreMenu.Text;
-            menu.Precio = int.Parse(txtPrecioMenu.Text);
-            menu.Url = "Imagen del javier";
-            menu.Estado = new Estado { Id = int.Parse(cboEstadoMenu.SelectedValue.ToString()) };
-
-            if (menu.Agregar())
+            catch (Exception)
             {
-                txtNombreMenu.Clear();
-                txtPrecioMenu.Clear();
-                MetroFramework.MetroMessageBox.Show(this, "Se agrego el menu correctamente");
+                MetroFramework.MetroMessageBox.Show(this, "No se agrego el ingrediente correctamente");
+                throw;
             }
-            else
-            {
-                MetroFramework.MetroMessageBox.Show(this, "No se pudo agregar el menu correctamente");
-            }
+
+
+
+
+
+
+
+
+
+            
+
         }
 
         private void FormularioIngrediente_Load(object sender, EventArgs e)

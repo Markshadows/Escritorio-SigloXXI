@@ -20,7 +20,7 @@ namespace SigloXXI.Cocina
             btnCerrarSesion.FlatAppearance.BorderSize = 0;
         }
 
-        private void Comandas_Load(object sender, EventArgs e)
+        public void Comandas_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.INGREDIENTE' Puede moverla o quitarla según sea necesario.
             this.iNGREDIENTETableAdapter.Fill(this.dataSetCocina.INGREDIENTE);

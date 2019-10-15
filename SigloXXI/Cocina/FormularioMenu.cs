@@ -14,9 +14,12 @@ namespace Vista.Cocina
 {
     public partial class FormularioMenu : MetroFramework.Forms.MetroForm
     {
+        Comandas comandita;
+
         public FormularioMenu(Comandas comanda)
         {
             InitializeComponent();
+            comandita = comanda;
         }
 
         public FormularioMenu()
@@ -38,6 +41,7 @@ namespace Vista.Cocina
                 Modelo.Menu menu = new Modelo.Menu();
                 menu.Nombre = txtNombreMenu.Text;
                 menu.Precio = int.Parse(txtPrecioMenu.Text);
+                //Cargar aca la imagen rescatada por la ventana de usuario
                 menu.Url = "Imagen del javier";                
                 menu.Estado = new Estado { Id = int.Parse(cboEstadoMenu.SelectedValue.ToString()) };
 
@@ -45,6 +49,8 @@ namespace Vista.Cocina
                 {
                     txtNombreMenu.Clear();
                     txtPrecioMenu.Clear();
+                    //Cargamos el formulario de menu para ver los cambios 
+                    comandita.Comandas_Load(sender,e);
                     MetroFramework.MetroMessageBox.Show(this, "Se agrego el menu correctamente");
                 }
                 else {

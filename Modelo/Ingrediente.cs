@@ -29,7 +29,7 @@ namespace Modelo
             try
             {
                 INGREDIENTE ingrediente = new INGREDIENTE();
-                ingrediente.ID = 0;
+                ingrediente.ID = conexion.Entidad.Database.SqlQuery<int>("SELECT SEQ_INGREDIENTE_IDINGREDIENTE.NEXTVAL FROM dual").First();
                 ingrediente.CANTIDAD = Cantidad;
                 ingrediente.NOMBRE = Nombre;
                 ingrediente.MENU_ID = Menu.Id;
