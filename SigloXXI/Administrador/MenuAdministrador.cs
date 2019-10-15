@@ -14,6 +14,7 @@ namespace Vista.Administrador
 {
     public partial class MenuAdministrador : MetroFramework.Forms.MetroForm
     {
+        private int idMetrica;
         public MenuAdministrador()
         {
             InitializeComponent();
@@ -22,12 +23,17 @@ namespace Vista.Administrador
 
         public void MenuAdministrador_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.PROVEEDOR' Puede moverla o quitarla según sea necesario.
+            this.pROVEEDORTableAdapter.Fill(this.dataSetSigloXXI.PROVEEDOR);
+            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTProducto' Puede moverla o quitarla según sea necesario.
+            this.dTProductoTableAdapter.Fill(this.dataSetSigloXXI.DTProducto);
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTMesa' Puede moverla o quitarla según sea necesario.
             this.dTMesaTableAdapter.Fill(this.dataSetSigloXXI.DTMesa);
             // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuario' Puede moverla o quitarla según sea necesario.
             this.dTUsuarioTableAdapter.Fill(this.dataSetSigloXXI.DTUsuario);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuario' Puede moverla o quitarla según sea necesario.
-            this.dTUsuarioTableAdapter.Fill(this.dataSetSigloXXI.DTUsuario);
+            cboMetrica.DataSource = Metrica.metricas();
+            cboMetrica.DisplayMember = "Medida";
+            cboMetrica.ValueMember = "Medida";
 
         }
 
@@ -59,7 +65,7 @@ namespace Vista.Administrador
             //    MetroFramework.MetroMessageBox.Show(this, "Error al agregar" + ex, "Agregar Usuario");
             //    limpiarFormulario();
             //}
-            
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -151,37 +157,67 @@ namespace Vista.Administrador
             //}
         }
 
-        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        private void CerrarSesion_Click(object sender, EventArgs e)
         {
             Utilidades.cerrarSesion(this);
         }
 
-        private void btnAgregarUsuario_Click(object sender, EventArgs e)
+        private void AgregarUsuario_Click(object sender, EventArgs e)
         {
             new CRUDUsuario(this) { }.Show();
-            //this.Close();
         }
 
-        private void btnModificarUsuario_Click(object sender, EventArgs e)
+        private void gridMesas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0)
+            {
+                Mesa m = new Mesa();
+                m.Numero = int.Parse(gridMesas.Rows[e.RowIndex].Cells[0].Value.ToString()); ;
+                m.Buscar();
+                txtNroMesa.Text = m.Numero.ToString();
+                txtCantSillasMesa.Text = m.CantSillas.ToString();
+                tglEstadoMesa.Text = m.Estado.Nombre;
+                return;
+            }
+            MetroFramework.MetroMessageBox.Show(this, "Seleccione una fila correcta", "Seleccionar Mesa");
         }
 
-        private void btnAgregarMesa_Click(object sender, EventArgs e)
+        private void gridProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Producto p = new Producto();
+                p.Codigo = gridProductos.Rows[e.RowIndex].Cells[0].Value.ToString();
+                p.Buscar();
+                txtCodigoProducto.Text = p.Codigo;
+                txtNombreProducto.Text = p.Nombre;
+                cboProveedor.SelectedValue = p.Proveedor.Id;
+                cboMetrica.SelectedValue = p.Metrica.Medida;
+                idMetrica = p.Metrica.Id;
+                return;
+            }
+            MetroFramework.MetroMessageBox.Show(this, "Seleccione una fila correcta", "Seleccionar Producto");
+        }
+
+        private void AgregarProducto_Click(object sender, EventArgs e)
         {
             try
             {
-                Mesa m = new Mesa();
-                m.Numero =  int.Parse(txtNroMesa.Text);
-                m.CantSillas = int.Parse(txtCantSillasMesa.Text);
-                m.Estado = new Estado { Id = int.Parse(tglEstadoMesa.Text.Equals("Off") ? "2" : "1") };
-                if (m.Agregar())
+                Metrica m = new Metrica();
+                m.Medida = cboMetrica.SelectedValue.ToString();
+
+                Producto p = new Producto();
+                p.Codigo = txtCodigoProducto.Text;
+                p.Nombre = txtNombreProducto.Text;
+                p.Proveedor = new Proveedor { Id = int.Parse(cboProveedor.SelectedValue.ToString()) };
+                p.Metrica = m;
+                if (p.Agregar())
                 {
                     MenuAdministrador_Load(sender, e);
-                    MetroFramework.MetroMessageBox.Show(this, "Mesa Agregada", "Agregar Mesa");
+                    MetroFramework.MetroMessageBox.Show(this, "Producto Agregado", "Agregar Producto");
                     return;
                 }
-                MetroFramework.MetroMessageBox.Show(this, "La mesa número "+txtNroMesa.Text+" ya existe", "Agregar Mesa");
+                MetroFramework.MetroMessageBox.Show(this, "El producto número " + txtCodigoProducto.Text + " ya existe", "Agregar Producto");
 
             }
             catch (Exception ex)
@@ -190,7 +226,55 @@ namespace Vista.Administrador
             }
         }
 
-        private void btnModificarMesa_Click(object sender, EventArgs e)
+        private void ModificarProducto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Metrica m = new Metrica();
+                m.Id = idMetrica;
+                m.Medida = cboMetrica.SelectedValue.ToString();
+
+                Producto p = new Producto();
+                p.Codigo = txtCodigoProducto.Text;
+                p.Nombre = txtNombreProducto.Text;
+                p.Proveedor = new Proveedor { Id = int.Parse(cboProveedor.SelectedValue.ToString()) };
+                p.Metrica = m;
+                if (p.Modificar())
+                {
+                    MenuAdministrador_Load(sender, e);
+                    MetroFramework.MetroMessageBox.Show(this, "Producto Modificado", "Modificar Producto");
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Error" + ex.Message, "Modificar Producto");
+            }
+        }
+
+        private void AgregarMesa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Mesa m = new Mesa();
+                m.Numero = int.Parse(txtNroMesa.Text);
+                m.CantSillas = int.Parse(txtCantSillasMesa.Text);
+                m.Estado = new Estado { Id = int.Parse(tglEstadoMesa.Text.Equals("Off") ? "2" : "1") };
+                if (m.Agregar())
+                {
+                    MenuAdministrador_Load(sender, e);
+                    MetroFramework.MetroMessageBox.Show(this, "Mesa Agregada", "Agregar Mesa");
+                    return;
+                }
+                MetroFramework.MetroMessageBox.Show(this, "La mesa número " + txtNroMesa.Text + " ya existe", "Agregar Mesa");
+
+            }
+            catch (Exception ex)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Error" + ex.Message, "Agregar Mesa");
+            }
+        }
+
+        private void ModificarMesa_Click(object sender, EventArgs e)
         {
             try
             {
@@ -208,21 +292,6 @@ namespace Vista.Administrador
             {
                 MetroFramework.MetroMessageBox.Show(this, "Error" + ex.Message, "Modificar Mesa");
             }
-        }
-
-        private void metroGrid5_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                Mesa m = new Mesa();
-                m.Numero = int.Parse(metroGrid5.Rows[e.RowIndex].Cells[0].Value.ToString()); ;
-                m.Buscar();
-                txtNroMesa.Text = m.Numero.ToString();
-                txtCantSillasMesa.Text = m.CantSillas.ToString();
-                tglEstadoMesa.Text = m.Estado.Nombre;
-                return;
-            }
-            MetroFramework.MetroMessageBox.Show(this, "Seleccione una fila correcta", "Seleccionar Mesa");
         }
     }
 }

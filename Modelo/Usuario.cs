@@ -59,23 +59,26 @@ namespace Modelo
         {
             try
             {
-                USUARIO usuario = new USUARIO();
-                usuario.ID = conexion.Entidad.Database.SqlQuery<int>("SELECT SEQ_USUARIOS_IDUSUARIO.NEXTVAL FROM dual").First();
-                usuario.RUN = Rut;
-                usuario.NOMBRE = Nombre;
-                usuario.APELLIDOS = Apellidos;
-                usuario.CORREO = Correo;
-                usuario.PASSWORD = Contrasena;
-                usuario.TELEFONO = Telefono;
-                usuario.DIRECCION = Direccion;
-                usuario.ROL_ID = Rol.Id;
-                usuario.CREATED_AT = DateTime.Now;
-                usuario.UPDATE_AT = DateTime.Now;
-                usuario.ESTADO = Estado.Id;
-                conexion.Entidad.USUARIO.Add(usuario);
-                conexion.Entidad.SaveChanges();
-
-                return true;
+                if (Buscar()==false)
+                {
+                    USUARIO usuario = new USUARIO();
+                    usuario.ID = conexion.Entidad.Database.SqlQuery<int>("SELECT SEQ_USUARIOS_IDUSUARIO.NEXTVAL FROM dual").First();
+                    usuario.RUN = Rut;
+                    usuario.NOMBRE = Nombre;
+                    usuario.APELLIDOS = Apellidos;
+                    usuario.CORREO = Correo;
+                    usuario.PASSWORD = Contrasena;
+                    usuario.TELEFONO = Telefono;
+                    usuario.DIRECCION = Direccion;
+                    usuario.ROL_ID = Rol.Id;
+                    usuario.CREATED_AT = DateTime.Now;
+                    usuario.UPDATE_AT = DateTime.Now;
+                    usuario.ESTADO = Estado.Id;
+                    conexion.Entidad.USUARIO.Add(usuario);
+                    conexion.Entidad.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch (Exception ex)
             {

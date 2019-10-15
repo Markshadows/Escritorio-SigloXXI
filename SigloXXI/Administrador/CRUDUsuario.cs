@@ -63,8 +63,10 @@ namespace Vista.Administrador
                 {
                     menuAdm.MenuAdministrador_Load(sender, e);
                     MetroFramework.MetroMessageBox.Show(this, "Usuario Agregado", "Agregar Usuario");
+                    return;
                 }
                 //limpiarFormulario();
+                MetroFramework.MetroMessageBox.Show(this, "El rut " + txtRut.Text + " ya existe", "Agregar Usuario");
 
             }
             catch (Exception ex)
