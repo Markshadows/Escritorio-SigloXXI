@@ -16,22 +16,20 @@ namespace Vista.Cocina
     public partial class ActualizarMenu : MetroFramework.Forms.MetroForm
     {
         Comandas comandita;
+        private Modelo.Menu menu;
 
         public ActualizarMenu(Comandas comanda)
         {
             InitializeComponent();
             comandita = comanda;
-            txtNombreMenu.Text = "Proando";
-            //IForm formInterface = this.Owner as IForm;
+            
         }
 
-        public ActualizarMenu()
+        public ActualizarMenu(Modelo.Menu menu)
         {
-            InitializeComponent();
+            this.menu = menu;
+            txtNombreMenu.Text = this.menu.Nombre;
         }
-
-        
-
 
         private void btnSubirImagen_Click(object sender, EventArgs e)
         {

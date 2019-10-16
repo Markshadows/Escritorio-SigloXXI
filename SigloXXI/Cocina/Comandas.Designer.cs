@@ -88,6 +88,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.lblVerID = new MetroFramework.Controls.MetroLabel();
+            this.metroButtonIngre = new MetroFramework.Controls.MetroButton();
             this.tabControlCocina.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenuPrincipal)).BeginInit();
@@ -128,7 +129,7 @@
             this.tabControlCocina.Controls.Add(this.metroTabPage4);
             this.tabControlCocina.Location = new System.Drawing.Point(23, 72);
             this.tabControlCocina.Name = "tabControlCocina";
-            this.tabControlCocina.SelectedIndex = 0;
+            this.tabControlCocina.SelectedIndex = 2;
             this.tabControlCocina.Size = new System.Drawing.Size(889, 297);
             this.tabControlCocina.TabIndex = 6;
             this.tabControlCocina.UseSelectable = true;
@@ -323,6 +324,7 @@
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.metroButtonIngre);
             this.metroTabPage3.Controls.Add(this.metroButton1);
             this.metroTabPage3.Controls.Add(this.dataGridView1);
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
@@ -360,7 +362,7 @@
             this.cANTDataGridViewTextBoxColumn,
             this.pRODUCTDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.vISTAINGREDIENTEBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(645, 216);
             this.dataGridView1.TabIndex = 2;
@@ -609,11 +611,21 @@
             this.lblVerID.Text = "lblVerID";
             this.lblVerID.Visible = false;
             // 
+            // metroButtonIngre
+            // 
+            this.metroButtonIngre.Location = new System.Drawing.Point(655, 4);
+            this.metroButtonIngre.Name = "metroButtonIngre";
+            this.metroButtonIngre.Size = new System.Drawing.Size(134, 43);
+            this.metroButtonIngre.TabIndex = 4;
+            this.metroButtonIngre.Text = "Agregar Ingrediente ";
+            this.metroButtonIngre.UseSelectable = true;
+            this.metroButtonIngre.Click += new System.EventHandler(this.metroButtonIngre_Click);
+            // 
             // Comandas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 378);
+            this.ClientSize = new System.Drawing.Size(942, 386);
             this.Controls.Add(this.lblVerID);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.lblTime);
@@ -701,5 +713,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nOMBREDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pRECIODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eSTADODataGridViewTextBoxColumn;
+        private MetroFramework.Controls.MetroButton metroButtonIngre;
     }
 }

@@ -145,12 +145,26 @@ namespace SigloXXI.Cocina
         {
             //Seleccionamos el id de la posicion del gridView
             int id = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString());
-            lblVerID.Text = id.ToString();
-            string menu = lblVerID.Text;
+            string nombre = metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString();
+            int precio = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString());
+            int estado = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString());
+
+            Modelo.Menu menu = new Modelo.Menu();
+            menu.Id = id;
+            menu.Nombre = nombre;
+            menu.Precio = precio;
+
             //Redireccionamos a la vista para crear el menu
-            new ActualizarMenu(this) { }.Show();
+            //new ActualizarMenu(this) { }.Show();
+            ActualizarMenu at = new ActualizarMenu(menu);
 
 
+        }
+
+        private void metroButtonIngre_Click(object sender, EventArgs e)
+        {
+            //Redireccionamos a la vista para crear el ingrediente
+            new FormularioIngrediente(this) { }.Show();
         }
     }
 }
