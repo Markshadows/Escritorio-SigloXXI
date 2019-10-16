@@ -42,8 +42,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.eSTADOTableAdapter = new Vista.DataSetCocinaTableAdapters.ESTADOTableAdapter();
             this.cboEstadoMenu = new MetroFramework.Controls.MetroComboBox();
+            this.btnSubirImagen = new MetroFramework.Controls.MetroButton();
+            this.pictureMenu = new System.Windows.Forms.PictureBox();
+            this.lblImagenSubida = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCocina)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -174,9 +179,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pictureMenu);
+            this.groupBox1.Controls.Add(this.btnSubirImagen);
             this.groupBox1.Location = new System.Drawing.Point(14, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(525, 250);
+            this.groupBox1.Size = new System.Drawing.Size(721, 250);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu de administracion de cocina";
@@ -198,11 +205,40 @@
             this.cboEstadoMenu.UseSelectable = true;
             this.cboEstadoMenu.ValueMember = "ID";
             // 
+            // btnSubirImagen
+            // 
+            this.btnSubirImagen.Location = new System.Drawing.Point(204, 179);
+            this.btnSubirImagen.Name = "btnSubirImagen";
+            this.btnSubirImagen.Size = new System.Drawing.Size(280, 23);
+            this.btnSubirImagen.TabIndex = 0;
+            this.btnSubirImagen.Text = "Subir Imagen";
+            this.btnSubirImagen.UseSelectable = true;
+            this.btnSubirImagen.Click += new System.EventHandler(this.btnSubirImagen_Click);
+            // 
+            // pictureMenu
+            // 
+            this.pictureMenu.Location = new System.Drawing.Point(491, 19);
+            this.pictureMenu.Name = "pictureMenu";
+            this.pictureMenu.Size = new System.Drawing.Size(224, 225);
+            this.pictureMenu.TabIndex = 1;
+            this.pictureMenu.TabStop = false;
+            // 
+            // lblImagenSubida
+            // 
+            this.lblImagenSubida.AutoSize = true;
+            this.lblImagenSubida.Location = new System.Drawing.Point(24, 353);
+            this.lblImagenSubida.Name = "lblImagenSubida";
+            this.lblImagenSubida.Size = new System.Drawing.Size(91, 19);
+            this.lblImagenSubida.TabIndex = 11;
+            this.lblImagenSubida.Text = "Imagensubida";
+            this.lblImagenSubida.Visible = false;
+            // 
             // FormularioMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 425);
+            this.ClientSize = new System.Drawing.Size(758, 425);
+            this.Controls.Add(this.lblImagenSubida);
             this.Controls.Add(this.btnLimpiarMenu);
             this.Controls.Add(this.btnGuardarMenu);
             this.Controls.Add(this.cboEstadoMenu);
@@ -218,6 +254,8 @@
             this.Load += new System.EventHandler(this.FormularioMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCocina)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +276,8 @@
         private System.Windows.Forms.BindingSource eSTADOBindingSource;
         private DataSetCocinaTableAdapters.ESTADOTableAdapter eSTADOTableAdapter;
         private MetroFramework.Controls.MetroComboBox cboEstadoMenu;
+        private MetroFramework.Controls.MetroButton btnSubirImagen;
+        private System.Windows.Forms.PictureBox pictureMenu;
+        private MetroFramework.Controls.MetroLabel lblImagenSubida;
     }
 }

@@ -43,6 +43,57 @@ namespace Modelo
             }
         }
 
+        public bool CambiarEstado(int id)
+        {
+            MENU menu = conexion.Entidad.MENU
+                    .First(p => p.ID == id);
+
+            int eliminar = Decimal.ToInt32(menu.ID);
+            if (String.IsNullOrEmpty(eliminar.ToString()))
+            {
+                //Significa que la cadena esta vacia.
+                return false;
+            }
+            else
+            {
+                //Significa que la cadena cotiene un valor.
+                if (menu.ESTADO == 1)
+                {
+                    //El estado es activo
+                    int updateMenu = conexion.Entidad.Database.ExecuteSqlCommand
+                        ("UPDATE menu SET estado = 2 WHERE id = " + menu.ID);
+                    conexion.Entidad.SaveChanges();                  
+                    return true;
+                }
+                if (menu.ESTADO == 2)
+                {
+                    //El estado esta inactivo
+                    int updateMenu = conexion.Entidad.Database.ExecuteSqlCommand
+                        ("UPDATE menu SET estado = 1 WHERE id = " + menu.ID);
+                    conexion.Entidad.SaveChanges();
+                    return true;
+                }
+
+                //Significa que no entro en ningun estado
+                return false;
+                
+            }
+
+            
+        }
+
+        public string TraerImagen(int id) {
+            //Creamos variable a retornar. Se inicializa vacia
+            string url = "";
+            //traemos el objeto menu segun su id
+            MENU menu = conexion.Entidad.MENU
+                    .First(p => p.ID == id);
+
+            url = menu.URL;
+
+            return url;
+        }
+
 
     }
 }

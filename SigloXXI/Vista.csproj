@@ -150,6 +150,12 @@
     <Compile Include="Cocina\FormularioMenu.Designer.cs">
       <DependentUpon>FormularioMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cocina\VerPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cocina\VerPedidos.Designer.cs">
+      <DependentUpon>VerPedidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSetCocina.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,6 +165,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetSigloXXI.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetVistas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetVistas.xsd</DependentUpon>
     </Compile>
     <Compile Include="Finanzas\FormularioFinanzas.cs">
       <SubType>Form</SubType>
@@ -223,6 +234,9 @@
     <EmbeddedResource Include="Cocina\FormularioMenu.resx">
       <DependentUpon>FormularioMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cocina\VerPedidos.resx">
+      <DependentUpon>VerPedidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Finanzas\FormularioFinanzas.resx">
       <DependentUpon>FormularioFinanzas.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +284,17 @@
     <None Include="DataSetSigloXXI.xss">
       <DependentUpon>DataSetSigloXXI.xsd</DependentUpon>
     </None>
+    <None Include="DataSetVistas.xsc">
+      <DependentUpon>DataSetVistas.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetVistas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetVistas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetVistas.xss">
+      <DependentUpon>DataSetVistas.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -309,6 +334,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Cocina\Menus\" />
     <Folder Include="Microsoft\Win32\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
