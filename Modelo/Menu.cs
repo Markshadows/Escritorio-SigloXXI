@@ -82,6 +82,58 @@ namespace Modelo
             
         }
 
+        public bool Modificar()
+        {
+            try
+            {
+                MENU menu = conexion.Entidad.MENU
+                    .First(m => m.ID == Id);
+                menu.ID = Id;
+                menu.NOMBRE = Nombre;
+                menu.PRECIO = Precio;
+                menu.URL = Url;
+                menu.ESTADO = Estado.Id;
+                conexion.Entidad.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
+        public MENU DevolverMenu(int id)
+        {
+            try
+            {
+
+                MENU menu = conexion.Entidad.MENU
+                    .First(m => m.ID == Id);
+                menu.ID = Id;
+                menu.NOMBRE = Nombre;
+                menu.PRECIO = Precio;
+                menu.URL = Url;
+                menu.ESTADO = Estado.Id;
+                conexion.Entidad.SaveChanges();
+                return menu;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         public string TraerImagen(int id) {
             //Creamos variable a retornar. Se inicializa vacia
             string url = "";

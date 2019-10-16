@@ -45,6 +45,10 @@
             this.btnVerImagenMenu = new MetroFramework.Controls.MetroButton();
             this.btnCrearMenu = new MetroFramework.Controls.MetroButton();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOMBREDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pRECIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eSTADODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vISTAMENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetVistas = new Vista.DataSetVistas();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
@@ -84,10 +88,6 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.lblVerID = new MetroFramework.Controls.MetroLabel();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nOMBREDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pRECIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eSTADODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlCocina.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenuPrincipal)).BeginInit();
@@ -257,6 +257,34 @@
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid2.Size = new System.Drawing.Size(455, 206);
             this.metroGrid2.TabIndex = 2;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // nOMBREDataGridViewTextBoxColumn1
+            // 
+            this.nOMBREDataGridViewTextBoxColumn1.DataPropertyName = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn1.Name = "nOMBREDataGridViewTextBoxColumn1";
+            this.nOMBREDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // pRECIODataGridViewTextBoxColumn
+            // 
+            this.pRECIODataGridViewTextBoxColumn.DataPropertyName = "PRECIO";
+            this.pRECIODataGridViewTextBoxColumn.HeaderText = "PRECIO";
+            this.pRECIODataGridViewTextBoxColumn.Name = "pRECIODataGridViewTextBoxColumn";
+            this.pRECIODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // eSTADODataGridViewTextBoxColumn
+            // 
+            this.eSTADODataGridViewTextBoxColumn.DataPropertyName = "ESTADO";
+            this.eSTADODataGridViewTextBoxColumn.HeaderText = "ESTADO";
+            this.eSTADODataGridViewTextBoxColumn.Name = "eSTADODataGridViewTextBoxColumn";
+            this.eSTADODataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // vISTAMENUBindingSource
             // 
@@ -580,34 +608,6 @@
             this.lblVerID.TabIndex = 10;
             this.lblVerID.Text = "lblVerID";
             this.lblVerID.Visible = false;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // nOMBREDataGridViewTextBoxColumn1
-            // 
-            this.nOMBREDataGridViewTextBoxColumn1.DataPropertyName = "NOMBRE";
-            this.nOMBREDataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
-            this.nOMBREDataGridViewTextBoxColumn1.Name = "nOMBREDataGridViewTextBoxColumn1";
-            this.nOMBREDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // pRECIODataGridViewTextBoxColumn
-            // 
-            this.pRECIODataGridViewTextBoxColumn.DataPropertyName = "PRECIO";
-            this.pRECIODataGridViewTextBoxColumn.HeaderText = "PRECIO";
-            this.pRECIODataGridViewTextBoxColumn.Name = "pRECIODataGridViewTextBoxColumn";
-            this.pRECIODataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // eSTADODataGridViewTextBoxColumn
-            // 
-            this.eSTADODataGridViewTextBoxColumn.DataPropertyName = "ESTADO";
-            this.eSTADODataGridViewTextBoxColumn.HeaderText = "ESTADO";
-            this.eSTADODataGridViewTextBoxColumn.Name = "eSTADODataGridViewTextBoxColumn";
-            this.eSTADODataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Comandas
             // 

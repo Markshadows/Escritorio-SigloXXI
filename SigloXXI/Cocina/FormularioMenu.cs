@@ -39,10 +39,7 @@ namespace Vista.Cocina
         {
             try
             {
-
-                
-
-
+               
                 Modelo.Menu menu = new Modelo.Menu();
                 menu.Nombre = txtNombreMenu.Text;
                 menu.Precio = int.Parse(txtPrecioMenu.Text);

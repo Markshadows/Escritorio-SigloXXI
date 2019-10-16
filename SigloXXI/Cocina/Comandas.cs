@@ -106,8 +106,8 @@ namespace SigloXXI.Cocina
 
         private void btnEliminarMenu_Click(object sender, EventArgs e)
         {
-            const string mensaje = "Estas segura(o) que quieres eliminar este menu?";
-            const string caption = "------ Confirmacion de eliminacion de menu ------";
+            const string mensaje = "Estas segura(o) que quieres modificar el estado de este menu?";
+            const string caption = "------ Confirmacion de cambiar estado de menu ------";
             var result = MessageBox.Show(mensaje, caption,
                                  MessageBoxButtons.YesNo,
                                  MessageBoxIcon.Question);
@@ -136,10 +136,19 @@ namespace SigloXXI.Cocina
             
         }
 
+        public void ChangeTextBoxText(string text)
+        {
+            lblVerID.Text = text;
+        }
+
         private void btnModificarMenu_Click(object sender, EventArgs e)
         {
             //Seleccionamos el id de la posicion del gridView
             int id = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString());
+            lblVerID.Text = id.ToString();
+            string menu = lblVerID.Text;
+            //Redireccionamos a la vista para crear el menu
+            new ActualizarMenu(this) { }.Show();
 
 
         }

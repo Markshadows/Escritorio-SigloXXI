@@ -132,6 +132,12 @@
     <Compile Include="Cliente\ClienteMesa.Designer.cs">
       <DependentUpon>ClienteMesa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cocina\ActualizarMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cocina\ActualizarMenu.Designer.cs">
+      <DependentUpon>ActualizarMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cocina\Comandas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cliente\ClienteMesa.resx">
       <DependentUpon>ClienteMesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cocina\ActualizarMenu.resx">
+      <DependentUpon>ActualizarMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cocina\Comandas.resx">
       <DependentUpon>Comandas.cs</DependentUpon>
