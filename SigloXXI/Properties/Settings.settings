@@ -29,5 +29,13 @@
     <Setting Name="Activo" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Siglo21CS" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;DATA SOURCE=mycm.cl:4921/xe;PASSWORD=siglo21;USER ID=SIGLO21&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;Oracle.ManagedDataAccess.Client&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">DATA SOURCE=mycm.cl:4921/xe;PASSWORD=siglo21;USER ID=SIGLO21</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

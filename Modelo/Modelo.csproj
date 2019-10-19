@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Contexto.cs" />
     <Compile Include="Estado.cs" />
+    <Compile Include="EstadoSolicitud.cs" />
     <Compile Include="Giro.cs" />
     <Compile Include="Mesa.cs" />
     <Compile Include="Metrica.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="Rol.cs" />
+    <Compile Include="Solicitud.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>

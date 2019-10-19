@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AUD_INGRESO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="ID_METRICA" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="date" Nullable="false" />
+          <Property Name="METRICA_ANTIGUA" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="METRICA_NUEVA" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="DIFERENCIA_METRICA" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="BOLETA">
           <Key>
             <PropertyRef Name="ID" />
@@ -542,28 +553,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="PROCEDURE_ELIMINAR_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SIGLO21">
+          <Parameter Name="P_ID" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="PROCEDURE_ENVIAR_SOLICITUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SIGLO21">
+          <Parameter Name="P_VARIOS_PRODUCTOS" Type="number" Mode="In" />
+          <Parameter Name="P_ID_PRODUCTO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_SOLICITUD" Type="number" Mode="In" />
+          <Parameter Name="P_ASUNTO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MENSAJE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RETORNO2" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="PROCEDURE_INGRESAR_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SIGLO21">
+          <Parameter Name="P_PESO" Type="number" Mode="In" />
+          <Parameter Name="P_MEDIDA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CODIGO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_PROVEEDOR" Type="number" Mode="In" />
+          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_BOLETA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SIGLO21">
+          <Parameter Name="IDE" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DCTO_STOCK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SIGLO21">
+          <Parameter Name="PEDIDO_ID_P" Type="number" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="BOLETA" EntityType="Self.BOLETA" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="BOLETA_WC" EntityType="Self.BOLETA_WC" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="ESTADO_BOLETA" EntityType="Self.ESTADO_BOLETA" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="ESTADO_SOLICITUD" EntityType="Self.ESTADO_SOLICITUD" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="GIRO" EntityType="Self.GIRO" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="INGREDIENTE" EntityType="Self.INGREDIENTE" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="INGRESO" EntityType="Self.INGRESO" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="MENU" EntityType="Self.MENU" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="MESA" EntityType="Self.MESA" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="METRICA" EntityType="Self.METRICA" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="MODO_PAGO" EntityType="Self.MODO_PAGO" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="PRODUCTO_SOLICITUD" EntityType="Self.PRODUCTO_SOLICITUD" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="RESERVA" EntityType="Self.RESERVA" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" Schema="SIGLOXXI" store:Type="Tables" />
-          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="SIGLOXXI" store:Type="Tables" />
+          <EntitySet Name="AUD_INGRESO" EntityType="Self.AUD_INGRESO" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="BOLETA" EntityType="Self.BOLETA" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="BOLETA_WC" EntityType="Self.BOLETA_WC" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="ESTADO_BOLETA" EntityType="Self.ESTADO_BOLETA" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="ESTADO_SOLICITUD" EntityType="Self.ESTADO_SOLICITUD" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="GIRO" EntityType="Self.GIRO" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="INGREDIENTE" EntityType="Self.INGREDIENTE" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="INGRESO" EntityType="Self.INGRESO" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="MENU" EntityType="Self.MENU" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="MESA" EntityType="Self.MESA" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="METRICA" EntityType="Self.METRICA" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="MODO_PAGO" EntityType="Self.MODO_PAGO" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO_SOLICITUD" EntityType="Self.PRODUCTO_SOLICITUD" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="RESERVA" EntityType="Self.RESERVA" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" Schema="SIGLO21" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="SIGLO21" store:Type="Tables" />
           <AssociationSet Name="BOLETA_MODO_PAGO_FK" Association="Self.BOLETA_MODO_PAGO_FK">
             <End Role="MODO_PAGO" EntitySet="MODO_PAGO" />
             <End Role="BOLETA" EntitySet="BOLETA" />
@@ -678,6 +716,17 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AUD_INGRESO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="ID_METRICA" Type="Byte" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="DateTime" Nullable="false" />
+          <Property Name="METRICA_ANTIGUA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="METRICA_NUEVA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIFERENCIA_METRICA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="BOLETA">
           <Key>
             <PropertyRef Name="ID" />
@@ -1270,6 +1319,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AUD_INGRESO" EntityType="Self.AUD_INGRESO" />
           <EntitySet Name="BOLETA" EntityType="Self.BOLETA" />
           <EntitySet Name="BOLETA_WC" EntityType="Self.BOLETA_WC" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
@@ -1399,6 +1449,32 @@
             <End Role="ROL" EntitySet="ROL" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
+          <FunctionImport Name="PROCEDURE_ELIMINAR_PRODUCTO">
+            <Parameter Name="P_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROCEDURE_ENVIAR_SOLICITUD">
+            <Parameter Name="P_VARIOS_PRODUCTOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_PRODUCTO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_SOLICITUD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ASUNTO" Mode="In" Type="String" />
+            <Parameter Name="P_MENSAJE" Mode="In" Type="String" />
+            <Parameter Name="P_RETORNO2" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PROCEDURE_INGRESAR_PRODUCTO">
+            <Parameter Name="P_PESO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MEDIDA" Mode="In" Type="String" />
+            <Parameter Name="P_CODIGO" Mode="In" Type="String" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PROVEEDOR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BOLETA">
+            <Parameter Name="IDE" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DCTO_STOCK">
+            <Parameter Name="PEDIDO_ID_P" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1406,6 +1482,18 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entidades">
+          <EntitySetMapping Name="AUD_INGRESO">
+            <EntityTypeMapping TypeName="Model.AUD_INGRESO">
+              <MappingFragment StoreEntitySet="AUD_INGRESO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_METRICA" ColumnName="ID_METRICA" />
+                <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+                <ScalarProperty Name="METRICA_ANTIGUA" ColumnName="METRICA_ANTIGUA" />
+                <ScalarProperty Name="METRICA_NUEVA" ColumnName="METRICA_NUEVA" />
+                <ScalarProperty Name="DIFERENCIA_METRICA" ColumnName="DIFERENCIA_METRICA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="BOLETA">
             <EntityTypeMapping TypeName="Model.BOLETA">
               <MappingFragment StoreEntitySet="BOLETA">
@@ -1628,6 +1716,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PROCEDURE_ELIMINAR_PRODUCTO" FunctionName="Model.Store.PROCEDURE_ELIMINAR_PRODUCTO" />
+          <FunctionImportMapping FunctionImportName="PROCEDURE_ENVIAR_SOLICITUD" FunctionName="Model.Store.PROCEDURE_ENVIAR_SOLICITUD" />
+          <FunctionImportMapping FunctionImportName="PROCEDURE_INGRESAR_PRODUCTO" FunctionName="Model.Store.PROCEDURE_INGRESAR_PRODUCTO" />
+          <FunctionImportMapping FunctionImportName="SP_BOLETA" FunctionName="Model.Store.SP_BOLETA" />
+          <FunctionImportMapping FunctionImportName="SP_DCTO_STOCK" FunctionName="Model.Store.SP_DCTO_STOCK" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

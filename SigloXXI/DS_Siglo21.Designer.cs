@@ -20,15 +20,19 @@ namespace Vista {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSetSigloXXI")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DS_Siglo21")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSetSigloXXI : global::System.Data.DataSet {
+    public partial class DS_Siglo21 : global::System.Data.DataSet {
+        
+        private AUD_INGRESODataTable tableAUD_INGRESO;
         
         private BOLETADataTable tableBOLETA;
         
         private BOLETA_WCDataTable tableBOLETA_WC;
         
         private CLIENTEDataTable tableCLIENTE;
+        
+        private DETALLE_INGRESODataTable tableDETALLE_INGRESO;
         
         private ESTADODataTable tableESTADO;
         
@@ -66,17 +70,19 @@ namespace Vista {
         
         private USUARIODataTable tableUSUARIO;
         
-        private DTUsuarioDataTable tableDTUsuario;
+        private DTProductoDataTable tableDTProducto;
         
         private DTMesaDataTable tableDTMesa;
         
-        private DTProductoDataTable tableDTProducto;
+        private DTUsuarioDataTable tableDTUsuario;
         
         private global::System.Data.DataRelation relationBOLETA_MODO_PAGO_FK;
         
         private global::System.Data.DataRelation relationESTADO_ID_BOLETA_FK1;
         
         private global::System.Data.DataRelation relationCLIENTE_ESTADO_FK;
+        
+        private global::System.Data.DataRelation relationINGRESO_DETALLE_INGRESO_FK;
         
         private global::System.Data.DataRelation relationINGREDIENTE_MENU_FK;
         
@@ -130,7 +136,7 @@ namespace Vista {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public DataSetSigloXXI() {
+        public DS_Siglo21() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -141,7 +147,7 @@ namespace Vista {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected DataSetSigloXXI(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DS_Siglo21(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -154,6 +160,9 @@ namespace Vista {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                if ((ds.Tables["AUD_INGRESO"] != null)) {
+                    base.Tables.Add(new AUD_INGRESODataTable(ds.Tables["AUD_INGRESO"]));
+                }
                 if ((ds.Tables["BOLETA"] != null)) {
                     base.Tables.Add(new BOLETADataTable(ds.Tables["BOLETA"]));
                 }
@@ -162,6 +171,9 @@ namespace Vista {
                 }
                 if ((ds.Tables["CLIENTE"] != null)) {
                     base.Tables.Add(new CLIENTEDataTable(ds.Tables["CLIENTE"]));
+                }
+                if ((ds.Tables["DETALLE_INGRESO"] != null)) {
+                    base.Tables.Add(new DETALLE_INGRESODataTable(ds.Tables["DETALLE_INGRESO"]));
                 }
                 if ((ds.Tables["ESTADO"] != null)) {
                     base.Tables.Add(new ESTADODataTable(ds.Tables["ESTADO"]));
@@ -217,14 +229,14 @@ namespace Vista {
                 if ((ds.Tables["USUARIO"] != null)) {
                     base.Tables.Add(new USUARIODataTable(ds.Tables["USUARIO"]));
                 }
-                if ((ds.Tables["DTUsuario"] != null)) {
-                    base.Tables.Add(new DTUsuarioDataTable(ds.Tables["DTUsuario"]));
+                if ((ds.Tables["DTProducto"] != null)) {
+                    base.Tables.Add(new DTProductoDataTable(ds.Tables["DTProducto"]));
                 }
                 if ((ds.Tables["DTMesa"] != null)) {
                     base.Tables.Add(new DTMesaDataTable(ds.Tables["DTMesa"]));
                 }
-                if ((ds.Tables["DTProducto"] != null)) {
-                    base.Tables.Add(new DTProductoDataTable(ds.Tables["DTProducto"]));
+                if ((ds.Tables["DTUsuario"] != null)) {
+                    base.Tables.Add(new DTUsuarioDataTable(ds.Tables["DTUsuario"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -242,6 +254,16 @@ namespace Vista {
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public AUD_INGRESODataTable AUD_INGRESO {
+            get {
+                return this.tableAUD_INGRESO;
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -271,6 +293,16 @@ namespace Vista {
         public CLIENTEDataTable CLIENTE {
             get {
                 return this.tableCLIENTE;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DETALLE_INGRESODataTable DETALLE_INGRESO {
+            get {
+                return this.tableDETALLE_INGRESO;
             }
         }
         
@@ -458,9 +490,9 @@ namespace Vista {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DTUsuarioDataTable DTUsuario {
+        public DTProductoDataTable DTProducto {
             get {
-                return this.tableDTUsuario;
+                return this.tableDTProducto;
             }
         }
         
@@ -478,9 +510,9 @@ namespace Vista {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DTProductoDataTable DTProducto {
+        public DTUsuarioDataTable DTUsuario {
             get {
-                return this.tableDTProducto;
+                return this.tableDTUsuario;
             }
         }
         
@@ -526,7 +558,7 @@ namespace Vista {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSetSigloXXI cln = ((DataSetSigloXXI)(base.Clone()));
+            DS_Siglo21 cln = ((DS_Siglo21)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -551,6 +583,9 @@ namespace Vista {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
+                if ((ds.Tables["AUD_INGRESO"] != null)) {
+                    base.Tables.Add(new AUD_INGRESODataTable(ds.Tables["AUD_INGRESO"]));
+                }
                 if ((ds.Tables["BOLETA"] != null)) {
                     base.Tables.Add(new BOLETADataTable(ds.Tables["BOLETA"]));
                 }
@@ -559,6 +594,9 @@ namespace Vista {
                 }
                 if ((ds.Tables["CLIENTE"] != null)) {
                     base.Tables.Add(new CLIENTEDataTable(ds.Tables["CLIENTE"]));
+                }
+                if ((ds.Tables["DETALLE_INGRESO"] != null)) {
+                    base.Tables.Add(new DETALLE_INGRESODataTable(ds.Tables["DETALLE_INGRESO"]));
                 }
                 if ((ds.Tables["ESTADO"] != null)) {
                     base.Tables.Add(new ESTADODataTable(ds.Tables["ESTADO"]));
@@ -614,14 +652,14 @@ namespace Vista {
                 if ((ds.Tables["USUARIO"] != null)) {
                     base.Tables.Add(new USUARIODataTable(ds.Tables["USUARIO"]));
                 }
-                if ((ds.Tables["DTUsuario"] != null)) {
-                    base.Tables.Add(new DTUsuarioDataTable(ds.Tables["DTUsuario"]));
+                if ((ds.Tables["DTProducto"] != null)) {
+                    base.Tables.Add(new DTProductoDataTable(ds.Tables["DTProducto"]));
                 }
                 if ((ds.Tables["DTMesa"] != null)) {
                     base.Tables.Add(new DTMesaDataTable(ds.Tables["DTMesa"]));
                 }
-                if ((ds.Tables["DTProducto"] != null)) {
-                    base.Tables.Add(new DTProductoDataTable(ds.Tables["DTProducto"]));
+                if ((ds.Tables["DTUsuario"] != null)) {
+                    base.Tables.Add(new DTUsuarioDataTable(ds.Tables["DTUsuario"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -656,6 +694,12 @@ namespace Vista {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
+            this.tableAUD_INGRESO = ((AUD_INGRESODataTable)(base.Tables["AUD_INGRESO"]));
+            if ((initTable == true)) {
+                if ((this.tableAUD_INGRESO != null)) {
+                    this.tableAUD_INGRESO.InitVars();
+                }
+            }
             this.tableBOLETA = ((BOLETADataTable)(base.Tables["BOLETA"]));
             if ((initTable == true)) {
                 if ((this.tableBOLETA != null)) {
@@ -672,6 +716,12 @@ namespace Vista {
             if ((initTable == true)) {
                 if ((this.tableCLIENTE != null)) {
                     this.tableCLIENTE.InitVars();
+                }
+            }
+            this.tableDETALLE_INGRESO = ((DETALLE_INGRESODataTable)(base.Tables["DETALLE_INGRESO"]));
+            if ((initTable == true)) {
+                if ((this.tableDETALLE_INGRESO != null)) {
+                    this.tableDETALLE_INGRESO.InitVars();
                 }
             }
             this.tableESTADO = ((ESTADODataTable)(base.Tables["ESTADO"]));
@@ -782,10 +832,10 @@ namespace Vista {
                     this.tableUSUARIO.InitVars();
                 }
             }
-            this.tableDTUsuario = ((DTUsuarioDataTable)(base.Tables["DTUsuario"]));
+            this.tableDTProducto = ((DTProductoDataTable)(base.Tables["DTProducto"]));
             if ((initTable == true)) {
-                if ((this.tableDTUsuario != null)) {
-                    this.tableDTUsuario.InitVars();
+                if ((this.tableDTProducto != null)) {
+                    this.tableDTProducto.InitVars();
                 }
             }
             this.tableDTMesa = ((DTMesaDataTable)(base.Tables["DTMesa"]));
@@ -794,15 +844,16 @@ namespace Vista {
                     this.tableDTMesa.InitVars();
                 }
             }
-            this.tableDTProducto = ((DTProductoDataTable)(base.Tables["DTProducto"]));
+            this.tableDTUsuario = ((DTUsuarioDataTable)(base.Tables["DTUsuario"]));
             if ((initTable == true)) {
-                if ((this.tableDTProducto != null)) {
-                    this.tableDTProducto.InitVars();
+                if ((this.tableDTUsuario != null)) {
+                    this.tableDTUsuario.InitVars();
                 }
             }
             this.relationBOLETA_MODO_PAGO_FK = this.Relations["BOLETA_MODO_PAGO_FK"];
             this.relationESTADO_ID_BOLETA_FK1 = this.Relations["ESTADO_ID_BOLETA_FK1"];
             this.relationCLIENTE_ESTADO_FK = this.Relations["CLIENTE_ESTADO_FK"];
+            this.relationINGRESO_DETALLE_INGRESO_FK = this.Relations["INGRESO_DETALLE_INGRESO_FK"];
             this.relationINGREDIENTE_MENU_FK = this.Relations["INGREDIENTE_MENU_FK"];
             this.relationINGREDIENTE_METRICA_FK = this.Relations["INGREDIENTE_METRICA_FK"];
             this.relationINGREDIENTE_PRODUCTO_FK = this.Relations["INGREDIENTE_PRODUCTO_FK"];
@@ -832,17 +883,21 @@ namespace Vista {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSetSigloXXI";
+            this.DataSetName = "DS_Siglo21";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSetSigloXXI.xsd";
+            this.Namespace = "http://tempuri.org/DS_Siglo21.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableAUD_INGRESO = new AUD_INGRESODataTable();
+            base.Tables.Add(this.tableAUD_INGRESO);
             this.tableBOLETA = new BOLETADataTable();
             base.Tables.Add(this.tableBOLETA);
             this.tableBOLETA_WC = new BOLETA_WCDataTable();
             base.Tables.Add(this.tableBOLETA_WC);
             this.tableCLIENTE = new CLIENTEDataTable();
             base.Tables.Add(this.tableCLIENTE);
+            this.tableDETALLE_INGRESO = new DETALLE_INGRESODataTable();
+            base.Tables.Add(this.tableDETALLE_INGRESO);
             this.tableESTADO = new ESTADODataTable();
             base.Tables.Add(this.tableESTADO);
             this.tableESTADO_BOLETA = new ESTADO_BOLETADataTable();
@@ -879,12 +934,12 @@ namespace Vista {
             base.Tables.Add(this.tableSOLICITUD);
             this.tableUSUARIO = new USUARIODataTable();
             base.Tables.Add(this.tableUSUARIO);
-            this.tableDTUsuario = new DTUsuarioDataTable();
-            base.Tables.Add(this.tableDTUsuario);
-            this.tableDTMesa = new DTMesaDataTable();
-            base.Tables.Add(this.tableDTMesa);
             this.tableDTProducto = new DTProductoDataTable();
             base.Tables.Add(this.tableDTProducto);
+            this.tableDTMesa = new DTMesaDataTable();
+            base.Tables.Add(this.tableDTMesa);
+            this.tableDTUsuario = new DTUsuarioDataTable();
+            base.Tables.Add(this.tableDTUsuario);
             this.relationBOLETA_MODO_PAGO_FK = new global::System.Data.DataRelation("BOLETA_MODO_PAGO_FK", new global::System.Data.DataColumn[] {
                         this.tableMODO_PAGO.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableBOLETA.MODO_PAGO_IDColumn}, false);
@@ -897,6 +952,10 @@ namespace Vista {
                         this.tableESTADO.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCLIENTE.ESTADOColumn}, false);
             this.Relations.Add(this.relationCLIENTE_ESTADO_FK);
+            this.relationINGRESO_DETALLE_INGRESO_FK = new global::System.Data.DataRelation("INGRESO_DETALLE_INGRESO_FK", new global::System.Data.DataColumn[] {
+                        this.tableINGRESO.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDETALLE_INGRESO.ID_INGRESOColumn}, false);
+            this.Relations.Add(this.relationINGRESO_DETALLE_INGRESO_FK);
             this.relationINGREDIENTE_MENU_FK = new global::System.Data.DataRelation("INGREDIENTE_MENU_FK", new global::System.Data.DataColumn[] {
                         this.tableMENU.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableINGREDIENTE.MENU_IDColumn}, false);
@@ -997,6 +1056,12 @@ namespace Vista {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeAUD_INGRESO() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeBOLETA() {
             return false;
         }
@@ -1010,6 +1075,12 @@ namespace Vista {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeCLIENTE() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeDETALLE_INGRESO() {
             return false;
         }
         
@@ -1123,7 +1194,7 @@ namespace Vista {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeDTUsuario() {
+        private bool ShouldSerializeDTProducto() {
             return false;
         }
         
@@ -1135,7 +1206,7 @@ namespace Vista {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeDTProducto() {
+        private bool ShouldSerializeDTUsuario() {
             return false;
         }
         
@@ -1150,7 +1221,7 @@ namespace Vista {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSetSigloXXI ds = new DataSetSigloXXI();
+            DS_Siglo21 ds = new DS_Siglo21();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -1195,6 +1266,9 @@ namespace Vista {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void AUD_INGRESORowChangeEventHandler(object sender, AUD_INGRESORowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void BOLETARowChangeEventHandler(object sender, BOLETARowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1202,6 +1276,9 @@ namespace Vista {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void CLIENTERowChangeEventHandler(object sender, CLIENTERowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void DETALLE_INGRESORowChangeEventHandler(object sender, DETALLE_INGRESORowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void ESTADORowChangeEventHandler(object sender, ESTADORowChangeEvent e);
@@ -1258,13 +1335,349 @@ namespace Vista {
         public delegate void USUARIORowChangeEventHandler(object sender, USUARIORowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void DTUsuarioRowChangeEventHandler(object sender, DTUsuarioRowChangeEvent e);
+        public delegate void DTProductoRowChangeEventHandler(object sender, DTProductoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void DTMesaRowChangeEventHandler(object sender, DTMesaRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void DTProductoRowChangeEventHandler(object sender, DTProductoRowChangeEvent e);
+        public delegate void DTUsuarioRowChangeEventHandler(object sender, DTUsuarioRowChangeEvent e);
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class AUD_INGRESODataTable : global::System.Data.TypedTableBase<AUD_INGRESORow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnID_METRICA;
+            
+            private global::System.Data.DataColumn columnFECHA_INGRESO;
+            
+            private global::System.Data.DataColumn columnMETRICA_ANTIGUA;
+            
+            private global::System.Data.DataColumn columnMETRICA_NUEVA;
+            
+            private global::System.Data.DataColumn columnDIFERENCIA_METRICA;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AUD_INGRESODataTable() {
+                this.TableName = "AUD_INGRESO";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal AUD_INGRESODataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected AUD_INGRESODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ID_METRICAColumn {
+                get {
+                    return this.columnID_METRICA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FECHA_INGRESOColumn {
+                get {
+                    return this.columnFECHA_INGRESO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn METRICA_ANTIGUAColumn {
+                get {
+                    return this.columnMETRICA_ANTIGUA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn METRICA_NUEVAColumn {
+                get {
+                    return this.columnMETRICA_NUEVA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DIFERENCIA_METRICAColumn {
+                get {
+                    return this.columnDIFERENCIA_METRICA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AUD_INGRESORow this[int index] {
+                get {
+                    return ((AUD_INGRESORow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event AUD_INGRESORowChangeEventHandler AUD_INGRESORowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event AUD_INGRESORowChangeEventHandler AUD_INGRESORowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event AUD_INGRESORowChangeEventHandler AUD_INGRESORowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event AUD_INGRESORowChangeEventHandler AUD_INGRESORowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddAUD_INGRESORow(AUD_INGRESORow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AUD_INGRESORow AddAUD_INGRESORow(short ID, short ID_METRICA, System.DateTime FECHA_INGRESO, string METRICA_ANTIGUA, string METRICA_NUEVA, string DIFERENCIA_METRICA) {
+                AUD_INGRESORow rowAUD_INGRESORow = ((AUD_INGRESORow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        ID_METRICA,
+                        FECHA_INGRESO,
+                        METRICA_ANTIGUA,
+                        METRICA_NUEVA,
+                        DIFERENCIA_METRICA};
+                rowAUD_INGRESORow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowAUD_INGRESORow);
+                return rowAUD_INGRESORow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AUD_INGRESORow FindByID(short ID) {
+                return ((AUD_INGRESORow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                AUD_INGRESODataTable cln = ((AUD_INGRESODataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new AUD_INGRESODataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnID_METRICA = base.Columns["ID_METRICA"];
+                this.columnFECHA_INGRESO = base.Columns["FECHA_INGRESO"];
+                this.columnMETRICA_ANTIGUA = base.Columns["METRICA_ANTIGUA"];
+                this.columnMETRICA_NUEVA = base.Columns["METRICA_NUEVA"];
+                this.columnDIFERENCIA_METRICA = base.Columns["DIFERENCIA_METRICA"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnID_METRICA = new global::System.Data.DataColumn("ID_METRICA", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_METRICA);
+                this.columnFECHA_INGRESO = new global::System.Data.DataColumn("FECHA_INGRESO", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFECHA_INGRESO);
+                this.columnMETRICA_ANTIGUA = new global::System.Data.DataColumn("METRICA_ANTIGUA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMETRICA_ANTIGUA);
+                this.columnMETRICA_NUEVA = new global::System.Data.DataColumn("METRICA_NUEVA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMETRICA_NUEVA);
+                this.columnDIFERENCIA_METRICA = new global::System.Data.DataColumn("DIFERENCIA_METRICA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDIFERENCIA_METRICA);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
+                this.columnID_METRICA.AllowDBNull = false;
+                this.columnFECHA_INGRESO.AllowDBNull = false;
+                this.columnMETRICA_ANTIGUA.AllowDBNull = false;
+                this.columnMETRICA_ANTIGUA.MaxLength = 255;
+                this.columnMETRICA_NUEVA.AllowDBNull = false;
+                this.columnMETRICA_NUEVA.MaxLength = 255;
+                this.columnDIFERENCIA_METRICA.AllowDBNull = false;
+                this.columnDIFERENCIA_METRICA.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AUD_INGRESORow NewAUD_INGRESORow() {
+                return ((AUD_INGRESORow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new AUD_INGRESORow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(AUD_INGRESORow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.AUD_INGRESORowChanged != null)) {
+                    this.AUD_INGRESORowChanged(this, new AUD_INGRESORowChangeEvent(((AUD_INGRESORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.AUD_INGRESORowChanging != null)) {
+                    this.AUD_INGRESORowChanging(this, new AUD_INGRESORowChangeEvent(((AUD_INGRESORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.AUD_INGRESORowDeleted != null)) {
+                    this.AUD_INGRESORowDeleted(this, new AUD_INGRESORowChangeEvent(((AUD_INGRESORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.AUD_INGRESORowDeleting != null)) {
+                    this.AUD_INGRESORowDeleting(this, new AUD_INGRESORowChangeEvent(((AUD_INGRESORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveAUD_INGRESORow(AUD_INGRESORow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS_Siglo21 ds = new DS_Siglo21();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "AUD_INGRESODataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1531,7 +1944,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1881,7 +2294,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2189,7 +2602,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2208,6 +2621,327 @@ namespace Vista {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CLIENTEDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DETALLE_INGRESODataTable : global::System.Data.TypedTableBase<DETALLE_INGRESORow> {
+            
+            private global::System.Data.DataColumn columnID_DETALLE_INGRESO;
+            
+            private global::System.Data.DataColumn columnPESO_ANTIGUO;
+            
+            private global::System.Data.DataColumn columnPESO_NUEVO;
+            
+            private global::System.Data.DataColumn columnPESO_INGRESADO;
+            
+            private global::System.Data.DataColumn columnID_INGRESO;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DETALLE_INGRESODataTable() {
+                this.TableName = "DETALLE_INGRESO";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal DETALLE_INGRESODataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected DETALLE_INGRESODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ID_DETALLE_INGRESOColumn {
+                get {
+                    return this.columnID_DETALLE_INGRESO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PESO_ANTIGUOColumn {
+                get {
+                    return this.columnPESO_ANTIGUO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PESO_NUEVOColumn {
+                get {
+                    return this.columnPESO_NUEVO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PESO_INGRESADOColumn {
+                get {
+                    return this.columnPESO_INGRESADO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ID_INGRESOColumn {
+                get {
+                    return this.columnID_INGRESO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DETALLE_INGRESORow this[int index] {
+                get {
+                    return ((DETALLE_INGRESORow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DETALLE_INGRESORowChangeEventHandler DETALLE_INGRESORowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DETALLE_INGRESORowChangeEventHandler DETALLE_INGRESORowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DETALLE_INGRESORowChangeEventHandler DETALLE_INGRESORowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DETALLE_INGRESORowChangeEventHandler DETALLE_INGRESORowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddDETALLE_INGRESORow(DETALLE_INGRESORow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DETALLE_INGRESORow AddDETALLE_INGRESORow(decimal ID_DETALLE_INGRESO, decimal PESO_ANTIGUO, decimal PESO_NUEVO, decimal PESO_INGRESADO, INGRESORow parentINGRESORowByINGRESO_DETALLE_INGRESO_FK) {
+                DETALLE_INGRESORow rowDETALLE_INGRESORow = ((DETALLE_INGRESORow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID_DETALLE_INGRESO,
+                        PESO_ANTIGUO,
+                        PESO_NUEVO,
+                        PESO_INGRESADO,
+                        null};
+                if ((parentINGRESORowByINGRESO_DETALLE_INGRESO_FK != null)) {
+                    columnValuesArray[4] = parentINGRESORowByINGRESO_DETALLE_INGRESO_FK[0];
+                }
+                rowDETALLE_INGRESORow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDETALLE_INGRESORow);
+                return rowDETALLE_INGRESORow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DETALLE_INGRESORow FindByID_DETALLE_INGRESO(decimal ID_DETALLE_INGRESO) {
+                return ((DETALLE_INGRESORow)(this.Rows.Find(new object[] {
+                            ID_DETALLE_INGRESO})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DETALLE_INGRESODataTable cln = ((DETALLE_INGRESODataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DETALLE_INGRESODataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnID_DETALLE_INGRESO = base.Columns["ID_DETALLE_INGRESO"];
+                this.columnPESO_ANTIGUO = base.Columns["PESO_ANTIGUO"];
+                this.columnPESO_NUEVO = base.Columns["PESO_NUEVO"];
+                this.columnPESO_INGRESADO = base.Columns["PESO_INGRESADO"];
+                this.columnID_INGRESO = base.Columns["ID_INGRESO"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnID_DETALLE_INGRESO = new global::System.Data.DataColumn("ID_DETALLE_INGRESO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_DETALLE_INGRESO);
+                this.columnPESO_ANTIGUO = new global::System.Data.DataColumn("PESO_ANTIGUO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPESO_ANTIGUO);
+                this.columnPESO_NUEVO = new global::System.Data.DataColumn("PESO_NUEVO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPESO_NUEVO);
+                this.columnPESO_INGRESADO = new global::System.Data.DataColumn("PESO_INGRESADO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPESO_INGRESADO);
+                this.columnID_INGRESO = new global::System.Data.DataColumn("ID_INGRESO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_INGRESO);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID_DETALLE_INGRESO}, true));
+                this.columnID_DETALLE_INGRESO.AllowDBNull = false;
+                this.columnID_DETALLE_INGRESO.Unique = true;
+                this.columnPESO_ANTIGUO.AllowDBNull = false;
+                this.columnPESO_NUEVO.AllowDBNull = false;
+                this.columnPESO_INGRESADO.AllowDBNull = false;
+                this.columnID_INGRESO.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DETALLE_INGRESORow NewDETALLE_INGRESORow() {
+                return ((DETALLE_INGRESORow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DETALLE_INGRESORow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DETALLE_INGRESORow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DETALLE_INGRESORowChanged != null)) {
+                    this.DETALLE_INGRESORowChanged(this, new DETALLE_INGRESORowChangeEvent(((DETALLE_INGRESORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DETALLE_INGRESORowChanging != null)) {
+                    this.DETALLE_INGRESORowChanging(this, new DETALLE_INGRESORowChangeEvent(((DETALLE_INGRESORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DETALLE_INGRESORowDeleted != null)) {
+                    this.DETALLE_INGRESORowDeleted(this, new DETALLE_INGRESORowChangeEvent(((DETALLE_INGRESORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DETALLE_INGRESORowDeleting != null)) {
+                    this.DETALLE_INGRESORowDeleting(this, new DETALLE_INGRESORowChangeEvent(((DETALLE_INGRESORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveDETALLE_INGRESORow(DETALLE_INGRESORow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS_Siglo21 ds = new DS_Siglo21();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DETALLE_INGRESODataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2463,7 +3197,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2736,7 +3470,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3010,7 +3744,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3284,7 +4018,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3627,7 +4361,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3936,7 +4670,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4259,7 +4993,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4565,7 +5299,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4854,7 +5588,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -5128,7 +5862,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -5473,7 +6207,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -5799,7 +6533,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -6093,7 +6827,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -6483,7 +7217,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -6841,7 +7575,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -7115,7 +7849,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -7423,7 +8157,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -7857,7 +8591,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -7876,6 +8610,597 @@ namespace Vista {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "USUARIODataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DTProductoDataTable : global::System.Data.TypedTableBase<DTProductoRow> {
+            
+            private global::System.Data.DataColumn columnCODIGO;
+            
+            private global::System.Data.DataColumn columnNOMBRE;
+            
+            private global::System.Data.DataColumn columnPROVEEDOR;
+            
+            private global::System.Data.DataColumn columnPESO;
+            
+            private global::System.Data.DataColumn columnMEDIDA;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DTProductoDataTable() {
+                this.TableName = "DTProducto";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal DTProductoDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected DTProductoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CODIGOColumn {
+                get {
+                    return this.columnCODIGO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NOMBREColumn {
+                get {
+                    return this.columnNOMBRE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PROVEEDORColumn {
+                get {
+                    return this.columnPROVEEDOR;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PESOColumn {
+                get {
+                    return this.columnPESO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MEDIDAColumn {
+                get {
+                    return this.columnMEDIDA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DTProductoRow this[int index] {
+                get {
+                    return ((DTProductoRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DTProductoRowChangeEventHandler DTProductoRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DTProductoRowChangeEventHandler DTProductoRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DTProductoRowChangeEventHandler DTProductoRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DTProductoRowChangeEventHandler DTProductoRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddDTProductoRow(DTProductoRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DTProductoRow AddDTProductoRow(string CODIGO, string NOMBRE, string PROVEEDOR, decimal PESO, string MEDIDA) {
+                DTProductoRow rowDTProductoRow = ((DTProductoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        CODIGO,
+                        NOMBRE,
+                        PROVEEDOR,
+                        PESO,
+                        MEDIDA};
+                rowDTProductoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDTProductoRow);
+                return rowDTProductoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DTProductoDataTable cln = ((DTProductoDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DTProductoDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnCODIGO = base.Columns["CODIGO"];
+                this.columnNOMBRE = base.Columns["NOMBRE"];
+                this.columnPROVEEDOR = base.Columns["PROVEEDOR"];
+                this.columnPESO = base.Columns["PESO"];
+                this.columnMEDIDA = base.Columns["MEDIDA"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnCODIGO = new global::System.Data.DataColumn("CODIGO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCODIGO);
+                this.columnNOMBRE = new global::System.Data.DataColumn("NOMBRE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE);
+                this.columnPROVEEDOR = new global::System.Data.DataColumn("PROVEEDOR", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPROVEEDOR);
+                this.columnPESO = new global::System.Data.DataColumn("PESO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPESO);
+                this.columnMEDIDA = new global::System.Data.DataColumn("MEDIDA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMEDIDA);
+                this.columnCODIGO.AllowDBNull = false;
+                this.columnCODIGO.MaxLength = 255;
+                this.columnNOMBRE.AllowDBNull = false;
+                this.columnNOMBRE.MaxLength = 255;
+                this.columnPROVEEDOR.AllowDBNull = false;
+                this.columnPROVEEDOR.MaxLength = 255;
+                this.columnPESO.AllowDBNull = false;
+                this.columnMEDIDA.AllowDBNull = false;
+                this.columnMEDIDA.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DTProductoRow NewDTProductoRow() {
+                return ((DTProductoRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DTProductoRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DTProductoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DTProductoRowChanged != null)) {
+                    this.DTProductoRowChanged(this, new DTProductoRowChangeEvent(((DTProductoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DTProductoRowChanging != null)) {
+                    this.DTProductoRowChanging(this, new DTProductoRowChangeEvent(((DTProductoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DTProductoRowDeleted != null)) {
+                    this.DTProductoRowDeleted(this, new DTProductoRowChangeEvent(((DTProductoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DTProductoRowDeleting != null)) {
+                    this.DTProductoRowDeleting(this, new DTProductoRowChangeEvent(((DTProductoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveDTProductoRow(DTProductoRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS_Siglo21 ds = new DS_Siglo21();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DTProductoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DTMesaDataTable : global::System.Data.TypedTableBase<DTMesaRow> {
+            
+            private global::System.Data.DataColumn columnNUMERO;
+            
+            private global::System.Data.DataColumn columnSILLAS;
+            
+            private global::System.Data.DataColumn columnESTADO;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DTMesaDataTable() {
+                this.TableName = "DTMesa";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal DTMesaDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected DTMesaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NUMEROColumn {
+                get {
+                    return this.columnNUMERO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SILLASColumn {
+                get {
+                    return this.columnSILLAS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ESTADOColumn {
+                get {
+                    return this.columnESTADO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DTMesaRow this[int index] {
+                get {
+                    return ((DTMesaRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DTMesaRowChangeEventHandler DTMesaRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DTMesaRowChangeEventHandler DTMesaRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DTMesaRowChangeEventHandler DTMesaRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event DTMesaRowChangeEventHandler DTMesaRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddDTMesaRow(DTMesaRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DTMesaRow AddDTMesaRow(decimal NUMERO, decimal SILLAS, string ESTADO) {
+                DTMesaRow rowDTMesaRow = ((DTMesaRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NUMERO,
+                        SILLAS,
+                        ESTADO};
+                rowDTMesaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDTMesaRow);
+                return rowDTMesaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DTMesaDataTable cln = ((DTMesaDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DTMesaDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnNUMERO = base.Columns["NUMERO"];
+                this.columnSILLAS = base.Columns["SILLAS"];
+                this.columnESTADO = base.Columns["ESTADO"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnNUMERO = new global::System.Data.DataColumn("NUMERO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNUMERO);
+                this.columnSILLAS = new global::System.Data.DataColumn("SILLAS", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSILLAS);
+                this.columnESTADO = new global::System.Data.DataColumn("ESTADO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnESTADO);
+                this.columnNUMERO.AllowDBNull = false;
+                this.columnSILLAS.AllowDBNull = false;
+                this.columnESTADO.AllowDBNull = false;
+                this.columnESTADO.MaxLength = 10;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DTMesaRow NewDTMesaRow() {
+                return ((DTMesaRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DTMesaRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DTMesaRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DTMesaRowChanged != null)) {
+                    this.DTMesaRowChanged(this, new DTMesaRowChangeEvent(((DTMesaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DTMesaRowChanging != null)) {
+                    this.DTMesaRowChanging(this, new DTMesaRowChangeEvent(((DTMesaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DTMesaRowDeleted != null)) {
+                    this.DTMesaRowDeleted(this, new DTMesaRowChangeEvent(((DTMesaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DTMesaRowDeleting != null)) {
+                    this.DTMesaRowDeleting(this, new DTMesaRowChangeEvent(((DTMesaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveDTMesaRow(DTMesaRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS_Siglo21 ds = new DS_Siglo21();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DTMesaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -8216,7 +9541,7 @@ namespace Vista {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
+                DS_Siglo21 ds = new DS_Siglo21();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -8276,593 +9601,83 @@ namespace Vista {
         }
         
         /// <summary>
-        ///Represents the strongly named DataTable class.
+        ///Represents strongly named DataRow class.
         ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DTMesaDataTable : global::System.Data.TypedTableBase<DTMesaRow> {
+        public partial class AUD_INGRESORow : global::System.Data.DataRow {
             
-            private global::System.Data.DataColumn columnNUMERO;
-            
-            private global::System.Data.DataColumn columnSILLAS;
-            
-            private global::System.Data.DataColumn columnESTADO;
+            private AUD_INGRESODataTable tableAUD_INGRESO;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTMesaDataTable() {
-                this.TableName = "DTMesa";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
+            internal AUD_INGRESORow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableAUD_INGRESO = ((AUD_INGRESODataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal DTMesaDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected DTMesaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn NUMEROColumn {
+            public short ID {
                 get {
-                    return this.columnNUMERO;
+                    return ((short)(this[this.tableAUD_INGRESO.IDColumn]));
+                }
+                set {
+                    this[this.tableAUD_INGRESO.IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn SILLASColumn {
+            public short ID_METRICA {
                 get {
-                    return this.columnSILLAS;
+                    return ((short)(this[this.tableAUD_INGRESO.ID_METRICAColumn]));
+                }
+                set {
+                    this[this.tableAUD_INGRESO.ID_METRICAColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ESTADOColumn {
+            public System.DateTime FECHA_INGRESO {
                 get {
-                    return this.columnESTADO;
+                    return ((global::System.DateTime)(this[this.tableAUD_INGRESO.FECHA_INGRESOColumn]));
+                }
+                set {
+                    this[this.tableAUD_INGRESO.FECHA_INGRESOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
+            public string METRICA_ANTIGUA {
                 get {
-                    return this.Rows.Count;
+                    return ((string)(this[this.tableAUD_INGRESO.METRICA_ANTIGUAColumn]));
+                }
+                set {
+                    this[this.tableAUD_INGRESO.METRICA_ANTIGUAColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTMesaRow this[int index] {
+            public string METRICA_NUEVA {
                 get {
-                    return ((DTMesaRow)(this.Rows[index]));
+                    return ((string)(this[this.tableAUD_INGRESO.METRICA_NUEVAColumn]));
                 }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event DTMesaRowChangeEventHandler DTMesaRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event DTMesaRowChangeEventHandler DTMesaRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event DTMesaRowChangeEventHandler DTMesaRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event DTMesaRowChangeEventHandler DTMesaRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddDTMesaRow(DTMesaRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTMesaRow AddDTMesaRow(decimal NUMERO, decimal SILLAS, string ESTADO) {
-                DTMesaRow rowDTMesaRow = ((DTMesaRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        NUMERO,
-                        SILLAS,
-                        ESTADO};
-                rowDTMesaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDTMesaRow);
-                return rowDTMesaRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DTMesaDataTable cln = ((DTMesaDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DTMesaDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal void InitVars() {
-                this.columnNUMERO = base.Columns["NUMERO"];
-                this.columnSILLAS = base.Columns["SILLAS"];
-                this.columnESTADO = base.Columns["ESTADO"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            private void InitClass() {
-                this.columnNUMERO = new global::System.Data.DataColumn("NUMERO", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNUMERO);
-                this.columnSILLAS = new global::System.Data.DataColumn("SILLAS", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSILLAS);
-                this.columnESTADO = new global::System.Data.DataColumn("ESTADO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnESTADO);
-                this.columnNUMERO.AllowDBNull = false;
-                this.columnSILLAS.AllowDBNull = false;
-                this.columnESTADO.AllowDBNull = false;
-                this.columnESTADO.MaxLength = 10;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTMesaRow NewDTMesaRow() {
-                return ((DTMesaRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DTMesaRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DTMesaRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DTMesaRowChanged != null)) {
-                    this.DTMesaRowChanged(this, new DTMesaRowChangeEvent(((DTMesaRow)(e.Row)), e.Action));
+                set {
+                    this[this.tableAUD_INGRESO.METRICA_NUEVAColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DTMesaRowChanging != null)) {
-                    this.DTMesaRowChanging(this, new DTMesaRowChangeEvent(((DTMesaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DTMesaRowDeleted != null)) {
-                    this.DTMesaRowDeleted(this, new DTMesaRowChangeEvent(((DTMesaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DTMesaRowDeleting != null)) {
-                    this.DTMesaRowDeleting(this, new DTMesaRowChangeEvent(((DTMesaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveDTMesaRow(DTMesaRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DTMesaDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DTProductoDataTable : global::System.Data.TypedTableBase<DTProductoRow> {
-            
-            private global::System.Data.DataColumn columnCODIGO;
-            
-            private global::System.Data.DataColumn columnNOMBRE;
-            
-            private global::System.Data.DataColumn columnPROVEEDOR;
-            
-            private global::System.Data.DataColumn columnPESO;
-            
-            private global::System.Data.DataColumn columnMEDIDA;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTProductoDataTable() {
-                this.TableName = "DTProducto";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal DTProductoDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected DTProductoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn CODIGOColumn {
+            public string DIFERENCIA_METRICA {
                 get {
-                    return this.columnCODIGO;
+                    return ((string)(this[this.tableAUD_INGRESO.DIFERENCIA_METRICAColumn]));
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn NOMBREColumn {
-                get {
-                    return this.columnNOMBRE;
+                set {
+                    this[this.tableAUD_INGRESO.DIFERENCIA_METRICAColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn PROVEEDORColumn {
-                get {
-                    return this.columnPROVEEDOR;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn PESOColumn {
-                get {
-                    return this.columnPESO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MEDIDAColumn {
-                get {
-                    return this.columnMEDIDA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTProductoRow this[int index] {
-                get {
-                    return ((DTProductoRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event DTProductoRowChangeEventHandler DTProductoRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event DTProductoRowChangeEventHandler DTProductoRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event DTProductoRowChangeEventHandler DTProductoRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event DTProductoRowChangeEventHandler DTProductoRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddDTProductoRow(DTProductoRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTProductoRow AddDTProductoRow(string CODIGO, string NOMBRE, string PROVEEDOR, decimal PESO, string MEDIDA) {
-                DTProductoRow rowDTProductoRow = ((DTProductoRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        CODIGO,
-                        NOMBRE,
-                        PROVEEDOR,
-                        PESO,
-                        MEDIDA};
-                rowDTProductoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDTProductoRow);
-                return rowDTProductoRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DTProductoDataTable cln = ((DTProductoDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DTProductoDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal void InitVars() {
-                this.columnCODIGO = base.Columns["CODIGO"];
-                this.columnNOMBRE = base.Columns["NOMBRE"];
-                this.columnPROVEEDOR = base.Columns["PROVEEDOR"];
-                this.columnPESO = base.Columns["PESO"];
-                this.columnMEDIDA = base.Columns["MEDIDA"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            private void InitClass() {
-                this.columnCODIGO = new global::System.Data.DataColumn("CODIGO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCODIGO);
-                this.columnNOMBRE = new global::System.Data.DataColumn("NOMBRE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOMBRE);
-                this.columnPROVEEDOR = new global::System.Data.DataColumn("PROVEEDOR", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPROVEEDOR);
-                this.columnPESO = new global::System.Data.DataColumn("PESO", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPESO);
-                this.columnMEDIDA = new global::System.Data.DataColumn("MEDIDA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMEDIDA);
-                this.columnCODIGO.AllowDBNull = false;
-                this.columnCODIGO.MaxLength = 255;
-                this.columnNOMBRE.AllowDBNull = false;
-                this.columnNOMBRE.MaxLength = 255;
-                this.columnPROVEEDOR.AllowDBNull = false;
-                this.columnPROVEEDOR.MaxLength = 255;
-                this.columnPESO.AllowDBNull = false;
-                this.columnMEDIDA.AllowDBNull = false;
-                this.columnMEDIDA.MaxLength = 255;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTProductoRow NewDTProductoRow() {
-                return ((DTProductoRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DTProductoRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DTProductoRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DTProductoRowChanged != null)) {
-                    this.DTProductoRowChanged(this, new DTProductoRowChangeEvent(((DTProductoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DTProductoRowChanging != null)) {
-                    this.DTProductoRowChanging(this, new DTProductoRowChangeEvent(((DTProductoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DTProductoRowDeleted != null)) {
-                    this.DTProductoRowDeleted(this, new DTProductoRowChangeEvent(((DTProductoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DTProductoRowDeleting != null)) {
-                    this.DTProductoRowDeleting(this, new DTProductoRowChangeEvent(((DTProductoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveDTProductoRow(DTProductoRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetSigloXXI ds = new DataSetSigloXXI();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DTProductoDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
             }
         }
         
@@ -9138,6 +9953,87 @@ namespace Vista {
                 }
                 else {
                     return ((RESERVARow[])(base.GetChildRows(this.Table.ChildRelations["RESERVA_CLIENTE_FK"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DETALLE_INGRESORow : global::System.Data.DataRow {
+            
+            private DETALLE_INGRESODataTable tableDETALLE_INGRESO;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal DETALLE_INGRESORow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDETALLE_INGRESO = ((DETALLE_INGRESODataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal ID_DETALLE_INGRESO {
+                get {
+                    return ((decimal)(this[this.tableDETALLE_INGRESO.ID_DETALLE_INGRESOColumn]));
+                }
+                set {
+                    this[this.tableDETALLE_INGRESO.ID_DETALLE_INGRESOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal PESO_ANTIGUO {
+                get {
+                    return ((decimal)(this[this.tableDETALLE_INGRESO.PESO_ANTIGUOColumn]));
+                }
+                set {
+                    this[this.tableDETALLE_INGRESO.PESO_ANTIGUOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal PESO_NUEVO {
+                get {
+                    return ((decimal)(this[this.tableDETALLE_INGRESO.PESO_NUEVOColumn]));
+                }
+                set {
+                    this[this.tableDETALLE_INGRESO.PESO_NUEVOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal PESO_INGRESADO {
+                get {
+                    return ((decimal)(this[this.tableDETALLE_INGRESO.PESO_INGRESADOColumn]));
+                }
+                set {
+                    this[this.tableDETALLE_INGRESO.PESO_INGRESADOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal ID_INGRESO {
+                get {
+                    return ((decimal)(this[this.tableDETALLE_INGRESO.ID_INGRESOColumn]));
+                }
+                set {
+                    this[this.tableDETALLE_INGRESO.ID_INGRESOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public INGRESORow INGRESORow {
+                get {
+                    return ((INGRESORow)(this.GetParentRow(this.Table.ParentRelations["INGRESO_DETALLE_INGRESO_FK"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["INGRESO_DETALLE_INGRESO_FK"]);
                 }
             }
         }
@@ -9608,6 +10504,17 @@ namespace Vista {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["INGRESO_USUARIO_FK"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DETALLE_INGRESORow[] GetDETALLE_INGRESORows() {
+                if ((this.Table.ChildRelations["INGRESO_DETALLE_INGRESO_FK"] == null)) {
+                    return new DETALLE_INGRESORow[0];
+                }
+                else {
+                    return ((DETALLE_INGRESORow[])(base.GetChildRows(this.Table.ChildRelations["INGRESO_DETALLE_INGRESO_FK"])));
                 }
             }
         }
@@ -10868,6 +11775,124 @@ namespace Vista {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class DTProductoRow : global::System.Data.DataRow {
+            
+            private DTProductoDataTable tableDTProducto;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal DTProductoRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDTProducto = ((DTProductoDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CODIGO {
+                get {
+                    return ((string)(this[this.tableDTProducto.CODIGOColumn]));
+                }
+                set {
+                    this[this.tableDTProducto.CODIGOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NOMBRE {
+                get {
+                    return ((string)(this[this.tableDTProducto.NOMBREColumn]));
+                }
+                set {
+                    this[this.tableDTProducto.NOMBREColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string PROVEEDOR {
+                get {
+                    return ((string)(this[this.tableDTProducto.PROVEEDORColumn]));
+                }
+                set {
+                    this[this.tableDTProducto.PROVEEDORColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal PESO {
+                get {
+                    return ((decimal)(this[this.tableDTProducto.PESOColumn]));
+                }
+                set {
+                    this[this.tableDTProducto.PESOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string MEDIDA {
+                get {
+                    return ((string)(this[this.tableDTProducto.MEDIDAColumn]));
+                }
+                set {
+                    this[this.tableDTProducto.MEDIDAColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DTMesaRow : global::System.Data.DataRow {
+            
+            private DTMesaDataTable tableDTMesa;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal DTMesaRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDTMesa = ((DTMesaDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal NUMERO {
+                get {
+                    return ((decimal)(this[this.tableDTMesa.NUMEROColumn]));
+                }
+                set {
+                    this[this.tableDTMesa.NUMEROColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal SILLAS {
+                get {
+                    return ((decimal)(this[this.tableDTMesa.SILLASColumn]));
+                }
+                set {
+                    this[this.tableDTMesa.SILLASColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ESTADO {
+                get {
+                    return ((string)(this[this.tableDTMesa.ESTADOColumn]));
+                }
+                set {
+                    this[this.tableDTMesa.ESTADOColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class DTUsuarioRow : global::System.Data.DataRow {
             
             private DTUsuarioDataTable tableDTUsuario;
@@ -10986,119 +12011,35 @@ namespace Vista {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
+        ///Row event argument class
         ///</summary>
-        public partial class DTMesaRow : global::System.Data.DataRow {
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class AUD_INGRESORowChangeEvent : global::System.EventArgs {
             
-            private DTMesaDataTable tableDTMesa;
+            private AUD_INGRESORow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal DTMesaRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDTMesa = ((DTMesaDataTable)(this.Table));
+            public AUD_INGRESORowChangeEvent(AUD_INGRESORow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal NUMERO {
+            public AUD_INGRESORow Row {
                 get {
-                    return ((decimal)(this[this.tableDTMesa.NUMEROColumn]));
-                }
-                set {
-                    this[this.tableDTMesa.NUMEROColumn] = value;
+                    return this.eventRow;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal SILLAS {
+            public global::System.Data.DataRowAction Action {
                 get {
-                    return ((decimal)(this[this.tableDTMesa.SILLASColumn]));
-                }
-                set {
-                    this[this.tableDTMesa.SILLASColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ESTADO {
-                get {
-                    return ((string)(this[this.tableDTMesa.ESTADOColumn]));
-                }
-                set {
-                    this[this.tableDTMesa.ESTADOColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DTProductoRow : global::System.Data.DataRow {
-            
-            private DTProductoDataTable tableDTProducto;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal DTProductoRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDTProducto = ((DTProductoDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string CODIGO {
-                get {
-                    return ((string)(this[this.tableDTProducto.CODIGOColumn]));
-                }
-                set {
-                    this[this.tableDTProducto.CODIGOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string NOMBRE {
-                get {
-                    return ((string)(this[this.tableDTProducto.NOMBREColumn]));
-                }
-                set {
-                    this[this.tableDTProducto.NOMBREColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string PROVEEDOR {
-                get {
-                    return ((string)(this[this.tableDTProducto.PROVEEDORColumn]));
-                }
-                set {
-                    this[this.tableDTProducto.PROVEEDORColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal PESO {
-                get {
-                    return ((decimal)(this[this.tableDTProducto.PESOColumn]));
-                }
-                set {
-                    this[this.tableDTProducto.PESOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string MEDIDA {
-                get {
-                    return ((string)(this[this.tableDTProducto.MEDIDAColumn]));
-                }
-                set {
-                    this[this.tableDTProducto.MEDIDAColumn] = value;
+                    return this.eventAction;
                 }
             }
         }
@@ -11191,6 +12132,40 @@ namespace Vista {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CLIENTERow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class DETALLE_INGRESORowChangeEvent : global::System.EventArgs {
+            
+            private DETALLE_INGRESORow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DETALLE_INGRESORowChangeEvent(DETALLE_INGRESORow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DETALLE_INGRESORow Row {
                 get {
                     return this.eventRow;
                 }
@@ -11821,22 +12796,22 @@ namespace Vista {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class DTUsuarioRowChangeEvent : global::System.EventArgs {
+        public class DTProductoRowChangeEvent : global::System.EventArgs {
             
-            private DTUsuarioRow eventRow;
+            private DTProductoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTUsuarioRowChangeEvent(DTUsuarioRow row, global::System.Data.DataRowAction action) {
+            public DTProductoRowChangeEvent(DTProductoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTUsuarioRow Row {
+            public DTProductoRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -11889,22 +12864,22 @@ namespace Vista {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class DTProductoRowChangeEvent : global::System.EventArgs {
+        public class DTUsuarioRowChangeEvent : global::System.EventArgs {
             
-            private DTProductoRow eventRow;
+            private DTUsuarioRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTProductoRowChangeEvent(DTProductoRow row, global::System.Data.DataRowAction action) {
+            public DTUsuarioRowChangeEvent(DTUsuarioRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DTProductoRow Row {
+            public DTUsuarioRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -11920,8 +12895,571 @@ namespace Vista {
         }
     }
 }
-namespace Vista.DataSetSigloXXITableAdapters {
+namespace Vista.DS_Siglo21TableAdapters {
     
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class AUD_INGRESOTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleConnection _connection;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleTransaction _transaction;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public AUD_INGRESOTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::Oracle.ManagedDataAccess.Client.OracleDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::Oracle.ManagedDataAccess.Client.OracleConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::Oracle.ManagedDataAccess.Client.OracleTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::Oracle.ManagedDataAccess.Client.OracleCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "AUD_INGRESO";
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("ID_METRICA", "ID_METRICA");
+            tableMapping.ColumnMappings.Add("FECHA_INGRESO", "FECHA_INGRESO");
+            tableMapping.ColumnMappings.Add("METRICA_ANTIGUA", "METRICA_ANTIGUA");
+            tableMapping.ColumnMappings.Add("METRICA_NUEVA", "METRICA_NUEVA");
+            tableMapping.ColumnMappings.Add("DIFERENCIA_METRICA", "DIFERENCIA_METRICA");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLO21"".""AUD_INGRESO"" WHERE ((""ID"" = :Original_ID) AND (""ID_METRICA"" = :Original_ID_METRICA) AND (""FECHA_INGRESO"" = :Original_FECHA_INGRESO) AND (""METRICA_ANTIGUA"" = :Original_METRICA_ANTIGUA) AND (""METRICA_NUEVA"" = :Original_METRICA_NUEVA) AND (""DIFERENCIA_METRICA"" = :Original_DIFERENCIA_METRICA))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_METRICA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_METRICA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_FECHA_INGRESO";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "FECHA_INGRESO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_METRICA_ANTIGUA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "METRICA_ANTIGUA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_METRICA_NUEVA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "METRICA_NUEVA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_DIFERENCIA_METRICA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "DIFERENCIA_METRICA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"AUD_INGRESO\" (\"ID\", \"ID_METRICA\", \"FECHA_INGRESO\", \"METRIC" +
+                "A_ANTIGUA\", \"METRICA_NUEVA\", \"DIFERENCIA_METRICA\") VALUES (:ID, :ID_METRICA, :FE" +
+                "CHA_INGRESO, :METRICA_ANTIGUA, :METRICA_NUEVA, :DIFERENCIA_METRICA)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_METRICA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_METRICA";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "FECHA_INGRESO";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "FECHA_INGRESO";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "METRICA_ANTIGUA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "METRICA_ANTIGUA";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "METRICA_NUEVA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "METRICA_NUEVA";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "DIFERENCIA_METRICA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "DIFERENCIA_METRICA";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""AUD_INGRESO"" SET ""ID"" = :ID, ""ID_METRICA"" = :ID_METRICA, ""FECHA_INGRESO"" = :FECHA_INGRESO, ""METRICA_ANTIGUA"" = :METRICA_ANTIGUA, ""METRICA_NUEVA"" = :METRICA_NUEVA, ""DIFERENCIA_METRICA"" = :DIFERENCIA_METRICA WHERE ((""ID"" = :Original_ID) AND (""ID_METRICA"" = :Original_ID_METRICA) AND (""FECHA_INGRESO"" = :Original_FECHA_INGRESO) AND (""METRICA_ANTIGUA"" = :Original_METRICA_ANTIGUA) AND (""METRICA_NUEVA"" = :Original_METRICA_NUEVA) AND (""DIFERENCIA_METRICA"" = :Original_DIFERENCIA_METRICA))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_METRICA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_METRICA";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "FECHA_INGRESO";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "FECHA_INGRESO";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "METRICA_ANTIGUA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "METRICA_ANTIGUA";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "METRICA_NUEVA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "METRICA_NUEVA";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "DIFERENCIA_METRICA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "DIFERENCIA_METRICA";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_METRICA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_METRICA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_FECHA_INGRESO";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "FECHA_INGRESO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_METRICA_ANTIGUA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "METRICA_ANTIGUA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_METRICA_NUEVA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "METRICA_NUEVA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_DIFERENCIA_METRICA";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "DIFERENCIA_METRICA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
+            this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ID, ID_METRICA, FECHA_INGRESO, METRICA_ANTIGUA, METRICA_NUEVA, DIFERENCIA_" +
+                "METRICA FROM SIGLO21.AUD_INGRESO";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DS_Siglo21.AUD_INGRESODataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DS_Siglo21.AUD_INGRESODataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DS_Siglo21.AUD_INGRESODataTable dataTable = new DS_Siglo21.AUD_INGRESODataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DS_Siglo21.AUD_INGRESODataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DS_Siglo21 dataSet) {
+            return this.Adapter.Update(dataSet, "AUD_INGRESO");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(short Original_ID, short Original_ID_METRICA, System.DateTime Original_FECHA_INGRESO, string Original_METRICA_ANTIGUA, string Original_METRICA_NUEVA, string Original_DIFERENCIA_METRICA) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((short)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((short)(Original_ID_METRICA));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_FECHA_INGRESO));
+            if ((Original_METRICA_ANTIGUA == null)) {
+                throw new global::System.ArgumentNullException("Original_METRICA_ANTIGUA");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_METRICA_ANTIGUA));
+            }
+            if ((Original_METRICA_NUEVA == null)) {
+                throw new global::System.ArgumentNullException("Original_METRICA_NUEVA");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_METRICA_NUEVA));
+            }
+            if ((Original_DIFERENCIA_METRICA == null)) {
+                throw new global::System.ArgumentNullException("Original_DIFERENCIA_METRICA");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_DIFERENCIA_METRICA));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(short ID, short ID_METRICA, System.DateTime FECHA_INGRESO, string METRICA_ANTIGUA, string METRICA_NUEVA, string DIFERENCIA_METRICA) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(ID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(ID_METRICA));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(FECHA_INGRESO));
+            if ((METRICA_ANTIGUA == null)) {
+                throw new global::System.ArgumentNullException("METRICA_ANTIGUA");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(METRICA_ANTIGUA));
+            }
+            if ((METRICA_NUEVA == null)) {
+                throw new global::System.ArgumentNullException("METRICA_NUEVA");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(METRICA_NUEVA));
+            }
+            if ((DIFERENCIA_METRICA == null)) {
+                throw new global::System.ArgumentNullException("DIFERENCIA_METRICA");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(DIFERENCIA_METRICA));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(short ID, short ID_METRICA, System.DateTime FECHA_INGRESO, string METRICA_ANTIGUA, string METRICA_NUEVA, string DIFERENCIA_METRICA, short Original_ID, short Original_ID_METRICA, System.DateTime Original_FECHA_INGRESO, string Original_METRICA_ANTIGUA, string Original_METRICA_NUEVA, string Original_DIFERENCIA_METRICA) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((short)(ID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((short)(ID_METRICA));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(FECHA_INGRESO));
+            if ((METRICA_ANTIGUA == null)) {
+                throw new global::System.ArgumentNullException("METRICA_ANTIGUA");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(METRICA_ANTIGUA));
+            }
+            if ((METRICA_NUEVA == null)) {
+                throw new global::System.ArgumentNullException("METRICA_NUEVA");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(METRICA_NUEVA));
+            }
+            if ((DIFERENCIA_METRICA == null)) {
+                throw new global::System.ArgumentNullException("DIFERENCIA_METRICA");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(DIFERENCIA_METRICA));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((short)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((short)(Original_ID_METRICA));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_FECHA_INGRESO));
+            if ((Original_METRICA_ANTIGUA == null)) {
+                throw new global::System.ArgumentNullException("Original_METRICA_ANTIGUA");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_METRICA_ANTIGUA));
+            }
+            if ((Original_METRICA_NUEVA == null)) {
+                throw new global::System.ArgumentNullException("Original_METRICA_NUEVA");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_METRICA_NUEVA));
+            }
+            if ((Original_DIFERENCIA_METRICA == null)) {
+                throw new global::System.ArgumentNullException("Original_DIFERENCIA_METRICA");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_DIFERENCIA_METRICA));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(short ID_METRICA, System.DateTime FECHA_INGRESO, string METRICA_ANTIGUA, string METRICA_NUEVA, string DIFERENCIA_METRICA, short Original_ID, short Original_ID_METRICA, System.DateTime Original_FECHA_INGRESO, string Original_METRICA_ANTIGUA, string Original_METRICA_NUEVA, string Original_DIFERENCIA_METRICA) {
+            return this.Update(Original_ID, ID_METRICA, FECHA_INGRESO, METRICA_ANTIGUA, METRICA_NUEVA, DIFERENCIA_METRICA, Original_ID, Original_ID_METRICA, Original_FECHA_INGRESO, Original_METRICA_ANTIGUA, Original_METRICA_NUEVA, Original_DIFERENCIA_METRICA);
+        }
+    }
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -12052,9 +13590,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"BOLETA\" WHERE ((\"ID\" = :Original_ID) AND (\"CREATED_AT\" = " +
-                ":Original_CREATED_AT) AND (\"MODO_PAGO_ID\" = :Original_MODO_PAGO_ID) AND (\"TOTAL\"" +
-                " = :Original_TOTAL) AND (\"ESTADO_ID\" = :Original_ESTADO_ID))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"BOLETA\" WHERE ((\"ID\" = :Original_ID) AND (\"CREATED_AT\" = :" +
+                "Original_CREATED_AT) AND (\"MODO_PAGO_ID\" = :Original_MODO_PAGO_ID) AND (\"TOTAL\" " +
+                "= :Original_TOTAL) AND (\"ESTADO_ID\" = :Original_ESTADO_ID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -12103,8 +13641,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"BOLETA\" (\"ID\", \"CREATED_AT\", \"MODO_PAGO_ID\", \"TOTAL\", \"ES" +
-                "TADO_ID\") VALUES (:ID, :CREATED_AT, :MODO_PAGO_ID, :TOTAL, :ESTADO_ID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"BOLETA\" (\"ID\", \"CREATED_AT\", \"MODO_PAGO_ID\", \"TOTAL\", \"EST" +
+                "ADO_ID\") VALUES (:ID, :CREATED_AT, :MODO_PAGO_ID, :TOTAL, :ESTADO_ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -12148,7 +13686,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""BOLETA"" SET ""ID"" = :ID, ""CREATED_AT"" = :CREATED_AT, ""MODO_PAGO_ID"" = :MODO_PAGO_ID, ""TOTAL"" = :TOTAL, ""ESTADO_ID"" = :ESTADO_ID WHERE ((""ID"" = :Original_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""MODO_PAGO_ID"" = :Original_MODO_PAGO_ID) AND (""TOTAL"" = :Original_TOTAL) AND (""ESTADO_ID"" = :Original_ESTADO_ID))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""BOLETA"" SET ""ID"" = :ID, ""CREATED_AT"" = :CREATED_AT, ""MODO_PAGO_ID"" = :MODO_PAGO_ID, ""TOTAL"" = :TOTAL, ""ESTADO_ID"" = :ESTADO_ID WHERE ((""ID"" = :Original_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""MODO_PAGO_ID"" = :Original_MODO_PAGO_ID) AND (""TOTAL"" = :Original_TOTAL) AND (""ESTADO_ID"" = :Original_ESTADO_ID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -12241,7 +13779,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12250,7 +13788,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, CREATED_AT, MODO_PAGO_ID, TOTAL, ESTADO_ID FROM SIGLOXXI.BOLETA";
+            this._commandCollection[0].CommandText = "SELECT ID, CREATED_AT, MODO_PAGO_ID, TOTAL, ESTADO_ID FROM SIGLO21.BOLETA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12258,7 +13796,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.BOLETADataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.BOLETADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -12271,9 +13809,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.BOLETADataTable GetData() {
+        public virtual DS_Siglo21.BOLETADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.BOLETADataTable dataTable = new DataSetSigloXXI.BOLETADataTable();
+            DS_Siglo21.BOLETADataTable dataTable = new DS_Siglo21.BOLETADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -12281,14 +13819,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.BOLETADataTable dataTable) {
+        public virtual int Update(DS_Siglo21.BOLETADataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "BOLETA");
         }
         
@@ -12530,10 +14068,10 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"BOLETA_WC\" WHERE ((\"ID\" = :Original_ID) AND (\"RUT\" = :Ori" +
-                "ginal_RUT) AND (\"NOMBRE\" = :Original_NOMBRE) AND (\"FECHA\" = :Original_FECHA) AND" +
-                " (\"NETO\" = :Original_NETO) AND (\"IVA\" = :Original_IVA) AND (\"TOTAL\" = :Original_" +
-                "TOTAL))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"BOLETA_WC\" WHERE ((\"ID\" = :Original_ID) AND (\"RUT\" = :Orig" +
+                "inal_RUT) AND (\"NOMBRE\" = :Original_NOMBRE) AND (\"FECHA\" = :Original_FECHA) AND " +
+                "(\"NETO\" = :Original_NETO) AND (\"IVA\" = :Original_IVA) AND (\"TOTAL\" = :Original_T" +
+                "OTAL))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -12598,8 +14136,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"BOLETA_WC\" (\"ID\", \"RUT\", \"NOMBRE\", \"FECHA\", \"NETO\", \"IVA\"" +
-                ", \"TOTAL\") VALUES (:ID, :RUT, :NOMBRE, :FECHA, :NETO, :IVA, :TOTAL)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"BOLETA_WC\" (\"ID\", \"RUT\", \"NOMBRE\", \"FECHA\", \"NETO\", \"IVA\"," +
+                " \"TOTAL\") VALUES (:ID, :RUT, :NOMBRE, :FECHA, :NETO, :IVA, :TOTAL)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -12657,7 +14195,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""BOLETA_WC"" SET ""ID"" = :ID, ""RUT"" = :RUT, ""NOMBRE"" = :NOMBRE, ""FECHA"" = :FECHA, ""NETO"" = :NETO, ""IVA"" = :IVA, ""TOTAL"" = :TOTAL WHERE ((""ID"" = :Original_ID) AND (""RUT"" = :Original_RUT) AND (""NOMBRE"" = :Original_NOMBRE) AND (""FECHA"" = :Original_FECHA) AND (""NETO"" = :Original_NETO) AND (""IVA"" = :Original_IVA) AND (""TOTAL"" = :Original_TOTAL))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""BOLETA_WC"" SET ""ID"" = :ID, ""RUT"" = :RUT, ""NOMBRE"" = :NOMBRE, ""FECHA"" = :FECHA, ""NETO"" = :NETO, ""IVA"" = :IVA, ""TOTAL"" = :TOTAL WHERE ((""ID"" = :Original_ID) AND (""RUT"" = :Original_RUT) AND (""NOMBRE"" = :Original_NOMBRE) AND (""FECHA"" = :Original_FECHA) AND (""NETO"" = :Original_NETO) AND (""IVA"" = :Original_IVA) AND (""TOTAL"" = :Original_TOTAL))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -12780,7 +14318,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12789,7 +14327,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, RUT, NOMBRE, FECHA, NETO, IVA, TOTAL FROM SIGLOXXI.BOLETA_WC";
+            this._commandCollection[0].CommandText = "SELECT ID, RUT, NOMBRE, FECHA, NETO, IVA, TOTAL FROM SIGLO21.BOLETA_WC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12797,7 +14335,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.BOLETA_WCDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.BOLETA_WCDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -12810,9 +14348,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.BOLETA_WCDataTable GetData() {
+        public virtual DS_Siglo21.BOLETA_WCDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.BOLETA_WCDataTable dataTable = new DataSetSigloXXI.BOLETA_WCDataTable();
+            DS_Siglo21.BOLETA_WCDataTable dataTable = new DS_Siglo21.BOLETA_WCDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -12820,14 +14358,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.BOLETA_WCDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.BOLETA_WCDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "BOLETA_WC");
         }
         
@@ -13114,8 +14652,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"CLIENTE\" WHERE ((\"ID\" = :Original_ID) AND (\"RUT\" = :Origi" +
-                "nal_RUT) AND (\"NOMBRE\" = :Original_NOMBRE) AND (\"ESTADO\" = :Original_ESTADO))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"CLIENTE\" WHERE ((\"ID\" = :Original_ID) AND (\"RUT\" = :Origin" +
+                "al_RUT) AND (\"NOMBRE\" = :Original_NOMBRE) AND (\"ESTADO\" = :Original_ESTADO))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -13153,8 +14691,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"CLIENTE\" (\"ID\", \"RUT\", \"NOMBRE\", \"ESTADO\") VALUES (:ID, :" +
-                "RUT, :NOMBRE, :ESTADO)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"CLIENTE\" (\"ID\", \"RUT\", \"NOMBRE\", \"ESTADO\") VALUES (:ID, :R" +
+                "UT, :NOMBRE, :ESTADO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -13188,9 +14726,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"CLIENTE\" SET \"ID\" = :ID, \"RUT\" = :RUT, \"NOMBRE\" = :NOMBRE, \"ES" +
-                "TADO\" = :ESTADO WHERE ((\"ID\" = :Original_ID) AND (\"RUT\" = :Original_RUT) AND (\"N" +
-                "OMBRE\" = :Original_NOMBRE) AND (\"ESTADO\" = :Original_ESTADO))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"CLIENTE\" SET \"ID\" = :ID, \"RUT\" = :RUT, \"NOMBRE\" = :NOMBRE, \"EST" +
+                "ADO\" = :ESTADO WHERE ((\"ID\" = :Original_ID) AND (\"RUT\" = :Original_RUT) AND (\"NO" +
+                "MBRE\" = :Original_NOMBRE) AND (\"ESTADO\" = :Original_ESTADO))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -13262,7 +14800,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13271,7 +14809,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, RUT, NOMBRE, ESTADO FROM SIGLOXXI.CLIENTE";
+            this._commandCollection[0].CommandText = "SELECT ID, RUT, NOMBRE, ESTADO FROM SIGLO21.CLIENTE";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -13279,7 +14817,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.CLIENTEDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.CLIENTEDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -13292,9 +14830,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.CLIENTEDataTable GetData() {
+        public virtual DS_Siglo21.CLIENTEDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.CLIENTEDataTable dataTable = new DataSetSigloXXI.CLIENTEDataTable();
+            DS_Siglo21.CLIENTEDataTable dataTable = new DS_Siglo21.CLIENTEDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -13302,14 +14840,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.CLIENTEDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.CLIENTEDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "CLIENTE");
         }
         
@@ -13465,6 +15003,482 @@ namespace Vista.DataSetSigloXXITableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class DETALLE_INGRESOTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleConnection _connection;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleTransaction _transaction;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public DETALLE_INGRESOTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::Oracle.ManagedDataAccess.Client.OracleDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::Oracle.ManagedDataAccess.Client.OracleConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::Oracle.ManagedDataAccess.Client.OracleTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::Oracle.ManagedDataAccess.Client.OracleCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "DETALLE_INGRESO";
+            tableMapping.ColumnMappings.Add("ID_DETALLE_INGRESO", "ID_DETALLE_INGRESO");
+            tableMapping.ColumnMappings.Add("PESO_ANTIGUO", "PESO_ANTIGUO");
+            tableMapping.ColumnMappings.Add("PESO_NUEVO", "PESO_NUEVO");
+            tableMapping.ColumnMappings.Add("PESO_INGRESADO", "PESO_INGRESADO");
+            tableMapping.ColumnMappings.Add("ID_INGRESO", "ID_INGRESO");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLO21"".""DETALLE_INGRESO"" WHERE ((""ID_DETALLE_INGRESO"" = :Original_ID_DETALLE_INGRESO) AND (""PESO_ANTIGUO"" = :Original_PESO_ANTIGUO) AND (""PESO_NUEVO"" = :Original_PESO_NUEVO) AND (""PESO_INGRESADO"" = :Original_PESO_INGRESADO) AND (""ID_INGRESO"" = :Original_ID_INGRESO))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_DETALLE_INGRESO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_DETALLE_INGRESO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_PESO_ANTIGUO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_ANTIGUO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_PESO_NUEVO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_NUEVO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_PESO_INGRESADO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_INGRESADO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_INGRESO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_INGRESO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"DETALLE_INGRESO\" (\"ID_DETALLE_INGRESO\", \"PESO_ANTIGUO\", \"P" +
+                "ESO_NUEVO\", \"PESO_INGRESADO\", \"ID_INGRESO\") VALUES (:ID_DETALLE_INGRESO, :PESO_A" +
+                "NTIGUO, :PESO_NUEVO, :PESO_INGRESADO, :ID_INGRESO)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_DETALLE_INGRESO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_DETALLE_INGRESO";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "PESO_ANTIGUO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_ANTIGUO";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "PESO_NUEVO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_NUEVO";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "PESO_INGRESADO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_INGRESADO";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_INGRESO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_INGRESO";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""DETALLE_INGRESO"" SET ""ID_DETALLE_INGRESO"" = :ID_DETALLE_INGRESO, ""PESO_ANTIGUO"" = :PESO_ANTIGUO, ""PESO_NUEVO"" = :PESO_NUEVO, ""PESO_INGRESADO"" = :PESO_INGRESADO, ""ID_INGRESO"" = :ID_INGRESO WHERE ((""ID_DETALLE_INGRESO"" = :Original_ID_DETALLE_INGRESO) AND (""PESO_ANTIGUO"" = :Original_PESO_ANTIGUO) AND (""PESO_NUEVO"" = :Original_PESO_NUEVO) AND (""PESO_INGRESADO"" = :Original_PESO_INGRESADO) AND (""ID_INGRESO"" = :Original_ID_INGRESO))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_DETALLE_INGRESO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_DETALLE_INGRESO";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "PESO_ANTIGUO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_ANTIGUO";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "PESO_NUEVO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_NUEVO";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "PESO_INGRESADO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_INGRESADO";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_INGRESO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_INGRESO";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_DETALLE_INGRESO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_DETALLE_INGRESO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_PESO_ANTIGUO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_ANTIGUO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_PESO_NUEVO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_NUEVO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_PESO_INGRESADO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "PESO_INGRESADO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_INGRESO";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_INGRESO";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
+            this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ID_DETALLE_INGRESO, PESO_ANTIGUO, PESO_NUEVO, PESO_INGRESADO, ID_INGRESO F" +
+                "ROM SIGLO21.DETALLE_INGRESO";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DS_Siglo21.DETALLE_INGRESODataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DS_Siglo21.DETALLE_INGRESODataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DS_Siglo21.DETALLE_INGRESODataTable dataTable = new DS_Siglo21.DETALLE_INGRESODataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DS_Siglo21.DETALLE_INGRESODataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DS_Siglo21 dataSet) {
+            return this.Adapter.Update(dataSet, "DETALLE_INGRESO");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(decimal Original_ID_DETALLE_INGRESO, decimal Original_PESO_ANTIGUO, decimal Original_PESO_NUEVO, decimal Original_PESO_INGRESADO, decimal Original_ID_INGRESO) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_ID_DETALLE_INGRESO));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_PESO_ANTIGUO));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_PESO_NUEVO));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_PESO_INGRESADO));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_ID_INGRESO));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(decimal ID_DETALLE_INGRESO, decimal PESO_ANTIGUO, decimal PESO_NUEVO, decimal PESO_INGRESADO, decimal ID_INGRESO) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((decimal)(ID_DETALLE_INGRESO));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(PESO_ANTIGUO));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(PESO_NUEVO));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(PESO_INGRESADO));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(ID_INGRESO));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(decimal ID_DETALLE_INGRESO, decimal PESO_ANTIGUO, decimal PESO_NUEVO, decimal PESO_INGRESADO, decimal ID_INGRESO, decimal Original_ID_DETALLE_INGRESO, decimal Original_PESO_ANTIGUO, decimal Original_PESO_NUEVO, decimal Original_PESO_INGRESADO, decimal Original_ID_INGRESO) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((decimal)(ID_DETALLE_INGRESO));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(PESO_ANTIGUO));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(PESO_NUEVO));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(PESO_INGRESADO));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(ID_INGRESO));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Original_ID_DETALLE_INGRESO));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(Original_PESO_ANTIGUO));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_PESO_NUEVO));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_PESO_INGRESADO));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(Original_ID_INGRESO));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(decimal PESO_ANTIGUO, decimal PESO_NUEVO, decimal PESO_INGRESADO, decimal ID_INGRESO, decimal Original_ID_DETALLE_INGRESO, decimal Original_PESO_ANTIGUO, decimal Original_PESO_NUEVO, decimal Original_PESO_INGRESADO, decimal Original_ID_INGRESO) {
+            return this.Update(Original_ID_DETALLE_INGRESO, PESO_ANTIGUO, PESO_NUEVO, PESO_INGRESADO, ID_INGRESO, Original_ID_DETALLE_INGRESO, Original_PESO_ANTIGUO, Original_PESO_NUEVO, Original_PESO_INGRESADO, Original_ID_INGRESO);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class ESTADOTableAdapter : global::System.ComponentModel.Component {
         
         private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
@@ -13582,8 +15596,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"ESTADO\" WHERE ((\"ID\" = :Original_ID) AND (\"NOMBRE\" = :Ori" +
-                "ginal_NOMBRE))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"ESTADO\" WHERE ((\"ID\" = :Original_ID) AND (\"NOMBRE\" = :Orig" +
+                "inal_NOMBRE))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -13604,7 +15618,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"ESTADO\" (\"ID\", \"NOMBRE\") VALUES (:ID, :NOMBRE)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"ESTADO\" (\"ID\", \"NOMBRE\") VALUES (:ID, :NOMBRE)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -13623,8 +15637,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"ESTADO\" SET \"ID\" = :ID, \"NOMBRE\" = :NOMBRE WHERE ((\"ID\" = :Ori" +
-                "ginal_ID) AND (\"NOMBRE\" = :Original_NOMBRE))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"ESTADO\" SET \"ID\" = :ID, \"NOMBRE\" = :NOMBRE WHERE ((\"ID\" = :Orig" +
+                "inal_ID) AND (\"NOMBRE\" = :Original_NOMBRE))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -13664,7 +15678,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13673,7 +15687,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, NOMBRE FROM SIGLOXXI.ESTADO";
+            this._commandCollection[0].CommandText = "SELECT ID, NOMBRE FROM SIGLO21.ESTADO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -13681,7 +15695,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.ESTADODataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.ESTADODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -13694,9 +15708,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.ESTADODataTable GetData() {
+        public virtual DS_Siglo21.ESTADODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.ESTADODataTable dataTable = new DataSetSigloXXI.ESTADODataTable();
+            DS_Siglo21.ESTADODataTable dataTable = new DS_Siglo21.ESTADODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -13704,14 +15718,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.ESTADODataTable dataTable) {
+        public virtual int Update(DS_Siglo21.ESTADODataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "ESTADO");
         }
         
@@ -13956,9 +15970,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"ESTADO_BOLETA\" WHERE ((\"ID\" = :Original_ID) AND ((:IsNull" +
-                "_DESCRIPCION = 1 AND \"DESCRIPCION\" IS NULL) OR (\"DESCRIPCION\" = :Original_DESCRI" +
-                "PCION)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"ESTADO_BOLETA\" WHERE ((\"ID\" = :Original_ID) AND ((:IsNull_" +
+                "DESCRIPCION = 1 AND \"DESCRIPCION\" IS NULL) OR (\"DESCRIPCION\" = :Original_DESCRIP" +
+                "CION)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -13989,8 +16003,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"ESTADO_BOLETA\" (\"ID\", \"DESCRIPCION\") VALUES (:ID, :DESCRI" +
-                "PCION)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"ESTADO_BOLETA\" (\"ID\", \"DESCRIPCION\") VALUES (:ID, :DESCRIP" +
+                "CION)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -14009,9 +16023,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"ESTADO_BOLETA\" SET \"ID\" = :ID, \"DESCRIPCION\" = :DESCRIPCION WH" +
-                "ERE ((\"ID\" = :Original_ID) AND ((:IsNull_DESCRIPCION = 1 AND \"DESCRIPCION\" IS NU" +
-                "LL) OR (\"DESCRIPCION\" = :Original_DESCRIPCION)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"ESTADO_BOLETA\" SET \"ID\" = :ID, \"DESCRIPCION\" = :DESCRIPCION WHE" +
+                "RE ((\"ID\" = :Original_ID) AND ((:IsNull_DESCRIPCION = 1 AND \"DESCRIPCION\" IS NUL" +
+                "L) OR (\"DESCRIPCION\" = :Original_DESCRIPCION)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -14061,7 +16075,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14070,7 +16084,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, DESCRIPCION FROM SIGLOXXI.ESTADO_BOLETA";
+            this._commandCollection[0].CommandText = "SELECT ID, DESCRIPCION FROM SIGLO21.ESTADO_BOLETA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -14078,7 +16092,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.ESTADO_BOLETADataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.ESTADO_BOLETADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -14091,9 +16105,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.ESTADO_BOLETADataTable GetData() {
+        public virtual DS_Siglo21.ESTADO_BOLETADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.ESTADO_BOLETADataTable dataTable = new DataSetSigloXXI.ESTADO_BOLETADataTable();
+            DS_Siglo21.ESTADO_BOLETADataTable dataTable = new DS_Siglo21.ESTADO_BOLETADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -14101,14 +16115,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.ESTADO_BOLETADataTable dataTable) {
+        public virtual int Update(DS_Siglo21.ESTADO_BOLETADataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "ESTADO_BOLETA");
         }
         
@@ -14357,8 +16371,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"ESTADO_SOLICITUD\" WHERE ((\"ID_ESTADO\" = :Original_ID_ESTA" +
-                "DO) AND (\"DESCRIPCION\" = :Original_DESCRIPCION))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"ESTADO_SOLICITUD\" WHERE ((\"ID_ESTADO\" = :Original_ID_ESTAD" +
+                "O) AND (\"DESCRIPCION\" = :Original_DESCRIPCION))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID_ESTADO";
@@ -14379,8 +16393,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"ESTADO_SOLICITUD\" (\"ID_ESTADO\", \"DESCRIPCION\") VALUES (:I" +
-                "D_ESTADO, :DESCRIPCION)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"ESTADO_SOLICITUD\" (\"ID_ESTADO\", \"DESCRIPCION\") VALUES (:ID" +
+                "_ESTADO, :DESCRIPCION)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_ESTADO";
@@ -14399,9 +16413,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"ESTADO_SOLICITUD\" SET \"ID_ESTADO\" = :ID_ESTADO, \"DESCRIPCION\" " +
-                "= :DESCRIPCION WHERE ((\"ID_ESTADO\" = :Original_ID_ESTADO) AND (\"DESCRIPCION\" = :" +
-                "Original_DESCRIPCION))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"ESTADO_SOLICITUD\" SET \"ID_ESTADO\" = :ID_ESTADO, \"DESCRIPCION\" =" +
+                " :DESCRIPCION WHERE ((\"ID_ESTADO\" = :Original_ID_ESTADO) AND (\"DESCRIPCION\" = :O" +
+                "riginal_DESCRIPCION))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_ESTADO";
@@ -14441,7 +16455,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14450,7 +16464,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_ESTADO, DESCRIPCION FROM SIGLOXXI.ESTADO_SOLICITUD";
+            this._commandCollection[0].CommandText = "SELECT ID_ESTADO, DESCRIPCION FROM SIGLO21.ESTADO_SOLICITUD";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -14458,7 +16472,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.ESTADO_SOLICITUDDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.ESTADO_SOLICITUDDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -14471,9 +16485,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.ESTADO_SOLICITUDDataTable GetData() {
+        public virtual DS_Siglo21.ESTADO_SOLICITUDDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.ESTADO_SOLICITUDDataTable dataTable = new DataSetSigloXXI.ESTADO_SOLICITUDDataTable();
+            DS_Siglo21.ESTADO_SOLICITUDDataTable dataTable = new DS_Siglo21.ESTADO_SOLICITUDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -14481,14 +16495,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.ESTADO_SOLICITUDDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.ESTADO_SOLICITUDDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "ESTADO_SOLICITUD");
         }
         
@@ -14733,8 +16747,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"GIRO\" WHERE ((\"ID\" = :Original_ID) AND (\"NOMBRE\" = :Origi" +
-                "nal_NOMBRE))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"GIRO\" WHERE ((\"ID\" = :Original_ID) AND (\"NOMBRE\" = :Origin" +
+                "al_NOMBRE))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -14755,7 +16769,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"GIRO\" (\"ID\", \"NOMBRE\") VALUES (:ID, :NOMBRE)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"GIRO\" (\"ID\", \"NOMBRE\") VALUES (:ID, :NOMBRE)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -14774,8 +16788,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"GIRO\" SET \"ID\" = :ID, \"NOMBRE\" = :NOMBRE WHERE ((\"ID\" = :Origi" +
-                "nal_ID) AND (\"NOMBRE\" = :Original_NOMBRE))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"GIRO\" SET \"ID\" = :ID, \"NOMBRE\" = :NOMBRE WHERE ((\"ID\" = :Origin" +
+                "al_ID) AND (\"NOMBRE\" = :Original_NOMBRE))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -14815,7 +16829,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14824,7 +16838,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, NOMBRE FROM SIGLOXXI.GIRO";
+            this._commandCollection[0].CommandText = "SELECT ID, NOMBRE FROM SIGLO21.GIRO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -14832,7 +16846,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.GIRODataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.GIRODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -14845,9 +16859,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.GIRODataTable GetData() {
+        public virtual DS_Siglo21.GIRODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.GIRODataTable dataTable = new DataSetSigloXXI.GIRODataTable();
+            DS_Siglo21.GIRODataTable dataTable = new DS_Siglo21.GIRODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -14855,14 +16869,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.GIRODataTable dataTable) {
+        public virtual int Update(DS_Siglo21.GIRODataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "GIRO");
         }
         
@@ -15111,7 +17125,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLOXXI"".""INGREDIENTE"" WHERE ((""ID"" = :Original_ID) AND (""CANTIDAD"" = :Original_CANTIDAD) AND (""NOMBRE"" = :Original_NOMBRE) AND (""MENU_ID"" = :Original_MENU_ID) AND (""PRODUCTO_ID"" = :Original_PRODUCTO_ID) AND (""METRICA_ID"" = :Original_METRICA_ID))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLO21"".""INGREDIENTE"" WHERE ((""ID"" = :Original_ID) AND (""CANTIDAD"" = :Original_CANTIDAD) AND (""NOMBRE"" = :Original_NOMBRE) AND (""MENU_ID"" = :Original_MENU_ID) AND (""PRODUCTO_ID"" = :Original_PRODUCTO_ID) AND (""METRICA_ID"" = :Original_METRICA_ID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -15168,9 +17182,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"INGREDIENTE\" (\"ID\", \"CANTIDAD\", \"NOMBRE\", \"MENU_ID\", \"PRO" +
-                "DUCTO_ID\", \"METRICA_ID\") VALUES (:ID, :CANTIDAD, :NOMBRE, :MENU_ID, :PRODUCTO_ID" +
-                ", :METRICA_ID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"INGREDIENTE\" (\"ID\", \"CANTIDAD\", \"NOMBRE\", \"MENU_ID\", \"PROD" +
+                "UCTO_ID\", \"METRICA_ID\") VALUES (:ID, :CANTIDAD, :NOMBRE, :MENU_ID, :PRODUCTO_ID," +
+                " :METRICA_ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -15221,7 +17235,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""INGREDIENTE"" SET ""ID"" = :ID, ""CANTIDAD"" = :CANTIDAD, ""NOMBRE"" = :NOMBRE, ""MENU_ID"" = :MENU_ID, ""PRODUCTO_ID"" = :PRODUCTO_ID, ""METRICA_ID"" = :METRICA_ID WHERE ((""ID"" = :Original_ID) AND (""CANTIDAD"" = :Original_CANTIDAD) AND (""NOMBRE"" = :Original_NOMBRE) AND (""MENU_ID"" = :Original_MENU_ID) AND (""PRODUCTO_ID"" = :Original_PRODUCTO_ID) AND (""METRICA_ID"" = :Original_METRICA_ID))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""INGREDIENTE"" SET ""ID"" = :ID, ""CANTIDAD"" = :CANTIDAD, ""NOMBRE"" = :NOMBRE, ""MENU_ID"" = :MENU_ID, ""PRODUCTO_ID"" = :PRODUCTO_ID, ""METRICA_ID"" = :METRICA_ID WHERE ((""ID"" = :Original_ID) AND (""CANTIDAD"" = :Original_CANTIDAD) AND (""NOMBRE"" = :Original_NOMBRE) AND (""MENU_ID"" = :Original_MENU_ID) AND (""PRODUCTO_ID"" = :Original_PRODUCTO_ID) AND (""METRICA_ID"" = :Original_METRICA_ID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -15329,7 +17343,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15338,8 +17352,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, CANTIDAD, NOMBRE, MENU_ID, PRODUCTO_ID, METRICA_ID FROM SIGLOXXI.INGRE" +
-                "DIENTE";
+            this._commandCollection[0].CommandText = "SELECT ID, CANTIDAD, NOMBRE, MENU_ID, PRODUCTO_ID, METRICA_ID FROM SIGLO21.INGRED" +
+                "IENTE";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -15347,7 +17361,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.INGREDIENTEDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.INGREDIENTEDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -15360,9 +17374,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.INGREDIENTEDataTable GetData() {
+        public virtual DS_Siglo21.INGREDIENTEDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.INGREDIENTEDataTable dataTable = new DataSetSigloXXI.INGREDIENTEDataTable();
+            DS_Siglo21.INGREDIENTEDataTable dataTable = new DS_Siglo21.INGREDIENTEDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -15370,14 +17384,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.INGREDIENTEDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.INGREDIENTEDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "INGREDIENTE");
         }
         
@@ -15640,9 +17654,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"INGRESO\" WHERE ((\"ID\" = :Original_ID) AND (\"PRODUCTO_ID\" " +
-                "= :Original_PRODUCTO_ID) AND (\"USUARIO_ID\" = :Original_USUARIO_ID) AND (\"INGRESO" +
-                "\" = :Original_INGRESO))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"INGRESO\" WHERE ((\"ID\" = :Original_ID) AND (\"PRODUCTO_ID\" =" +
+                " :Original_PRODUCTO_ID) AND (\"USUARIO_ID\" = :Original_USUARIO_ID) AND (\"INGRESO\"" +
+                " = :Original_INGRESO))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -15682,8 +17696,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"INGRESO\" (\"ID\", \"PRODUCTO_ID\", \"USUARIO_ID\", \"INGRESO\") V" +
-                "ALUES (:ID, :PRODUCTO_ID, :USUARIO_ID, :INGRESO)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"INGRESO\" (\"ID\", \"PRODUCTO_ID\", \"USUARIO_ID\", \"INGRESO\") VA" +
+                "LUES (:ID, :PRODUCTO_ID, :USUARIO_ID, :INGRESO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -15719,7 +17733,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""INGRESO"" SET ""ID"" = :ID, ""PRODUCTO_ID"" = :PRODUCTO_ID, ""USUARIO_ID"" = :USUARIO_ID, ""INGRESO"" = :INGRESO WHERE ((""ID"" = :Original_ID) AND (""PRODUCTO_ID"" = :Original_PRODUCTO_ID) AND (""USUARIO_ID"" = :Original_USUARIO_ID) AND (""INGRESO"" = :Original_INGRESO))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""INGRESO"" SET ""ID"" = :ID, ""PRODUCTO_ID"" = :PRODUCTO_ID, ""USUARIO_ID"" = :USUARIO_ID, ""INGRESO"" = :INGRESO WHERE ((""ID"" = :Original_ID) AND (""PRODUCTO_ID"" = :Original_PRODUCTO_ID) AND (""USUARIO_ID"" = :Original_USUARIO_ID) AND (""INGRESO"" = :Original_INGRESO))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -15795,7 +17809,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15804,7 +17818,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, PRODUCTO_ID, USUARIO_ID, INGRESO FROM SIGLOXXI.INGRESO";
+            this._commandCollection[0].CommandText = "SELECT ID, PRODUCTO_ID, USUARIO_ID, INGRESO FROM SIGLO21.INGRESO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -15812,7 +17826,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.INGRESODataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.INGRESODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -15825,9 +17839,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.INGRESODataTable GetData() {
+        public virtual DS_Siglo21.INGRESODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.INGRESODataTable dataTable = new DataSetSigloXXI.INGRESODataTable();
+            DS_Siglo21.INGRESODataTable dataTable = new DS_Siglo21.INGRESODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -15835,14 +17849,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.INGRESODataTable dataTable) {
+        public virtual int Update(DS_Siglo21.INGRESODataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "INGRESO");
         }
         
@@ -16078,9 +18092,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"MENU\" WHERE ((\"ID\" = :Original_ID) AND (\"NOMBRE\" = :Origi" +
-                "nal_NOMBRE) AND (\"PRECIO\" = :Original_PRECIO) AND (\"URL\" = :Original_URL) AND (\"" +
-                "ESTADO\" = :Original_ESTADO))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"MENU\" WHERE ((\"ID\" = :Original_ID) AND (\"NOMBRE\" = :Origin" +
+                "al_NOMBRE) AND (\"PRECIO\" = :Original_PRECIO) AND (\"URL\" = :Original_URL) AND (\"E" +
+                "STADO\" = :Original_ESTADO))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -16127,8 +18141,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"MENU\" (\"ID\", \"NOMBRE\", \"PRECIO\", \"URL\", \"ESTADO\") VALUES " +
-                "(:ID, :NOMBRE, :PRECIO, :URL, :ESTADO)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"MENU\" (\"ID\", \"NOMBRE\", \"PRECIO\", \"URL\", \"ESTADO\") VALUES (" +
+                ":ID, :NOMBRE, :PRECIO, :URL, :ESTADO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -16170,7 +18184,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""MENU"" SET ""ID"" = :ID, ""NOMBRE"" = :NOMBRE, ""PRECIO"" = :PRECIO, ""URL"" = :URL, ""ESTADO"" = :ESTADO WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""PRECIO"" = :Original_PRECIO) AND (""URL"" = :Original_URL) AND (""ESTADO"" = :Original_ESTADO))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""MENU"" SET ""ID"" = :ID, ""NOMBRE"" = :NOMBRE, ""PRECIO"" = :PRECIO, ""URL"" = :URL, ""ESTADO"" = :ESTADO WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""PRECIO"" = :Original_PRECIO) AND (""URL"" = :Original_URL) AND (""ESTADO"" = :Original_ESTADO))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -16259,7 +18273,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16268,7 +18282,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, NOMBRE, PRECIO, URL, ESTADO FROM SIGLOXXI.MENU";
+            this._commandCollection[0].CommandText = "SELECT ID, NOMBRE, PRECIO, URL, ESTADO FROM SIGLO21.MENU";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -16276,7 +18290,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.MENUDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.MENUDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -16289,9 +18303,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.MENUDataTable GetData() {
+        public virtual DS_Siglo21.MENUDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.MENUDataTable dataTable = new DataSetSigloXXI.MENUDataTable();
+            DS_Siglo21.MENUDataTable dataTable = new DS_Siglo21.MENUDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -16299,14 +18313,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.MENUDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.MENUDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "MENU");
         }
         
@@ -16585,9 +18599,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"MESA\" WHERE ((\"ID\" = :Original_ID) AND (\"NUMERO\" = :Origi" +
-                "nal_NUMERO) AND (\"SILLAS\" = :Original_SILLAS) AND (\"ESTADO\" = :Original_ESTADO))" +
-                "";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"MESA\" WHERE ((\"ID\" = :Original_ID) AND (\"NUMERO\" = :Origin" +
+                "al_NUMERO) AND (\"SILLAS\" = :Original_SILLAS) AND (\"ESTADO\" = :Original_ESTADO))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -16627,8 +18640,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"MESA\" (\"ID\", \"NUMERO\", \"SILLAS\", \"ESTADO\") VALUES (:ID, :" +
-                "NUMERO, :SILLAS, :ESTADO)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"MESA\" (\"ID\", \"NUMERO\", \"SILLAS\", \"ESTADO\") VALUES (:ID, :N" +
+                "UMERO, :SILLAS, :ESTADO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -16664,9 +18677,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"MESA\" SET \"ID\" = :ID, \"NUMERO\" = :NUMERO, \"SILLAS\" = :SILLAS, " +
-                "\"ESTADO\" = :ESTADO WHERE ((\"ID\" = :Original_ID) AND (\"NUMERO\" = :Original_NUMERO" +
-                ") AND (\"SILLAS\" = :Original_SILLAS) AND (\"ESTADO\" = :Original_ESTADO))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"MESA\" SET \"ID\" = :ID, \"NUMERO\" = :NUMERO, \"SILLAS\" = :SILLAS, \"" +
+                "ESTADO\" = :ESTADO WHERE ((\"ID\" = :Original_ID) AND (\"NUMERO\" = :Original_NUMERO)" +
+                " AND (\"SILLAS\" = :Original_SILLAS) AND (\"ESTADO\" = :Original_ESTADO))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -16742,7 +18755,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16751,7 +18764,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, NUMERO, SILLAS, ESTADO FROM SIGLOXXI.MESA";
+            this._commandCollection[0].CommandText = "SELECT ID, NUMERO, SILLAS, ESTADO FROM SIGLO21.MESA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -16759,7 +18772,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.MESADataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.MESADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -16772,9 +18785,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.MESADataTable GetData() {
+        public virtual DS_Siglo21.MESADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.MESADataTable dataTable = new DataSetSigloXXI.MESADataTable();
+            DS_Siglo21.MESADataTable dataTable = new DS_Siglo21.MESADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -16782,14 +18795,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.MESADataTable dataTable) {
+        public virtual int Update(DS_Siglo21.MESADataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "MESA");
         }
         
@@ -17023,8 +19036,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"METRICA\" WHERE ((\"ID\" = :Original_ID) AND (\"PESO\" = :Orig" +
-                "inal_PESO) AND (\"MEDIDA\" = :Original_MEDIDA))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"METRICA\" WHERE ((\"ID\" = :Original_ID) AND (\"PESO\" = :Origi" +
+                "nal_PESO) AND (\"MEDIDA\" = :Original_MEDIDA))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -17054,8 +19067,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"METRICA\" (\"ID\", \"PESO\", \"MEDIDA\") VALUES (:ID, :PESO, :ME" +
-                "DIDA)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"METRICA\" (\"ID\", \"PESO\", \"MEDIDA\") VALUES (:ID, :PESO, :MED" +
+                "IDA)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -17082,9 +19095,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"METRICA\" SET \"ID\" = :ID, \"PESO\" = :PESO, \"MEDIDA\" = :MEDIDA WH" +
-                "ERE ((\"ID\" = :Original_ID) AND (\"PESO\" = :Original_PESO) AND (\"MEDIDA\" = :Origin" +
-                "al_MEDIDA))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"METRICA\" SET \"ID\" = :ID, \"PESO\" = :PESO, \"MEDIDA\" = :MEDIDA WHE" +
+                "RE ((\"ID\" = :Original_ID) AND (\"PESO\" = :Original_PESO) AND (\"MEDIDA\" = :Origina" +
+                "l_MEDIDA))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -17141,7 +19154,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17150,7 +19163,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, PESO, MEDIDA FROM SIGLOXXI.METRICA";
+            this._commandCollection[0].CommandText = "SELECT ID, PESO, MEDIDA FROM SIGLO21.METRICA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -17158,7 +19171,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.METRICADataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.METRICADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -17171,9 +19184,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.METRICADataTable GetData() {
+        public virtual DS_Siglo21.METRICADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.METRICADataTable dataTable = new DataSetSigloXXI.METRICADataTable();
+            DS_Siglo21.METRICADataTable dataTable = new DS_Siglo21.METRICADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -17181,14 +19194,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.METRICADataTable dataTable) {
+        public virtual int Update(DS_Siglo21.METRICADataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "METRICA");
         }
         
@@ -17437,8 +19450,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"MODO_PAGO\" WHERE ((\"ID\" = :Original_ID) AND (\"TIPO\" = :Or" +
-                "iginal_TIPO))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"MODO_PAGO\" WHERE ((\"ID\" = :Original_ID) AND (\"TIPO\" = :Ori" +
+                "ginal_TIPO))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -17459,7 +19472,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"MODO_PAGO\" (\"ID\", \"TIPO\") VALUES (:ID, :TIPO)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"MODO_PAGO\" (\"ID\", \"TIPO\") VALUES (:ID, :TIPO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -17478,8 +19491,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"MODO_PAGO\" SET \"ID\" = :ID, \"TIPO\" = :TIPO WHERE ((\"ID\" = :Orig" +
-                "inal_ID) AND (\"TIPO\" = :Original_TIPO))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"MODO_PAGO\" SET \"ID\" = :ID, \"TIPO\" = :TIPO WHERE ((\"ID\" = :Origi" +
+                "nal_ID) AND (\"TIPO\" = :Original_TIPO))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -17519,7 +19532,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17528,7 +19541,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, TIPO FROM SIGLOXXI.MODO_PAGO";
+            this._commandCollection[0].CommandText = "SELECT ID, TIPO FROM SIGLO21.MODO_PAGO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -17536,7 +19549,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.MODO_PAGODataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.MODO_PAGODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -17549,9 +19562,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.MODO_PAGODataTable GetData() {
+        public virtual DS_Siglo21.MODO_PAGODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.MODO_PAGODataTable dataTable = new DataSetSigloXXI.MODO_PAGODataTable();
+            DS_Siglo21.MODO_PAGODataTable dataTable = new DS_Siglo21.MODO_PAGODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -17559,14 +19572,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.MODO_PAGODataTable dataTable) {
+        public virtual int Update(DS_Siglo21.MODO_PAGODataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "MODO_PAGO");
         }
         
@@ -17815,7 +19828,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLOXXI"".""PEDIDO"" WHERE ((""ID"" = :Original_ID) AND (""RESERVA_ID"" = :Original_RESERVA_ID) AND (""MENU_ID"" = :Original_MENU_ID) AND (""ESTADO_ID"" = :Original_ESTADO_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""BOLETA_ID"" = :Original_BOLETA_ID))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLO21"".""PEDIDO"" WHERE ((""ID"" = :Original_ID) AND (""RESERVA_ID"" = :Original_RESERVA_ID) AND (""MENU_ID"" = :Original_MENU_ID) AND (""ESTADO_ID"" = :Original_ESTADO_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""BOLETA_ID"" = :Original_BOLETA_ID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -17873,9 +19886,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"PEDIDO\" (\"ID\", \"RESERVA_ID\", \"MENU_ID\", \"ESTADO_ID\", \"CRE" +
-                "ATED_AT\", \"BOLETA_ID\") VALUES (:ID, :RESERVA_ID, :MENU_ID, :ESTADO_ID, :CREATED_" +
-                "AT, :BOLETA_ID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"PEDIDO\" (\"ID\", \"RESERVA_ID\", \"MENU_ID\", \"ESTADO_ID\", \"CREA" +
+                "TED_AT\", \"BOLETA_ID\") VALUES (:ID, :RESERVA_ID, :MENU_ID, :ESTADO_ID, :CREATED_A" +
+                "T, :BOLETA_ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -17927,7 +19940,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""PEDIDO"" SET ""ID"" = :ID, ""RESERVA_ID"" = :RESERVA_ID, ""MENU_ID"" = :MENU_ID, ""ESTADO_ID"" = :ESTADO_ID, ""CREATED_AT"" = :CREATED_AT, ""BOLETA_ID"" = :BOLETA_ID WHERE ((""ID"" = :Original_ID) AND (""RESERVA_ID"" = :Original_RESERVA_ID) AND (""MENU_ID"" = :Original_MENU_ID) AND (""ESTADO_ID"" = :Original_ESTADO_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""BOLETA_ID"" = :Original_BOLETA_ID))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""PEDIDO"" SET ""ID"" = :ID, ""RESERVA_ID"" = :RESERVA_ID, ""MENU_ID"" = :MENU_ID, ""ESTADO_ID"" = :ESTADO_ID, ""CREATED_AT"" = :CREATED_AT, ""BOLETA_ID"" = :BOLETA_ID WHERE ((""ID"" = :Original_ID) AND (""RESERVA_ID"" = :Original_RESERVA_ID) AND (""MENU_ID"" = :Original_MENU_ID) AND (""ESTADO_ID"" = :Original_ESTADO_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""BOLETA_ID"" = :Original_BOLETA_ID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -18037,7 +20050,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18046,8 +20059,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, RESERVA_ID, MENU_ID, ESTADO_ID, CREATED_AT, BOLETA_ID FROM SIGLOXXI.PE" +
-                "DIDO";
+            this._commandCollection[0].CommandText = "SELECT ID, RESERVA_ID, MENU_ID, ESTADO_ID, CREATED_AT, BOLETA_ID FROM SIGLO21.PED" +
+                "IDO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -18055,7 +20068,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.PEDIDODataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.PEDIDODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -18068,9 +20081,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.PEDIDODataTable GetData() {
+        public virtual DS_Siglo21.PEDIDODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.PEDIDODataTable dataTable = new DataSetSigloXXI.PEDIDODataTable();
+            DS_Siglo21.PEDIDODataTable dataTable = new DS_Siglo21.PEDIDODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -18078,14 +20091,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.PEDIDODataTable dataTable) {
+        public virtual int Update(DS_Siglo21.PEDIDODataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "PEDIDO");
         }
         
@@ -18329,9 +20342,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"PRODUCTO\" WHERE ((\"ID\" = :Original_ID) AND (\"CODIGO\" = :O" +
-                "riginal_CODIGO) AND (\"NOMBRE\" = :Original_NOMBRE) AND (\"PROVEEDOR_ID\" = :Origina" +
-                "l_PROVEEDOR_ID) AND (\"METRICA_ID\" = :Original_METRICA_ID))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"PRODUCTO\" WHERE ((\"ID\" = :Original_ID) AND (\"CODIGO\" = :Or" +
+                "iginal_CODIGO) AND (\"NOMBRE\" = :Original_NOMBRE) AND (\"PROVEEDOR_ID\" = :Original" +
+                "_PROVEEDOR_ID) AND (\"METRICA_ID\" = :Original_METRICA_ID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -18378,8 +20391,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"PRODUCTO\" (\"ID\", \"CODIGO\", \"NOMBRE\", \"PROVEEDOR_ID\", \"MET" +
-                "RICA_ID\") VALUES (:ID, :CODIGO, :NOMBRE, :PROVEEDOR_ID, :METRICA_ID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"PRODUCTO\" (\"ID\", \"CODIGO\", \"NOMBRE\", \"PROVEEDOR_ID\", \"METR" +
+                "ICA_ID\") VALUES (:ID, :CODIGO, :NOMBRE, :PROVEEDOR_ID, :METRICA_ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -18421,7 +20434,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""PRODUCTO"" SET ""ID"" = :ID, ""CODIGO"" = :CODIGO, ""NOMBRE"" = :NOMBRE, ""PROVEEDOR_ID"" = :PROVEEDOR_ID, ""METRICA_ID"" = :METRICA_ID WHERE ((""ID"" = :Original_ID) AND (""CODIGO"" = :Original_CODIGO) AND (""NOMBRE"" = :Original_NOMBRE) AND (""PROVEEDOR_ID"" = :Original_PROVEEDOR_ID) AND (""METRICA_ID"" = :Original_METRICA_ID))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""PRODUCTO"" SET ""ID"" = :ID, ""CODIGO"" = :CODIGO, ""NOMBRE"" = :NOMBRE, ""PROVEEDOR_ID"" = :PROVEEDOR_ID, ""METRICA_ID"" = :METRICA_ID WHERE ((""ID"" = :Original_ID) AND (""CODIGO"" = :Original_CODIGO) AND (""NOMBRE"" = :Original_NOMBRE) AND (""PROVEEDOR_ID"" = :Original_PROVEEDOR_ID) AND (""METRICA_ID"" = :Original_METRICA_ID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -18510,7 +20523,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18519,7 +20532,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, CODIGO, NOMBRE, PROVEEDOR_ID, METRICA_ID FROM SIGLOXXI.PRODUCTO";
+            this._commandCollection[0].CommandText = "SELECT ID, CODIGO, NOMBRE, PROVEEDOR_ID, METRICA_ID FROM SIGLO21.PRODUCTO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -18527,7 +20540,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.PRODUCTODataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.PRODUCTODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -18540,9 +20553,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.PRODUCTODataTable GetData() {
+        public virtual DS_Siglo21.PRODUCTODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.PRODUCTODataTable dataTable = new DataSetSigloXXI.PRODUCTODataTable();
+            DS_Siglo21.PRODUCTODataTable dataTable = new DS_Siglo21.PRODUCTODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -18550,14 +20563,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.PRODUCTODataTable dataTable) {
+        public virtual int Update(DS_Siglo21.PRODUCTODataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "PRODUCTO");
         }
         
@@ -18835,9 +20848,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"PRODUCTO_SOLICITUD\" WHERE ((\"PRODUCTO_SOLICITUD_ID\" = :Or" +
-                "iginal_PRODUCTO_SOLICITUD_ID) AND (\"PRODUCTO_ID\" = :Original_PRODUCTO_ID) AND (\"" +
-                "SOLICITUD_ID_SOLICITUD\" = :p2))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"PRODUCTO_SOLICITUD\" WHERE ((\"PRODUCTO_SOLICITUD_ID\" = :Ori" +
+                "ginal_PRODUCTO_SOLICITUD_ID) AND (\"PRODUCTO_ID\" = :Original_PRODUCTO_ID) AND (\"S" +
+                "OLICITUD_ID_SOLICITUD\" = :p2))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_PRODUCTO_SOLICITUD_ID";
@@ -18868,9 +20881,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"PRODUCTO_SOLICITUD\" (\"PRODUCTO_SOLICITUD_ID\", \"PRODUCTO_I" +
-                "D\", \"SOLICITUD_ID_SOLICITUD\") VALUES (:PRODUCTO_SOLICITUD_ID, :PRODUCTO_ID, :p1)" +
-                "";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"PRODUCTO_SOLICITUD\" (\"PRODUCTO_SOLICITUD_ID\", \"PRODUCTO_ID" +
+                "\", \"SOLICITUD_ID_SOLICITUD\") VALUES (:PRODUCTO_SOLICITUD_ID, :PRODUCTO_ID, :p1)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "PRODUCTO_SOLICITUD_ID";
@@ -18898,7 +20910,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""PRODUCTO_SOLICITUD"" SET ""PRODUCTO_SOLICITUD_ID"" = :PRODUCTO_SOLICITUD_ID, ""PRODUCTO_ID"" = :PRODUCTO_ID, ""SOLICITUD_ID_SOLICITUD"" = :p1 WHERE ((""PRODUCTO_SOLICITUD_ID"" = :Original_PRODUCTO_SOLICITUD_ID) AND (""PRODUCTO_ID"" = :Original_PRODUCTO_ID) AND (""SOLICITUD_ID_SOLICITUD"" = :p2))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""PRODUCTO_SOLICITUD"" SET ""PRODUCTO_SOLICITUD_ID"" = :PRODUCTO_SOLICITUD_ID, ""PRODUCTO_ID"" = :PRODUCTO_ID, ""SOLICITUD_ID_SOLICITUD"" = :p1 WHERE ((""PRODUCTO_SOLICITUD_ID"" = :Original_PRODUCTO_SOLICITUD_ID) AND (""PRODUCTO_ID"" = :Original_PRODUCTO_ID) AND (""SOLICITUD_ID_SOLICITUD"" = :p2))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "PRODUCTO_SOLICITUD_ID";
@@ -18957,7 +20969,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18966,8 +20978,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PRODUCTO_SOLICITUD_ID, PRODUCTO_ID, SOLICITUD_ID_SOLICITUD FROM SIGLOXXI.P" +
-                "RODUCTO_SOLICITUD";
+            this._commandCollection[0].CommandText = "SELECT PRODUCTO_SOLICITUD_ID, PRODUCTO_ID, SOLICITUD_ID_SOLICITUD FROM SIGLO21.PR" +
+                "ODUCTO_SOLICITUD";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -18975,7 +20987,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.PRODUCTO_SOLICITUDDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.PRODUCTO_SOLICITUDDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -18988,9 +21000,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.PRODUCTO_SOLICITUDDataTable GetData() {
+        public virtual DS_Siglo21.PRODUCTO_SOLICITUDDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.PRODUCTO_SOLICITUDDataTable dataTable = new DataSetSigloXXI.PRODUCTO_SOLICITUDDataTable();
+            DS_Siglo21.PRODUCTO_SOLICITUDDataTable dataTable = new DS_Siglo21.PRODUCTO_SOLICITUDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -18998,14 +21010,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.PRODUCTO_SOLICITUDDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.PRODUCTO_SOLICITUDDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "PRODUCTO_SOLICITUD");
         }
         
@@ -19241,7 +21253,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLOXXI"".""PROVEEDOR"" WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""RUN"" = :Original_RUN) AND (""TELEFONO"" = :Original_TELEFONO) AND (""CORREO"" = :Original_CORREO) AND (""DESCRIPCION"" = :Original_DESCRIPCION) AND (""DIRECCION"" = :Original_DIRECCION) AND (""GIRO_ID"" = :Original_GIRO_ID) AND (""ESTADO"" = :Original_ESTADO))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLO21"".""PROVEEDOR"" WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""RUN"" = :Original_RUN) AND (""TELEFONO"" = :Original_TELEFONO) AND (""CORREO"" = :Original_CORREO) AND (""DESCRIPCION"" = :Original_DESCRIPCION) AND (""DIRECCION"" = :Original_DIRECCION) AND (""GIRO_ID"" = :Original_GIRO_ID) AND (""ESTADO"" = :Original_ESTADO))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -19320,9 +21332,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"PROVEEDOR\" (\"ID\", \"NOMBRE\", \"RUN\", \"TELEFONO\", \"CORREO\", " +
-                "\"DESCRIPCION\", \"DIRECCION\", \"GIRO_ID\", \"ESTADO\") VALUES (:ID, :NOMBRE, :RUN, :TE" +
-                "LEFONO, :CORREO, :DESCRIPCION, :DIRECCION, :GIRO_ID, :ESTADO)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"PROVEEDOR\" (\"ID\", \"NOMBRE\", \"RUN\", \"TELEFONO\", \"CORREO\", \"" +
+                "DESCRIPCION\", \"DIRECCION\", \"GIRO_ID\", \"ESTADO\") VALUES (:ID, :NOMBRE, :RUN, :TEL" +
+                "EFONO, :CORREO, :DESCRIPCION, :DIRECCION, :GIRO_ID, :ESTADO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -19392,7 +21404,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""PROVEEDOR"" SET ""ID"" = :ID, ""NOMBRE"" = :NOMBRE, ""RUN"" = :RUN, ""TELEFONO"" = :TELEFONO, ""CORREO"" = :CORREO, ""DESCRIPCION"" = :DESCRIPCION, ""DIRECCION"" = :DIRECCION, ""GIRO_ID"" = :GIRO_ID, ""ESTADO"" = :ESTADO WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""RUN"" = :Original_RUN) AND (""TELEFONO"" = :Original_TELEFONO) AND (""CORREO"" = :Original_CORREO) AND (""DESCRIPCION"" = :Original_DESCRIPCION) AND (""DIRECCION"" = :Original_DIRECCION) AND (""GIRO_ID"" = :Original_GIRO_ID) AND (""ESTADO"" = :Original_ESTADO))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""PROVEEDOR"" SET ""ID"" = :ID, ""NOMBRE"" = :NOMBRE, ""RUN"" = :RUN, ""TELEFONO"" = :TELEFONO, ""CORREO"" = :CORREO, ""DESCRIPCION"" = :DESCRIPCION, ""DIRECCION"" = :DIRECCION, ""GIRO_ID"" = :GIRO_ID, ""ESTADO"" = :ESTADO WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""RUN"" = :Original_RUN) AND (""TELEFONO"" = :Original_TELEFONO) AND (""CORREO"" = :Original_CORREO) AND (""DESCRIPCION"" = :Original_DESCRIPCION) AND (""DIRECCION"" = :Original_DIRECCION) AND (""GIRO_ID"" = :Original_GIRO_ID) AND (""ESTADO"" = :Original_ESTADO))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -19541,7 +21553,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19551,7 +21563,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, NOMBRE, RUN, TELEFONO, CORREO, DESCRIPCION, DIRECCION, GIRO_ID, ESTADO" +
-                " FROM SIGLOXXI.PROVEEDOR";
+                " FROM SIGLO21.PROVEEDOR";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -19559,7 +21571,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.PROVEEDORDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.PROVEEDORDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -19572,9 +21584,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.PROVEEDORDataTable GetData() {
+        public virtual DS_Siglo21.PROVEEDORDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.PROVEEDORDataTable dataTable = new DataSetSigloXXI.PROVEEDORDataTable();
+            DS_Siglo21.PROVEEDORDataTable dataTable = new DS_Siglo21.PROVEEDORDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -19582,14 +21594,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.PROVEEDORDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.PROVEEDORDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "PROVEEDOR");
         }
         
@@ -20002,7 +22014,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLOXXI"".""RESERVA"" WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""USUARIO_ID"" = :Original_USUARIO_ID) AND (""MESA_ID"" = :Original_MESA_ID) AND (""CLIENTE_ID"" = :Original_CLIENTE_ID) AND (""ESTADO_ID"" = :Original_ESTADO_ID))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLO21"".""RESERVA"" WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""USUARIO_ID"" = :Original_USUARIO_ID) AND (""MESA_ID"" = :Original_MESA_ID) AND (""CLIENTE_ID"" = :Original_CLIENTE_ID) AND (""ESTADO_ID"" = :Original_ESTADO_ID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -20068,9 +22080,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"RESERVA\" (\"ID\", \"NOMBRE\", \"CREATED_AT\", \"USUARIO_ID\", \"ME" +
-                "SA_ID\", \"CLIENTE_ID\", \"ESTADO_ID\") VALUES (:ID, :NOMBRE, :CREATED_AT, :USUARIO_I" +
-                "D, :MESA_ID, :CLIENTE_ID, :ESTADO_ID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"RESERVA\" (\"ID\", \"NOMBRE\", \"CREATED_AT\", \"USUARIO_ID\", \"MES" +
+                "A_ID\", \"CLIENTE_ID\", \"ESTADO_ID\") VALUES (:ID, :NOMBRE, :CREATED_AT, :USUARIO_ID" +
+                ", :MESA_ID, :CLIENTE_ID, :ESTADO_ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -20129,7 +22141,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""RESERVA"" SET ""ID"" = :ID, ""NOMBRE"" = :NOMBRE, ""CREATED_AT"" = :CREATED_AT, ""USUARIO_ID"" = :USUARIO_ID, ""MESA_ID"" = :MESA_ID, ""CLIENTE_ID"" = :CLIENTE_ID, ""ESTADO_ID"" = :ESTADO_ID WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""USUARIO_ID"" = :Original_USUARIO_ID) AND (""MESA_ID"" = :Original_MESA_ID) AND (""CLIENTE_ID"" = :Original_CLIENTE_ID) AND (""ESTADO_ID"" = :Original_ESTADO_ID))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""RESERVA"" SET ""ID"" = :ID, ""NOMBRE"" = :NOMBRE, ""CREATED_AT"" = :CREATED_AT, ""USUARIO_ID"" = :USUARIO_ID, ""MESA_ID"" = :MESA_ID, ""CLIENTE_ID"" = :CLIENTE_ID, ""ESTADO_ID"" = :ESTADO_ID WHERE ((""ID"" = :Original_ID) AND (""NOMBRE"" = :Original_NOMBRE) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""USUARIO_ID"" = :Original_USUARIO_ID) AND (""MESA_ID"" = :Original_MESA_ID) AND (""CLIENTE_ID"" = :Original_CLIENTE_ID) AND (""ESTADO_ID"" = :Original_ESTADO_ID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -20254,7 +22266,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20264,7 +22276,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, NOMBRE, CREATED_AT, USUARIO_ID, MESA_ID, CLIENTE_ID, ESTADO_ID FROM SI" +
-                "GLOXXI.RESERVA";
+                "GLO21.RESERVA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -20272,7 +22284,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.RESERVADataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.RESERVADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -20285,9 +22297,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.RESERVADataTable GetData() {
+        public virtual DS_Siglo21.RESERVADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.RESERVADataTable dataTable = new DataSetSigloXXI.RESERVADataTable();
+            DS_Siglo21.RESERVADataTable dataTable = new DS_Siglo21.RESERVADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -20295,14 +22307,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.RESERVADataTable dataTable) {
+        public virtual int Update(DS_Siglo21.RESERVADataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "RESERVA");
         }
         
@@ -20567,8 +22579,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"ROL\" WHERE ((\"ID\" = :Original_ID) AND (\"TIPO\" = :Original" +
-                "_TIPO))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"ROL\" WHERE ((\"ID\" = :Original_ID) AND (\"TIPO\" = :Original_" +
+                "TIPO))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -20589,7 +22601,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"ROL\" (\"ID\", \"TIPO\") VALUES (:ID, :TIPO)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"ROL\" (\"ID\", \"TIPO\") VALUES (:ID, :TIPO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -20608,8 +22620,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLOXXI\".\"ROL\" SET \"ID\" = :ID, \"TIPO\" = :TIPO WHERE ((\"ID\" = :Original_I" +
-                "D) AND (\"TIPO\" = :Original_TIPO))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SIGLO21\".\"ROL\" SET \"ID\" = :ID, \"TIPO\" = :TIPO WHERE ((\"ID\" = :Original_ID" +
+                ") AND (\"TIPO\" = :Original_TIPO))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -20649,7 +22661,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20658,7 +22670,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, TIPO FROM SIGLOXXI.ROL";
+            this._commandCollection[0].CommandText = "SELECT ID, TIPO FROM SIGLO21.ROL";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -20666,7 +22678,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.ROLDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.ROLDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -20679,9 +22691,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.ROLDataTable GetData() {
+        public virtual DS_Siglo21.ROLDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.ROLDataTable dataTable = new DataSetSigloXXI.ROLDataTable();
+            DS_Siglo21.ROLDataTable dataTable = new DS_Siglo21.ROLDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -20689,14 +22701,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.ROLDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.ROLDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "ROL");
         }
         
@@ -20943,9 +22955,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLOXXI\".\"SOLICITUD\" WHERE ((\"ID_SOLICITUD\" = :Original_ID_SOLICITU" +
-                "D) AND (\"ASUNTO\" = :Original_ASUNTO) AND (\"MENSAJE\" = :Original_MENSAJE) AND (\"E" +
-                "STADO_SOLICITUD\" = :Original_ESTADO_SOLICITUD))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SIGLO21\".\"SOLICITUD\" WHERE ((\"ID_SOLICITUD\" = :Original_ID_SOLICITUD" +
+                ") AND (\"ASUNTO\" = :Original_ASUNTO) AND (\"MENSAJE\" = :Original_MENSAJE) AND (\"ES" +
+                "TADO_SOLICITUD\" = :Original_ESTADO_SOLICITUD))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID_SOLICITUD";
@@ -20983,8 +22995,8 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLOXXI\".\"SOLICITUD\" (\"ID_SOLICITUD\", \"ASUNTO\", \"MENSAJE\", \"ESTADO_" +
-                "SOLICITUD\") VALUES (:ID_SOLICITUD, :ASUNTO, :MENSAJE, :ESTADO_SOLICITUD)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SIGLO21\".\"SOLICITUD\" (\"ID_SOLICITUD\", \"ASUNTO\", \"MENSAJE\", \"ESTADO_S" +
+                "OLICITUD\") VALUES (:ID_SOLICITUD, :ASUNTO, :MENSAJE, :ESTADO_SOLICITUD)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_SOLICITUD";
@@ -21018,7 +23030,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""SOLICITUD"" SET ""ID_SOLICITUD"" = :ID_SOLICITUD, ""ASUNTO"" = :ASUNTO, ""MENSAJE"" = :MENSAJE, ""ESTADO_SOLICITUD"" = :ESTADO_SOLICITUD WHERE ((""ID_SOLICITUD"" = :Original_ID_SOLICITUD) AND (""ASUNTO"" = :Original_ASUNTO) AND (""MENSAJE"" = :Original_MENSAJE) AND (""ESTADO_SOLICITUD"" = :Original_ESTADO_SOLICITUD))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""SOLICITUD"" SET ""ID_SOLICITUD"" = :ID_SOLICITUD, ""ASUNTO"" = :ASUNTO, ""MENSAJE"" = :MENSAJE, ""ESTADO_SOLICITUD"" = :ESTADO_SOLICITUD WHERE ((""ID_SOLICITUD"" = :Original_ID_SOLICITUD) AND (""ASUNTO"" = :Original_ASUNTO) AND (""MENSAJE"" = :Original_MENSAJE) AND (""ESTADO_SOLICITUD"" = :Original_ESTADO_SOLICITUD))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_SOLICITUD";
@@ -21090,7 +23102,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21099,7 +23111,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_SOLICITUD, ASUNTO, MENSAJE, ESTADO_SOLICITUD FROM SIGLOXXI.SOLICITUD";
+            this._commandCollection[0].CommandText = "SELECT ID_SOLICITUD, ASUNTO, MENSAJE, ESTADO_SOLICITUD FROM SIGLO21.SOLICITUD";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -21107,7 +23119,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.SOLICITUDDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.SOLICITUDDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -21120,9 +23132,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.SOLICITUDDataTable GetData() {
+        public virtual DS_Siglo21.SOLICITUDDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.SOLICITUDDataTable dataTable = new DataSetSigloXXI.SOLICITUDDataTable();
+            DS_Siglo21.SOLICITUDDataTable dataTable = new DS_Siglo21.SOLICITUDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -21130,14 +23142,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.SOLICITUDDataTable dataTable) {
+        public virtual int Update(DS_Siglo21.SOLICITUDDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "SOLICITUD");
         }
         
@@ -21420,7 +23432,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLOXXI"".""USUARIO"" WHERE ((""ID"" = :Original_ID) AND (""RUN"" = :Original_RUN) AND (""NOMBRE"" = :Original_NOMBRE) AND (""APELLIDOS"" = :Original_APELLIDOS) AND (""CORREO"" = :Original_CORREO) AND (""PASSWORD"" = :Original_PASSWORD) AND (""TELEFONO"" = :Original_TELEFONO) AND (""ROL_ID"" = :Original_ROL_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""UPDATE_AT"" = :Original_UPDATE_AT) AND ((:IsNull_DIRECCION = 1 AND ""DIRECCION"" IS NULL) OR (""DIRECCION"" = :Original_DIRECCION)) AND (""ESTADO"" = :Original_ESTADO))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SIGLO21"".""USUARIO"" WHERE ((""ID"" = :Original_ID) AND (""RUN"" = :Original_RUN) AND (""NOMBRE"" = :Original_NOMBRE) AND (""APELLIDOS"" = :Original_APELLIDOS) AND (""CORREO"" = :Original_CORREO) AND (""PASSWORD"" = :Original_PASSWORD) AND (""TELEFONO"" = :Original_TELEFONO) AND (""ROL_ID"" = :Original_ROL_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""UPDATE_AT"" = :Original_UPDATE_AT) AND ((:IsNull_DIRECCION = 1 AND ""DIRECCION"" IS NULL) OR (""DIRECCION"" = :Original_DIRECCION)) AND (""ESTADO"" = :Original_ESTADO))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID";
@@ -21536,7 +23548,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""SIGLOXXI"".""USUARIO"" (""ID"", ""RUN"", ""NOMBRE"", ""APELLIDOS"", ""CORREO"", ""PASSWORD"", ""TELEFONO"", ""ROL_ID"", ""CREATED_AT"", ""UPDATE_AT"", ""DIRECCION"", ""ESTADO"") VALUES (:ID, :RUN, :NOMBRE, :APELLIDOS, :CORREO, :PASSWORD, :TELEFONO, :ROL_ID, :CREATED_AT, :UPDATE_AT, :DIRECCION, :ESTADO)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""SIGLO21"".""USUARIO"" (""ID"", ""RUN"", ""NOMBRE"", ""APELLIDOS"", ""CORREO"", ""PASSWORD"", ""TELEFONO"", ""ROL_ID"", ""CREATED_AT"", ""UPDATE_AT"", ""DIRECCION"", ""ESTADO"") VALUES (:ID, :RUN, :NOMBRE, :APELLIDOS, :CORREO, :PASSWORD, :TELEFONO, :ROL_ID, :CREATED_AT, :UPDATE_AT, :DIRECCION, :ESTADO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -21630,7 +23642,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLOXXI"".""USUARIO"" SET ""ID"" = :ID, ""RUN"" = :RUN, ""NOMBRE"" = :NOMBRE, ""APELLIDOS"" = :APELLIDOS, ""CORREO"" = :CORREO, ""PASSWORD"" = :PASSWORD, ""TELEFONO"" = :TELEFONO, ""ROL_ID"" = :ROL_ID, ""CREATED_AT"" = :CREATED_AT, ""UPDATE_AT"" = :UPDATE_AT, ""DIRECCION"" = :DIRECCION, ""ESTADO"" = :ESTADO WHERE ((""ID"" = :Original_ID) AND (""RUN"" = :Original_RUN) AND (""NOMBRE"" = :Original_NOMBRE) AND (""APELLIDOS"" = :Original_APELLIDOS) AND (""CORREO"" = :Original_CORREO) AND (""PASSWORD"" = :Original_PASSWORD) AND (""TELEFONO"" = :Original_TELEFONO) AND (""ROL_ID"" = :Original_ROL_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""UPDATE_AT"" = :Original_UPDATE_AT) AND ((:IsNull_DIRECCION = 1 AND ""DIRECCION"" IS NULL) OR (""DIRECCION"" = :Original_DIRECCION)) AND (""ESTADO"" = :Original_ESTADO))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SIGLO21"".""USUARIO"" SET ""ID"" = :ID, ""RUN"" = :RUN, ""NOMBRE"" = :NOMBRE, ""APELLIDOS"" = :APELLIDOS, ""CORREO"" = :CORREO, ""PASSWORD"" = :PASSWORD, ""TELEFONO"" = :TELEFONO, ""ROL_ID"" = :ROL_ID, ""CREATED_AT"" = :CREATED_AT, ""UPDATE_AT"" = :UPDATE_AT, ""DIRECCION"" = :DIRECCION, ""ESTADO"" = :ESTADO WHERE ((""ID"" = :Original_ID) AND (""RUN"" = :Original_RUN) AND (""NOMBRE"" = :Original_NOMBRE) AND (""APELLIDOS"" = :Original_APELLIDOS) AND (""CORREO"" = :Original_CORREO) AND (""PASSWORD"" = :Original_PASSWORD) AND (""TELEFONO"" = :Original_TELEFONO) AND (""ROL_ID"" = :Original_ROL_ID) AND (""CREATED_AT"" = :Original_CREATED_AT) AND (""UPDATE_AT"" = :Original_UPDATE_AT) AND ((:IsNull_DIRECCION = 1 AND ""DIRECCION"" IS NULL) OR (""DIRECCION"" = :Original_DIRECCION)) AND (""ESTADO"" = :Original_ESTADO))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID";
@@ -21840,7 +23852,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21850,7 +23862,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, RUN, NOMBRE, APELLIDOS, CORREO, PASSWORD, TELEFONO, ROL_ID, CREATED_AT" +
-                ", UPDATE_AT, DIRECCION, ESTADO FROM SIGLOXXI.USUARIO";
+                ", UPDATE_AT, DIRECCION, ESTADO FROM SIGLO21.USUARIO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -21858,7 +23870,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.USUARIODataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.USUARIODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -21871,9 +23883,9 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.USUARIODataTable GetData() {
+        public virtual DS_Siglo21.USUARIODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.USUARIODataTable dataTable = new DataSetSigloXXI.USUARIODataTable();
+            DS_Siglo21.USUARIODataTable dataTable = new DS_Siglo21.USUARIODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -21881,14 +23893,14 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI.USUARIODataTable dataTable) {
+        public virtual int Update(DS_Siglo21.USUARIODataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetSigloXXI dataSet) {
+        public virtual int Update(DS_Siglo21 dataSet) {
             return this.Adapter.Update(dataSet, "USUARIO");
         }
         
@@ -22207,7 +24219,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DTUsuarioTableAdapter : global::System.ComponentModel.Component {
+    public partial class DTProductoTableAdapter : global::System.ComponentModel.Component {
         
         private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
         
@@ -22221,7 +24233,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public DTUsuarioTableAdapter() {
+        public DTProductoTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -22318,15 +24330,12 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DTUsuario";
-            tableMapping.ColumnMappings.Add("RUN", "RUN");
+            tableMapping.DataSetTable = "DTProducto";
+            tableMapping.ColumnMappings.Add("CODIGO", "CODIGO");
             tableMapping.ColumnMappings.Add("NOMBRE", "NOMBRE");
-            tableMapping.ColumnMappings.Add("APELLIDOS", "APELLIDOS");
-            tableMapping.ColumnMappings.Add("CORREO", "CORREO");
-            tableMapping.ColumnMappings.Add("TELEFONO", "TELEFONO");
-            tableMapping.ColumnMappings.Add("DIRECCION", "DIRECCION");
-            tableMapping.ColumnMappings.Add("TIPO", "TIPO");
-            tableMapping.ColumnMappings.Add("ESTADO", "ESTADO");
+            tableMapping.ColumnMappings.Add("PROVEEDOR", "PROVEEDOR");
+            tableMapping.ColumnMappings.Add("PESO", "PESO");
+            tableMapping.ColumnMappings.Add("MEDIDA", "MEDIDA");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -22334,7 +24343,7 @@ namespace Vista.DataSetSigloXXITableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22343,11 +24352,10 @@ namespace Vista.DataSetSigloXXITableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        SIGLOXXI.USUARIO.RUN, SIGLOXXI.USUARIO.NOMBRE, SIGLOXXI.USUARIO.APELLIDOS, SIGLOXXI.USUARIO.CORREO, SIGLOXXI.USUARIO.TELEFONO, SIGLOXXI.USUARIO.DIRECCION, SIGLOXXI.ROL.TIPO, 
-                         SIGLOXXI.ESTADO.NOMBRE AS ESTADO
-FROM            SIGLOXXI.USUARIO INNER JOIN
-                         SIGLOXXI.ESTADO ON SIGLOXXI.USUARIO.ESTADO = SIGLOXXI.ESTADO.ID INNER JOIN
-                         SIGLOXXI.ROL ON SIGLOXXI.USUARIO.ROL_ID = SIGLOXXI.ROL.ID";
+            this._commandCollection[0].CommandText = @"SELECT SIGLO21.PRODUCTO.CODIGO, SIGLO21.PRODUCTO.NOMBRE, SIGLO21.PROVEEDOR.NOMBRE AS PROVEEDOR, SIGLO21.METRICA.PESO, SIGLO21.METRICA.MEDIDA
+FROM     SIGLO21.PRODUCTO INNER JOIN
+                  SIGLO21.PROVEEDOR ON SIGLO21.PRODUCTO.PROVEEDOR_ID = SIGLO21.PROVEEDOR.ID INNER JOIN
+                  SIGLO21.METRICA ON SIGLO21.PRODUCTO.METRICA_ID = SIGLO21.METRICA.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -22355,7 +24363,7 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.DTUsuarioDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.DTProductoDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -22368,9 +24376,9 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.DTUsuarioDataTable GetData() {
+        public virtual DS_Siglo21.DTProductoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.DTUsuarioDataTable dataTable = new DataSetSigloXXI.DTUsuarioDataTable();
+            DS_Siglo21.DTProductoDataTable dataTable = new DS_Siglo21.DTProductoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -22507,7 +24515,7 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22516,9 +24524,9 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SIGLOXXI.MESA.NUMERO, SIGLOXXI.MESA.SILLAS, SIGLOXXI.ESTADO.NOMBRE AS ESTA" +
-                "DO\r\nFROM     SIGLOXXI.MESA INNER JOIN\r\n                  SIGLOXXI.ESTADO ON SIGL" +
-                "OXXI.MESA.ESTADO = SIGLOXXI.ESTADO.ID";
+            this._commandCollection[0].CommandText = "SELECT SIGLO21.MESA.NUMERO, SIGLO21.MESA.SILLAS, SIGLO21.ESTADO.NOMBRE AS ESTADO\r" +
+                "\nFROM     SIGLO21.MESA INNER JOIN\r\n                  SIGLO21.ESTADO ON SIGLO21.M" +
+                "ESA.ESTADO = SIGLO21.ESTADO.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -22526,7 +24534,7 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.DTMesaDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.DTMesaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -22539,9 +24547,9 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.DTMesaDataTable GetData() {
+        public virtual DS_Siglo21.DTMesaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.DTMesaDataTable dataTable = new DataSetSigloXXI.DTMesaDataTable();
+            DS_Siglo21.DTMesaDataTable dataTable = new DS_Siglo21.DTMesaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -22556,7 +24564,7 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DTProductoTableAdapter : global::System.ComponentModel.Component {
+    public partial class DTUsuarioTableAdapter : global::System.ComponentModel.Component {
         
         private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
         
@@ -22570,7 +24578,7 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public DTProductoTableAdapter() {
+        public DTUsuarioTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -22667,12 +24675,15 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
             this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DTProducto";
-            tableMapping.ColumnMappings.Add("CODIGO", "CODIGO");
+            tableMapping.DataSetTable = "DTUsuario";
+            tableMapping.ColumnMappings.Add("RUN", "RUN");
             tableMapping.ColumnMappings.Add("NOMBRE", "NOMBRE");
-            tableMapping.ColumnMappings.Add("PROVEEDOR", "PROVEEDOR");
-            tableMapping.ColumnMappings.Add("PESO", "PESO");
-            tableMapping.ColumnMappings.Add("MEDIDA", "MEDIDA");
+            tableMapping.ColumnMappings.Add("APELLIDOS", "APELLIDOS");
+            tableMapping.ColumnMappings.Add("CORREO", "CORREO");
+            tableMapping.ColumnMappings.Add("TELEFONO", "TELEFONO");
+            tableMapping.ColumnMappings.Add("DIRECCION", "DIRECCION");
+            tableMapping.ColumnMappings.Add("TIPO", "TIPO");
+            tableMapping.ColumnMappings.Add("ESTADO", "ESTADO");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -22680,7 +24691,7 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.ConnectionStringSigloXXI;
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22689,10 +24700,11 @@ FROM            SIGLOXXI.USUARIO INNER JOIN
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT SIGLOXXI.PRODUCTO.CODIGO, SIGLOXXI.PRODUCTO.NOMBRE, SIGLOXXI.PROVEEDOR.NOMBRE AS PROVEEDOR, SIGLOXXI.METRICA.PESO, SIGLOXXI.METRICA.MEDIDA
-FROM     SIGLOXXI.PRODUCTO INNER JOIN
-                  SIGLOXXI.PROVEEDOR ON SIGLOXXI.PRODUCTO.PROVEEDOR_ID = SIGLOXXI.PROVEEDOR.ID INNER JOIN
-                  SIGLOXXI.METRICA ON SIGLOXXI.PRODUCTO.METRICA_ID = SIGLOXXI.METRICA.ID";
+            this._commandCollection[0].CommandText = @"SELECT SIGLO21.USUARIO.RUN, SIGLO21.USUARIO.NOMBRE, SIGLO21.USUARIO.APELLIDOS, SIGLO21.USUARIO.CORREO, SIGLO21.USUARIO.TELEFONO, SIGLO21.USUARIO.DIRECCION, SIGLO21.ROL.TIPO, 
+                  SIGLO21.ESTADO.NOMBRE AS ESTADO
+FROM     SIGLO21.USUARIO INNER JOIN
+                  SIGLO21.ESTADO ON SIGLO21.USUARIO.ESTADO = SIGLO21.ESTADO.ID INNER JOIN
+                  SIGLO21.ROL ON SIGLO21.USUARIO.ROL_ID = SIGLO21.ROL.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -22700,7 +24712,7 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetSigloXXI.DTProductoDataTable dataTable) {
+        public virtual int Fill(DS_Siglo21.DTUsuarioDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -22713,9 +24725,9 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetSigloXXI.DTProductoDataTable GetData() {
+        public virtual DS_Siglo21.DTUsuarioDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetSigloXXI.DTProductoDataTable dataTable = new DataSetSigloXXI.DTProductoDataTable();
+            DS_Siglo21.DTUsuarioDataTable dataTable = new DS_Siglo21.DTUsuarioDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -22733,11 +24745,15 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         
         private UpdateOrderOption _updateOrder;
         
+        private AUD_INGRESOTableAdapter _aUD_INGRESOTableAdapter;
+        
         private BOLETATableAdapter _bOLETATableAdapter;
         
         private BOLETA_WCTableAdapter _bOLETA_WCTableAdapter;
         
         private CLIENTETableAdapter _cLIENTETableAdapter;
+        
+        private DETALLE_INGRESOTableAdapter _dETALLE_INGRESOTableAdapter;
         
         private ESTADOTableAdapter _eSTADOTableAdapter;
         
@@ -22795,6 +24811,20 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
+        public AUD_INGRESOTableAdapter AUD_INGRESOTableAdapter {
+            get {
+                return this._aUD_INGRESOTableAdapter;
+            }
+            set {
+                this._aUD_INGRESOTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
         public BOLETATableAdapter BOLETATableAdapter {
             get {
                 return this._bOLETATableAdapter;
@@ -22829,6 +24859,20 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
             }
             set {
                 this._cLIENTETableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public DETALLE_INGRESOTableAdapter DETALLE_INGRESOTableAdapter {
+            get {
+                return this._dETALLE_INGRESOTableAdapter;
+            }
+            set {
+                this._dETALLE_INGRESOTableAdapter = value;
             }
         }
         
@@ -23103,6 +25147,10 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                 if ((this._connection != null)) {
                     return this._connection;
                 }
+                if (((this._aUD_INGRESOTableAdapter != null) 
+                            && (this._aUD_INGRESOTableAdapter.Connection != null))) {
+                    return this._aUD_INGRESOTableAdapter.Connection;
+                }
                 if (((this._bOLETATableAdapter != null) 
                             && (this._bOLETATableAdapter.Connection != null))) {
                     return this._bOLETATableAdapter.Connection;
@@ -23114,6 +25162,10 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                 if (((this._cLIENTETableAdapter != null) 
                             && (this._cLIENTETableAdapter.Connection != null))) {
                     return this._cLIENTETableAdapter.Connection;
+                }
+                if (((this._dETALLE_INGRESOTableAdapter != null) 
+                            && (this._dETALLE_INGRESOTableAdapter.Connection != null))) {
+                    return this._dETALLE_INGRESOTableAdapter.Connection;
                 }
                 if (((this._eSTADOTableAdapter != null) 
                             && (this._eSTADOTableAdapter.Connection != null))) {
@@ -23200,6 +25252,9 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
+                if ((this._aUD_INGRESOTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._bOLETATableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -23207,6 +25262,9 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     count = (count + 1);
                 }
                 if ((this._cLIENTETableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._dETALLE_INGRESOTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._eSTADOTableAdapter != null)) {
@@ -23272,17 +25330,8 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateUpdatedRows(DataSetSigloXXI dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DS_Siglo21 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._eSTADOTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ESTADO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._eSTADOTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._gIROTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.GIRO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -23292,12 +25341,12 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._rOLTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ROL.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._eSTADOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ESTADO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._rOLTableAdapter.Update(updatedRows));
+                    result = (result + this._eSTADOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23310,12 +25359,21 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._uSUARIOTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.USUARIO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._rOLTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ROL.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._uSUARIOTableAdapter.Update(updatedRows));
+                    result = (result + this._rOLTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._pROVEEDORTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PROVEEDOR.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._pROVEEDORTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23346,21 +25404,12 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._mESATableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.MESA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pRODUCTOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._mESATableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._pROVEEDORTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PROVEEDOR.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pROVEEDORTableAdapter.Update(updatedRows));
+                    result = (result + this._pRODUCTOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23373,57 +25422,30 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._uSUARIOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.USUARIO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._uSUARIOTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._mESATableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MESA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._mESATableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._sOLICITUDTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._sOLICITUDTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._rESERVATableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.RESERVA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._rESERVATableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._pRODUCTOTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pRODUCTOTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._bOLETATableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.BOLETA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._bOLETATableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._mENUTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._mENUTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._pRODUCTO_SOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PRODUCTO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pRODUCTO_SOLICITUDTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23436,21 +25458,39 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._iNGREDIENTETableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.INGREDIENTE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._mENUTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._iNGREDIENTETableAdapter.Update(updatedRows));
+                    result = (result + this._mENUTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._bOLETA_WCTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.BOLETA_WC.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._bOLETATableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.BOLETA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._bOLETA_WCTableAdapter.Update(updatedRows));
+                    result = (result + this._bOLETATableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._rESERVATableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.RESERVA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._rESERVATableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._aUD_INGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.AUD_INGRESO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._aUD_INGRESOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23463,6 +25503,42 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._iNGREDIENTETableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.INGREDIENTE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._iNGREDIENTETableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._dETALLE_INGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DETALLE_INGRESO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._dETALLE_INGRESOTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._bOLETA_WCTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.BOLETA_WC.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._bOLETA_WCTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._pRODUCTO_SOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PRODUCTO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._pRODUCTO_SOLICITUDTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -23471,16 +25547,8 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateInsertedRows(DataSetSigloXXI dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DS_Siglo21 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._eSTADOTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ESTADO.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._eSTADOTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._gIROTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.GIRO.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -23489,11 +25557,11 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._rOLTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ROL.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._eSTADOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ESTADO.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._rOLTableAdapter.Update(addedRows));
+                    result = (result + this._eSTADOTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23505,11 +25573,19 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._uSUARIOTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.USUARIO.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._rOLTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ROL.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._uSUARIOTableAdapter.Update(addedRows));
+                    result = (result + this._rOLTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._pROVEEDORTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PROVEEDOR.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._pROVEEDORTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23537,19 +25613,11 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._mESATableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.MESA.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pRODUCTOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._mESATableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._pROVEEDORTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PROVEEDOR.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pROVEEDORTableAdapter.Update(addedRows));
+                    result = (result + this._pRODUCTOTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23561,51 +25629,27 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._uSUARIOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.USUARIO.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._uSUARIOTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._mESATableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MESA.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._mESATableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._sOLICITUDTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._sOLICITUDTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._rESERVATableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.RESERVA.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._rESERVATableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._pRODUCTOTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pRODUCTOTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._bOLETATableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.BOLETA.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._bOLETATableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._mENUTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._mENUTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._pRODUCTO_SOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PRODUCTO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pRODUCTO_SOLICITUDTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23617,19 +25661,35 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._iNGREDIENTETableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.INGREDIENTE.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._mENUTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._iNGREDIENTETableAdapter.Update(addedRows));
+                    result = (result + this._mENUTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._bOLETA_WCTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.BOLETA_WC.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._bOLETATableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.BOLETA.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._bOLETA_WCTableAdapter.Update(addedRows));
+                    result = (result + this._bOLETATableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._rESERVATableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.RESERVA.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._rESERVATableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._aUD_INGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.AUD_INGRESO.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._aUD_INGRESOTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23641,6 +25701,38 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._iNGREDIENTETableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.INGREDIENTE.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._iNGREDIENTETableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._dETALLE_INGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DETALLE_INGRESO.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._dETALLE_INGRESOTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._bOLETA_WCTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.BOLETA_WC.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._bOLETA_WCTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._pRODUCTO_SOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PRODUCTO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._pRODUCTO_SOLICITUDTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -23649,13 +25741,13 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateDeletedRows(DataSetSigloXXI dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DS_Siglo21 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._pEDIDOTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PEDIDO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pRODUCTO_SOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PRODUCTO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._pEDIDOTableAdapter.Update(deletedRows));
+                    result = (result + this._pRODUCTO_SOLICITUDTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23667,6 +25759,14 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._dETALLE_INGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.DETALLE_INGRESO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._dETALLE_INGRESOTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._iNGREDIENTETableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.INGREDIENTE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -23675,43 +25775,19 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._iNGRESOTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.INGRESO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pEDIDOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PEDIDO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._iNGRESOTableAdapter.Update(deletedRows));
+                    result = (result + this._pEDIDOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._pRODUCTO_SOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PRODUCTO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._aUD_INGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.AUD_INGRESO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._pRODUCTO_SOLICITUDTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._mENUTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._mENUTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._bOLETATableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.BOLETA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._bOLETATableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._pRODUCTOTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._pRODUCTOTableAdapter.Update(deletedRows));
+                    result = (result + this._aUD_INGRESOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23723,11 +25799,51 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._bOLETATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.BOLETA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._bOLETATableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._mENUTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._mENUTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._iNGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.INGRESO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._iNGRESOTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._sOLICITUDTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._sOLICITUDTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._mESATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MESA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._mESATableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._uSUARIOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.USUARIO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._uSUARIOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23739,19 +25855,11 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._pROVEEDORTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PROVEEDOR.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pRODUCTOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._pROVEEDORTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._mESATableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.MESA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._mESATableAdapter.Update(deletedRows));
+                    result = (result + this._pRODUCTOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23779,19 +25887,11 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._uSUARIOTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.USUARIO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pROVEEDORTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PROVEEDOR.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._uSUARIOTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._mETRICATableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.METRICA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._mETRICATableAdapter.Update(deletedRows));
+                    result = (result + this._pROVEEDORTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23803,11 +25903,11 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._gIROTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.GIRO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._mETRICATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.METRICA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._gIROTableAdapter.Update(deletedRows));
+                    result = (result + this._mETRICATableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23816,6 +25916,14 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._eSTADOTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._gIROTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.GIRO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._gIROTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23851,12 +25959,17 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public virtual int UpdateAll(DataSetSigloXXI dataSet) {
+        public virtual int UpdateAll(DS_Siglo21 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
+            }
+            if (((this._aUD_INGRESOTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._aUD_INGRESOTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi" +
+                        "sma cadena de conexión.");
             }
             if (((this._bOLETATableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._bOLETATableAdapter.Connection) == false))) {
@@ -23870,6 +25983,11 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
             }
             if (((this._cLIENTETableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._cLIENTETableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi" +
+                        "sma cadena de conexión.");
+            }
+            if (((this._dETALLE_INGRESOTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._dETALLE_INGRESOTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi" +
                         "sma cadena de conexión.");
             }
@@ -23995,6 +26113,15 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
             try {
                 // ---- Prepare for update -----------
                 //
+                if ((this._aUD_INGRESOTableAdapter != null)) {
+                    revertConnections.Add(this._aUD_INGRESOTableAdapter, this._aUD_INGRESOTableAdapter.Connection);
+                    this._aUD_INGRESOTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(workConnection));
+                    this._aUD_INGRESOTableAdapter.Transaction = ((global::Oracle.ManagedDataAccess.Client.OracleTransaction)(workTransaction));
+                    if (this._aUD_INGRESOTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._aUD_INGRESOTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._aUD_INGRESOTableAdapter.Adapter);
+                    }
+                }
                 if ((this._bOLETATableAdapter != null)) {
                     revertConnections.Add(this._bOLETATableAdapter, this._bOLETATableAdapter.Connection);
                     this._bOLETATableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(workConnection));
@@ -24020,6 +26147,15 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                     if (this._cLIENTETableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._cLIENTETableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._cLIENTETableAdapter.Adapter);
+                    }
+                }
+                if ((this._dETALLE_INGRESOTableAdapter != null)) {
+                    revertConnections.Add(this._dETALLE_INGRESOTableAdapter, this._dETALLE_INGRESOTableAdapter.Connection);
+                    this._dETALLE_INGRESOTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(workConnection));
+                    this._dETALLE_INGRESOTableAdapter.Transaction = ((global::Oracle.ManagedDataAccess.Client.OracleTransaction)(workTransaction));
+                    if (this._dETALLE_INGRESOTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._dETALLE_INGRESOTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._dETALLE_INGRESOTableAdapter.Adapter);
                     }
                 }
                 if ((this._eSTADOTableAdapter != null)) {
@@ -24242,6 +26378,10 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                 if (workConnOpened) {
                     workConnection.Close();
                 }
+                if ((this._aUD_INGRESOTableAdapter != null)) {
+                    this._aUD_INGRESOTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._aUD_INGRESOTableAdapter]));
+                    this._aUD_INGRESOTableAdapter.Transaction = null;
+                }
                 if ((this._bOLETATableAdapter != null)) {
                     this._bOLETATableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._bOLETATableAdapter]));
                     this._bOLETATableAdapter.Transaction = null;
@@ -24253,6 +26393,10 @@ FROM     SIGLOXXI.PRODUCTO INNER JOIN
                 if ((this._cLIENTETableAdapter != null)) {
                     this._cLIENTETableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._cLIENTETableAdapter]));
                     this._cLIENTETableAdapter.Transaction = null;
+                }
+                if ((this._dETALLE_INGRESOTableAdapter != null)) {
+                    this._dETALLE_INGRESOTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._dETALLE_INGRESOTableAdapter]));
+                    this._dETALLE_INGRESOTableAdapter.Transaction = null;
                 }
                 if ((this._eSTADOTableAdapter != null)) {
                     this._eSTADOTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._eSTADOTableAdapter]));

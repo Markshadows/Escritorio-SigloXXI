@@ -35,10 +35,10 @@ namespace Vista.Administrador
 
         private void FormularioAgregar_Activated(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.ESTADO' Puede moverla o quitarla según sea necesario.
-            this.eSTADOTableAdapter.Fill(this.dataSetSigloXXI.ESTADO);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.ROL' Puede moverla o quitarla según sea necesario.
-            this.rOLTableAdapter.Fill(this.dataSetSigloXXI.ROL);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.ESTADO' Puede moverla o quitarla según sea necesario.
+            this.eSTADOTableAdapter.Fill(this.dS_Siglo21.ESTADO);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.ROL' Puede moverla o quitarla según sea necesario.
+            this.rOLTableAdapter.Fill(this.dS_Siglo21.ROL);
 
             cargarDatosUsuario();
 

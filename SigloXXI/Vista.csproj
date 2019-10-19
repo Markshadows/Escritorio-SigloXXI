@@ -126,10 +126,10 @@
     <Compile Include="Cocina\Comandas.Designer.cs">
       <DependentUpon>Comandas.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSetSigloXXI.Designer.cs">
+    <Compile Include="DS_Siglo21.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetSigloXXI.xsd</DependentUpon>
+      <DependentUpon>DS_Siglo21.xsd</DependentUpon>
     </Compile>
     <Compile Include="Finanzas\FormularioFinanzas.cs">
       <SubType>Form</SubType>
@@ -207,16 +207,16 @@
     <EmbeddedResource Include="Usuario\IniciarSesion.resx">
       <DependentUpon>IniciarSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DataSetSigloXXI.xsc">
-      <DependentUpon>DataSetSigloXXI.xsd</DependentUpon>
+    <None Include="DS_Siglo21.xsc">
+      <DependentUpon>DS_Siglo21.xsd</DependentUpon>
     </None>
-    <None Include="DataSetSigloXXI.xsd">
+    <None Include="DS_Siglo21.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetSigloXXI.Designer.cs</LastGenOutput>
+      <LastGenOutput>DS_Siglo21.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSetSigloXXI.xss">
-      <DependentUpon>DataSetSigloXXI.xsd</DependentUpon>
+    <None Include="DS_Siglo21.xss">
+      <DependentUpon>DS_Siglo21.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

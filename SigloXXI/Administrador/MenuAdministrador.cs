@@ -23,14 +23,18 @@ namespace Vista.Administrador
 
         public void MenuAdministrador_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.PROVEEDOR' Puede moverla o quitarla según sea necesario.
-            this.pROVEEDORTableAdapter.Fill(this.dataSetSigloXXI.PROVEEDOR);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTProducto' Puede moverla o quitarla según sea necesario.
-            this.dTProductoTableAdapter.Fill(this.dataSetSigloXXI.DTProducto);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTMesa' Puede moverla o quitarla según sea necesario.
-            this.dTMesaTableAdapter.Fill(this.dataSetSigloXXI.DTMesa);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetSigloXXI.DTUsuario' Puede moverla o quitarla según sea necesario.
-            this.dTUsuarioTableAdapter.Fill(this.dataSetSigloXXI.DTUsuario);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTUsuario' Puede moverla o quitarla según sea necesario.
+            this.dTUsuarioTableAdapter.Fill(this.dS_Siglo21.DTUsuario);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTMesa' Puede moverla o quitarla según sea necesario.
+            this.dTMesaTableAdapter.Fill(this.dS_Siglo21.DTMesa);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTProducto' Puede moverla o quitarla según sea necesario.
+            this.dTProductoTableAdapter.Fill(this.dS_Siglo21.DTProducto);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.PROVEEDOR' Puede moverla o quitarla según sea necesario.
+            this.pROVEEDORTableAdapter.Fill(this.dS_Siglo21.PROVEEDOR);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.SOLICITUD' Puede moverla o quitarla según sea necesario.
+            this.sOLICITUDTableAdapter.Fill(this.dS_Siglo21.SOLICITUD);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.ESTADO_SOLICITUD' Puede moverla o quitarla según sea necesario.
+            this.eSTADO_SOLICITUDTableAdapter.Fill(this.dS_Siglo21.ESTADO_SOLICITUD);
             cboMetrica.DataSource = Metrica.metricas();
             cboMetrica.DisplayMember = "Medida";
             cboMetrica.ValueMember = "Medida";
@@ -286,6 +290,39 @@ namespace Vista.Administrador
                 {
                     MenuAdministrador_Load(sender, e);
                     MetroFramework.MetroMessageBox.Show(this, "Mesa Modificada", "Modificar Mesa");
+                }
+            }
+            catch (Exception ex)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Error" + ex.Message, "Modificar Mesa");
+            }
+        }
+
+        private void gridSolicitudes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Solicitud p = new Solicitud();
+                p.Id = int.Parse(gridSolicitudes.Rows[e.RowIndex].Cells[0].Value.ToString());
+                p.Buscar();
+                cboEstadoSolicitud.SelectedValue = p.EstadoSolicitud.Id;
+                txtIdSolicitud.Text = p.Id.ToString();
+                return;
+            }
+            MetroFramework.MetroMessageBox.Show(this, "Seleccione una fila correcta", "Seleccionar Producto");
+        }
+
+        private void ModificarSolicitud_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Solicitud m = new Solicitud();
+                m.Id = int.Parse(txtIdSolicitud.Text);
+                m.EstadoSolicitud = new EstadoSolicitud { Id = int.Parse(cboEstadoSolicitud.SelectedValue.ToString()) };
+                if (m.Modificar())
+                {
+                    MenuAdministrador_Load(sender, e);
+                    MetroFramework.MetroMessageBox.Show(this, "Solicitud Modificada", "Modificar Solicitud");
                 }
             }
             catch (Exception ex)

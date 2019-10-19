@@ -22,19 +22,37 @@ namespace Modelo
                     {
                         Id = 1,
                         Peso = 0,
-                        Medida = "Kilogramo"
+                        Medida = "Kilogramos"
                     },
                     new Metrica
                     {
                         Id = 2,
                         Peso = 0,
-                        Medida = "Gramo"
+                        Medida = "Gramos"
                     },
                     new Metrica
                     {
                         Id = 3,
                         Peso = 0,
-                        Medida = "Litro"
+                        Medida = "Litros"
+                    },
+                     new Metrica
+                    {
+                        Id = 3,
+                        Peso = 0,
+                        Medida = "Botellas"
+                    },
+                     new Metrica
+                    {
+                        Id = 3,
+                        Peso = 0,
+                        Medida = "Unidades"
+                    },
+                     new Metrica
+                    {
+                        Id = 3,
+                        Peso = 0,
+                        Medida = "Paquetes"
                     }
                 };
 

@@ -64,5 +64,15 @@ namespace Vista.Properties {
                 this["Activo"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("DATA SOURCE=mycm.cl:4921/xe;PASSWORD=siglo21;USER ID=SIGLO21")]
+        public string Siglo21CS {
+            get {
+                return ((string)(this["Siglo21CS"]));
+            }
+        }
     }
 }
