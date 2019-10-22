@@ -90,6 +90,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\CRUDProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\CRUDProveedor.Designer.cs">
+      <DependentUpon>CRUDProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\CRUDUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
       <DependentUpon>IniciarSesion.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilidades.cs" />
+    <EmbeddedResource Include="Administrador\CRUDProveedor.resx">
+      <DependentUpon>CRUDProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\CRUDUsuario.resx">
       <DependentUpon>CRUDUsuario.cs</DependentUpon>
     </EmbeddedResource>

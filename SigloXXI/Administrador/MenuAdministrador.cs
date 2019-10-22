@@ -23,6 +23,8 @@ namespace Vista.Administrador
 
         public void MenuAdministrador_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTProveedor' Puede moverla o quitarla según sea necesario.
+            this.dTProveedorTableAdapter.Fill(this.dS_Siglo21.DTProveedor);
             // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTUsuario' Puede moverla o quitarla según sea necesario.
             this.dTUsuarioTableAdapter.Fill(this.dS_Siglo21.DTUsuario);
             // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTMesa' Puede moverla o quitarla según sea necesario.
@@ -329,6 +331,24 @@ namespace Vista.Administrador
             {
                 MetroFramework.MetroMessageBox.Show(this, "Error" + ex.Message, "Modificar Mesa");
             }
+        }
+
+        private void gridProveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Proveedor proveedor = new Proveedor();
+                proveedor.Run = gridProveedores.Rows[e.RowIndex].Cells[1].Value.ToString();
+                proveedor.Buscar();
+                new CRUDProveedor(this, proveedor) { }.Show();
+                return;
+            }
+            MetroFramework.MetroMessageBox.Show(this, "Seleccione una fila correcta", "Seleccionar Proveedor");
+        }
+
+        private void AgregarProveedor_Click(object sender, EventArgs e)
+        {
+            new CRUDProveedor(this) { }.Show();
         }
     }
 }
