@@ -28,115 +28,140 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.txtContrasena = new MetroFramework.Controls.MetroTextBox();
-            this.txtCorreo = new MetroFramework.Controls.MetroTextBox();
-            this.btnEntrar = new MetroFramework.Controls.MetroButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IniciarSesion));
+            this.label1 = new System.Windows.Forms.Label();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.btnEntrar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtContrasena = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // metroLabel1
+            // label1
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(105, 161);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(51, 19);
-            this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "Correo";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(466, -63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "X";
             // 
-            // metroLabel2
+            // metroPanel1
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(105, 248);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(75, 19);
-            this.metroLabel2.TabIndex = 1;
-            this.metroLabel2.Text = "Contraseña";
-            // 
-            // txtContrasena
-            // 
-            // 
-            // 
-            // 
-            this.txtContrasena.CustomButton.Image = null;
-            this.txtContrasena.CustomButton.Location = new System.Drawing.Point(155, 1);
-            this.txtContrasena.CustomButton.Name = "";
-            this.txtContrasena.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtContrasena.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtContrasena.CustomButton.TabIndex = 1;
-            this.txtContrasena.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtContrasena.CustomButton.UseSelectable = true;
-            this.txtContrasena.CustomButton.Visible = false;
-            this.txtContrasena.Lines = new string[0];
-            this.txtContrasena.Location = new System.Drawing.Point(105, 270);
-            this.txtContrasena.MaxLength = 32767;
-            this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.PasswordChar = '*';
-            this.txtContrasena.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtContrasena.SelectedText = "";
-            this.txtContrasena.SelectionLength = 0;
-            this.txtContrasena.SelectionStart = 0;
-            this.txtContrasena.ShortcutsEnabled = true;
-            this.txtContrasena.ShowClearButton = true;
-            this.txtContrasena.Size = new System.Drawing.Size(177, 23);
-            this.txtContrasena.TabIndex = 2;
-            this.txtContrasena.UseSelectable = true;
-            this.txtContrasena.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtContrasena.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.metroPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroPanel1.BackgroundImage")));
+            this.metroPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(400, 266);
+            this.metroPanel1.TabIndex = 10;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
             // 
             // txtCorreo
             // 
-            // 
-            // 
-            // 
-            this.txtCorreo.CustomButton.Image = null;
-            this.txtCorreo.CustomButton.Location = new System.Drawing.Point(155, 1);
-            this.txtCorreo.CustomButton.Name = "";
-            this.txtCorreo.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtCorreo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtCorreo.CustomButton.TabIndex = 1;
-            this.txtCorreo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtCorreo.CustomButton.UseSelectable = true;
-            this.txtCorreo.CustomButton.Visible = false;
-            this.txtCorreo.Lines = new string[0];
-            this.txtCorreo.Location = new System.Drawing.Point(105, 183);
-            this.txtCorreo.MaxLength = 32767;
+            this.txtCorreo.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCorreo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreo.Location = new System.Drawing.Point(78, 339);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.PasswordChar = '\0';
-            this.txtCorreo.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtCorreo.SelectedText = "";
-            this.txtCorreo.SelectionLength = 0;
-            this.txtCorreo.SelectionStart = 0;
-            this.txtCorreo.ShortcutsEnabled = true;
-            this.txtCorreo.ShowClearButton = true;
-            this.txtCorreo.Size = new System.Drawing.Size(177, 23);
-            this.txtCorreo.TabIndex = 3;
-            this.txtCorreo.UseSelectable = true;
-            this.txtCorreo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtCorreo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtCorreo.Size = new System.Drawing.Size(236, 18);
+            this.txtCorreo.TabIndex = 13;
+            this.txtCorreo.Tag = "";
             // 
             // btnEntrar
             // 
-            this.btnEntrar.Location = new System.Drawing.Point(139, 357);
+            this.btnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntrar.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntrar.ForeColor = System.Drawing.Color.White;
+            this.btnEntrar.Location = new System.Drawing.Point(134, 485);
+            this.btnEntrar.Margin = new System.Windows.Forms.Padding(0);
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(103, 23);
-            this.btnEntrar.TabIndex = 4;
+            this.btnEntrar.Size = new System.Drawing.Size(127, 39);
+            this.btnEntrar.TabIndex = 15;
             this.btnEntrar.Text = "Entrar";
-            this.btnEntrar.UseSelectable = true;
+            this.btnEntrar.UseVisualStyleBackColor = false;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(75, 305);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 18);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "E-mail";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(75, 391);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 18);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Contraseña";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.panel1.Location = new System.Drawing.Point(78, 359);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(236, 1);
+            this.panel1.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.panel2.Location = new System.Drawing.Point(78, 444);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(236, 1);
+            this.panel2.TabIndex = 19;
+            // 
+            // txtContrasena
+            // 
+            this.txtContrasena.BackColor = System.Drawing.SystemColors.Control;
+            this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtContrasena.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContrasena.Location = new System.Drawing.Point(78, 424);
+            this.txtContrasena.Name = "txtContrasena";
+            this.txtContrasena.Size = new System.Drawing.Size(236, 18);
+            this.txtContrasena.TabIndex = 20;
+            this.txtContrasena.Tag = "";
             // 
             // IniciarSesion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 450);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(400, 550);
+            this.Controls.Add(this.txtContrasena);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.txtCorreo);
-            this.Controls.Add(this.txtContrasena);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.metroPanel1);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "IniciarSesion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sesión";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,11 +169,14 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroTextBox txtContrasena;
-        private MetroFramework.Controls.MetroTextBox txtCorreo;
-        private MetroFramework.Controls.MetroButton btnEntrar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnEntrar;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtContrasena;
     }
 }

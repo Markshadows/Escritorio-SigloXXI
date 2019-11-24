@@ -102,6 +102,12 @@
     <Compile Include="Administrador\CRUDUsuario.Designer.cs">
       <DependentUpon>CRUDUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\Estadisticas\EstatsUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\Estadisticas\EstatsUsuario.Designer.cs">
+      <DependentUpon>EstatsUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\MenuAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\CRUDUsuario.resx">
       <DependentUpon>CRUDUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\Estadisticas\EstatsUsuario.resx">
+      <DependentUpon>EstatsUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\MenuAdministrador.resx">
       <DependentUpon>MenuAdministrador.cs</DependentUpon>

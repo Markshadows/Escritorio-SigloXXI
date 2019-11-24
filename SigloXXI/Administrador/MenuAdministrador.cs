@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using DALC;
 using Modelo;
+using Vista.Administrador.Estadisticas;
 
 namespace Vista.Administrador
 {
-    public partial class MenuAdministrador : MetroFramework.Forms.MetroForm
+    public partial class MenuAdministrador : Form
     {
         private int idMetrica;
         public MenuAdministrador()
@@ -40,6 +42,7 @@ namespace Vista.Administrador
             cboMetrica.DataSource = Metrica.metricas();
             cboMetrica.DisplayMember = "Medida";
             cboMetrica.ValueMember = "Medida";
+
 
         }
 
@@ -349,6 +352,18 @@ namespace Vista.Administrador
         private void AgregarProveedor_Click(object sender, EventArgs e)
         {
             new CRUDProveedor(this) { }.Show();
+        }
+
+        private void btnEstdsUsuarios_Click(object sender, EventArgs e)
+        {
+            new EstatsUsuario().Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //this.Dispose();
+            Application.Exit();
         }
     }
 }

@@ -13,7 +13,9 @@ namespace Test
         {
             //Agregar();
             //Console.WriteLine(Buscar());
-            Console.WriteLine(Modificar());
+            //Console.WriteLine(Modificar());
+            //cantidadMes();
+            menusVendidos();
             Console.ReadKey();
         }
 
@@ -57,6 +59,38 @@ namespace Test
             {
                 Console.WriteLine("Agregó");
             }
+        }
+
+        static int cantidadPorRol()
+        {
+            Usuario usuario = new Usuario();
+            return usuario.cantidadPorRol("MESERO");
+        }
+
+        static void cantidadMes()
+        {
+            Informe inf = new Informe();
+            Console.WriteLine(inf.cantidadMensual(10));
+        }
+
+        static void menusVendidos()
+        {
+            string nombreMenu = "";
+            Informe inf = new Informe();
+            int contador = 0;
+            List<string> menus = new List<string>();
+            IEnumerable<object> menusVendidos = inf.menusVendidos(10).Distinct();
+
+            foreach (var item in inf.menusVendidos(10))
+            {
+                Console.WriteLine(item);
+            }
+
+            //foreach (var item in menus)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("contador: "+contador);
         }
     }
 }

@@ -71,6 +71,10 @@
       <Project>{F92A2148-C208-4E72-9FA9-A8D17CCA3853}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SigloXXI\Vista.csproj">
+      <Project>{9104d4b0-d018-4fe5-b58b-e890c19356bd}</Project>
+      <Name>Vista</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,10 +12,11 @@ using System.Windows.Forms;
 using SigloXXI;
 using Vista.Administrador;
 using Vista.Finanzas;
+using MetroFramework.Components;
 
 namespace Vista.Usuario
 {
-    public partial class IniciarSesion : MetroFramework.Forms.MetroForm
+    public partial class IniciarSesion : Form
     {
         public IniciarSesion()
         {
@@ -61,7 +62,7 @@ namespace Vista.Usuario
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "El usuario no existe", "Iniciar Sesión");
+                MetroFramework.MetroMessageBox.Show(this, "El usuario no existe", "Iniciar Sesión", 100);
             }
 
         }

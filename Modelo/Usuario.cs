@@ -135,5 +135,20 @@ namespace Modelo
                 return false;
             }
         }
+
+        public int cantidadPorRol(string rol)
+        {
+            try
+            {
+                int cantidad = conexion.Entidad.USUARIO
+                    .Where(u => u.ROL.TIPO.Equals(rol)).Count();
+                return cantidad;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
