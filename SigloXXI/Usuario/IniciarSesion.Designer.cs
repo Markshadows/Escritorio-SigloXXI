@@ -38,6 +38,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtContrasena = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -55,6 +57,7 @@
             this.metroPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
             this.metroPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroPanel1.BackgroundImage")));
             this.metroPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroPanel1.Controls.Add(this.button1);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -141,6 +144,19 @@
             this.txtContrasena.Size = new System.Drawing.Size(236, 18);
             this.txtContrasena.TabIndex = 20;
             this.txtContrasena.Tag = "";
+            this.txtContrasena.UseSystemPasswordChar = true;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(367, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // IniciarSesion
             // 
@@ -163,6 +179,7 @@
             this.Name = "IniciarSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sesión";
+            this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +195,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtContrasena;
+        private System.Windows.Forms.Button button1;
     }
 }

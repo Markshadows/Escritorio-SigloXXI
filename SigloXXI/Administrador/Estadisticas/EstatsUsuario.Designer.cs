@@ -32,16 +32,16 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnVolverEstsUsuario = new MetroFramework.Controls.MetroButton();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnVolverEstsUsuario = new MetroFramework.Controls.MetroButton();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -55,7 +55,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1285, 605);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -92,22 +92,6 @@
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
             // 
-            // btnVolverEstsUsuario
-            // 
-            this.btnVolverEstsUsuario.Location = new System.Drawing.Point(1055, 45);
-            this.btnVolverEstsUsuario.Name = "btnVolverEstsUsuario";
-            this.btnVolverEstsUsuario.Size = new System.Drawing.Size(109, 23);
-            this.btnVolverEstsUsuario.TabIndex = 1;
-            this.btnVolverEstsUsuario.Text = "Volver";
-            this.btnVolverEstsUsuario.UseSelectable = true;
-            this.btnVolverEstsUsuario.Click += new System.EventHandler(this.btnVolverEstsUsuario_Click);
-            // 
-            // timer
-            // 
-            this.timer.Enabled = true;
-            this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // metroTabPage2
             // 
             this.metroTabPage2.Controls.Add(this.chart2);
@@ -125,19 +109,35 @@
             // 
             // chart2
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart2.Legends.Add(legend4);
             this.chart2.Location = new System.Drawing.Point(151, 73);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart2.Series.Add(series4);
             this.chart2.Size = new System.Drawing.Size(723, 358);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
+            // 
+            // btnVolverEstsUsuario
+            // 
+            this.btnVolverEstsUsuario.Location = new System.Drawing.Point(1055, 45);
+            this.btnVolverEstsUsuario.Name = "btnVolverEstsUsuario";
+            this.btnVolverEstsUsuario.Size = new System.Drawing.Size(109, 23);
+            this.btnVolverEstsUsuario.TabIndex = 1;
+            this.btnVolverEstsUsuario.Text = "Volver";
+            this.btnVolverEstsUsuario.UseSelectable = true;
+            this.btnVolverEstsUsuario.Click += new System.EventHandler(this.btnVolverEstsUsuario_Click);
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // EstatsUsuario
             // 

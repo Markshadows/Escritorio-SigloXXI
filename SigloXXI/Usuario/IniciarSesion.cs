@@ -39,18 +39,18 @@ namespace Vista.Usuario
                         this.Hide();
                         break;
                     case 2:
+                        Comandas comandas = new Comandas();
+                        comandas.Show();
+                        this.Hide();
+                        break;
+                    case 3:
                         Inventario inventario = new Inventario();
                         inventario.Show();
                         this.Hide();
                         break;
-                    case 3:
+                    case 4:
                         MenuCaja menuCaja = new MenuCaja();
                         menuCaja.Show();
-                        this.Hide();
-                        break;
-                    case 4:
-                        Comandas comandas = new Comandas();
-                        comandas.Show();
                         this.Hide();
                         break;
                     case 5:
@@ -65,6 +65,11 @@ namespace Vista.Usuario
                 MetroFramework.MetroMessageBox.Show(this, "El usuario no existe", "Iniciar Sesión", 100);
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
