@@ -48,6 +48,8 @@
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoSolicitud.cs" />
     <Compile Include="Giro.cs" />
+    <Compile Include="Ingrediente.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Informe.cs" />
     <Compile Include="Mesa.cs" />
     <Compile Include="Metrica.cs" />

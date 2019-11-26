@@ -132,16 +132,50 @@
     <Compile Include="Cliente\ClienteMesa.Designer.cs">
       <DependentUpon>ClienteMesa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cocina\ActualizarMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cocina\ActualizarMenu.Designer.cs">
+      <DependentUpon>ActualizarMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cocina\Comandas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cocina\Comandas.Designer.cs">
       <DependentUpon>Comandas.cs</DependentUpon>
     </Compile>
-    <Compile Include="DS_Siglo21.Designer.cs">
+    <Compile Include="Cocina\FormularioIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cocina\FormularioIngrediente.Designer.cs">
+      <DependentUpon>FormularioIngrediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cocina\FormularioMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cocina\FormularioMenu.Designer.cs">
+      <DependentUpon>FormularioMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cocina\VerPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cocina\VerPedidos.Designer.cs">
+      <DependentUpon>VerPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetCocina.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCocina.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSigloXXI.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_Siglo21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetVistas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetVistas.xsd</DependentUpon>
     </Compile>
     <Compile Include="Finanzas\FormularioFinanzas.cs">
       <SubType>Form</SubType>
@@ -197,8 +231,20 @@
     <EmbeddedResource Include="Cliente\ClienteMesa.resx">
       <DependentUpon>ClienteMesa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cocina\ActualizarMenu.resx">
+      <DependentUpon>ActualizarMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cocina\Comandas.resx">
       <DependentUpon>Comandas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cocina\FormularioIngrediente.resx">
+      <DependentUpon>FormularioIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cocina\FormularioMenu.resx">
+      <DependentUpon>FormularioMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cocina\VerPedidos.resx">
+      <DependentUpon>VerPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Finanzas\FormularioFinanzas.resx">
       <DependentUpon>FormularioFinanzas.cs</DependentUpon>
@@ -227,6 +273,19 @@
     </EmbeddedResource>
     <None Include="DS_Siglo21.xsc">
       <DependentUpon>DS_Siglo21.xsd</DependentUpon>
+    <None Include="DataSetCocina.xsc">
+      <DependentUpon>DataSetCocina.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetCocina.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCocina.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetCocina.xss">
+      <DependentUpon>DataSetCocina.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetSigloXXI.xsc">
+      <DependentUpon>DataSetSigloXXI.xsd</DependentUpon>
     </None>
     <None Include="DS_Siglo21.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -235,6 +294,17 @@
     </None>
     <None Include="DS_Siglo21.xss">
       <DependentUpon>DS_Siglo21.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetVistas.xsc">
+      <DependentUpon>DataSetVistas.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetVistas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetVistas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetVistas.xss">
+      <DependentUpon>DataSetVistas.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -273,6 +343,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cocina\Menus\" />
+    <Folder Include="Microsoft\Win32\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
