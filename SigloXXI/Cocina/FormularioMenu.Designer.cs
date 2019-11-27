@@ -36,17 +36,14 @@
             this.txtNombreMenu = new MetroFramework.Controls.MetroTextBox();
             this.txtPrecioMenu = new MetroFramework.Controls.MetroTextBox();
             this.eSTADOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetCocina = new Vista.DataSetCocina();
             this.btnGuardarMenu = new MetroFramework.Controls.MetroButton();
             this.btnLimpiarMenu = new MetroFramework.Controls.MetroButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.eSTADOTableAdapter = new Vista.DataSetCocinaTableAdapters.ESTADOTableAdapter();
             this.cboEstadoMenu = new MetroFramework.Controls.MetroComboBox();
             this.btnSubirImagen = new MetroFramework.Controls.MetroButton();
             this.pictureMenu = new System.Windows.Forms.PictureBox();
             this.lblImagenSubida = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetCocina)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenu)).BeginInit();
             this.SuspendLayout();
@@ -146,19 +143,7 @@
             this.txtPrecioMenu.UseSelectable = true;
             this.txtPrecioMenu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPrecioMenu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // eSTADOBindingSource
-            // 
-            this.eSTADOBindingSource.DataMember = "ESTADO";
-            this.eSTADOBindingSource.DataSource = this.dataSetCocina;
-            // 
-            // dataSetCocina
-            // 
-            this.dataSetCocina.DataSetName = "DataSetCocina";
-            this.dataSetCocina.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btnGuardarMenu
-            // 
+          
             this.btnGuardarMenu.Location = new System.Drawing.Point(218, 333);
             this.btnGuardarMenu.Name = "btnGuardarMenu";
             this.btnGuardarMenu.Size = new System.Drawing.Size(136, 40);
@@ -187,10 +172,7 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu de administracion de cocina";
-            // 
-            // eSTADOTableAdapter
-            // 
-            this.eSTADOTableAdapter.ClearBeforeFill = true;
+
             // 
             // cboEstadoMenu
             // 
@@ -253,7 +235,6 @@
             this.Text = "Agregar Menu";
             this.Load += new System.EventHandler(this.FormularioMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetCocina)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenu)).EndInit();
             this.ResumeLayout(false);
@@ -272,9 +253,7 @@
         private MetroFramework.Controls.MetroButton btnGuardarMenu;
         private MetroFramework.Controls.MetroButton btnLimpiarMenu;
         private System.Windows.Forms.GroupBox groupBox1;
-        private DataSetCocina dataSetCocina;
         private System.Windows.Forms.BindingSource eSTADOBindingSource;
-        private DataSetCocinaTableAdapters.ESTADOTableAdapter eSTADOTableAdapter;
         private MetroFramework.Controls.MetroComboBox cboEstadoMenu;
         private MetroFramework.Controls.MetroButton btnSubirImagen;
         private System.Windows.Forms.PictureBox pictureMenu;

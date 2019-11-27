@@ -162,11 +162,6 @@
     <Compile Include="Cocina\VerPedidos.Designer.cs">
       <DependentUpon>VerPedidos.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSetCocina.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetCocina.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DataSetVistas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -273,17 +268,6 @@
     </EmbeddedResource>
     <None Include="DS_Siglo21.xsc">
       <DependentUpon>DS_Siglo21.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetCocina.xsc">
-      <DependentUpon>DataSetCocina.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetCocina.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetCocina.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSetCocina.xss">
-      <DependentUpon>DataSetCocina.xsd</DependentUpon>
     </None>
     <None Include="DS_Siglo21.xsd">
       <Generator>MSDataSetGenerator</Generator>

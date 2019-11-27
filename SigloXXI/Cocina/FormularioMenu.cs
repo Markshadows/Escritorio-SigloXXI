@@ -30,8 +30,7 @@ namespace Vista.Cocina
 
         private void FormularioMenu_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.ESTADO' Puede moverla o quitarla según sea necesario.
-            this.eSTADOTableAdapter.Fill(this.dataSetCocina.ESTADO);
+
 
         }
 

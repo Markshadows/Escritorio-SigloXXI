@@ -90,10 +90,7 @@ namespace Vista.Cocina
 
         private void FormularioIngrediente_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.PRODUCTO' Puede moverla o quitarla según sea necesario.
-            this.pRODUCTOTableAdapter.Fill(this.dataSetCocina.PRODUCTO);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.MENU' Puede moverla o quitarla según sea necesario.
-            this.mENUTableAdapter.Fill(this.dataSetCocina.MENU);
+
 
         }
     }

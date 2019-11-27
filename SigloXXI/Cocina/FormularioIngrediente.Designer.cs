@@ -37,7 +37,6 @@
             this.txtPesoIngrediente = new MetroFramework.Controls.MetroTextBox();
             this.cboProductoIngrediente = new MetroFramework.Controls.MetroComboBox();
             this.pRODUCTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetCocina = new Vista.DataSetCocina();
             this.cboMenuIngrediente = new MetroFramework.Controls.MetroComboBox();
             this.mENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtCantidadIngrediente = new MetroFramework.Controls.MetroTextBox();
@@ -49,12 +48,10 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.mENUTableAdapter = new Vista.DataSetCocinaTableAdapters.MENUTableAdapter();
-            this.pRODUCTOTableAdapter = new Vista.DataSetCocinaTableAdapters.PRODUCTOTableAdapter();
+            
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetCocina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,15 +168,8 @@
             this.cboProductoIngrediente.UseSelectable = true;
             this.cboProductoIngrediente.ValueMember = "ID";
             // 
-            // pRODUCTOBindingSource
-            // 
-            this.pRODUCTOBindingSource.DataMember = "PRODUCTO";
-            this.pRODUCTOBindingSource.DataSource = this.dataSetCocina;
-            // 
             // dataSetCocina
-            // 
-            this.dataSetCocina.DataSetName = "DataSetCocina";
-            this.dataSetCocina.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+         
             // 
             // cboMenuIngrediente
             // 
@@ -196,8 +186,7 @@
             // 
             // mENUBindingSource
             // 
-            this.mENUBindingSource.DataMember = "MENU";
-            this.mENUBindingSource.DataSource = this.dataSetCocina;
+
             // 
             // txtCantidadIngrediente
             // 
@@ -321,16 +310,7 @@
             this.metroLabel1.Size = new System.Drawing.Size(59, 19);
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Nombre";
-            // 
-            // mENUTableAdapter
-            // 
-            this.mENUTableAdapter.ClearBeforeFill = true;
-            // 
-            // pRODUCTOTableAdapter
-            // 
-            this.pRODUCTOTableAdapter.ClearBeforeFill = true;
-            // 
-            // FormularioIngrediente
+          
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -345,7 +325,6 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetCocina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -368,12 +347,9 @@
         private MetroFramework.Controls.MetroTextBox txtCantidadIngrediente;
         private MetroFramework.Controls.MetroButton btnLimpiarIngrediente;
         private MetroFramework.Controls.MetroButton bntGuardarIngrediente;
-        private DataSetCocina dataSetCocina;
         private System.Windows.Forms.BindingSource mENUBindingSource;
-        private DataSetCocinaTableAdapters.MENUTableAdapter mENUTableAdapter;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.BindingSource pRODUCTOBindingSource;
-        private DataSetCocinaTableAdapters.PRODUCTOTableAdapter pRODUCTOTableAdapter;
         private MetroFramework.Controls.MetroComboBox cboMedidaIngrediente;
     }
 }
