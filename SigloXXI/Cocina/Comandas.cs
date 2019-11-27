@@ -24,18 +24,6 @@ namespace SigloXXI.Cocina
 
         public void Comandas_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dataSetVistas.VISTA_PRODUCTO' Puede moverla o quitarla según sea necesario.
-            this.vISTA_PRODUCTOTableAdapter.VISTA_PRODUCTO(this.dataSetVistas.VISTA_PRODUCTO);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetVistas.VISTA_INGREDIENTE' Puede moverla o quitarla según sea necesario.
-            this.vISTA_INGREDIENTETableAdapter.VISTA_INGREDIENTE(this.dataSetVistas.VISTA_INGREDIENTE);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetVistas.VISTA_MENU' Puede moverla o quitarla según sea necesario.
-            this.vISTA_MENUTableAdapter.Fill(this.dataSetVistas.VISTA_MENU);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.INGREDIENTE' Puede moverla o quitarla según sea necesario.
-            this.iNGREDIENTETableAdapter.Fill(this.dataSetCocina.INGREDIENTE);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.MENU' Puede moverla o quitarla según sea necesario.
-            this.mENUTableAdapter.Fill(this.dataSetCocina.MENU);
-            // TODO: esta línea de código carga datos en la tabla 'dataSetCocina.PRODUCTO' Puede moverla o quitarla según sea necesario.
-            this.pRODUCTOTableAdapter.Fill(this.dataSetCocina.PRODUCTO);
 
         }
 
@@ -62,7 +50,7 @@ namespace SigloXXI.Cocina
         {
             try
             {
-                this.mENUTableAdapter.MenuConEstado(this.dataSetCocina.MENU);
+                //this.mENUTableAdapter.MenuConEstado(this.dataSetCocina.MENU);
             }
             catch (System.Exception ex)
             {

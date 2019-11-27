@@ -63,5 +63,10 @@ namespace Modelo
                 return null;
             }
         }
+
+        public int Agregar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
