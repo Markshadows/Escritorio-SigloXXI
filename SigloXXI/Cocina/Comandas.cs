@@ -24,6 +24,16 @@ namespace SigloXXI.Cocina
 
         public void Comandas_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.MENU' Puede moverla o quitarla según sea necesario.
+            this.mENUTableAdapter.Fill(this.dS_Siglo21.MENU);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTProducto' Puede moverla o quitarla según sea necesario.
+            this.dTProductoTableAdapter.Fill(this.dS_Siglo21.DTProducto);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTIngrediente' Puede moverla o quitarla según sea necesario.
+            this.dTIngredienteTableAdapter.Fill(this.dS_Siglo21.DTIngrediente);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.MENU' Puede moverla o quitarla según sea necesario.
+            this.mENUTableAdapter.Fill(this.dS_Siglo21.MENU);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.MENU' Puede moverla o quitarla según sea necesario.
+            this.mENUTableAdapter.Fill(this.dS_Siglo21.MENU);
 
         }
 
@@ -154,5 +164,6 @@ namespace SigloXXI.Cocina
             //Redireccionamos a la vista para crear el ingrediente
             new FormularioIngrediente(this) { }.Show();
         }
+
     }
 }

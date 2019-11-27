@@ -45,7 +45,6 @@
             this.btnVerImagenMenu = new MetroFramework.Controls.MetroButton();
             this.btnCrearMenu = new MetroFramework.Controls.MetroButton();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.btnVerPedidosMenu = new MetroFramework.Controls.MetroButton();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
@@ -60,6 +59,28 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.lblVerID = new MetroFramework.Controls.MetroLabel();
+            this.mENUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pESODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mEDIDADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iNGREDIENTEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cANTIDADDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pRODUCTODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dTIngredienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS_Siglo21 = new Vista.DS_Siglo21();
+            this.dTIngredienteTableAdapter = new Vista.DS_Siglo21TableAdapters.DTIngredienteTableAdapter();
+            this.dTProductoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dTProductoTableAdapter = new Vista.DS_Siglo21TableAdapters.DTProductoTableAdapter();
+            this.cODIGODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOMBREDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pROVEEDORDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pESODataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mEDIDADataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mENUTableAdapter = new Vista.DS_Siglo21TableAdapters.MENUTableAdapter();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOMBREDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pRECIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eSTADODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlCocina.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenuPrincipal)).BeginInit();
@@ -69,6 +90,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.metroTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTIngredienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTProductoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCerrarSesion
@@ -92,7 +117,7 @@
             this.tabControlCocina.Controls.Add(this.metroTabPage4);
             this.tabControlCocina.Location = new System.Drawing.Point(23, 72);
             this.tabControlCocina.Name = "tabControlCocina";
-            this.tabControlCocina.SelectedIndex = 2;
+            this.tabControlCocina.SelectedIndex = 3;
             this.tabControlCocina.Size = new System.Drawing.Size(889, 297);
             this.tabControlCocina.TabIndex = 6;
             this.tabControlCocina.UseSelectable = true;
@@ -172,8 +197,8 @@
             // 
             this.metroGrid2.AllowUserToAddRows = false;
             this.metroGrid2.AllowUserToDeleteRows = false;
-            this.metroGrid2.AllowUserToOrderColumns = true;
             this.metroGrid2.AllowUserToResizeRows = false;
+            this.metroGrid2.AutoGenerateColumns = false;
             this.metroGrid2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -188,7 +213,11 @@
             this.metroGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.metroGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID});
+            this.iDDataGridViewTextBoxColumn,
+            this.nOMBREDataGridViewTextBoxColumn1,
+            this.pRECIODataGridViewTextBoxColumn,
+            this.eSTADODataGridViewTextBoxColumn});
+            this.metroGrid2.DataSource = this.mENUBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -217,13 +246,6 @@
             this.metroGrid2.Size = new System.Drawing.Size(455, 206);
             this.metroGrid2.TabIndex = 2;
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
             // metroTabPage1
             // 
             this.metroTabPage1.Controls.Add(this.btnVerPedidosMenu);
@@ -251,9 +273,11 @@
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.AutoScroll = true;
             this.metroTabPage3.Controls.Add(this.metroButtonIngre);
             this.metroTabPage3.Controls.Add(this.metroButton1);
             this.metroTabPage3.Controls.Add(this.dataGridView1);
+            this.metroTabPage3.HorizontalScrollbar = true;
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
@@ -262,6 +286,7 @@
             this.metroTabPage3.Size = new System.Drawing.Size(881, 255);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Ingrediente";
+            this.metroTabPage3.VerticalScrollbar = true;
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
@@ -288,10 +313,21 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mENUDataGridViewTextBoxColumn,
+            this.pESODataGridViewTextBoxColumn,
+            this.mEDIDADataGridViewTextBoxColumn,
+            this.iNGREDIENTEDataGridViewTextBoxColumn,
+            this.cANTIDADDataGridViewTextBoxColumn,
+            this.pRODUCTODataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.dTIngredienteBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(3, 4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(645, 216);
             this.dataGridView1.TabIndex = 2;
             // 
@@ -316,6 +352,7 @@
             this.metroGrid1.AllowUserToDeleteRows = false;
             this.metroGrid1.AllowUserToOrderColumns = true;
             this.metroGrid1.AllowUserToResizeRows = false;
+            this.metroGrid1.AutoGenerateColumns = false;
             this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -329,6 +366,13 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cODIGODataGridViewTextBoxColumn,
+            this.nOMBREDataGridViewTextBoxColumn,
+            this.pROVEEDORDataGridViewTextBoxColumn,
+            this.pESODataGridViewTextBoxColumn1,
+            this.mEDIDADataGridViewTextBoxColumn1});
+            this.metroGrid1.DataSource = this.dTProductoBindingSource;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -401,11 +445,148 @@
             this.lblVerID.Text = "lblVerID";
             this.lblVerID.Visible = false;
             // 
+            // mENUDataGridViewTextBoxColumn
+            // 
+            this.mENUDataGridViewTextBoxColumn.DataPropertyName = "MENU";
+            this.mENUDataGridViewTextBoxColumn.HeaderText = "MENU";
+            this.mENUDataGridViewTextBoxColumn.Name = "mENUDataGridViewTextBoxColumn";
+            this.mENUDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pESODataGridViewTextBoxColumn
+            // 
+            this.pESODataGridViewTextBoxColumn.DataPropertyName = "PESO";
+            this.pESODataGridViewTextBoxColumn.HeaderText = "PESO";
+            this.pESODataGridViewTextBoxColumn.Name = "pESODataGridViewTextBoxColumn";
+            this.pESODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mEDIDADataGridViewTextBoxColumn
+            // 
+            this.mEDIDADataGridViewTextBoxColumn.DataPropertyName = "MEDIDA";
+            this.mEDIDADataGridViewTextBoxColumn.HeaderText = "MEDIDA";
+            this.mEDIDADataGridViewTextBoxColumn.Name = "mEDIDADataGridViewTextBoxColumn";
+            this.mEDIDADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iNGREDIENTEDataGridViewTextBoxColumn
+            // 
+            this.iNGREDIENTEDataGridViewTextBoxColumn.DataPropertyName = "INGREDIENTE";
+            this.iNGREDIENTEDataGridViewTextBoxColumn.HeaderText = "INGREDIENTE";
+            this.iNGREDIENTEDataGridViewTextBoxColumn.Name = "iNGREDIENTEDataGridViewTextBoxColumn";
+            this.iNGREDIENTEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cANTIDADDataGridViewTextBoxColumn
+            // 
+            this.cANTIDADDataGridViewTextBoxColumn.DataPropertyName = "CANTIDAD";
+            this.cANTIDADDataGridViewTextBoxColumn.HeaderText = "CANTIDAD";
+            this.cANTIDADDataGridViewTextBoxColumn.Name = "cANTIDADDataGridViewTextBoxColumn";
+            this.cANTIDADDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pRODUCTODataGridViewTextBoxColumn
+            // 
+            this.pRODUCTODataGridViewTextBoxColumn.DataPropertyName = "PRODUCTO";
+            this.pRODUCTODataGridViewTextBoxColumn.HeaderText = "PRODUCTO";
+            this.pRODUCTODataGridViewTextBoxColumn.Name = "pRODUCTODataGridViewTextBoxColumn";
+            this.pRODUCTODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dTIngredienteBindingSource
+            // 
+            this.dTIngredienteBindingSource.DataMember = "DTIngrediente";
+            this.dTIngredienteBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // dS_Siglo21
+            // 
+            this.dS_Siglo21.DataSetName = "DS_Siglo21";
+            this.dS_Siglo21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dTIngredienteTableAdapter
+            // 
+            this.dTIngredienteTableAdapter.ClearBeforeFill = true;
+            // 
+            // dTProductoBindingSource
+            // 
+            this.dTProductoBindingSource.DataMember = "DTProducto";
+            this.dTProductoBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // dTProductoTableAdapter
+            // 
+            this.dTProductoTableAdapter.ClearBeforeFill = true;
+            // 
+            // cODIGODataGridViewTextBoxColumn
+            // 
+            this.cODIGODataGridViewTextBoxColumn.DataPropertyName = "CODIGO";
+            this.cODIGODataGridViewTextBoxColumn.HeaderText = "CODIGO";
+            this.cODIGODataGridViewTextBoxColumn.Name = "cODIGODataGridViewTextBoxColumn";
+            this.cODIGODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nOMBREDataGridViewTextBoxColumn
+            // 
+            this.nOMBREDataGridViewTextBoxColumn.DataPropertyName = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn.HeaderText = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn.Name = "nOMBREDataGridViewTextBoxColumn";
+            this.nOMBREDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pROVEEDORDataGridViewTextBoxColumn
+            // 
+            this.pROVEEDORDataGridViewTextBoxColumn.DataPropertyName = "PROVEEDOR";
+            this.pROVEEDORDataGridViewTextBoxColumn.HeaderText = "PROVEEDOR";
+            this.pROVEEDORDataGridViewTextBoxColumn.Name = "pROVEEDORDataGridViewTextBoxColumn";
+            this.pROVEEDORDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pESODataGridViewTextBoxColumn1
+            // 
+            this.pESODataGridViewTextBoxColumn1.DataPropertyName = "PESO";
+            this.pESODataGridViewTextBoxColumn1.HeaderText = "PESO";
+            this.pESODataGridViewTextBoxColumn1.Name = "pESODataGridViewTextBoxColumn1";
+            this.pESODataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // mEDIDADataGridViewTextBoxColumn1
+            // 
+            this.mEDIDADataGridViewTextBoxColumn1.DataPropertyName = "MEDIDA";
+            this.mEDIDADataGridViewTextBoxColumn1.HeaderText = "MEDIDA";
+            this.mEDIDADataGridViewTextBoxColumn1.Name = "mEDIDADataGridViewTextBoxColumn1";
+            this.mEDIDADataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // mENUBindingSource
+            // 
+            this.mENUBindingSource.DataMember = "MENU";
+            this.mENUBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // mENUTableAdapter
+            // 
+            this.mENUTableAdapter.ClearBeforeFill = true;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nOMBREDataGridViewTextBoxColumn1
+            // 
+            this.nOMBREDataGridViewTextBoxColumn1.DataPropertyName = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn1.Name = "nOMBREDataGridViewTextBoxColumn1";
+            this.nOMBREDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // pRECIODataGridViewTextBoxColumn
+            // 
+            this.pRECIODataGridViewTextBoxColumn.DataPropertyName = "PRECIO";
+            this.pRECIODataGridViewTextBoxColumn.HeaderText = "PRECIO";
+            this.pRECIODataGridViewTextBoxColumn.Name = "pRECIODataGridViewTextBoxColumn";
+            this.pRECIODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // eSTADODataGridViewTextBoxColumn
+            // 
+            this.eSTADODataGridViewTextBoxColumn.DataPropertyName = "ESTADO";
+            this.eSTADODataGridViewTextBoxColumn.HeaderText = "ESTADO";
+            this.eSTADODataGridViewTextBoxColumn.Name = "eSTADODataGridViewTextBoxColumn";
+            this.eSTADODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Comandas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 386);
+            this.ClientSize = new System.Drawing.Size(949, 389);
             this.Controls.Add(this.lblVerID);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.lblTime);
@@ -426,6 +607,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.metroTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTIngredienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTProductoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,7 +640,28 @@
         private MetroFramework.Controls.MetroButton btnVerImagenMenu;
         private System.Windows.Forms.PictureBox pictureMenuPrincipal;
         private MetroFramework.Controls.MetroLabel lblVerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private MetroFramework.Controls.MetroButton metroButtonIngre;
+        private Vista.DS_Siglo21 dS_Siglo21;
+        private System.Windows.Forms.BindingSource dTIngredienteBindingSource;
+        private Vista.DS_Siglo21TableAdapters.DTIngredienteTableAdapter dTIngredienteTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mENUDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pESODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mEDIDADataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iNGREDIENTEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cANTIDADDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pRODUCTODataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource dTProductoBindingSource;
+        private Vista.DS_Siglo21TableAdapters.DTProductoTableAdapter dTProductoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cODIGODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOMBREDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pROVEEDORDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pESODataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mEDIDADataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource mENUBindingSource;
+        private Vista.DS_Siglo21TableAdapters.MENUTableAdapter mENUTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOMBREDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pRECIODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eSTADODataGridViewTextBoxColumn;
     }
 }
