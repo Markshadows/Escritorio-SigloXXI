@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Modelo;
 using SigloXXI.Cocina;
+using Renci.SshNet;
+
 namespace Vista.Cocina
 {
     public partial class FormularioMenu : MetroFramework.Forms.MetroForm
@@ -30,6 +32,8 @@ namespace Vista.Cocina
 
         private void FormularioMenu_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.ESTADO' Puede moverla o quitarla según sea necesario.
+            this.eSTADOTableAdapter.Fill(this.dS_Siglo21.ESTADO);
 
 
         }
@@ -93,13 +97,31 @@ namespace Vista.Cocina
 
         if (subirImagen.ShowDialog() == DialogResult.OK)
         {
-            lblImagenSubida.Text = subirImagen.FileName;
-            //Aca entra si la imagen fue JPG y la monta en el picture box                          
-            pictureMenu.ImageLocation = subirImagen.FileName;
-            pictureMenu.SizeMode = PictureBoxSizeMode.StretchImage;
+            lblImagenSubida.Text = subirImagen.SafeFileName;
+                //Aca entra si la imagen fue JPG y la monta en el picture box                          
+                //pictureMenu.ImageLocation = subirImagen.FileName;
+                pictureMenu.ImageLocation = subirImagen.SafeFileName;
+                pictureMenu.SizeMode = PictureBoxSizeMode.StretchImage;
 
         }
+            Send(subirImagen.FileName, subirImagen.SafeFileName);
 
+        }
+        public void Send(string fileName, string nombre)
+        {
+            var connectionInfo = new ConnectionInfo("0.tcp.ngrok.io", 14128, "", new PasswordAuthenticationMethod("", ""));
+            // Upload File
+            using (var sftp = new SftpClient(connectionInfo))
+            {
+
+                sftp.Connect();
+                sftp.ChangeDirectory("/opt/glassfish5/glassfish/domains/domain1/applications/web_siglo_xxi/img");
+                using (var uplfileStream = System.IO.File.OpenRead(fileName))
+                {
+                    sftp.UploadFile(uplfileStream, nombre, true);
+                }
+                sftp.Disconnect();
+            }
         }
     }
 }

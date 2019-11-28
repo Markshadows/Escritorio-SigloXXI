@@ -35,17 +35,20 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.txtNombreMenu = new MetroFramework.Controls.MetroTextBox();
             this.txtPrecioMenu = new MetroFramework.Controls.MetroTextBox();
-            this.eSTADOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnGuardarMenu = new MetroFramework.Controls.MetroButton();
             this.btnLimpiarMenu = new MetroFramework.Controls.MetroButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboEstadoMenu = new MetroFramework.Controls.MetroComboBox();
-            this.btnSubirImagen = new MetroFramework.Controls.MetroButton();
             this.pictureMenu = new System.Windows.Forms.PictureBox();
+            this.btnSubirImagen = new MetroFramework.Controls.MetroButton();
+            this.cboEstadoMenu = new MetroFramework.Controls.MetroComboBox();
             this.lblImagenSubida = new MetroFramework.Controls.MetroLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).BeginInit();
+            this.dS_Siglo21 = new Vista.DS_Siglo21();
+            this.eSTADOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eSTADOTableAdapter = new Vista.DS_Siglo21TableAdapters.ESTADOTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -143,7 +146,9 @@
             this.txtPrecioMenu.UseSelectable = true;
             this.txtPrecioMenu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPrecioMenu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-          
+            // 
+            // btnGuardarMenu
+            // 
             this.btnGuardarMenu.Location = new System.Drawing.Point(218, 333);
             this.btnGuardarMenu.Name = "btnGuardarMenu";
             this.btnGuardarMenu.Size = new System.Drawing.Size(136, 40);
@@ -172,7 +177,24 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu de administracion de cocina";
-
+            // 
+            // pictureMenu
+            // 
+            this.pictureMenu.Location = new System.Drawing.Point(491, 19);
+            this.pictureMenu.Name = "pictureMenu";
+            this.pictureMenu.Size = new System.Drawing.Size(224, 225);
+            this.pictureMenu.TabIndex = 1;
+            this.pictureMenu.TabStop = false;
+            // 
+            // btnSubirImagen
+            // 
+            this.btnSubirImagen.Location = new System.Drawing.Point(204, 179);
+            this.btnSubirImagen.Name = "btnSubirImagen";
+            this.btnSubirImagen.Size = new System.Drawing.Size(280, 23);
+            this.btnSubirImagen.TabIndex = 0;
+            this.btnSubirImagen.Text = "Subir Imagen";
+            this.btnSubirImagen.UseSelectable = true;
+            this.btnSubirImagen.Click += new System.EventHandler(this.btnSubirImagen_Click);
             // 
             // cboEstadoMenu
             // 
@@ -187,24 +209,6 @@
             this.cboEstadoMenu.UseSelectable = true;
             this.cboEstadoMenu.ValueMember = "ID";
             // 
-            // btnSubirImagen
-            // 
-            this.btnSubirImagen.Location = new System.Drawing.Point(204, 179);
-            this.btnSubirImagen.Name = "btnSubirImagen";
-            this.btnSubirImagen.Size = new System.Drawing.Size(280, 23);
-            this.btnSubirImagen.TabIndex = 0;
-            this.btnSubirImagen.Text = "Subir Imagen";
-            this.btnSubirImagen.UseSelectable = true;
-            this.btnSubirImagen.Click += new System.EventHandler(this.btnSubirImagen_Click);
-            // 
-            // pictureMenu
-            // 
-            this.pictureMenu.Location = new System.Drawing.Point(491, 19);
-            this.pictureMenu.Name = "pictureMenu";
-            this.pictureMenu.Size = new System.Drawing.Size(224, 225);
-            this.pictureMenu.TabIndex = 1;
-            this.pictureMenu.TabStop = false;
-            // 
             // lblImagenSubida
             // 
             this.lblImagenSubida.AutoSize = true;
@@ -214,6 +218,20 @@
             this.lblImagenSubida.TabIndex = 11;
             this.lblImagenSubida.Text = "Imagensubida";
             this.lblImagenSubida.Visible = false;
+            // 
+            // dS_Siglo21
+            // 
+            this.dS_Siglo21.DataSetName = "DS_Siglo21";
+            this.dS_Siglo21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // eSTADOBindingSource
+            // 
+            this.eSTADOBindingSource.DataMember = "ESTADO";
+            this.eSTADOBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // eSTADOTableAdapter
+            // 
+            this.eSTADOTableAdapter.ClearBeforeFill = true;
             // 
             // FormularioMenu
             // 
@@ -234,9 +252,10 @@
             this.Name = "FormularioMenu";
             this.Text = "Agregar Menu";
             this.Load += new System.EventHandler(this.FormularioMenu_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,10 +272,12 @@
         private MetroFramework.Controls.MetroButton btnGuardarMenu;
         private MetroFramework.Controls.MetroButton btnLimpiarMenu;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.BindingSource eSTADOBindingSource;
         private MetroFramework.Controls.MetroComboBox cboEstadoMenu;
         private MetroFramework.Controls.MetroButton btnSubirImagen;
         private System.Windows.Forms.PictureBox pictureMenu;
         private MetroFramework.Controls.MetroLabel lblImagenSubida;
+        private DS_Siglo21 dS_Siglo21;
+        private System.Windows.Forms.BindingSource eSTADOBindingSource;
+        private DS_Siglo21TableAdapters.ESTADOTableAdapter eSTADOTableAdapter;
     }
 }

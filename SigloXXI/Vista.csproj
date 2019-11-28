@@ -71,6 +71,9 @@
     <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.18.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -161,11 +164,6 @@
     </Compile>
     <Compile Include="Cocina\VerPedidos.Designer.cs">
       <DependentUpon>VerPedidos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetVistas.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetVistas.xsd</DependentUpon>
     </Compile>
     <Compile Include="DS_Siglo21.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -276,17 +274,6 @@
     </None>
     <None Include="DS_Siglo21.xss">
       <DependentUpon>DS_Siglo21.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetVistas.xsc">
-      <DependentUpon>DataSetVistas.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetVistas.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetVistas.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSetVistas.xss">
-      <DependentUpon>DataSetVistas.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
