@@ -13,7 +13,7 @@ using SigloXXI.Cocina;
 
 namespace Vista.Cocina
 {
-    public partial class ActualizarMenu : MetroFramework.Forms.MetroForm
+    public partial class ActualizarMenu : Form
     {
         Comandas comandita;
         private Modelo.Menu menu;
@@ -93,7 +93,17 @@ namespace Vista.Cocina
             }
 
         }
-     }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilidades.minimizar(this);
+        }
+
+        private void btnCerrarFormMenu_Click(object sender, EventArgs e)
+        {
+            Utilidades.cerrarVentana(this);
+        }
+    }
 }
 
     

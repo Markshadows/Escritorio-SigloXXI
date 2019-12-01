@@ -16,5 +16,20 @@ namespace Vista
             iniciarSesion.Show();
             control.Hide();
         }
+
+        public static void minimizar(Form form)
+        {
+            form.WindowState = FormWindowState.Minimized;
+        }
+
+        public static void cerrar()
+        {
+            Application.Exit();
+        }
+
+        public static void cerrarVentana(Control control)
+        {
+            control.Hide();
+        }
     }
 }

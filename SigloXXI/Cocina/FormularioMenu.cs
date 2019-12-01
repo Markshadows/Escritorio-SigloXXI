@@ -15,9 +15,11 @@ using Renci.SshNet;
 
 namespace Vista.Cocina
 {
-    public partial class FormularioMenu : MetroFramework.Forms.MetroForm
+    public partial class FormularioMenu : Form
     {
         Comandas comandita;
+        private string rutaImagen = "";
+        private string nombreImagen = "";
 
         public FormularioMenu(Comandas comanda)
         {
@@ -61,6 +63,7 @@ namespace Vista.Cocina
                 
                 if (menu.Agregar())
                 {
+                    Send(rutaImagen, nombreImagen);
                     txtNombreMenu.Clear();
                     txtPrecioMenu.Clear();
                     //Cargamos el formulario de menu para ver los cambios 
@@ -83,6 +86,8 @@ namespace Vista.Cocina
         {
             txtNombreMenu.Clear();
             txtPrecioMenu.Clear();
+            rutaImagen = "";
+            nombreImagen = "";
         }
 
         private void btnSubirImagen_Click(object sender, EventArgs e)
@@ -98,18 +103,19 @@ namespace Vista.Cocina
         if (subirImagen.ShowDialog() == DialogResult.OK)
         {
             lblImagenSubida.Text = subirImagen.SafeFileName;
+                rutaImagen = subirImagen.FileName;
+                nombreImagen = subirImagen.SafeFileName;
                 //Aca entra si la imagen fue JPG y la monta en el picture box                          
                 //pictureMenu.ImageLocation = subirImagen.FileName;
-                pictureMenu.ImageLocation = subirImagen.SafeFileName;
+                pictureMenu.ImageLocation = subirImagen.FileName;
                 pictureMenu.SizeMode = PictureBoxSizeMode.StretchImage;
 
         }
-            Send(subirImagen.FileName, subirImagen.SafeFileName);
 
         }
         public void Send(string fileName, string nombre)
         {
-            var connectionInfo = new ConnectionInfo("0.tcp.ngrok.io", 14128, "", new PasswordAuthenticationMethod("", ""));
+            var connectionInfo = new ConnectionInfo("0.tcp.ngrok.io", 18041, "crow", new PasswordAuthenticationMethod("crow", "crow2680"));
             // Upload File
             using (var sftp = new SftpClient(connectionInfo))
             {
@@ -122,6 +128,16 @@ namespace Vista.Cocina
                 }
                 sftp.Disconnect();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilidades.minimizar(this);
+        }
+
+        private void btnCerrarFormMenu_Click(object sender, EventArgs e)
+        {
+            Utilidades.cerrarVentana(this);
         }
     }
 }

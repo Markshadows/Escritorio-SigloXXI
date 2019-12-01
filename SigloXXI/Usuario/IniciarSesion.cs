@@ -69,7 +69,12 @@ namespace Vista.Usuario
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Utilidades.cerrar();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilidades.minimizar(this);
         }
     }
 }

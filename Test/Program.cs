@@ -22,7 +22,9 @@ namespace Test
             //Console.WriteLine(Modificar());
             //cantidadMes();
             //menusVendidos();
-            Send("myFile.txt");
+            //Send("myFile.txt");
+            //listaMenus();
+            listaPedidos();
             Console.ReadKey();
         }
 
@@ -118,6 +120,32 @@ namespace Test
             //    Console.WriteLine(item);
             //}
             //Console.WriteLine("contador: "+contador);
+        }
+
+        /*static void listaMenus()
+        {
+            Menu m = new Menu();
+            foreach (var item in m.listaMenus() )
+            {
+                Console.WriteLine(item.Url);
+            }
+        }*/
+
+        static void listaPedidos()
+        {
+            try
+            {
+                Pedido pe = new Pedido();
+                foreach (var item in pe.listaPedidos())
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ using DALC;
 
 namespace Vista.Cocina
 {
-    public partial class FormularioIngrediente : MetroFramework.Forms.MetroForm
+    public partial class FormularioIngrediente : Form
     {
         Comandas ingredientito;
 
@@ -90,8 +90,18 @@ namespace Vista.Cocina
 
         private void FormularioIngrediente_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.PRODUCTO' Puede moverla o quitarla según sea necesario.
+            this.pRODUCTOTableAdapter.Fill(this.dS_Siglo21.PRODUCTO);
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.MENU' Puede moverla o quitarla según sea necesario.
+            this.mENUTableAdapter.Fill(this.dS_Siglo21.MENU);
 
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Utilidades.minimizar(this);
+        }
+
     }
 }

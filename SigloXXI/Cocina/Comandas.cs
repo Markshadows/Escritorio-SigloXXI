@@ -12,7 +12,7 @@ using Vista.Cocina;
 
 namespace SigloXXI.Cocina
 {
-    public partial class Comandas : MetroFramework.Forms.MetroForm
+    public partial class Comandas : Form
     {
 
         public Comandas()
@@ -34,7 +34,6 @@ namespace SigloXXI.Cocina
             this.mENUTableAdapter.Fill(this.dS_Siglo21.MENU);
             // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.MENU' Puede moverla o quitarla según sea necesario.
             this.mENUTableAdapter.Fill(this.dS_Siglo21.MENU);
-
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -96,7 +95,7 @@ namespace SigloXXI.Cocina
             if (metroGrid2.Rows.Count > 0)
             {
                 lblVerID.Text = url.ToString();
-                pictureMenuPrincipal.ImageLocation = @nuestraimagen;
+                pictureMenuPrincipal.ImageLocation = "https://d9a94828.ngrok.io/"+@nuestraimagen;
                 pictureMenuPrincipal.SizeMode = PictureBoxSizeMode.StretchImage;
 
             }
@@ -143,9 +142,9 @@ namespace SigloXXI.Cocina
         {
             //Seleccionamos el id de la posicion del gridView
             int id = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString());
-            string nombre = metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString();
-            int precio = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString());
-            int estado = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString());
+            string nombre = metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[1].Value.ToString();
+            int precio = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[2].Value.ToString());
+            int estado = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[3].Value.ToString());
 
             Modelo.Menu menu = new Modelo.Menu();
             menu.Id = id;
@@ -163,6 +162,16 @@ namespace SigloXXI.Cocina
         {
             //Redireccionamos a la vista para crear el ingrediente
             new FormularioIngrediente(this) { }.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilidades.minimizar(this);
+        }
+
+        private void btnCerrarMenuCocina_Click(object sender, EventArgs e)
+        {
+            Utilidades.cerrarVentana(this);
         }
 
     }

@@ -365,5 +365,15 @@ namespace Vista.Administrador
             //this.Dispose();
             Application.Exit();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilidades.cerrar();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Utilidades.minimizar(this);
+        }
     }
 }

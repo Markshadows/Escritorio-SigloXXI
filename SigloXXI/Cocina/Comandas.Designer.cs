@@ -45,20 +45,18 @@
             this.btnVerImagenMenu = new MetroFramework.Controls.MetroButton();
             this.btnCrearMenu = new MetroFramework.Controls.MetroButton();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nOMBREDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pRECIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eSTADODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS_Siglo21 = new Vista.DS_Siglo21();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.btnVerPedidosMenu = new MetroFramework.Controls.MetroButton();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.metroButtonIngre = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
-            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.lblTime = new MetroFramework.Controls.MetroLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.lblVerID = new MetroFramework.Controls.MetroLabel();
             this.mENUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pESODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mEDIDADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,34 +64,41 @@
             this.cANTIDADDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRODUCTODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dTIngredienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dS_Siglo21 = new Vista.DS_Siglo21();
-            this.dTIngredienteTableAdapter = new Vista.DS_Siglo21TableAdapters.DTIngredienteTableAdapter();
-            this.dTProductoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dTProductoTableAdapter = new Vista.DS_Siglo21TableAdapters.DTProductoTableAdapter();
+            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.cODIGODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nOMBREDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pROVEEDORDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pESODataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mEDIDADataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dTProductoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lblTime = new MetroFramework.Controls.MetroLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.lblVerID = new MetroFramework.Controls.MetroLabel();
+            this.dTIngredienteTableAdapter = new Vista.DS_Siglo21TableAdapters.DTIngredienteTableAdapter();
+            this.dTProductoTableAdapter = new Vista.DS_Siglo21TableAdapters.DTProductoTableAdapter();
             this.mENUTableAdapter = new Vista.DS_Siglo21TableAdapters.MENUTableAdapter();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nOMBREDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pRECIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eSTADODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCerrarMenuCocina = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControlCocina.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenuPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).BeginInit();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTIngredienteBindingSource)).BeginInit();
             this.metroTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTIngredienteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTProductoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCerrarSesion
@@ -102,9 +107,9 @@
             this.btnCerrarSesion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.BackgroundImage")));
             this.btnCerrarSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCerrarSesion.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(872, 9);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(735, 37);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(57, 46);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(37, 32);
             this.btnCerrarSesion.TabIndex = 5;
             this.btnCerrarSesion.UseSelectable = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
@@ -117,7 +122,7 @@
             this.tabControlCocina.Controls.Add(this.metroTabPage4);
             this.tabControlCocina.Location = new System.Drawing.Point(23, 72);
             this.tabControlCocina.Name = "tabControlCocina";
-            this.tabControlCocina.SelectedIndex = 3;
+            this.tabControlCocina.SelectedIndex = 2;
             this.tabControlCocina.Size = new System.Drawing.Size(889, 297);
             this.tabControlCocina.TabIndex = 6;
             this.tabControlCocina.UseSelectable = true;
@@ -246,6 +251,44 @@
             this.metroGrid2.Size = new System.Drawing.Size(455, 206);
             this.metroGrid2.TabIndex = 2;
             // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nOMBREDataGridViewTextBoxColumn1
+            // 
+            this.nOMBREDataGridViewTextBoxColumn1.DataPropertyName = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn1.Name = "nOMBREDataGridViewTextBoxColumn1";
+            this.nOMBREDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // pRECIODataGridViewTextBoxColumn
+            // 
+            this.pRECIODataGridViewTextBoxColumn.DataPropertyName = "PRECIO";
+            this.pRECIODataGridViewTextBoxColumn.HeaderText = "PRECIO";
+            this.pRECIODataGridViewTextBoxColumn.Name = "pRECIODataGridViewTextBoxColumn";
+            this.pRECIODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // eSTADODataGridViewTextBoxColumn
+            // 
+            this.eSTADODataGridViewTextBoxColumn.DataPropertyName = "ESTADO";
+            this.eSTADODataGridViewTextBoxColumn.HeaderText = "ESTADO";
+            this.eSTADODataGridViewTextBoxColumn.Name = "eSTADODataGridViewTextBoxColumn";
+            this.eSTADODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mENUBindingSource
+            // 
+            this.mENUBindingSource.DataMember = "MENU";
+            this.mENUBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // dS_Siglo21
+            // 
+            this.dS_Siglo21.DataSetName = "DS_Siglo21";
+            this.dS_Siglo21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // metroTabPage1
             // 
             this.metroTabPage1.Controls.Add(this.btnVerPedidosMenu);
@@ -331,6 +374,53 @@
             this.dataGridView1.Size = new System.Drawing.Size(645, 216);
             this.dataGridView1.TabIndex = 2;
             // 
+            // mENUDataGridViewTextBoxColumn
+            // 
+            this.mENUDataGridViewTextBoxColumn.DataPropertyName = "MENU";
+            this.mENUDataGridViewTextBoxColumn.HeaderText = "MENU";
+            this.mENUDataGridViewTextBoxColumn.Name = "mENUDataGridViewTextBoxColumn";
+            this.mENUDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pESODataGridViewTextBoxColumn
+            // 
+            this.pESODataGridViewTextBoxColumn.DataPropertyName = "PESO";
+            this.pESODataGridViewTextBoxColumn.HeaderText = "PESO";
+            this.pESODataGridViewTextBoxColumn.Name = "pESODataGridViewTextBoxColumn";
+            this.pESODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mEDIDADataGridViewTextBoxColumn
+            // 
+            this.mEDIDADataGridViewTextBoxColumn.DataPropertyName = "MEDIDA";
+            this.mEDIDADataGridViewTextBoxColumn.HeaderText = "MEDIDA";
+            this.mEDIDADataGridViewTextBoxColumn.Name = "mEDIDADataGridViewTextBoxColumn";
+            this.mEDIDADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iNGREDIENTEDataGridViewTextBoxColumn
+            // 
+            this.iNGREDIENTEDataGridViewTextBoxColumn.DataPropertyName = "INGREDIENTE";
+            this.iNGREDIENTEDataGridViewTextBoxColumn.HeaderText = "INGREDIENTE";
+            this.iNGREDIENTEDataGridViewTextBoxColumn.Name = "iNGREDIENTEDataGridViewTextBoxColumn";
+            this.iNGREDIENTEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cANTIDADDataGridViewTextBoxColumn
+            // 
+            this.cANTIDADDataGridViewTextBoxColumn.DataPropertyName = "CANTIDAD";
+            this.cANTIDADDataGridViewTextBoxColumn.HeaderText = "CANTIDAD";
+            this.cANTIDADDataGridViewTextBoxColumn.Name = "cANTIDADDataGridViewTextBoxColumn";
+            this.cANTIDADDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pRODUCTODataGridViewTextBoxColumn
+            // 
+            this.pRODUCTODataGridViewTextBoxColumn.DataPropertyName = "PRODUCTO";
+            this.pRODUCTODataGridViewTextBoxColumn.HeaderText = "PRODUCTO";
+            this.pRODUCTODataGridViewTextBoxColumn.Name = "pRODUCTODataGridViewTextBoxColumn";
+            this.pRODUCTODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dTIngredienteBindingSource
+            // 
+            this.dTIngredienteBindingSource.DataMember = "DTIngrediente";
+            this.dTIngredienteBindingSource.DataSource = this.dS_Siglo21;
+            // 
             // metroTabPage4
             // 
             this.metroTabPage4.Controls.Add(this.metroGrid1);
@@ -401,6 +491,46 @@
             this.metroGrid1.Size = new System.Drawing.Size(543, 233);
             this.metroGrid1.TabIndex = 2;
             // 
+            // cODIGODataGridViewTextBoxColumn
+            // 
+            this.cODIGODataGridViewTextBoxColumn.DataPropertyName = "CODIGO";
+            this.cODIGODataGridViewTextBoxColumn.HeaderText = "CODIGO";
+            this.cODIGODataGridViewTextBoxColumn.Name = "cODIGODataGridViewTextBoxColumn";
+            this.cODIGODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nOMBREDataGridViewTextBoxColumn
+            // 
+            this.nOMBREDataGridViewTextBoxColumn.DataPropertyName = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn.HeaderText = "NOMBRE";
+            this.nOMBREDataGridViewTextBoxColumn.Name = "nOMBREDataGridViewTextBoxColumn";
+            this.nOMBREDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pROVEEDORDataGridViewTextBoxColumn
+            // 
+            this.pROVEEDORDataGridViewTextBoxColumn.DataPropertyName = "PROVEEDOR";
+            this.pROVEEDORDataGridViewTextBoxColumn.HeaderText = "PROVEEDOR";
+            this.pROVEEDORDataGridViewTextBoxColumn.Name = "pROVEEDORDataGridViewTextBoxColumn";
+            this.pROVEEDORDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pESODataGridViewTextBoxColumn1
+            // 
+            this.pESODataGridViewTextBoxColumn1.DataPropertyName = "PESO";
+            this.pESODataGridViewTextBoxColumn1.HeaderText = "PESO";
+            this.pESODataGridViewTextBoxColumn1.Name = "pESODataGridViewTextBoxColumn1";
+            this.pESODataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // mEDIDADataGridViewTextBoxColumn1
+            // 
+            this.mEDIDADataGridViewTextBoxColumn1.DataPropertyName = "MEDIDA";
+            this.mEDIDADataGridViewTextBoxColumn1.HeaderText = "MEDIDA";
+            this.mEDIDADataGridViewTextBoxColumn1.Name = "mEDIDADataGridViewTextBoxColumn1";
+            this.mEDIDADataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dTProductoBindingSource
+            // 
+            this.dTProductoBindingSource.DataMember = "DTProducto";
+            this.dTProductoBindingSource.DataSource = this.dS_Siglo21;
+            // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
@@ -445,172 +575,106 @@
             this.lblVerID.Text = "lblVerID";
             this.lblVerID.Visible = false;
             // 
-            // mENUDataGridViewTextBoxColumn
-            // 
-            this.mENUDataGridViewTextBoxColumn.DataPropertyName = "MENU";
-            this.mENUDataGridViewTextBoxColumn.HeaderText = "MENU";
-            this.mENUDataGridViewTextBoxColumn.Name = "mENUDataGridViewTextBoxColumn";
-            this.mENUDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pESODataGridViewTextBoxColumn
-            // 
-            this.pESODataGridViewTextBoxColumn.DataPropertyName = "PESO";
-            this.pESODataGridViewTextBoxColumn.HeaderText = "PESO";
-            this.pESODataGridViewTextBoxColumn.Name = "pESODataGridViewTextBoxColumn";
-            this.pESODataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mEDIDADataGridViewTextBoxColumn
-            // 
-            this.mEDIDADataGridViewTextBoxColumn.DataPropertyName = "MEDIDA";
-            this.mEDIDADataGridViewTextBoxColumn.HeaderText = "MEDIDA";
-            this.mEDIDADataGridViewTextBoxColumn.Name = "mEDIDADataGridViewTextBoxColumn";
-            this.mEDIDADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iNGREDIENTEDataGridViewTextBoxColumn
-            // 
-            this.iNGREDIENTEDataGridViewTextBoxColumn.DataPropertyName = "INGREDIENTE";
-            this.iNGREDIENTEDataGridViewTextBoxColumn.HeaderText = "INGREDIENTE";
-            this.iNGREDIENTEDataGridViewTextBoxColumn.Name = "iNGREDIENTEDataGridViewTextBoxColumn";
-            this.iNGREDIENTEDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cANTIDADDataGridViewTextBoxColumn
-            // 
-            this.cANTIDADDataGridViewTextBoxColumn.DataPropertyName = "CANTIDAD";
-            this.cANTIDADDataGridViewTextBoxColumn.HeaderText = "CANTIDAD";
-            this.cANTIDADDataGridViewTextBoxColumn.Name = "cANTIDADDataGridViewTextBoxColumn";
-            this.cANTIDADDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pRODUCTODataGridViewTextBoxColumn
-            // 
-            this.pRODUCTODataGridViewTextBoxColumn.DataPropertyName = "PRODUCTO";
-            this.pRODUCTODataGridViewTextBoxColumn.HeaderText = "PRODUCTO";
-            this.pRODUCTODataGridViewTextBoxColumn.Name = "pRODUCTODataGridViewTextBoxColumn";
-            this.pRODUCTODataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dTIngredienteBindingSource
-            // 
-            this.dTIngredienteBindingSource.DataMember = "DTIngrediente";
-            this.dTIngredienteBindingSource.DataSource = this.dS_Siglo21;
-            // 
-            // dS_Siglo21
-            // 
-            this.dS_Siglo21.DataSetName = "DS_Siglo21";
-            this.dS_Siglo21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dTIngredienteTableAdapter
             // 
             this.dTIngredienteTableAdapter.ClearBeforeFill = true;
-            // 
-            // dTProductoBindingSource
-            // 
-            this.dTProductoBindingSource.DataMember = "DTProducto";
-            this.dTProductoBindingSource.DataSource = this.dS_Siglo21;
             // 
             // dTProductoTableAdapter
             // 
             this.dTProductoTableAdapter.ClearBeforeFill = true;
             // 
-            // cODIGODataGridViewTextBoxColumn
-            // 
-            this.cODIGODataGridViewTextBoxColumn.DataPropertyName = "CODIGO";
-            this.cODIGODataGridViewTextBoxColumn.HeaderText = "CODIGO";
-            this.cODIGODataGridViewTextBoxColumn.Name = "cODIGODataGridViewTextBoxColumn";
-            this.cODIGODataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nOMBREDataGridViewTextBoxColumn
-            // 
-            this.nOMBREDataGridViewTextBoxColumn.DataPropertyName = "NOMBRE";
-            this.nOMBREDataGridViewTextBoxColumn.HeaderText = "NOMBRE";
-            this.nOMBREDataGridViewTextBoxColumn.Name = "nOMBREDataGridViewTextBoxColumn";
-            this.nOMBREDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pROVEEDORDataGridViewTextBoxColumn
-            // 
-            this.pROVEEDORDataGridViewTextBoxColumn.DataPropertyName = "PROVEEDOR";
-            this.pROVEEDORDataGridViewTextBoxColumn.HeaderText = "PROVEEDOR";
-            this.pROVEEDORDataGridViewTextBoxColumn.Name = "pROVEEDORDataGridViewTextBoxColumn";
-            this.pROVEEDORDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pESODataGridViewTextBoxColumn1
-            // 
-            this.pESODataGridViewTextBoxColumn1.DataPropertyName = "PESO";
-            this.pESODataGridViewTextBoxColumn1.HeaderText = "PESO";
-            this.pESODataGridViewTextBoxColumn1.Name = "pESODataGridViewTextBoxColumn1";
-            this.pESODataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // mEDIDADataGridViewTextBoxColumn1
-            // 
-            this.mEDIDADataGridViewTextBoxColumn1.DataPropertyName = "MEDIDA";
-            this.mEDIDADataGridViewTextBoxColumn1.HeaderText = "MEDIDA";
-            this.mEDIDADataGridViewTextBoxColumn1.Name = "mEDIDADataGridViewTextBoxColumn1";
-            this.mEDIDADataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // mENUBindingSource
-            // 
-            this.mENUBindingSource.DataMember = "MENU";
-            this.mENUBindingSource.DataSource = this.dS_Siglo21;
-            // 
             // mENUTableAdapter
             // 
             this.mENUTableAdapter.ClearBeforeFill = true;
             // 
-            // iDDataGridViewTextBoxColumn
+            // panel1
             // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.panel1.Controls.Add(this.btnCerrarMenuCocina);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(949, 32);
+            this.panel1.TabIndex = 13;
             // 
-            // nOMBREDataGridViewTextBoxColumn1
+            // btnCerrarMenuCocina
             // 
-            this.nOMBREDataGridViewTextBoxColumn1.DataPropertyName = "NOMBRE";
-            this.nOMBREDataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
-            this.nOMBREDataGridViewTextBoxColumn1.Name = "nOMBREDataGridViewTextBoxColumn1";
-            this.nOMBREDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.btnCerrarMenuCocina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCerrarMenuCocina.FlatAppearance.BorderSize = 0;
+            this.btnCerrarMenuCocina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarMenuCocina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarMenuCocina.Location = new System.Drawing.Point(926, 0);
+            this.btnCerrarMenuCocina.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCerrarMenuCocina.Name = "btnCerrarMenuCocina";
+            this.btnCerrarMenuCocina.Size = new System.Drawing.Size(23, 20);
+            this.btnCerrarMenuCocina.TabIndex = 9;
+            this.btnCerrarMenuCocina.Text = "X";
+            this.btnCerrarMenuCocina.UseVisualStyleBackColor = false;
+            this.btnCerrarMenuCocina.Click += new System.EventHandler(this.btnCerrarMenuCocina_Click);
             // 
-            // pRECIODataGridViewTextBoxColumn
+            // button2
             // 
-            this.pRECIODataGridViewTextBoxColumn.DataPropertyName = "PRECIO";
-            this.pRECIODataGridViewTextBoxColumn.HeaderText = "PRECIO";
-            this.pRECIODataGridViewTextBoxColumn.Name = "pRECIODataGridViewTextBoxColumn";
-            this.pRECIODataGridViewTextBoxColumn.ReadOnly = true;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(899, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(23, 20);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "-";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // eSTADODataGridViewTextBoxColumn
+            // button1
             // 
-            this.eSTADODataGridViewTextBoxColumn.DataPropertyName = "ESTADO";
-            this.eSTADODataGridViewTextBoxColumn.HeaderText = "ESTADO";
-            this.eSTADODataGridViewTextBoxColumn.Name = "eSTADODataGridViewTextBoxColumn";
-            this.eSTADODataGridViewTextBoxColumn.ReadOnly = true;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(980, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(22, 24);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Comandas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 389);
+            this.ClientSize = new System.Drawing.Size(949, 395);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblVerID);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.tabControlCocina);
             this.Controls.Add(this.btnCerrarSesion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Comandas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu de cocina";
             this.Load += new System.EventHandler(this.Comandas_Load);
             this.tabControlCocina.ResumeLayout(false);
             this.metroTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenuPrincipal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).EndInit();
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTIngredienteBindingSource)).EndInit();
             this.metroTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dTIngredienteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTProductoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -663,5 +727,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nOMBREDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pRECIODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eSTADODataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnCerrarMenuCocina;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

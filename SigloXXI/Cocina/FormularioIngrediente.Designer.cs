@@ -36,9 +36,7 @@
             this.bntGuardarIngrediente = new MetroFramework.Controls.MetroButton();
             this.txtPesoIngrediente = new MetroFramework.Controls.MetroTextBox();
             this.cboProductoIngrediente = new MetroFramework.Controls.MetroComboBox();
-            this.pRODUCTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cboMenuIngrediente = new MetroFramework.Controls.MetroComboBox();
-            this.mENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtCantidadIngrediente = new MetroFramework.Controls.MetroTextBox();
             this.txtNombreIngrediente = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
@@ -48,11 +46,23 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dS_Siglo21 = new Vista.DS_Siglo21();
+            this.mENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mENUTableAdapter = new Vista.DS_Siglo21TableAdapters.MENUTableAdapter();
+            this.pRODUCTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pRODUCTOTableAdapter = new Vista.DS_Siglo21TableAdapters.PRODUCTOTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -156,7 +166,6 @@
             // 
             // cboProductoIngrediente
             // 
-            this.cboProductoIngrediente.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pRODUCTOBindingSource, "ID", true));
             this.cboProductoIngrediente.DataSource = this.pRODUCTOBindingSource;
             this.cboProductoIngrediente.DisplayMember = "NOMBRE";
             this.cboProductoIngrediente.FormattingEnabled = true;
@@ -167,9 +176,6 @@
             this.cboProductoIngrediente.TabIndex = 10;
             this.cboProductoIngrediente.UseSelectable = true;
             this.cboProductoIngrediente.ValueMember = "ID";
-            // 
-            // dataSetCocina
-         
             // 
             // cboMenuIngrediente
             // 
@@ -183,10 +189,6 @@
             this.cboMenuIngrediente.TabIndex = 9;
             this.cboMenuIngrediente.UseSelectable = true;
             this.cboMenuIngrediente.ValueMember = "ID";
-            // 
-            // mENUBindingSource
-            // 
-
             // 
             // txtCantidadIngrediente
             // 
@@ -310,22 +312,135 @@
             this.metroLabel1.Size = new System.Drawing.Size(59, 19);
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Nombre";
-          
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(27)))), ((int)(((byte)(31)))));
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(635, 32);
+            this.panel1.TabIndex = 14;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(612, 0);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(23, 20);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "X";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(583, 0);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(23, 20);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "-";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(926, 0);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(23, 20);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "X";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(899, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(23, 20);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "-";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(980, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(22, 24);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dS_Siglo21
+            // 
+            this.dS_Siglo21.DataSetName = "DS_Siglo21";
+            this.dS_Siglo21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mENUBindingSource
+            // 
+            this.mENUBindingSource.DataMember = "MENU";
+            this.mENUBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // mENUTableAdapter
+            // 
+            this.mENUTableAdapter.ClearBeforeFill = true;
+            // 
+            // pRODUCTOBindingSource
+            // 
+            this.pRODUCTOBindingSource.DataMember = "PRODUCTO";
+            this.pRODUCTOBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // pRODUCTOTableAdapter
+            // 
+            this.pRODUCTOTableAdapter.ClearBeforeFill = true;
+            // 
+            // FormularioIngrediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 430);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormularioIngrediente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Ingrediente";
             this.Load += new System.EventHandler(this.FormularioIngrediente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -347,9 +462,18 @@
         private MetroFramework.Controls.MetroTextBox txtCantidadIngrediente;
         private MetroFramework.Controls.MetroButton btnLimpiarIngrediente;
         private MetroFramework.Controls.MetroButton bntGuardarIngrediente;
-        private System.Windows.Forms.BindingSource mENUBindingSource;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.BindingSource pRODUCTOBindingSource;
         private MetroFramework.Controls.MetroComboBox cboMedidaIngrediente;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private DS_Siglo21 dS_Siglo21;
+        private System.Windows.Forms.BindingSource mENUBindingSource;
+        private DS_Siglo21TableAdapters.MENUTableAdapter mENUTableAdapter;
+        private System.Windows.Forms.BindingSource pRODUCTOBindingSource;
+        private DS_Siglo21TableAdapters.PRODUCTOTableAdapter pRODUCTOTableAdapter;
     }
 }

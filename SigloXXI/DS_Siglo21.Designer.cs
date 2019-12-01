@@ -80,6 +80,8 @@ namespace Vista {
         
         private DTIngredienteDataTable tableDTIngrediente;
         
+        private SP_LISTA_PEDIDOSDataTable tableSP_LISTA_PEDIDOS;
+        
         private global::System.Data.DataRelation relationBOLETA_MODO_PAGO_FK;
         
         private global::System.Data.DataRelation relationESTADO_ID_BOLETA_FK1;
@@ -247,6 +249,9 @@ namespace Vista {
                 }
                 if ((ds.Tables["DTIngrediente"] != null)) {
                     base.Tables.Add(new DTIngredienteDataTable(ds.Tables["DTIngrediente"]));
+                }
+                if ((ds.Tables["SP_LISTA_PEDIDOS"] != null)) {
+                    base.Tables.Add(new SP_LISTA_PEDIDOSDataTable(ds.Tables["SP_LISTA_PEDIDOS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -548,6 +553,16 @@ namespace Vista {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public SP_LISTA_PEDIDOSDataTable SP_LISTA_PEDIDOS {
+            get {
+                return this.tableSP_LISTA_PEDIDOS;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -696,6 +711,9 @@ namespace Vista {
                 }
                 if ((ds.Tables["DTIngrediente"] != null)) {
                     base.Tables.Add(new DTIngredienteDataTable(ds.Tables["DTIngrediente"]));
+                }
+                if ((ds.Tables["SP_LISTA_PEDIDOS"] != null)) {
+                    base.Tables.Add(new SP_LISTA_PEDIDOSDataTable(ds.Tables["SP_LISTA_PEDIDOS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -898,6 +916,12 @@ namespace Vista {
                     this.tableDTIngrediente.InitVars();
                 }
             }
+            this.tableSP_LISTA_PEDIDOS = ((SP_LISTA_PEDIDOSDataTable)(base.Tables["SP_LISTA_PEDIDOS"]));
+            if ((initTable == true)) {
+                if ((this.tableSP_LISTA_PEDIDOS != null)) {
+                    this.tableSP_LISTA_PEDIDOS.InitVars();
+                }
+            }
             this.relationBOLETA_MODO_PAGO_FK = this.Relations["BOLETA_MODO_PAGO_FK"];
             this.relationESTADO_ID_BOLETA_FK1 = this.Relations["ESTADO_ID_BOLETA_FK1"];
             this.relationCLIENTE_ESTADO_FK = this.Relations["CLIENTE_ESTADO_FK"];
@@ -992,6 +1016,8 @@ namespace Vista {
             base.Tables.Add(this.tableDTProveedor);
             this.tableDTIngrediente = new DTIngredienteDataTable();
             base.Tables.Add(this.tableDTIngrediente);
+            this.tableSP_LISTA_PEDIDOS = new SP_LISTA_PEDIDOSDataTable();
+            base.Tables.Add(this.tableSP_LISTA_PEDIDOS);
             this.relationBOLETA_MODO_PAGO_FK = new global::System.Data.DataRelation("BOLETA_MODO_PAGO_FK", new global::System.Data.DataColumn[] {
                         this.tableMODO_PAGO.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableBOLETA.MODO_PAGO_IDColumn}, false);
@@ -1276,6 +1302,12 @@ namespace Vista {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeSP_LISTA_PEDIDOS() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1412,6 +1444,9 @@ namespace Vista {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void DTIngredienteRowChangeEventHandler(object sender, DTIngredienteRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void SP_LISTA_PEDIDOSRowChangeEventHandler(object sender, SP_LISTA_PEDIDOSRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -10359,6 +10394,317 @@ namespace Vista {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SP_LISTA_PEDIDOSDataTable : global::System.Data.TypedTableBase<SP_LISTA_PEDIDOSRow> {
+            
+            private global::System.Data.DataColumn columnMENU;
+            
+            private global::System.Data.DataColumn columnMESA;
+            
+            private global::System.Data.DataColumn columnMESERO;
+            
+            private global::System.Data.DataColumn columnHORA;
+            
+            private global::System.Data.DataColumn columnESTADO;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public SP_LISTA_PEDIDOSDataTable() {
+                this.TableName = "SP_LISTA_PEDIDOS";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal SP_LISTA_PEDIDOSDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected SP_LISTA_PEDIDOSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MENUColumn {
+                get {
+                    return this.columnMENU;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MESAColumn {
+                get {
+                    return this.columnMESA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MESEROColumn {
+                get {
+                    return this.columnMESERO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn HORAColumn {
+                get {
+                    return this.columnHORA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ESTADOColumn {
+                get {
+                    return this.columnESTADO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public SP_LISTA_PEDIDOSRow this[int index] {
+                get {
+                    return ((SP_LISTA_PEDIDOSRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event SP_LISTA_PEDIDOSRowChangeEventHandler SP_LISTA_PEDIDOSRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event SP_LISTA_PEDIDOSRowChangeEventHandler SP_LISTA_PEDIDOSRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event SP_LISTA_PEDIDOSRowChangeEventHandler SP_LISTA_PEDIDOSRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event SP_LISTA_PEDIDOSRowChangeEventHandler SP_LISTA_PEDIDOSRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddSP_LISTA_PEDIDOSRow(SP_LISTA_PEDIDOSRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public SP_LISTA_PEDIDOSRow AddSP_LISTA_PEDIDOSRow(string MENU, decimal MESA, string MESERO, string HORA, string ESTADO) {
+                SP_LISTA_PEDIDOSRow rowSP_LISTA_PEDIDOSRow = ((SP_LISTA_PEDIDOSRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        MENU,
+                        MESA,
+                        MESERO,
+                        HORA,
+                        ESTADO};
+                rowSP_LISTA_PEDIDOSRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSP_LISTA_PEDIDOSRow);
+                return rowSP_LISTA_PEDIDOSRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SP_LISTA_PEDIDOSDataTable cln = ((SP_LISTA_PEDIDOSDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SP_LISTA_PEDIDOSDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnMENU = base.Columns["MENU"];
+                this.columnMESA = base.Columns["MESA"];
+                this.columnMESERO = base.Columns["MESERO"];
+                this.columnHORA = base.Columns["HORA"];
+                this.columnESTADO = base.Columns["ESTADO"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnMENU = new global::System.Data.DataColumn("MENU", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMENU);
+                this.columnMESA = new global::System.Data.DataColumn("MESA", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMESA);
+                this.columnMESERO = new global::System.Data.DataColumn("MESERO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMESERO);
+                this.columnHORA = new global::System.Data.DataColumn("HORA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHORA);
+                this.columnESTADO = new global::System.Data.DataColumn("ESTADO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnESTADO);
+                this.columnMENU.AllowDBNull = false;
+                this.columnMENU.MaxLength = 255;
+                this.columnMESA.AllowDBNull = false;
+                this.columnMESERO.AllowDBNull = false;
+                this.columnMESERO.MaxLength = 255;
+                this.columnHORA.MaxLength = 5;
+                this.columnESTADO.AllowDBNull = false;
+                this.columnESTADO.MaxLength = 10;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public SP_LISTA_PEDIDOSRow NewSP_LISTA_PEDIDOSRow() {
+                return ((SP_LISTA_PEDIDOSRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SP_LISTA_PEDIDOSRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SP_LISTA_PEDIDOSRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SP_LISTA_PEDIDOSRowChanged != null)) {
+                    this.SP_LISTA_PEDIDOSRowChanged(this, new SP_LISTA_PEDIDOSRowChangeEvent(((SP_LISTA_PEDIDOSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SP_LISTA_PEDIDOSRowChanging != null)) {
+                    this.SP_LISTA_PEDIDOSRowChanging(this, new SP_LISTA_PEDIDOSRowChangeEvent(((SP_LISTA_PEDIDOSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SP_LISTA_PEDIDOSRowDeleted != null)) {
+                    this.SP_LISTA_PEDIDOSRowDeleted(this, new SP_LISTA_PEDIDOSRowChangeEvent(((SP_LISTA_PEDIDOSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SP_LISTA_PEDIDOSRowDeleting != null)) {
+                    this.SP_LISTA_PEDIDOSRowDeleting(this, new SP_LISTA_PEDIDOSRowChangeEvent(((SP_LISTA_PEDIDOSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveSP_LISTA_PEDIDOSRow(SP_LISTA_PEDIDOSRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS_Siglo21 ds = new DS_Siglo21();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SP_LISTA_PEDIDOSDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class AUD_INGRESORow : global::System.Data.DataRow {
@@ -12953,6 +13299,93 @@ namespace Vista {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SP_LISTA_PEDIDOSRow : global::System.Data.DataRow {
+            
+            private SP_LISTA_PEDIDOSDataTable tableSP_LISTA_PEDIDOS;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal SP_LISTA_PEDIDOSRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSP_LISTA_PEDIDOS = ((SP_LISTA_PEDIDOSDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string MENU {
+                get {
+                    return ((string)(this[this.tableSP_LISTA_PEDIDOS.MENUColumn]));
+                }
+                set {
+                    this[this.tableSP_LISTA_PEDIDOS.MENUColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal MESA {
+                get {
+                    return ((decimal)(this[this.tableSP_LISTA_PEDIDOS.MESAColumn]));
+                }
+                set {
+                    this[this.tableSP_LISTA_PEDIDOS.MESAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string MESERO {
+                get {
+                    return ((string)(this[this.tableSP_LISTA_PEDIDOS.MESEROColumn]));
+                }
+                set {
+                    this[this.tableSP_LISTA_PEDIDOS.MESEROColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string HORA {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_LISTA_PEDIDOS.HORAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'HORA\' de la tabla \'SP_LISTA_PEDIDOS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_LISTA_PEDIDOS.HORAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ESTADO {
+                get {
+                    return ((string)(this[this.tableSP_LISTA_PEDIDOS.ESTADOColumn]));
+                }
+                set {
+                    this[this.tableSP_LISTA_PEDIDOS.ESTADOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsHORANull() {
+                return this.IsNull(this.tableSP_LISTA_PEDIDOS.HORAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetHORANull() {
+                this[this.tableSP_LISTA_PEDIDOS.HORAColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -13890,6 +14323,40 @@ namespace Vista {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DTIngredienteRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class SP_LISTA_PEDIDOSRowChangeEvent : global::System.EventArgs {
+            
+            private SP_LISTA_PEDIDOSRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public SP_LISTA_PEDIDOSRowChangeEvent(SP_LISTA_PEDIDOSRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public SP_LISTA_PEDIDOSRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -26099,6 +26566,199 @@ FROM            SIGLO21.MENU INNER JOIN
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class SP_LISTA_PEDIDOSTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleConnection _connection;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleTransaction _transaction;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public SP_LISTA_PEDIDOSTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::Oracle.ManagedDataAccess.Client.OracleDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::Oracle.ManagedDataAccess.Client.OracleConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::Oracle.ManagedDataAccess.Client.OracleTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::Oracle.ManagedDataAccess.Client.OracleCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "SP_LISTA_PEDIDOS";
+            tableMapping.ColumnMappings.Add("MENU", "MENU");
+            tableMapping.ColumnMappings.Add("MESA", "MESA");
+            tableMapping.ColumnMappings.Add("MESERO", "MESERO");
+            tableMapping.ColumnMappings.Add("HORA", "HORA");
+            tableMapping.ColumnMappings.Add("ESTADO", "ESTADO");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
+            this._connection.ConnectionString = global::Vista.Properties.Settings.Default.Siglo21CS;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
+            this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SIGLO21.SP_LISTA_PEDIDOS";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "P_PEDIDOS";
+            param.DbType = global::System.Data.DbType.Object;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.RefCursor;
+            param.Direction = global::System.Data.ParameterDirection.Output;
+            param.IsNullable = true;
+            param.SourceColumn = null;
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DS_Siglo21.SP_LISTA_PEDIDOSDataTable dataTable, out object P_PEDIDOS) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            if (((this.Adapter.SelectCommand.Parameters[0].Value == null) 
+                        || (this.Adapter.SelectCommand.Parameters[0].Value.GetType() == typeof(global::System.DBNull)))) {
+                P_PEDIDOS = global::System.DBNull.Value;
+            }
+            else {
+                P_PEDIDOS = ((object)(this.Adapter.SelectCommand.Parameters[0].Value));
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DS_Siglo21.SP_LISTA_PEDIDOSDataTable GetData(out object P_PEDIDOS) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DS_Siglo21.SP_LISTA_PEDIDOSDataTable dataTable = new DS_Siglo21.SP_LISTA_PEDIDOSDataTable();
+            this.Adapter.Fill(dataTable);
+            if (((this.Adapter.SelectCommand.Parameters[0].Value == null) 
+                        || (this.Adapter.SelectCommand.Parameters[0].Value.GetType() == typeof(global::System.DBNull)))) {
+                P_PEDIDOS = global::System.DBNull.Value;
+            }
+            else {
+                P_PEDIDOS = ((object)(this.Adapter.SelectCommand.Parameters[0].Value));
+            }
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -26715,15 +27375,6 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._mETRICATableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.METRICA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._mETRICATableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._rOLTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ROL.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -26742,48 +27393,21 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._mETRICATableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.METRICA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._mETRICATableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._pRODUCTOTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._pRODUCTOTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._cLIENTETableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.CLIENTE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._cLIENTETableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._eSTADO_BOLETATableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ESTADO_BOLETA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._eSTADO_BOLETATableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._eSTADO_SOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ESTADO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._eSTADO_SOLICITUDTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._mODO_PAGOTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.MODO_PAGO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._mODO_PAGOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -26805,12 +27429,39 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._sOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._mODO_PAGOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MODO_PAGO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._sOLICITUDTableAdapter.Update(updatedRows));
+                    result = (result + this._mODO_PAGOTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._eSTADO_BOLETATableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ESTADO_BOLETA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._eSTADO_BOLETATableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._cLIENTETableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.CLIENTE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._cLIENTETableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._eSTADO_SOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ESTADO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._eSTADO_SOLICITUDTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -26823,12 +27474,21 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._iNGRESOTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.INGRESO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._mENUTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._iNGRESOTableAdapter.Update(updatedRows));
+                    result = (result + this._mENUTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._sOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._sOLICITUDTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -26841,12 +27501,12 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._mENUTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._iNGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.INGRESO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._mENUTableAdapter.Update(updatedRows));
+                    result = (result + this._iNGRESOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -26930,14 +27590,6 @@ FROM            SIGLO21.MENU INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._mETRICATableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.METRICA.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._mETRICATableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._rOLTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ROL.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -26954,43 +27606,19 @@ FROM            SIGLO21.MENU INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._mETRICATableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.METRICA.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._mETRICATableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._pRODUCTOTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._pRODUCTOTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._cLIENTETableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.CLIENTE.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._cLIENTETableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._eSTADO_BOLETATableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ESTADO_BOLETA.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._eSTADO_BOLETATableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._eSTADO_SOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ESTADO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._eSTADO_SOLICITUDTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._mODO_PAGOTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.MODO_PAGO.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._mODO_PAGOTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -27010,11 +27638,35 @@ FROM            SIGLO21.MENU INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._sOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._mODO_PAGOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MODO_PAGO.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._sOLICITUDTableAdapter.Update(addedRows));
+                    result = (result + this._mODO_PAGOTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._eSTADO_BOLETATableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ESTADO_BOLETA.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._eSTADO_BOLETATableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._cLIENTETableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.CLIENTE.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._cLIENTETableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._eSTADO_SOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ESTADO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._eSTADO_SOLICITUDTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -27026,11 +27678,19 @@ FROM            SIGLO21.MENU INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._iNGRESOTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.INGRESO.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._mENUTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._iNGRESOTableAdapter.Update(addedRows));
+                    result = (result + this._mENUTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._sOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._sOLICITUDTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -27042,11 +27702,11 @@ FROM            SIGLO21.MENU INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._mENUTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._iNGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.INGRESO.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._mENUTableAdapter.Update(addedRows));
+                    result = (result + this._iNGRESOTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -27156,11 +27816,11 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._mENUTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._iNGRESOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.INGRESO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._mENUTableAdapter.Update(deletedRows));
+                    result = (result + this._iNGRESOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -27172,11 +27832,19 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._iNGRESOTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.INGRESO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._sOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._iNGRESOTableAdapter.Update(deletedRows));
+                    result = (result + this._sOLICITUDTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._mENUTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MENU.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._mENUTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -27188,11 +27856,35 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._sOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._eSTADO_SOLICITUDTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ESTADO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._sOLICITUDTableAdapter.Update(deletedRows));
+                    result = (result + this._eSTADO_SOLICITUDTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._cLIENTETableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.CLIENTE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._cLIENTETableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._eSTADO_BOLETATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ESTADO_BOLETA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._eSTADO_BOLETATableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._mODO_PAGOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MODO_PAGO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._mODO_PAGOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -27212,43 +27904,19 @@ FROM            SIGLO21.MENU INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._mODO_PAGOTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.MODO_PAGO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._mODO_PAGOTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._eSTADO_SOLICITUDTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ESTADO_SOLICITUD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._eSTADO_SOLICITUDTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._eSTADO_BOLETATableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ESTADO_BOLETA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._eSTADO_BOLETATableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._cLIENTETableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.CLIENTE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._cLIENTETableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._pRODUCTOTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.PRODUCTO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._pRODUCTOTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._mETRICATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.METRICA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._mETRICATableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -27265,14 +27933,6 @@ FROM            SIGLO21.MENU INNER JOIN
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._rOLTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._mETRICATableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.METRICA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._mETRICATableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
