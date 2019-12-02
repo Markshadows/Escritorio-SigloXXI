@@ -62,6 +62,7 @@ namespace Vista.Cocina
                     ingredientito.Comandas_Load(sender, e);
                     //El ingrediente se guardo correctamente
                     MetroFramework.MetroMessageBox.Show(this, "Se agrego el ingrediente correctamente");
+                    Close();
                 }
                 else
                 {
@@ -103,5 +104,9 @@ namespace Vista.Cocina
             Utilidades.minimizar(this);
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Utilidades.cerrarVentana(this);
+        }
     }
 }

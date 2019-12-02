@@ -146,6 +146,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TabAdmin.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).BeginInit();
@@ -183,7 +184,7 @@
             this.TabAdmin.Controls.Add(this.Proveedores);
             this.TabAdmin.Location = new System.Drawing.Point(24, 129);
             this.TabAdmin.Name = "TabAdmin";
-            this.TabAdmin.SelectedIndex = 0;
+            this.TabAdmin.SelectedIndex = 3;
             this.TabAdmin.Size = new System.Drawing.Size(875, 467);
             this.TabAdmin.TabIndex = 0;
             this.TabAdmin.UseSelectable = true;
@@ -802,7 +803,7 @@
             this.metroPanel2.HorizontalScrollbarSize = 10;
             this.metroPanel2.Location = new System.Drawing.Point(489, 21);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(284, 260);
+            this.metroPanel2.Size = new System.Drawing.Size(375, 266);
             this.metroPanel2.TabIndex = 9;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
@@ -811,11 +812,11 @@
             // cboMetrica
             // 
             this.cboMetrica.FormattingEnabled = true;
-            this.cboMetrica.ItemHeight = 24;
+            this.cboMetrica.ItemHeight = 23;
             this.cboMetrica.Location = new System.Drawing.Point(112, 163);
             this.cboMetrica.Margin = new System.Windows.Forms.Padding(2);
             this.cboMetrica.Name = "cboMetrica";
-            this.cboMetrica.Size = new System.Drawing.Size(92, 30);
+            this.cboMetrica.Size = new System.Drawing.Size(150, 29);
             this.cboMetrica.TabIndex = 11;
             this.cboMetrica.UseSelectable = true;
             // 
@@ -824,11 +825,11 @@
             this.cboProveedor.DataSource = this.pROVEEDORBindingSource;
             this.cboProveedor.DisplayMember = "NOMBRE";
             this.cboProveedor.FormattingEnabled = true;
-            this.cboProveedor.ItemHeight = 24;
+            this.cboProveedor.ItemHeight = 23;
             this.cboProveedor.Location = new System.Drawing.Point(112, 122);
             this.cboProveedor.Margin = new System.Windows.Forms.Padding(2);
             this.cboProveedor.Name = "cboProveedor";
-            this.cboProveedor.Size = new System.Drawing.Size(92, 30);
+            this.cboProveedor.Size = new System.Drawing.Size(236, 29);
             this.cboProveedor.TabIndex = 10;
             this.cboProveedor.UseSelectable = true;
             this.cboProveedor.ValueMember = "ID";
@@ -851,7 +852,7 @@
             // 
             this.metroButton1.Location = new System.Drawing.Point(164, 202);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(55, 20);
+            this.metroButton1.Size = new System.Drawing.Size(98, 20);
             this.metroButton1.TabIndex = 8;
             this.metroButton1.Text = "Modificar";
             this.metroButton1.UseSelectable = true;
@@ -1132,11 +1133,11 @@
             this.cboEstadoSolicitud.DataSource = this.eSTADOSOLICITUDBindingSource;
             this.cboEstadoSolicitud.DisplayMember = "DESCRIPCION";
             this.cboEstadoSolicitud.FormattingEnabled = true;
-            this.cboEstadoSolicitud.ItemHeight = 24;
+            this.cboEstadoSolicitud.ItemHeight = 23;
             this.cboEstadoSolicitud.Location = new System.Drawing.Point(758, 113);
             this.cboEstadoSolicitud.Margin = new System.Windows.Forms.Padding(2);
             this.cboEstadoSolicitud.Name = "cboEstadoSolicitud";
-            this.cboEstadoSolicitud.Size = new System.Drawing.Size(92, 30);
+            this.cboEstadoSolicitud.Size = new System.Drawing.Size(92, 29);
             this.cboEstadoSolicitud.TabIndex = 3;
             this.cboEstadoSolicitud.UseSelectable = true;
             this.cboEstadoSolicitud.ValueMember = "ID_ESTADO";
@@ -1486,6 +1487,11 @@
             this.panel4.Size = new System.Drawing.Size(108, 115);
             this.panel4.TabIndex = 4;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MenuAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1628,5 +1634,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

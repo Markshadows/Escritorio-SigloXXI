@@ -24,6 +24,11 @@ namespace SigloXXI.Cocina
 
         public void Comandas_Load(object sender, EventArgs e)
         {
+            cargarTablas();
+        }
+
+        private void cargarTablas()
+        {
             // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.MENU' Puede moverla o quitarla según sea necesario.
             this.mENUTableAdapter.Fill(this.dS_Siglo21.MENU);
             // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.DTProducto' Puede moverla o quitarla según sea necesario.
@@ -77,6 +82,7 @@ namespace SigloXXI.Cocina
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToLongTimeString();
+            //cargarTablas();
         }
 
         private void lblTime_Click(object sender, EventArgs e)
@@ -95,7 +101,7 @@ namespace SigloXXI.Cocina
             if (metroGrid2.Rows.Count > 0)
             {
                 lblVerID.Text = url.ToString();
-                pictureMenuPrincipal.ImageLocation = "https://d9a94828.ngrok.io/"+@nuestraimagen;
+                pictureMenuPrincipal.ImageLocation = Utilidades.nombreDnsHttp()+@nuestraimagen;
                 pictureMenuPrincipal.SizeMode = PictureBoxSizeMode.StretchImage;
 
             }
@@ -145,15 +151,18 @@ namespace SigloXXI.Cocina
             string nombre = metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[1].Value.ToString();
             int precio = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[2].Value.ToString());
             int estado = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[3].Value.ToString());
+            string url = new Modelo.Menu().TraerImagen(id);
 
             Modelo.Menu menu = new Modelo.Menu();
             menu.Id = id;
             menu.Nombre = nombre;
             menu.Precio = precio;
+            menu.Estado = new Modelo.Estado { Id = estado};
+            menu.Url = url;
 
             //Redireccionamos a la vista para crear el menu
-            //new ActualizarMenu(this) { }.Show();
-            ActualizarMenu at = new ActualizarMenu(menu);
+            new ActualizarMenu(this, menu) { }.Show();
+            
 
 
         }
@@ -174,5 +183,21 @@ namespace SigloXXI.Cocina
             Utilidades.cerrarVentana(this);
         }
 
+        private void metroGrid2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Seleccionamos el id de la posicion del gridView
+            int url = int.Parse(metroGrid2.Rows[metroGrid2.CurrentRow.Index].Cells[0].Value.ToString());
+            //Creamos una instancia de la clase menu para llamar el metodo que nos traera la ubicacion de la imagen
+            Modelo.Menu menu = new Modelo.Menu();
+            string nuestraimagen = menu.TraerImagen(url);
+            //Verificamos que la grilla tenga valores
+            if (metroGrid2.Rows.Count > 0)
+            {
+                lblVerID.Text = url.ToString();
+                pictureMenuPrincipal.ImageLocation = Utilidades.nombreDnsHttp() + @nuestraimagen;
+                pictureMenuPrincipal.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            }
+        }
     }
 }

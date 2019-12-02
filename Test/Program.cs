@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Renci.SshNet;
+using System.Reflection;
 
 namespace Test
 {
@@ -21,10 +22,11 @@ namespace Test
             //Console.WriteLine(Buscar());
             //Console.WriteLine(Modificar());
             //cantidadMes();
-            //menusVendidos();
+            menusVendidos();
             //Send("myFile.txt");
             //listaMenus();
-            listaPedidos();
+            //listaPedidos();
+            //cantidadMes();
             Console.ReadKey();
         }
 
@@ -99,21 +101,25 @@ namespace Test
         static void cantidadMes()
         {
             Informe inf = new Informe();
-            Console.WriteLine(inf.cantidadMensual(10));
+            Console.WriteLine(inf.cantidadMensual(11));
         }
 
         static void menusVendidos()
         {
-            string nombreMenu = "";
             Informe inf = new Informe();
-            int contador = 0;
             List<string> menus = new List<string>();
             IEnumerable<object> menusVendidos = inf.menusVendidos(10).Distinct();
 
             foreach (var item in inf.menusVendidos(10))
             {
-                Console.WriteLine(item);
+                //object myType = item.GetType();
+                string piRutCliente = item.GetType().GetProperty("menu").GetValue(item, null).ToString();
+                //string rutCliente = piRutCliente.GetValue(item, null).ToString();
+                Console.WriteLine(piRutCliente);
             }
+
+
+            
 
             //foreach (var item in menus)
             //{

@@ -19,6 +19,9 @@ namespace Vista.Administrador.Estadisticas
             InitializeComponent();
             CargarGrafico();
             graficoClientesMes();
+            metroComboBox1.DataSource = Mes.meses();
+            metroComboBox1.DisplayMember = "nombre";
+            metroComboBox1.ValueMember = "id";
         }
 
         private void CargarGrafico ()
@@ -57,6 +60,21 @@ namespace Vista.Administrador.Estadisticas
             chart2.Series["Noviembre"].Points.AddXY("Noviembre", new Informe().cantidadMensual(11));
         }
 
+        private void graficoCantPlatos()
+        {
+            chart3.Series.Clear();
+
+            Informe inf = new Informe();
+            foreach (var item in inf.menusVendidos(int.Parse(metroComboBox1.SelectedValue.ToString())))
+            {
+                string menu = item.GetType().GetProperty("menu").GetValue(item, null).ToString();
+                int cantidad = int.Parse(item.GetType().GetProperty("cantidad").GetValue(item, null).ToString());
+                Series series = new Series(menu);
+                chart3.Series.Add(series);
+                chart3.Series[menu].Points.AddXY(menu, cantidad);
+            }
+        }
+
         private void btnVolverEstsUsuario_Click(object sender, EventArgs e)
         {
             new MenuAdministrador().Show();
@@ -66,6 +84,11 @@ namespace Vista.Administrador.Estadisticas
         private void timer_Tick(object sender, EventArgs e)
         {
             CargarGrafico();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            graficoCantPlatos();
         }
     }
 }

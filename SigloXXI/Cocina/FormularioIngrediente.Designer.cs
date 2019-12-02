@@ -36,7 +36,10 @@
             this.bntGuardarIngrediente = new MetroFramework.Controls.MetroButton();
             this.txtPesoIngrediente = new MetroFramework.Controls.MetroTextBox();
             this.cboProductoIngrediente = new MetroFramework.Controls.MetroComboBox();
+            this.pRODUCTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS_Siglo21 = new Vista.DS_Siglo21();
             this.cboMenuIngrediente = new MetroFramework.Controls.MetroComboBox();
+            this.mENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtCantidadIngrediente = new MetroFramework.Controls.MetroTextBox();
             this.txtNombreIngrediente = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
@@ -52,17 +55,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dS_Siglo21 = new Vista.DS_Siglo21();
-            this.mENUBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mENUTableAdapter = new Vista.DS_Siglo21TableAdapters.MENUTableAdapter();
-            this.pRODUCTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pRODUCTOTableAdapter = new Vista.DS_Siglo21TableAdapters.PRODUCTOTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -177,6 +177,16 @@
             this.cboProductoIngrediente.UseSelectable = true;
             this.cboProductoIngrediente.ValueMember = "ID";
             // 
+            // pRODUCTOBindingSource
+            // 
+            this.pRODUCTOBindingSource.DataMember = "PRODUCTO";
+            this.pRODUCTOBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // dS_Siglo21
+            // 
+            this.dS_Siglo21.DataSetName = "DS_Siglo21";
+            this.dS_Siglo21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // cboMenuIngrediente
             // 
             this.cboMenuIngrediente.DataSource = this.mENUBindingSource;
@@ -189,6 +199,11 @@
             this.cboMenuIngrediente.TabIndex = 9;
             this.cboMenuIngrediente.UseSelectable = true;
             this.cboMenuIngrediente.ValueMember = "ID";
+            // 
+            // mENUBindingSource
+            // 
+            this.mENUBindingSource.DataMember = "MENU";
+            this.mENUBindingSource.DataSource = this.dS_Siglo21;
             // 
             // txtCantidadIngrediente
             // 
@@ -341,6 +356,7 @@
             this.button5.TabIndex = 11;
             this.button5.Text = "X";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -397,24 +413,9 @@
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // dS_Siglo21
-            // 
-            this.dS_Siglo21.DataSetName = "DS_Siglo21";
-            this.dS_Siglo21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mENUBindingSource
-            // 
-            this.mENUBindingSource.DataMember = "MENU";
-            this.mENUBindingSource.DataSource = this.dS_Siglo21;
-            // 
             // mENUTableAdapter
             // 
             this.mENUTableAdapter.ClearBeforeFill = true;
-            // 
-            // pRODUCTOBindingSource
-            // 
-            this.pRODUCTOBindingSource.DataMember = "PRODUCTO";
-            this.pRODUCTOBindingSource.DataSource = this.dS_Siglo21;
             // 
             // pRODUCTOTableAdapter
             // 
@@ -437,10 +438,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mENUBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

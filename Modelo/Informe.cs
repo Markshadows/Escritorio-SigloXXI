@@ -46,7 +46,7 @@ namespace Modelo
                         select new
                         {
                             menu = g.Key,
-                            abc = g.Count()
+                            cantidad = g.Count()
                         };
                 return x.ToArray();
             }

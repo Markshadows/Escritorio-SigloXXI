@@ -20,15 +20,14 @@ namespace Vista.Cocina
 
         public ActualizarMenu(Comandas comanda)
         {
-            InitializeComponent();
-            comandita = comanda;
-            
+            InitializeComponent();            
         }
 
-        public ActualizarMenu(Modelo.Menu menu)
+        public ActualizarMenu(Comandas comanda, Modelo.Menu menu)
         {
+            InitializeComponent();
+            comandita = comanda;
             this.menu = menu;
-            txtNombreMenu.Text = this.menu.Nombre;
         }
 
         private void btnSubirImagen_Click(object sender, EventArgs e)
@@ -57,6 +56,7 @@ namespace Vista.Cocina
             {
 
                 Modelo.Menu menu = new Modelo.Menu();
+                menu.Id = this.menu.Id;
                 menu.Nombre = txtNombreMenu.Text;
                 menu.Precio = int.Parse(txtPrecioMenu.Text);
                 menu.Url = lblImagenSubida.Text;
@@ -78,6 +78,7 @@ namespace Vista.Cocina
                     txtPrecioMenu.Clear();
                     //Cargamos el formulario de menu para ver los cambios 
                     comandita.Comandas_Load(sender, e);
+                    Close();
                     MetroFramework.MetroMessageBox.Show(this, "Se actualizo el menu correctamente");
                 }
                 else
@@ -102,6 +103,18 @@ namespace Vista.Cocina
         private void btnCerrarFormMenu_Click(object sender, EventArgs e)
         {
             Utilidades.cerrarVentana(this);
+        }
+
+        private void ActualizarMenu_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'dS_Siglo21.ESTADO' Puede moverla o quitarla según sea necesario.
+            this.eSTADOTableAdapter.Fill(this.dS_Siglo21.ESTADO);
+            txtNombreMenu.Text = this.menu.Nombre;
+            txtPrecioMenu.Text = this.menu.Precio.ToString();
+            cboEstadoMenu.SelectedValue = this.menu.Estado.Id;
+            lblImagenSubida.Text = this.menu.Url;
+            pictureMenu.ImageLocation = Utilidades.nombreDnsHttp() + this.menu.Url;
+
         }
     }
 }

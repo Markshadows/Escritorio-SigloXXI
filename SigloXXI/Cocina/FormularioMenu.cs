@@ -115,13 +115,14 @@ namespace Vista.Cocina
         }
         public void Send(string fileName, string nombre)
         {
-            var connectionInfo = new ConnectionInfo("0.tcp.ngrok.io", 18041, "crow", new PasswordAuthenticationMethod("crow", "crow2680"));
+            var connectionInfo = new ConnectionInfo("0.tcp.ngrok.io", Utilidades.puertoSSH(), Utilidades.nombreUsuario(),
+                new PasswordAuthenticationMethod(Utilidades.nombreUsuario(),Utilidades.contrasena()));
             // Upload File
             using (var sftp = new SftpClient(connectionInfo))
             {
 
                 sftp.Connect();
-                sftp.ChangeDirectory("/opt/glassfish5/glassfish/domains/domain1/applications/web_siglo_xxi/img");
+                sftp.ChangeDirectory(Utilidades.carpetaIMG());
                 using (var uplfileStream = System.IO.File.OpenRead(fileName))
                 {
                     sftp.UploadFile(uplfileStream, nombre, true);

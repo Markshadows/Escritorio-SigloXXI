@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,9 +65,30 @@ namespace Modelo
             }
         }
 
+        private Contexto conexion;
+
+        public Metrica()
+        {
+            conexion = new Contexto();
+        }
+
         public int Agregar()
         {
-            throw new NotImplementedException();
+            try
+            {
+                METRICA metrica = new METRICA();
+                metrica.ID = conexion.Entidad.Database.SqlQuery<int>("SELECT SEQ_METRICA_IDMETRICA.NEXTVAL FROM dual").First();
+                metrica.PESO = Peso;
+                metrica.MEDIDA = Medida;
+                conexion.Entidad.METRICA.Add(metrica);
+                conexion.Entidad.SaveChanges();
+                return (int)metrica.ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return 0;
+            }
         }
     }
 }

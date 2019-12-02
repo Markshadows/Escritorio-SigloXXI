@@ -375,5 +375,10 @@ namespace Vista.Administrador
         {
             Utilidades.minimizar(this);
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            MenuAdministrador_Load(sender, e);
+        }
     }
 }

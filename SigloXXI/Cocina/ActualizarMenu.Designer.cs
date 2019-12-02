@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblImagenSubida = new MetroFramework.Controls.MetroLabel();
             this.btnActualizarMenu = new MetroFramework.Controls.MetroButton();
             this.cboEstadoMenu = new MetroFramework.Controls.MetroComboBox();
@@ -41,12 +42,17 @@
             this.pictureMenu = new System.Windows.Forms.PictureBox();
             this.btnSubirImagen = new MetroFramework.Controls.MetroButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCerrarFormMenu = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnCerrarFormMenu = new System.Windows.Forms.Button();
+            this.dS_Siglo21 = new Vista.DS_Siglo21();
+            this.eSTADOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eSTADOTableAdapter = new Vista.DS_Siglo21TableAdapters.ESTADOTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenu)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblImagenSubida
@@ -71,6 +77,7 @@
             // 
             // cboEstadoMenu
             // 
+            this.cboEstadoMenu.DataSource = this.eSTADOBindingSource;
             this.cboEstadoMenu.DisplayMember = "NOMBRE";
             this.cboEstadoMenu.FormattingEnabled = true;
             this.cboEstadoMenu.ItemHeight = 23;
@@ -193,6 +200,7 @@
             this.pictureMenu.Location = new System.Drawing.Point(491, 19);
             this.pictureMenu.Name = "pictureMenu";
             this.pictureMenu.Size = new System.Drawing.Size(224, 225);
+            this.pictureMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureMenu.TabIndex = 1;
             this.pictureMenu.TabStop = false;
             // 
@@ -218,6 +226,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 32);
             this.panel1.TabIndex = 23;
+            // 
+            // btnCerrarFormMenu
+            // 
+            this.btnCerrarFormMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCerrarFormMenu.FlatAppearance.BorderSize = 0;
+            this.btnCerrarFormMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarFormMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarFormMenu.Location = new System.Drawing.Point(777, 0);
+            this.btnCerrarFormMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCerrarFormMenu.Name = "btnCerrarFormMenu";
+            this.btnCerrarFormMenu.Size = new System.Drawing.Size(23, 20);
+            this.btnCerrarFormMenu.TabIndex = 10;
+            this.btnCerrarFormMenu.Text = "X";
+            this.btnCerrarFormMenu.UseVisualStyleBackColor = false;
+            this.btnCerrarFormMenu.Click += new System.EventHandler(this.btnCerrarFormMenu_Click);
             // 
             // button2
             // 
@@ -246,20 +269,19 @@
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnCerrarFormMenu
+            // dS_Siglo21
             // 
-            this.btnCerrarFormMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCerrarFormMenu.FlatAppearance.BorderSize = 0;
-            this.btnCerrarFormMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarFormMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarFormMenu.Location = new System.Drawing.Point(777, 0);
-            this.btnCerrarFormMenu.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCerrarFormMenu.Name = "btnCerrarFormMenu";
-            this.btnCerrarFormMenu.Size = new System.Drawing.Size(23, 20);
-            this.btnCerrarFormMenu.TabIndex = 10;
-            this.btnCerrarFormMenu.Text = "X";
-            this.btnCerrarFormMenu.UseVisualStyleBackColor = false;
-            this.btnCerrarFormMenu.Click += new System.EventHandler(this.btnCerrarFormMenu_Click);
+            this.dS_Siglo21.DataSetName = "DS_Siglo21";
+            this.dS_Siglo21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // eSTADOBindingSource
+            // 
+            this.eSTADOBindingSource.DataMember = "ESTADO";
+            this.eSTADOBindingSource.DataSource = this.dS_Siglo21;
+            // 
+            // eSTADOTableAdapter
+            // 
+            this.eSTADOTableAdapter.ClearBeforeFill = true;
             // 
             // ActualizarMenu
             // 
@@ -281,9 +303,12 @@
             this.Name = "ActualizarMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ActualizarMenu";
+            this.Load += new System.EventHandler(this.ActualizarMenu_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureMenu)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Siglo21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eSTADOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +332,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCerrarFormMenu;
+        private DS_Siglo21 dS_Siglo21;
+        private System.Windows.Forms.BindingSource eSTADOBindingSource;
+        private DS_Siglo21TableAdapters.ESTADOTableAdapter eSTADOTableAdapter;
     }
 }

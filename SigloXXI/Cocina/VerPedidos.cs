@@ -30,7 +30,6 @@ namespace Vista.Cocina
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToLongTimeString();
-            VerPedidos_Load(sender,e);
         }
 
         public void crearPicture()
@@ -125,6 +124,11 @@ namespace Vista.Cocina
 
 
             }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            VerPedidos_Load(sender, e);
         }
     }
 }
